@@ -1,53 +1,33 @@
 package com.mcgrady.xproject.ui.main.activity;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
-import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.xproject.R;
 import com.mcgrady.xproject.base.BaseActivity;
 import com.mcgrady.xproject.contract.MainContract;
 import com.mcgrady.xproject.presenter.MainPresenter;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+import com.mcgrady.xproject.ui.gold.fragment.GoldHomeFragment;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
-    private TextView tvHello;
+    GoldHomeFragment mGoldHomeFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
-//        LogUtils.d("test");
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
 
-        Logger.addLogAdapter(new AndroidLogAdapter());
 
-        Logger.d("debug");
-        Logger.e("error");
-        Logger.w("warning");
-        Logger.v("verbose");
-        Logger.i("information");
-        Logger.wtf("wtf!!!!");
+    @Override
+    protected void init() {
+        super.init();
 
-        Logger.clearLogAdapters();
-
-        LogUtils.d("debug");
-        LogUtils.e("error");
-        LogUtils.w("warning");
-        LogUtils.v("verbose");
-        LogUtils.i("information");
-
-        tvHello = (TextView) findViewById(R.id.tv_hello);
-
-        tvHello.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        mGoldHomeFragment = new GoldHomeFragment();
+        loadRootFragment(R.id.fl_container, mGoldHomeFragment);
+//        showHideFragment(mGoldHomeFragment);
     }
 
     @Override
@@ -58,15 +38,5 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void showTestDialog(String msg) {
 
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    protected void initInject() {
-        getActivityComponent().inject(this);
     }
 }

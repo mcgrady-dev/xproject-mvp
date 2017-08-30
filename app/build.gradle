@@ -27,10 +27,19 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
+    // ui
+    compile rootProject.ext.dependencies["butterknife"]
+    compile rootProject.ext.dependencies["butterknife-compiler"]
+
     // dagger
     compile rootProject.ext.dependencies["dagger"]
     compile rootProject.ext.dependencies["dagger-compiler"]
     compile rootProject.ext.dependencies["annotation"]
+
+    //other
+    compile rootProject.ext.dependencies["logger"]
+    compile rootProject.ext.dependencies["util"]
+    compile rootProject.ext.dependencies["fragmentation"]
 
     compile project(':library')
 }

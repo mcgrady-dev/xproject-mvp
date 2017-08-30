@@ -13,7 +13,7 @@ import javax.inject.Inject;
  * Activity基类（MVP）
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends BaseAppCompatActivity implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends BaseActivityImpl implements BaseView {
 
     @Inject
     protected T mPresenter;
@@ -41,10 +41,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseAppCompa
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+        super.onDestroy();
     }
 
     @Override

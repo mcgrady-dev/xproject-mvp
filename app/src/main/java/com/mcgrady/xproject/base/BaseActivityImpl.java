@@ -2,10 +2,10 @@ package com.mcgrady.xproject.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import com.mcgrady.xproject.app.App;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -15,29 +15,36 @@ import butterknife.Unbinder;
  * Activity碎片基类
  */
 
-public abstract class BaseAppCompatActivity extends AppCompatActivity {
+public abstract class BaseActivityImpl extends SupportActivity {
 
     protected Activity mContext;
     private Unbinder mUnbinder;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
         onViewCreated();
-//        App.getInstance().addActivity(this);
+        App.getInstance().addActivity(this);
+        init();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mUnbinder.unbind();
-
+        App.getInstance().removeActivity(this);
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
     }
 
     protected void onViewCreated() {
+
+    }
+
+    protected void init() {
 
     }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.blankj.utilcode.util.Utils;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by mcgrady on 2017/7/27
@@ -37,7 +38,7 @@ public class InitializeService extends IntentService {
 
     private void initApplication() {
         //初始化日志
-//        Logger.init(getPackageName()).hideThreadInfo();
+        Logger.init(getPackageName()).hideThreadInfo();
 
         //初始化错误收集
 //        CrashHandler.init(new CrashHandler(getApplicationContext()));
