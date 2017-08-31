@@ -8,6 +8,8 @@ import com.mcgrady.xproject.ui.gold.fragment.GoldHomeFragment;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
+
+
     GoldHomeFragment mGoldHomeFragment;
 
     @Override
