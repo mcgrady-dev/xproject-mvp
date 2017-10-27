@@ -61,5 +61,8 @@ public abstract class BaseFragmentImpl extends SupportFragment {
     @LayoutRes
     protected abstract int getLayoutId();
 
+    /**
+     * 在View初始化后运行的方法，可以用于初始化监听事件和数据
+     */
     protected abstract void init();
 }

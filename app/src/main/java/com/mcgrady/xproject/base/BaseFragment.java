@@ -30,6 +30,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends BaseFragment
 
     protected FragmentModule getFragmentModule() { return new FragmentModule(this); }
 
+    protected abstract void initInject();
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         initInject();
@@ -66,7 +68,5 @@ public abstract class BaseFragment<T extends BasePresenter> extends BaseFragment
     public void stateMain() {
 
     }
-
-    protected abstract void initInject();
 
 }

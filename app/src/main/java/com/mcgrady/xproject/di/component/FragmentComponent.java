@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.mcgrady.xproject.di.module.FragmentModule;
 import com.mcgrady.xproject.di.scope.FragmentScope;
 import com.mcgrady.xproject.ui.gold.fragment.GoldHomeFragment;
+import com.mcgrady.xproject.ui.gold.fragment.GoldPagerFragment;
 
 import dagger.Component;
 
@@ -19,4 +20,6 @@ public interface FragmentComponent {
     Activity getActivity();
 
     void inject(GoldHomeFragment goldHomeFragment);
+
+    void inject(GoldPagerFragment goldPagerFragment);
 }

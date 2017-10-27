@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import com.mcgrady.xproject.R;
 import com.mcgrady.xproject.base.BaseFragment;
 import com.mcgrady.xproject.contract.GoldHomeContract;
+import com.mcgrady.xproject.model.bean.GoldManagerBean;
+import com.mcgrady.xproject.model.bean.GoldManagerItemBean;
 import com.mcgrady.xproject.presenter.GoldHomePresenter;
 
 import java.util.ArrayList;
@@ -40,17 +42,24 @@ public class GoldHomeFragment extends BaseFragment<GoldHomePresenter> implements
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     protected void initInject() {
         getFragmentComponent().inject(this);
+    }
+
+    @Override
+    public void updateTab(List<GoldManagerItemBean> list) {
+        fragments.clear();
+        mTableLayout.removeAllTabs();
+        for (GoldManagerItemBean itemBean : list) {
+            if (itemBean.isSelect()) {
+
+            }
+        }
+
+
+    }
+
+    @Override
+    public void jumpToManager(GoldManagerBean bean) {
     }
 }

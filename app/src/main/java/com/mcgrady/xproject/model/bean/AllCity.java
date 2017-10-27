@@ -1,4 +1,4 @@
-package com.mcgrady.xproject.model;
+package com.mcgrady.xproject.model.bean;
 
 import java.util.List;
 

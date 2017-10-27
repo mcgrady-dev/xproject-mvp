@@ -40,6 +40,8 @@ dependencies {
     compile rootProject.ext.dependencies["rxjava"]
     compile rootProject.ext.dependencies["rxandroid"]
     compile rootProject.ext.dependencies["rxpermissions"]
+    compile rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    compile rootProject.ext.dependencies["retrofit-converter-gson"]
 
     //network
     compile rootProject.ext.dependencies["gson"]
