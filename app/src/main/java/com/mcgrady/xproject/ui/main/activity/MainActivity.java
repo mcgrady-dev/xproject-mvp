@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
         mGoldHomeFragment = new GoldHomeFragment();
         loadRootFragment(R.id.fl_container, mGoldHomeFragment);
-//        showHideFragment(mGoldHomeFragment);
+        showHideFragment(mGoldHomeFragment);
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.mcgrady.xproject.component.InitializeService;
 import com.mcgrady.xproject.di.component.AppComponent;
 import com.mcgrady.xproject.di.component.DaggerAppComponent;
 import com.mcgrady.xproject.di.module.AppModule;
+import com.mcgrady.xproject.di.module.HttpModule;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -96,7 +97,7 @@ public class App extends Application {
         if (appComponent == null) {
             appComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(instance))
-//                    .httpModule(new HttpModule())
+                    .httpModule(new HttpModule())
                     .build();
         }
 

@@ -1,5 +1,6 @@
 package com.mcgrady.xproject.ui.gold.fragment;
 
+import com.mcgrady.xproject.R;
 import com.mcgrady.xproject.base.RootFragment;
 import com.mcgrady.xproject.model.bean.GoldListBean;
 import com.mcgrady.xproject.presenter.gold.GoldContract;
@@ -25,11 +26,16 @@ public class GoldPagerFragment extends RootFragment<GoldPresenter> implements Go
 
     @Override
     protected void initInject() {
-
+        getFragmentComponent().inject(this);
     }
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_gold_page;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
     }
 }

@@ -2,6 +2,7 @@ package com.mcgrady.xproject.presenter;
 
 import com.mcgrady.xproject.base.RxPresenter;
 import com.mcgrady.xproject.contract.MainContract;
+import com.mcgrady.xproject.model.DataManager;
 
 import javax.inject.Inject;
 
@@ -11,9 +12,11 @@ import javax.inject.Inject;
 
 public class MainPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter {
 
-    @Inject
-    public MainPresenter() {
+    private DataManager mDataManager;
 
+    @Inject
+    public MainPresenter(DataManager dataManager) {
+        this.mDataManager = dataManager;
     }
 
     @Override
