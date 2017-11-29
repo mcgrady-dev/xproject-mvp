@@ -10,13 +10,18 @@ import javax.inject.Inject;
 
 /**
  * Created by mcgrady on 2017/7/27.
- * Activity基类（MVP）
+ * MVP Activity基类
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends BaseActivityImpl implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends BaseSimpleActivity implements BaseView {
 
     @Inject
     protected T mPresenter;
+
+    /**
+     * 上一次点击时间
+     */
+    private long lastClick = 0;
 
     protected ActivityComponent getActivityComponent() {
         return  DaggerActivityComponent.builder()
@@ -29,6 +34,19 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
         return new ActivityModule(this);
     }
 
+    /**
+     * 判断是否快速点击
+     * @return
+     */
+    protected boolean isFastClick() {
+        long now = System.currentTimeMillis();
+        if (now - lastClick >= 200) {
+            lastClick = now;
+            return false;
+        }
+
+        return true;
+    }
 
     @Override
     protected void onViewCreated() {

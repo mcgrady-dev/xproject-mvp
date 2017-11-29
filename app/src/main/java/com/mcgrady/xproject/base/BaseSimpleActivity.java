@@ -9,13 +9,14 @@ import com.mcgrady.xproject.app.App;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportActivity;
 
 /**
  * Created by mcgrady on 2017/7/27.
- * Activity碎片基类
+ * Activity碎片基类, 基于fragmentation封装
  */
 
-public abstract class BaseActivityImpl extends SupportActivity {
+public abstract class BaseSimpleActivity extends SupportActivity {
 
     protected Activity mContext;
     private Unbinder mUnbinder;

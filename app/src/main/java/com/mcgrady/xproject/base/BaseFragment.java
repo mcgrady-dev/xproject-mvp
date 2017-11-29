@@ -16,7 +16,7 @@ import javax.inject.Inject;
  * MVP Fragment基类
  */
 
-public abstract class BaseFragment<T extends BasePresenter> extends BaseFragmentImpl implements BaseView {
+public abstract class BaseFragment<T extends BasePresenter> extends BaseLazyFragment implements BaseView {
 
     @Inject
     protected T mPresenter;

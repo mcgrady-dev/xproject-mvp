@@ -11,19 +11,25 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * Created by mcgrady on 2017/8/29.
- * Fragment 碎片基类
+ * 懒加载 Fragment基类，基于fragmentation封装
  */
 
-public abstract class BaseFragmentImpl extends SupportFragment {
+public abstract class BaseLazyFragment extends SupportFragment {
 
     protected View mView;
     protected Activity mActivity;
     protected Context mContext;
     private Unbinder mUnbinder;
     protected boolean isInited = false;
+
+    /**
+     * 上次点击事件
+     */
+    private long lastClick = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -65,4 +71,18 @@ public abstract class BaseFragmentImpl extends SupportFragment {
      * 在View初始化后运行的方法，可以用于初始化监听事件和数据
      */
     protected abstract void init();
+
+    /**
+     * 判断是否快速点击
+     * @return
+     */
+    protected boolean isFastClick() {
+        long now = System.currentTimeMillis();
+        if (now - lastClick >= 200) {
+            lastClick = now;
+            return false;
+        }
+
+        return true;
+    }
 }

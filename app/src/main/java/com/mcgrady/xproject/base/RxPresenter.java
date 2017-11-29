@@ -8,7 +8,7 @@ import io.reactivex.functions.Consumer;
 
 /**
  * Created by mcgrady on 2017/8/9.
- * 基于Rx的Presenter封装,控制订阅的生命周期
+ * 基于Rx封装的Presenter,控制订阅的生命周期
  */
 
 public class RxPresenter<T extends BaseView> implements BasePresenter<T> {

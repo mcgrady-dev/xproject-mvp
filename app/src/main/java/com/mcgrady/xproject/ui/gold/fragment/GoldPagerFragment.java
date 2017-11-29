@@ -4,15 +4,16 @@ import com.mcgrady.xproject.R;
 import com.mcgrady.xproject.base.RootFragment;
 import com.mcgrady.xproject.model.bean.GoldListBean;
 import com.mcgrady.xproject.presenter.gold.GoldContract;
-import com.mcgrady.xproject.presenter.gold.GoldPresenter;
+import com.mcgrady.xproject.presenter.gold.GoldPagerPresenter;
 
 import java.util.List;
 
 /**
  * Created by mcgrady on 2017/10/23.
+ *
  */
 
-public class GoldPagerFragment extends RootFragment<GoldPresenter> implements GoldContract.View {
+public class GoldPagerFragment extends RootFragment<GoldPagerPresenter> implements GoldContract.View {
 
     @Override
     public void showContent(List<GoldListBean> goldListBean) {
