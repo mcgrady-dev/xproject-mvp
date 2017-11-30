@@ -4,7 +4,7 @@ import com.mcgrady.xproject.app.App;
 import com.mcgrady.xproject.model.DataManager;
 import com.mcgrady.xproject.model.http.HttpHelper;
 import com.mcgrady.xproject.model.http.RetrofitHelper;
-import com.mcgrady.xproject.model.prefs.IPreferences;
+import com.mcgrady.xproject.model.prefs.ImplPreferencesHelper;
 import com.mcgrady.xproject.model.prefs.PreferencesHelper;
 
 import javax.inject.Singleton;
@@ -38,8 +38,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    IPreferences providePreferencesHelper(PreferencesHelper preferencesHelper) {
-        return preferencesHelper;
+    PreferencesHelper providePreferencesHelper(ImplPreferencesHelper implPreferencesHelper) {
+        return implPreferencesHelper;
     }
 
     @Provides
