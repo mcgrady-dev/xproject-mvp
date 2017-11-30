@@ -1,11 +1,15 @@
 package com.mcgrady.xproject.util;
 
+import com.mcgrady.xproject.model.http.exception.ApiException;
+import com.mcgrady.xproject.model.http.response.GoldHttpResponse;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -46,5 +50,23 @@ public class RxUtil {
                 }
             }
         }, BackpressureStrategy.BUFFER);
+    }
+
+    public static <T> FlowableTransformer<GoldHttpResponse<T>, T> handleGoldResult() {
+        return new FlowableTransformer<GoldHttpResponse<T>, T>() {
+            @Override
+            public Flowable<T> apply(Flowable<GoldHttpResponse<T>> httpResponseFlowable) {
+                return httpResponseFlowable.flatMap(new Function<GoldHttpResponse<T>, Flowable<T>>() {
+                    @Override
+                    public Flowable<T> apply(GoldHttpResponse<T> tGoldHttpResponse) {
+                        if(tGoldHttpResponse.getResults() != null) {
+                            return createData(tGoldHttpResponse.getResults());
+                        } else {
+                            return Flowable.error(new ApiException("服务器返回error"));
+                        }
+                    }
+                });
+            }
+        };
     }
 }
