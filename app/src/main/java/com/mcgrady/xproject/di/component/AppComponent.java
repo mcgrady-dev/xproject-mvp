@@ -5,7 +5,7 @@ import com.mcgrady.xproject.di.module.AppModule;
 import com.mcgrady.xproject.di.module.HttpModule;
 import com.mcgrady.xproject.model.DataManager;
 import com.mcgrady.xproject.model.http.RetrofitHelper;
-import com.mcgrady.xproject.model.prefs.PreferencesHelper;
+import com.mcgrady.xproject.model.prefs.ImplPreferencesHelper;
 
 import javax.inject.Singleton;
 
@@ -25,5 +25,5 @@ public interface AppComponent {
 
     RetrofitHelper retrofitHelper();        // http请求帮助类
 
-    PreferencesHelper preferencesHelper();      // sp帮助类
+    ImplPreferencesHelper preferencesHelper();      // sp帮助类
 }

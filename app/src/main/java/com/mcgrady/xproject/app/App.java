@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.Utils;
 import com.mcgrady.xproject.component.InitializeService;
 import com.mcgrady.xproject.di.component.AppComponent;
 import com.mcgrady.xproject.di.component.DaggerAppComponent;
@@ -41,6 +42,9 @@ public class App extends Application {
 
         // 初始化屏幕宽高
         getScreenSize();
+
+        // 初始化Util工具类
+        Utils.init(this);
 
         // 在子线程中完成其他初始化
         InitializeService.start(this);

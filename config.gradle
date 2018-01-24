@@ -39,6 +39,7 @@ ext {
             "glide-transformations"     : "jp.wasabeef:glide-transformations:1.2.1",
             "fragmentation"             : "me.yokeyword:fragmentation:${dependVersion.fragmentation}",
             "swipeback"                 : "me.yokeyword:fragmentation-swipeback:${dependVersion.fragmentation}",
+            "recycler_adapter_helper"   : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34',
 
             //rx
             "rxjava"                    : "io.reactivex.rxjava2:rxjava:${dependVersion.rxjava2}",

@@ -4,7 +4,6 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
-import com.blankj.utilcode.util.Utils;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -61,9 +60,6 @@ public class InitializeService extends IntentService {
 //            public void onViewInitFinished(boolean b) {
 //            }
 //        });
-
-        // 初始化Util工具类
-        Utils.init(getApplicationContext());
     }
 
     private void initBugly() {

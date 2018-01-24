@@ -58,6 +58,7 @@ public class GoldHomePresenter extends RxPresenter<GoldHomeContract.View> implem
     @Override
     public void initManagerList() {
         initList();
+//        mDataManager.updateGoldManagerList(new GoldManagerBean(mList));
         mView.updateTab(mList);
     }
 

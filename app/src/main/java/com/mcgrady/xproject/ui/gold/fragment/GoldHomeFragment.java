@@ -55,6 +55,7 @@ public class GoldHomeFragment extends BaseFragment<GoldHomePresenter> implements
 
     @Override
     public void updateTab(List<GoldManagerItemBean> list) {
+
         fragments.clear();
         mTableLayout.removeAllTabs();
         for (GoldManagerItemBean item : list) {

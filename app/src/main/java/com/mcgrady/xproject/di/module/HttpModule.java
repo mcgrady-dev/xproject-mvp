@@ -3,6 +3,8 @@ package com.mcgrady.xproject.di.module;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.mcgrady.xproject.BuildConfig;
 import com.mcgrady.xproject.app.Constants;
+import com.mcgrady.xproject.di.qualifier.GoldUrl;
+import com.mcgrady.xproject.model.http.api.GoldApis;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +43,14 @@ public class HttpModule {
     OkHttpClient.Builder provideOkHttpBuilder() {
         return new OkHttpClient.Builder();
     }
+
+    @Singleton
+    @Provides
+    @GoldUrl
+    Retrofit provideGoldRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, GoldApis.HOST);
+    }
+
     @Singleton
     @Provides
     OkHttpClient provideClient(OkHttpClient.Builder builder) {
@@ -102,6 +112,12 @@ public class HttpModule {
         //错误重连
         builder.retryOnConnectionFailure(true);
         return builder.build();
+    }
+
+    @Singleton
+    @Provides
+    GoldApis provideGoldService(@GoldUrl Retrofit retrofit) {
+        return retrofit.create(GoldApis.class);
     }
 
     private Retrofit createRetrofit(Retrofit.Builder builder, OkHttpClient client, String url) {

@@ -30,6 +30,7 @@ dependencies {
     // ui
     compile rootProject.ext.dependencies["butterknife"]
     compile rootProject.ext.dependencies["butterknife-compiler"]
+    compile rootProject.ext.dependencies["recycler_adapter_helper"]
 
     // dagger
     compile rootProject.ext.dependencies["dagger"]

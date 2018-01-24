@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">xproject</string>
+
+    <string name="hot_recommend">热门推荐</string>
 </resources>

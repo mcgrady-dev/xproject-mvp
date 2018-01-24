@@ -52,7 +52,12 @@ public class RxUtil {
         }, BackpressureStrategy.BUFFER);
     }
 
-    public static <T> FlowableTransformer<GoldHttpResponse<T>, T> handleGoldResult() {
+    /**
+     * 统一返回结果处理
+     * @param <T>
+     * @return
+     */
+    public static <T> FlowableTransformer<GoldHttpResponse<T>, T> handleGoldResult() {   //compose判断结果
         return new FlowableTransformer<GoldHttpResponse<T>, T>() {
             @Override
             public Flowable<T> apply(Flowable<GoldHttpResponse<T>> httpResponseFlowable) {
