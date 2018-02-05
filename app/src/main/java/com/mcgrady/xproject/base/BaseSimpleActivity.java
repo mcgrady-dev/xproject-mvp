@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 
-import com.mcgrady.xproject.app.App;
+import com.mcgrady.xproject.app.ActivityStack;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -28,14 +29,22 @@ public abstract class BaseSimpleActivity extends SupportActivity {
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
         onViewCreated();
-        App.getInstance().addActivity(this);
+        ActivityStack.getInstance().pushActivity(this);
         init();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            ActivityStack.getInstance().popActivity(this);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        App.getInstance().removeActivity(this);
+        ActivityStack.getInstance().popActivity(this);
         if (mUnbinder != null) {
             mUnbinder.unbind();
         }

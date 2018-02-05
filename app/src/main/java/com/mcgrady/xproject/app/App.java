@@ -1,6 +1,5 @@
 package com.mcgrady.xproject.app;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.util.DisplayMetrics;
@@ -14,9 +13,6 @@ import com.mcgrady.xproject.di.component.DaggerAppComponent;
 import com.mcgrady.xproject.di.module.AppModule;
 import com.mcgrady.xproject.di.module.HttpModule;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Created by mcgrady on 2017/8/9.
  */
@@ -24,7 +20,6 @@ import java.util.Set;
 public class App extends Application {
     private static App instance;
     public static AppComponent appComponent;
-    private Set<Activity> activitySet;
 
     public static int SCREEN_WIDTH = -1;
     public static int SCREEN_HEIGHT = -1;
@@ -54,28 +49,8 @@ public class App extends Application {
         super.attachBaseContext(base);
     }
 
-    public void addActivity(Activity activity) {
-        if (activitySet == null) {
-            activitySet = new HashSet<>();
-        }
-
-        activitySet.add(activity);
-    }
-
-    public void removeActivity(Activity activity) {
-        if (activitySet != null) {
-            activitySet.remove(activity);
-        }
-    }
-
     public void exitApp() {
-        if (activitySet != null) {
-            synchronized (activitySet) {
-                for (Activity activity : activitySet) {
-                    activity.finish();
-                }
-            }
-        }
+        ActivityStack.getInstance().clearAllActivity();
 
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
