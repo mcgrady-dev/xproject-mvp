@@ -7,6 +7,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.blankj.utilcode.util.Utils;
+import com.bumptech.glide.Glide;
 import com.mcgrady.xproject.component.InitializeService;
 import com.mcgrady.xproject.di.component.AppComponent;
 import com.mcgrady.xproject.di.component.DaggerAppComponent;
@@ -43,6 +44,20 @@ public class App extends Application {
 
         // 在子线程中完成其他初始化
         InitializeService.start(this);
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (TRIM_MEMORY_UI_HIDDEN == level) {
+            Glide.get(this).clearMemory();
+        }
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Glide.get(this).clearMemory();
     }
 
     protected void attchBaseContext(Context base) {

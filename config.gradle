@@ -36,7 +36,7 @@ ext {
 
             //ui
             "PhotoView"                 : "com.github.chrisbanes:PhotoView:1.3.0",
-            "glide-transformations"     : "jp.wasabeef:glide-transformations:1.2.1",
+            "glide-transformations"     : "jp.wasabeef:glide-transformations:3.1.0",
             "fragmentation"             : "me.yokeyword:fragmentation:${dependVersion.fragmentation}",
             "swipeback"                 : "me.yokeyword:fragmentation-swipeback:${dependVersion.fragmentation}",
             "recycler_adapter_helper"   : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34',
@@ -53,8 +53,7 @@ ext {
             "retrofit-adapter-rxjava2"  : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
             "okhttp"                    : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
             "okhttp-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",
-            "glide"                     : "com.github.bumptech.glide:glide:3.7.0",
-            "glide-okhttp3-integration" : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
+            "glide"                     : "com.github.bumptech.glide:glide:4.6.0",
 
             //di
             "dagger"                    : "com.google.dagger:dagger:${dependVersion.dagger2}",
