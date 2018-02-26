@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
 
+def androidConfig = rootProject.ext.android
+def libConfig = rootProject.ext.dependencies
+
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
     defaultConfig {
-        applicationId "com.mcgrady.xproject"
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        applicationId androidConfig.applicationId
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,19 +31,19 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     // ui
-    compile rootProject.ext.dependencies["butterknife"]
-    compile rootProject.ext.dependencies["butterknife-compiler"]
-    compile rootProject.ext.dependencies["recycler_adapter_helper"]
+    compile libConfig.butterknife
+    compile libConfig.butterknife_compiler
+    compile libConfig.recycler_adapter_helper
 
     // dagger
-    compile rootProject.ext.dependencies["dagger"]
-    compile rootProject.ext.dependencies["dagger-compiler"]
-    compile rootProject.ext.dependencies["annotation"]
+    compile libConfig.dagger
+    compile libConfig.dagger_compiler
+    compile libConfig.annotation
 
     //other
-    compile rootProject.ext.dependencies["logger"]
-    compile rootProject.ext.dependencies["util"]
-    compile rootProject.ext.dependencies["fragmentation"]
+    compile libConfig.logger
+    compile libConfig.util
+    compile libConfig.fragmentation
 
     compile project(':library')
 }
