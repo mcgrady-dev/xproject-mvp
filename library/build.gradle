@@ -45,8 +45,6 @@ dependencies {
     compile libConfig.rxpermissions
     compile libConfig.retrofit_adapter_rxjava2
     compile libConfig.retrofit_converter_gson
-    compile libConfig.rxlifecycle
-    compile libConfig.rxlifecycle_components
 
     //network
     compile libConfig.gson
