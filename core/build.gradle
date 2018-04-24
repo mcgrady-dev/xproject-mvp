@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+def androidConfig = rootProject.ext.android
+def libConfig = rootProject.ext.dependencies
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libConfig.appcompat_v7
+    implementation libConfig.fragmentation
+
+    implementation libConfig.util
+    implementation libConfig.butterknife
+
+    // rx
+    implementation libConfig.rxjava
+    implementation libConfig.rxandroid
+    implementation libConfig.rxlifecycle
+    implementation libConfig.rxlifecycle_android
+    implementation libConfig.rxlifecycle_components
+
+    implementation libConfig.dagger
+    annotationProcessor libConfig.dagger_compiler
+    compileOnly libConfig.javax_annotation
+    implementation libConfig.arouter_api
+    implementation libConfig.arouter_compiler
+
+    testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
