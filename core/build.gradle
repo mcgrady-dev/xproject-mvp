@@ -45,7 +45,7 @@ dependencies {
     annotationProcessor libConfig.dagger_compiler
     compileOnly libConfig.javax_annotation
     implementation libConfig.arouter_api
-    implementation libConfig.arouter_compiler
+    annotationProcessor libConfig.arouter_compiler
 
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
