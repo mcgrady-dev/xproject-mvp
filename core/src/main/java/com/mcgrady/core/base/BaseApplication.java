@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.mcgrady.core.ActivitySwitchCallbacks;
 import com.mcgrady.core.di.component.AppComponent;
+import com.mcgrady.core.di.component.DaggerAppComponent;
 import com.mcgrady.core.di.module.AppModule;
 import com.mcgrady.core.di.module.DataModule;
 import com.mcgrady.core.server.AppInitService;
