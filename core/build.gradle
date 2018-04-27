@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    // support
+    api deps.support.appcompat_v7
+    api deps.support.constraint
+
+    // other
+    api deps.kotlin.stdlib
+    api deps.fragmentation
+    api deps.utils
+    api deps.butterknife
+
+    // rx
+    api deps.rx.java2
+    api deps.rx.android
+    api deps.rx.lifecycle
+    api deps.rx.lifecycle_android
+    api deps.rx.lifecycle_components
+
+    // di
+    api deps.dagger.runtime
+    annotationProcessor deps.dagger.compiler
+    compileOnly deps.javax_annotation
+
+    // arouter
+    api deps.arouter_api
+}

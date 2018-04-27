@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        applicationId "com.mcgrady"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+        multiDexEnabled true
+
+        //打包时间
+        resValue "string", "build_time", buildTime()
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            //给applicationId添加后缀“.debug”
+            applicationIdSuffix ".debug"
+            //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.support.multidex
+    implementation project(':core')
+    implementation project(':uikit')
+    if (!isModule.toBoolean()) {
+        implementation project(':main')
+        implementation project(':news')
+    }
+}
+
+static def buildTime() {
+    return new Date().format("yyyy/MM/dd")
+}
