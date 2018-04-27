@@ -1,18 +1,17 @@
-package com.mcgrady.news;
+package debug;
 
 import android.app.Application;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcgrady.core.base.BaseModuleApplication;
-import com.mcgrady.core.base.IBaseAppLifecycler;
 
 /**
  * @author: mcgrady <mogui@weyee.com>
  * @date: 2018/4/25
  * @des:
  */
-@Route(path = "/news/NewsApp")
-public class NewsApp extends BaseModuleApplication implements IBaseAppLifecycler {
+@Route(path = "/main/MainApp")
+public class MainApp extends BaseModuleApplication {
 
     @Override
     public void onCreateAsLibrary(Application application) {

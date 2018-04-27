@@ -27,12 +27,12 @@ versions.logger = "1.15"
 versions.arouter_compiler = "1.1.4"
 versions.arouter_api = "1.3.1"
 versions.rxpermission = "0.9.5@aar"
-versions.lombok = "1.12.6"
 versions.recycler_adapter_helper = "2.9.38"
 versions.rxlifecycle = "2.2.1"
 versions.javax_annotation = "10.0-b28"
 versions.butterknife = "8.8.1"
 versions.fragmentation = "1.3.3"
+versions.easy_dialog = "1.1.2"
 
 
 def deps = [:]
@@ -79,6 +79,7 @@ deps.butterknife = "com.jakewharton:butterknife:$versions.butterknife"
 deps.butterknife_compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
 deps.photo_view = "com.github.chrisbanes:PhotoView:$versions.photo_view"
 deps.recycler_adapter_helper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:$versions.recycler_adapter_helper"
+deps.easy_dialog = "com.github.tianzhijiexian:EasyDialog:$versions.easy_dialog"
 
 
 def rx = [:]
@@ -104,7 +105,6 @@ deps.toasty =  "com.github.GrenderG:Toasty:$versions.toasty"
 deps.logger = "com.orhanobut:logger:$versions.logger"
 deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
 deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
-deps.lombok = "org.projectlombok:lombok:$versions.lombok"
 deps.javax_annotation = "org.glassfish:javax.annotation:$versions.javax_annotation"
 deps.fragmentation = "me.yokeyword:fragmentation:$versions.fragmentation"
 

@@ -20,7 +20,7 @@ android {
 
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
-        applicationId "com.guiying.module"
+        applicationId "com.mcgrady"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode build_versions.version_code
@@ -41,6 +41,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            //给applicationId添加后缀“.debug”
+            applicationIdSuffix ".debug"
+            //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+        }
     }
 }
 
@@ -48,6 +59,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.support.multidex
     implementation project(':core')
+    implementation project(':uikit')
     if (!isModule.toBoolean()) {
         implementation project(':main')
         implementation project(':news')

@@ -27,7 +27,7 @@ android {
     sourceSets {
         main {
             if (isModule.toBoolean()) {
-                manifest.srcFile 'src/main/xproject/AndroidManifest.xml'
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 //集成开发模式下排除debug文件夹中的所有Java文件
@@ -51,4 +51,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor deps.arouter_compiler
     implementation project(':core')
+    implementation project(':uikit')
 }

@@ -39,8 +39,6 @@ dependencies {
     api deps.support.recyclerview_v7
     api deps.support.constraint
 
-    // dialog depend
-    compileOnly deps.lombok
-    annotationProcessor deps.lombok
-    compileOnly project(':provided')
+    // 第三方
+    api deps.easy_dialog
 }

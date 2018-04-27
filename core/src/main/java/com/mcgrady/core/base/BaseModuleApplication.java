@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.LogUtils;
  * @date: 2018/4/24
  * @des: 该基类只能放在子moudle中使用,用于moudle隔离
  */
-public class BaseModuleApplication extends BaseApplication implements IBaseAppLifecycler {
+public class BaseModuleApplication extends BaseApplication implements ApplicationLike {
 
     private static final String TAG = BaseModuleApplication.class.getSimpleName();
 

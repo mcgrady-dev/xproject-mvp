@@ -1,21 +1,34 @@
-package com.mcgrady.xproject;
+package com.mcgrady.xproject.app;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.mcgrady.core.base.ApplicationLike;
 import com.mcgrady.core.base.BaseApplication;
-import com.mcgrady.core.base.IBaseAppLifecycler;
 
 /**
  * @author: mcgrady <mogui@weyee.com>
  * @date: 2018/4/25
  * @des: 项目App入口
  */
-public class XProjectApp extends BaseApplication {
+public class App extends BaseApplication {
 
     @Autowired(name = "/main/MainApp")
-    IBaseAppLifecycler mMainApp;
+    ApplicationLike mMainApp;
     @Autowired(name = "/news/NewsApp")
-    IBaseAppLifecycler mNewsApp;
+    ApplicationLike mNewsApp;
     public static synchronized BaseApplication getInstance() {
         return instance;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @NonNull
+    public static App app(@NonNull Context context) {
+        return (App) context.getApplicationContext();
     }
 }
