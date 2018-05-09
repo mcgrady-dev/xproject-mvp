@@ -5,9 +5,9 @@ import android.content.Context;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: MVP View基类
+ * <p>MVP View基类</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public interface IBaseView {
 

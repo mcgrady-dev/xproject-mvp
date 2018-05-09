@@ -1,9 +1,9 @@
 package com.mcgrady.core.base;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: MVP Presenter基类
+ * <p>MVP Presenter基类</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public interface IBasePresenter<V extends IBaseView> {
 

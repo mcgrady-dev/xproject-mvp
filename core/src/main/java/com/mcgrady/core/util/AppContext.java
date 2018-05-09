@@ -3,10 +3,10 @@ package com.mcgrady.core.util;
 import android.content.Context;
 
 /**
- * Created by Nirui on 17/2/21.
- * 保存application cotext实例
+ * <p>保存application cotext实例</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
-
 public class AppContext {
   public static Context mAppContext;
 

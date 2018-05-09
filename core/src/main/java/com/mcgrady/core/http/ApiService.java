@@ -27,7 +27,7 @@ public interface ApiService {
     Call<ResponseBody> executePost(@Url String url, @FieldMap Map<String, String> map);
 
     /**
-     * 流式下载 (不加这个注解的话,会整个文件字节数组全部加载进内存,可能导致oom)
+     * 流式下载 (不加@Streaming注解的话,会整个文件字节数组全部加载进内存,可能导致oom)
      * @param fileUrl
      * @param headers
      * @return

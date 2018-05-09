@@ -5,11 +5,10 @@ import android.app.Activity;
 import java.util.Stack;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/2/5
- * @des: activity栈表
+ * <p>activity栈表</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
-
 public class ActivityStack {
 
     private static Stack<Activity> mActivityStack = new Stack<>();

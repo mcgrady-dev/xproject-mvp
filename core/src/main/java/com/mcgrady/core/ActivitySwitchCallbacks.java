@@ -7,10 +7,11 @@ import android.os.Bundle;
 import com.mcgrady.core.util.ActivityStack;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des:
+ * <p></p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
+
 public class ActivitySwitchCallbacks implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {

@@ -26,10 +26,11 @@ import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
+
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: fragment基类，基于fragmentation封装
+ * <p>fragment基类，基于fragmentation封装</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public abstract class BaseLazyFragment extends SupportFragment implements LifecycleProvider<FragmentEvent>, IDaggerInject {
     private static final String TAG = BaseLazyFragment.class.getSimpleName();

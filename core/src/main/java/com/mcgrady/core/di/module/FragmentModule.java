@@ -9,10 +9,11 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des:
+ * <p></p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
+
 @Module
 public class FragmentModule {
     private Fragment mFragment;

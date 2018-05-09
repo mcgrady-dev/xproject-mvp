@@ -10,10 +10,11 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 import javax.inject.Inject;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: MVP activity基类
+ * <p>MVP activity基类</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
+
 public abstract class BaseActivity<T extends IBasePresenter> extends BaseSimpleActivity implements IBaseView {
 
     @Inject

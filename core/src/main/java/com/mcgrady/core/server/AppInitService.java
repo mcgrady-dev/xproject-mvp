@@ -12,9 +12,9 @@ import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: 应用程序初始化服务
+ * <p>应用程序初始化服务</p>
+ * @author: mcgrady
+ * @date: ${DATE}
  */
 public class AppInitService extends IntentService {
     private static final String ACTION_INIT = "initApplication";

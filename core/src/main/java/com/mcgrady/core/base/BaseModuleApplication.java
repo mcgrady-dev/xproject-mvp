@@ -7,9 +7,9 @@ import android.content.res.Configuration;
 import com.blankj.utilcode.util.LogUtils;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: 该基类只能放在子moudle中使用,用于moudle隔离
+ * <p>该基类只能放在子moudle中使用,用于moudle隔离</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public class BaseModuleApplication extends BaseApplication implements ApplicationLike {
 

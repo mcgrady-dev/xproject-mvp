@@ -12,9 +12,9 @@ import com.mcgrady.core.util.ActivityStack;
 import com.mcgrady.core.util.AppContext;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: app基类
+ * <p>app基类</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public class BaseApplication extends Application {
 

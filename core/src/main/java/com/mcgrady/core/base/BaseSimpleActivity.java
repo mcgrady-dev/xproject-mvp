@@ -30,9 +30,9 @@ import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/24
- * @des: activity碎片基类
+ * <p>activity碎片基类</p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public abstract class BaseSimpleActivity extends SupportActivity implements LifecycleProvider<ActivityEvent>, IDaggerInject {
 
