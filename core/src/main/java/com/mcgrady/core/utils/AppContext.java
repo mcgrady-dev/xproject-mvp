@@ -1,4 +1,4 @@
-package com.mcgrady.core.util;
+package com.mcgrady.core.utils;
 
 import android.content.Context;
 

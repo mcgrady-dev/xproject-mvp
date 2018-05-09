@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.mcgrady.core.util.ActivityStack;
+import com.mcgrady.core.utils.ActivityStack;
 
 /**
  * <p></p>

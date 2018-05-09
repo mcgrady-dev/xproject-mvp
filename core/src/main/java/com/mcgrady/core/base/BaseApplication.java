@@ -8,8 +8,8 @@ import com.mcgrady.core.di.component.DaggerAppComponent;
 import com.mcgrady.core.di.module.AppModule;
 import com.mcgrady.core.di.module.DataModule;
 import com.mcgrady.core.server.AppInitService;
-import com.mcgrady.core.util.ActivityStack;
-import com.mcgrady.core.util.AppContext;
+import com.mcgrady.core.utils.ActivityStack;
+import com.mcgrady.core.utils.AppContext;
 
 /**
  * <p>app基类</p>

@@ -1,4 +1,4 @@
-package com.mcgrady.core.util;
+package com.mcgrady.core.utils;
 
 /**
  * <p>字符串相关工具类</p>

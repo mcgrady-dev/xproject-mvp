@@ -13,7 +13,7 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.mcgrady.core.R;
 import com.mcgrady.core.base.DataParseUtil;
-import com.mcgrady.core.util.StringUtils;
+import com.mcgrady.core.utils.StringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
