@@ -13,9 +13,9 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
- * @author mcgrady
- * @tieme 2018/5/6 14:23
- * @des
+ * <p></p>
+ * @author: mcgrady
+ * @date: 2018/5/9
  */
 public interface ApiService {
 

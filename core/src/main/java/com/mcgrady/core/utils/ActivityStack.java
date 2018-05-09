@@ -5,7 +5,7 @@ import android.app.Activity;
 import java.util.Stack;
 
 /**
- * <p>activity栈表</p>
+ * <p>Activity栈表</p>
  * @author: mcgrady
  * @date: 2018/5/9
  */

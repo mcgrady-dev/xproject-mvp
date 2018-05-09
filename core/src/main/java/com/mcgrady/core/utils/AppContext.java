@@ -8,22 +8,22 @@ import android.content.Context;
  * @date: 2018/5/9
  */
 public class AppContext {
-  public static Context mAppContext;
+  public static Context sContext;
 
 
   public static void init(Context context) {
-    if (mAppContext == null) {
-      mAppContext = context.getApplicationContext();
+    if (sContext == null) {
+        sContext = context.getApplicationContext();
     } else {
       throw new IllegalStateException("set context duplicate");
     }
   }
 
   public static Context get() {
-    if (mAppContext == null) {
+    if (sContext == null) {
       throw new IllegalStateException("forget init?");
     } else {
-      return mAppContext;
+      return sContext;
     }
   }
 }
