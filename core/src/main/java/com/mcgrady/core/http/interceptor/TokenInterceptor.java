@@ -1,4 +1,4 @@
-package com.guiying.module.common.http.interceptor;
+package com.mcgrady.core.http.interceptor;
 
 import android.accounts.AccountManager;
 import android.text.TextUtils;

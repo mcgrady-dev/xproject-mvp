@@ -1,8 +1,9 @@
-package com.guiying.module.common.http;
+package com.mcgrady.core.http;
 
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -10,7 +11,10 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.guiying.module.common.utils.FileUtil;
+import com.mcgrady.core.http.factory.StringConverterFactory;
+import com.mcgrady.core.http.interceptor.LoggerInterceptor;
+import com.mcgrady.core.http.interceptor.TokenInterceptor;
+import com.mcgrady.core.utils.FileUtil;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -142,11 +146,13 @@ public class HttpHelper implements IHttpHelper {
             sOkHttpClient = getOkHttpClient();
         }
 
-            Retrofit.Builder builder = new Retrofit.Builder();
-            builder.baseUrl(host);//baseurl路径
-            builder.client(sOkHttpClient)//添加客户端
-                    .addConverterFactory(new StringConverterFactory())//添加Gson格式化工厂
-                    .addConverterFactory(GsonConverterFactory.create(gson));//添加Gson格式化工厂
+        Retrofit.Builder builder = new Retrofit.Builder();
+        //baseurl路径
+        builder.baseUrl(host);
+        //添加客户端
+        builder.client(sOkHttpClient)
+                .addConverterFactory(new StringConverterFactory()) //添加Gson格式化工厂
+                .addConverterFactory(GsonConverterFactory.create(gson)); //添加Gson格式化工厂
             if (sNetConfig.isUseRx) {
                 builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());//call 适配器
             }
@@ -181,7 +187,9 @@ public class HttpHelper implements IHttpHelper {
                         .writeTimeout(15, TimeUnit.SECONDS)//写超时超时
                         .readTimeout(sNetConfig.readTimeoutMills != 0 ? sNetConfig.readTimeoutMills : 15, TimeUnit.SECONDS)//读超时
                         .cookieJar(sNetConfig.mCookieJar != null ? sNetConfig.mCookieJar : cookieJar);
-        if (AppUtil.isDebug()) {//如果当前是debug模式就开启日志过滤器
+
+        //如果当前是debug模式就开启日志过滤器
+        if (AppUtils.isAppDebug()) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(loggingInterceptor);

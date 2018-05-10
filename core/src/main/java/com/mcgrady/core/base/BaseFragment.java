@@ -15,7 +15,6 @@ import javax.inject.Inject;
  * @author: mcgrady
  * @date: 2018/5/9
  */
-
 public abstract class BaseFragment<T extends IBasePresenter> extends BaseLazyFragment implements IBaseView {
 
     @Inject

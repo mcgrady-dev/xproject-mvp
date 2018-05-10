@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -42,8 +43,12 @@ public abstract class BaseSimpleActivity extends SupportActivity implements Life
     private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
     private Unbinder mUnbinder;
 
-    protected <T extends View> T $(int resId) {
-        return super.findViewById(resId);
+    /**
+     * 封装findViewById方法
+     */
+    @SuppressWarnings("unchecked")
+    protected <T extends View> T $(@IdRes int id) {
+        return (T) super.findViewById(id);
     }
 
     @SuppressLint("ResourceType")

@@ -1,7 +1,9 @@
-package com.guiying.module.common.account;
+package com.mcgrady.core.account;
 
 import android.accounts.Account;
 import android.content.Context;
+
+import com.mcgrady.core.utils.AppContext;
 
 /**
  * <p>账号管理类</p>

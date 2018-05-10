@@ -1,4 +1,4 @@
-package com.guiying.module.common.http;
+package com.mcgrady.core.http.factory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;

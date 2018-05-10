@@ -1,4 +1,4 @@
-package com.guiying.module.common.http;
+package com.mcgrady.core.http;
 
 import okhttp3.CookieJar;
 import okhttp3.Interceptor;
@@ -52,7 +52,7 @@ public interface IHttpHelper {
         }
 
         /**
-         *  can use multi baseurl {@link HttpHelper#createApi(java.lang.Class,okhttp3.OkHttpClient)}
+         *  can use multi baseurl {@link HttpHelper#createApi(Class,OkHttpClient)}
          * @param isUseMultiBaseURL
          * @return
          */
@@ -62,7 +62,7 @@ public interface IHttpHelper {
         }
 
         /**
-         * root baseurl {@link HttpHelper#createApi(java.lang.Class,okhttp3.OkHttpClient)}
+         * root baseurl {@link HttpHelper#createApi(Class,OkHttpClient)}
          * @param baseURL
          * @return
          */

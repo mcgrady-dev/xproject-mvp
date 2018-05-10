@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.CheckResult;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -43,7 +44,7 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
 
     @Override
     public void onAttach(Context context) {
-        mContext = context;
+        this.mContext = context;
         super.onAttach(context);
     }
 
@@ -51,8 +52,13 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
         return handler;
     }
 
-    protected <T extends View> T $(int resId) {
-        return (T) mView.findViewById(resId);
+
+    /**
+     * 封装findViewById方法
+     */
+    @SuppressWarnings("unchecked")
+    protected <T extends View> T $(@IdRes int id) {
+        return (T) mView.findViewById(id);
     }
 
     @Nullable

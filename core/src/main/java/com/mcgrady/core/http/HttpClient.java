@@ -13,6 +13,7 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.mcgrady.core.R;
 import com.mcgrady.core.base.DataParseUtil;
+import com.mcgrady.core.http.interceptor.LoggerInterceptor;
 import com.mcgrady.core.utils.StringUtils;
 
 import java.io.IOException;
@@ -160,8 +161,9 @@ public class HttpClient {
      * 添加某个请求
      */
     private synchronized void putCall(Builder builder, Call call) {
-        if (builder.tag == null)
+        if (builder.tag == null) {
             return;
+        }
         synchronized (CALL_MAP) {
             CALL_MAP.put(builder.tag.toString() + builder.url, call);
         }
@@ -175,8 +177,9 @@ public class HttpClient {
      * @param tag 请求标签
      */
     public synchronized void cancel(Object tag) {
-        if (tag == null)
+        if (tag == null) {
             return;
+        }
         List<String> list = new ArrayList<>();
         synchronized (CALL_MAP) {
             for (String key : CALL_MAP.keySet()) {

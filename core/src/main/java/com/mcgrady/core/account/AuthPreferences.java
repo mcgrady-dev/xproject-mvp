@@ -1,4 +1,4 @@
-package com.guiying.module.common.account;
+package com.mcgrady.core.account;
 
 import android.content.Context;
 import android.text.TextUtils;

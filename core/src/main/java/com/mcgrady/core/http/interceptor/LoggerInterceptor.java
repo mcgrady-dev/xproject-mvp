@@ -1,4 +1,4 @@
-package com.mcgrady.core.http;
+package com.mcgrady.core.http.interceptor;
 
 import android.text.TextUtils;
 

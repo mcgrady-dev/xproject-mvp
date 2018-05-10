@@ -1,4 +1,4 @@
-package com.guiying.module.common.utils;
+package com.mcgrady.core.utils;
 
 import android.content.Context;
 import android.os.Environment;

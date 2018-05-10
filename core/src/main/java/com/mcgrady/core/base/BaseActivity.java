@@ -14,7 +14,6 @@ import javax.inject.Inject;
  * @author: mcgrady
  * @date: 2018/5/9
  */
-
 public abstract class BaseActivity<T extends IBasePresenter> extends BaseSimpleActivity implements IBaseView {
 
     @Inject

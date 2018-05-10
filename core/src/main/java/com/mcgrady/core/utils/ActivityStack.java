@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class ActivityStack {
 
-    private static Stack<Activity> mActivityStack = new Stack<>();
+    private static Stack<Activity> activityStack = new Stack<>();
     private static ActivityStack instance = null;
 
     public static synchronized ActivityStack getInstance() {
@@ -28,7 +28,7 @@ public class ActivityStack {
     public void popActivity(Activity activity) {
         if (activity != null) {
             activity.finish();
-            mActivityStack.remove(activity);
+            activityStack.remove(activity);
         }
     }
 
@@ -36,10 +36,10 @@ public class ActivityStack {
      * 弹出当前activity并销毁
      */
     public void popActivity() {
-        if(mActivityStack.size() != 0) {
-            Activity ac = mActivityStack.pop();
+        if(activityStack.size() != 0) {
+            Activity ac = activityStack.pop();
             ac.finish();
-            mActivityStack.remove(ac);
+            activityStack.remove(ac);
         }
     }
 
@@ -48,15 +48,15 @@ public class ActivityStack {
      * @param activity
      */
     public void pushActivity(Activity activity) {
-        mActivityStack.add(activity);
+        activityStack.add(activity);
     }
 
     /**
      * 退出栈中所有Activity
      */
     public void clearAllActivity() {
-        while (!mActivityStack.isEmpty()) {
-            Activity activity = mActivityStack.pop();
+        while (!activityStack.isEmpty()) {
+            Activity activity = activityStack.pop();
             popActivity(activity);
         }
     }
