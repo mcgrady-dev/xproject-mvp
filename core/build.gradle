@@ -36,15 +36,19 @@ dependencies {
     api deps.utils
     api deps.butterknife
 
-    // rx and retrofit
+    // rx
     api deps.rx.java2
     api deps.rx.android
     api deps.rx.lifecycle
     api deps.rx.lifecycle_android
     api deps.rx.lifecycle_components
+
+    // network
     api deps.retrofit.runtime
     api deps.retrofit.gson
+    api deps.retrofit.adapter
     api deps.persistent_cookie
+    api deps.okhttp3_logging_interceptor
 
     // di
     api deps.dagger.runtime

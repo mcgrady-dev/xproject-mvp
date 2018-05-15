@@ -38,8 +38,9 @@ import retrofit2.Retrofit;
  *
  * @author: mcgrady
  * @date: 2018/5/9
+ * @see {@link HttpHelper}
  */
-
+@Deprecated
 public class HttpClient {
 
     private static String BASE_URL = "";

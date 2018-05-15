@@ -16,7 +16,8 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 
 /**
- * <p></p>
+ * <p>日志拦截器</p>
+ *
  * @author: mcgrady
  * @date: 2018/5/9
  */

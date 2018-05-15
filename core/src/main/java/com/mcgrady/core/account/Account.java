@@ -1,4 +1,4 @@
-package com.dhc.library.data.account;
+package com.mcgrady.core.account;
 
 public interface Account {
 

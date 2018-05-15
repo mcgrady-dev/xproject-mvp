@@ -1,7 +1,8 @@
 package com.mcgrady.core.http.interceptor;
 
-import android.accounts.AccountManager;
 import android.text.TextUtils;
+
+import com.mcgrady.core.account.AccountManager;
 
 import java.io.IOException;
 
@@ -21,7 +22,9 @@ public class TokenInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
+
         Request original = chain.request();
+
         //请求定制：添加请求头
         Request.Builder requestBuilder = original.newBuilder();
         String access_token = AccountManager.INSTANCE.getAccessToken();
@@ -31,7 +34,7 @@ public class TokenInterceptor implements Interceptor {
 
         requestBuilder.addHeader("Accept-Language", "zh-CN,zh;q=0.8,zh-TW;q=0.6");
 
-        //请求体定制：统一添加token参数
+        // 请求体定制：统一添加token参数
         if (original.body() instanceof FormBody) {
             FormBody.Builder newFormBody = new FormBody.Builder();
             FormBody oidFormBody = (FormBody) original.body();

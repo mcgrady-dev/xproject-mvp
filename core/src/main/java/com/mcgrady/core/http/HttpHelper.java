@@ -12,7 +12,8 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mcgrady.core.http.factory.StringConverterFactory;
-import com.mcgrady.core.http.interceptor.LoggerInterceptor;
+import com.mcgrady.core.http.interceptor.CacheInterceptor;
+import com.mcgrady.core.http.interceptor.CallInterceptor;
 import com.mcgrady.core.http.interceptor.TokenInterceptor;
 import com.mcgrady.core.utils.FileUtil;
 
@@ -23,8 +24,9 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
-import okhttp3.internal.cache.CacheInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -147,33 +149,36 @@ public class HttpHelper implements IHttpHelper {
         }
 
         Retrofit.Builder builder = new Retrofit.Builder();
-        //baseurl路径
         builder.baseUrl(host);
-        //添加客户端
         builder.client(sOkHttpClient)
-                .addConverterFactory(new StringConverterFactory()) //添加Gson格式化工厂
-                .addConverterFactory(GsonConverterFactory.create(gson)); //添加Gson格式化工厂
-            if (sNetConfig.isUseRx) {
-                builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());//call 适配器
-            }
-            sRetrofit = builder.build();
-            return sRetrofit;
+                .addConverterFactory(new StringConverterFactory())
+                .addConverterFactory(GsonConverterFactory.create(gson));
+        if (sNetConfig.isUseRx) {
+            builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
         }
+        sRetrofit = builder.build();
+        return sRetrofit;
+    }
 
 
     public OkHttpClient getOkHttpClient() {
+
         //对cooke自动管理管理
         ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(context));
+
         //缓存路径
         File cacheFile = new File(FileUtil.getCacheDirectory(context), "ApiCookie");
+
         if (!FileUtils.createOrExistsDir(cacheFile)) {
             // 创建文件夹失败
         }
 
         //设置缓存大小为40M
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 40);
-        //缓存
-        CacheInterceptor cacheInterceptor = new CacheInterceptor(context);
+
+        // 缓存策略
+        CacheInterceptor cacheInterceptor = new CacheInterceptor();
+
         //token管理
         TokenInterceptor tokenInterceptor = new TokenInterceptor();
         OkHttpClient.Builder builder =
@@ -182,31 +187,34 @@ public class HttpHelper implements IHttpHelper {
                         .addInterceptor(cacheInterceptor)
                         .addInterceptor(tokenInterceptor)
                         .addNetworkInterceptor(cacheInterceptor)
-                        //                        .retryOnConnectionFailure(true)
                         .connectTimeout(sNetConfig.connectTimeoutMills != 0 ? sNetConfig.connectTimeoutMills : 15, TimeUnit.SECONDS)
-                        .writeTimeout(15, TimeUnit.SECONDS)//写超时超时
-                        .readTimeout(sNetConfig.readTimeoutMills != 0 ? sNetConfig.readTimeoutMills : 15, TimeUnit.SECONDS)//读超时
+                        .writeTimeout(15, TimeUnit.SECONDS)
+                        .readTimeout(sNetConfig.readTimeoutMills != 0 ? sNetConfig.readTimeoutMills : 15, TimeUnit.SECONDS)
                         .cookieJar(sNetConfig.mCookieJar != null ? sNetConfig.mCookieJar : cookieJar);
 
-        //如果当前是debug模式就开启日志过滤器
+        // Debug模式开启日志过滤器
         if (AppUtils.isAppDebug()) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(loggingInterceptor);
         }
+
         //设置https相关
         if (sNetConfig.mHttpsCall != null) {
             sNetConfig.mHttpsCall.configHttps(builder);
         }
+
         if (sNetConfig.call != null) {
             builder.addInterceptor(new CallInterceptor(sNetConfig.call));
         }
+
         if (sNetConfig.mInterceptors != null) {
             for (int i = 0; i < sNetConfig.mInterceptors.length; i++) {
                 builder.addInterceptor(sNetConfig.mInterceptors[i]);
             }
 
         }
+
         //当前okHttpClient
         sOkHttpClient = builder.build();
 

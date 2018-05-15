@@ -43,6 +43,7 @@ public interface IHttpHelper {
 
         /**
          * add okhttp Interceptors
+         *
          * @param configInterceptors
          * @return
          */
@@ -52,7 +53,8 @@ public interface IHttpHelper {
         }
 
         /**
-         *  can use multi baseurl {@link HttpHelper#createApi(Class,OkHttpClient)}
+         * can use multi baseurl {@link HttpHelper#createApi(Class, OkHttpClient)}
+         *
          * @param isUseMultiBaseURL
          * @return
          */
@@ -62,7 +64,8 @@ public interface IHttpHelper {
         }
 
         /**
-         * root baseurl {@link HttpHelper#createApi(Class,OkHttpClient)}
+         * root baseurl {@link HttpHelper#createApi(Class, OkHttpClient)}
+         *
          * @param baseURL
          * @return
          */
@@ -73,6 +76,7 @@ public interface IHttpHelper {
 
         /**
          * config cookieManager
+         *
          * @param mCookieJar
          * @return
          */
@@ -82,7 +86,6 @@ public interface IHttpHelper {
         }
 
         /**
-         *
          * @param call
          * @return
          */
@@ -125,7 +128,7 @@ public interface IHttpHelper {
 
     <S> S createApi(Class<S> serviceClass, OkHttpClient client);
 
-    OkHttpClient  getClient();
+    OkHttpClient getClient();
 
     void initConfig(HttpHelper.NetConfig netConfig);
 }

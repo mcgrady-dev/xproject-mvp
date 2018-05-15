@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.mcgrady.core.base.ApplicationLike;
 import com.mcgrady.core.base.BaseApplication;
+import com.mcgrady.core.http.IHttpHelper;
 
 /**
  * @author: mcgrady <mogui@weyee.com>
@@ -30,5 +31,10 @@ public class App extends BaseApplication {
     @NonNull
     public static App app(@NonNull Context context) {
         return (App) context.getApplicationContext();
+    }
+
+    @Override
+    public IHttpHelper.NetConfig getNetConfig() {
+        return new IHttpHelper.NetConfig().configBaseURL("");
     }
 }

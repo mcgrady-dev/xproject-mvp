@@ -13,6 +13,7 @@ import me.yokeyword.fragmentation.helper.ExceptionHandler;
 
 /**
  * <p>应用程序初始化服务</p>
+ *
  * @author: mcgrady
  * @date: 2018/5/9
  */

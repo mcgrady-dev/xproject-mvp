@@ -14,6 +14,7 @@ import retrofit2.http.Url;
 
 /**
  * <p></p>
+ *
  * @author: mcgrady
  * @date: 2018/5/9
  */
@@ -30,6 +31,7 @@ public interface ApiService {
      * 流式下载 (不加@Streaming注解的话,会整个文件字节数组全部加载进内存,可能导致oom)
      * @param fileUrl
      * @param headers
+
      * @return
      */
     @Streaming

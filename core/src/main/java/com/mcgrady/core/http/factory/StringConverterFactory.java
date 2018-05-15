@@ -32,8 +32,9 @@ public class StringConverterFactory extends Converter.Factory {
         return null;
     }
 
-    @Override public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations,
-                                                                    Annotation[] methodAnnotations, Retrofit retrofit) {
+    @Override
+    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations,
+                                                          Annotation[] methodAnnotations, Retrofit retrofit) {
         if (String.class.equals(type)) {
             return (Converter<String, RequestBody>) value -> RequestBody.create(MEDIA_TYPE, value);
         }

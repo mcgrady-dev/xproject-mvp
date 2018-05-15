@@ -7,12 +7,14 @@ import com.mcgrady.core.di.component.AppComponent;
 import com.mcgrady.core.di.component.DaggerAppComponent;
 import com.mcgrady.core.di.module.AppModule;
 import com.mcgrady.core.di.module.DataModule;
+import com.mcgrady.core.http.IHttpHelper;
 import com.mcgrady.core.server.AppInitService;
 import com.mcgrady.core.utils.ActivityStack;
 import com.mcgrady.core.utils.AppContext;
 
 /**
  * <p>app基类</p>
+ *
  * @author: mcgrady
  * @date: 2018/5/9
  */
@@ -38,8 +40,12 @@ public class BaseApplication extends Application {
 
     public AppComponent getAppComponent() {
         return DaggerAppComponent.builder()
-                .dataModule(new DataModule())
+                .dataModule(new DataModule(getNetConfig()))
                 .appModule(new AppModule(instance))
                 .build();
+    }
+
+    public IHttpHelper.NetConfig getNetConfig() {
+        return null;
     }
 }
