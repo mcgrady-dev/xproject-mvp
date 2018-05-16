@@ -59,7 +59,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.support.multidex
     implementation project(':core')
-    implementation project(':uikit')
     if (!isModule.toBoolean()) {
         implementation project(':main')
         implementation project(':news')

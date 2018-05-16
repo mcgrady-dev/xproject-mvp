@@ -3,7 +3,7 @@ package com.mcgrady.core.di.component;
 import com.mcgrady.core.base.BaseApplication;
 import com.mcgrady.core.di.module.AppModule;
 import com.mcgrady.core.di.module.DataModule;
-import com.mcgrady.core.http.HttpsUtils;
+import com.mcgrady.core.http.HttpHelper;
 
 import javax.inject.Singleton;
 
@@ -20,8 +20,8 @@ public interface AppComponent {
 
     BaseApplication getContext();
 
-    HttpsUtils httpHelper();
-//
+    HttpHelper httpHelper();
+
 //    DBHelper dbHelper();
 //
 //    Random random();
