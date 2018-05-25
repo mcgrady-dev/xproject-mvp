@@ -4,6 +4,8 @@
     <!-- Base application theme. -->
     <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/gray_f0</item>
+        <item name="android:colorBackground">@color/gray_f0</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorPrimary</item>
@@ -26,7 +28,6 @@
 
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@mipmap/splash_bg</item>
-        <item name="android:windowIsTranslucent">false</item>
     </style>
 
     <style name="WindowAnimationFadeInOut">

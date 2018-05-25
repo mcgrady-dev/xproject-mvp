@@ -57,14 +57,15 @@ public abstract class BaseSimpleActivity extends SupportActivity implements Life
         initInject(savedInstanceState);
         super.onCreate(savedInstanceState);
         lifecycleSubject.onNext(ActivityEvent.CREATE);
-        if (getLayoutId() > 0) {
-            setContentView(getLayoutId());
+        int layoutId = getLayoutId();
+        if (layoutId > 0) {
+            setContentView(layoutId);
+            mUnbinder = ButterKnife.bind(this);
         }
 
         mContext = this;
-        mUnbinder = ButterKnife.bind(this);
         LogUtils.i(TAG, "activity: " + getClass().getSimpleName() + " onCreate()");
-
+        initEventAndData(savedInstanceState);
     }
 
     protected void setToolBar(Toolbar toolBar, String title) {

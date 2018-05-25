@@ -2,6 +2,7 @@ package com.mcgrady.main.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.AppUtils;
@@ -10,8 +11,6 @@ import com.mcgrady.core.Constants;
 import com.mcgrady.core.base.BaseFragment;
 import com.mcgrady.main.R;
 import com.mcgrady.main.ui.adapter.SplashViewPagerAdapter;
-
-import butterknife.BindView;
 
 /**
  * <p>引导页</p>
@@ -27,8 +26,8 @@ public class SplashFragment extends BaseFragment {
 
     private boolean isShowGuide;
 
-    @BindView(R.id.main_splash_view_pager)
-    private ViewPager viewPager;
+//    @BindView(R.id.main_splash_view_pager)
+    ViewPager viewPager;
 
     public static SplashFragment newInstance() {
         Bundle args = new Bundle();
@@ -44,13 +43,17 @@ public class SplashFragment extends BaseFragment {
     }
 
     @Override
-    protected void initEventAndData() {
+    protected void initEventAndData(View view) {
+
+        viewPager = $(R.id.main_splash_view_pager);
 
         String version = SPUtils.getInstance(Constants.SP_FILE_NAME_VERSION).getString(Constants.VERSION);
         isShowGuide = version.equals(AppUtils.getAppVersionName());
 
         // set indicator visible or gone
-        if (isShowGuide) {
+        if (!isShowGuide) {
+
+            // visible root layout
 
             viewPager.setAdapter(new SplashViewPagerAdapter(guides));
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -79,7 +82,7 @@ public class SplashFragment extends BaseFragment {
             });
 
         } else {
-
+            // gone root layout
         }
     }
 

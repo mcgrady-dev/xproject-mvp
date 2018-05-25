@@ -1,6 +1,7 @@
 package com.mcgrady.main.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
@@ -25,6 +26,12 @@ import com.mcgrady.main.ui.fragment.SplashFragment;
 public class MainActivity extends BaseActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     protected int getLayoutId() {

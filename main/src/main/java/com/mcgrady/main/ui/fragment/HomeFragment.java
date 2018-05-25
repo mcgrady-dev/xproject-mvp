@@ -1,6 +1,7 @@
 package com.mcgrady.main.ui.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcgrady.core.base.BaseFragment;
@@ -29,7 +30,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void initEventAndData() {
+    protected void initEventAndData(View view) {
 
     }
 
