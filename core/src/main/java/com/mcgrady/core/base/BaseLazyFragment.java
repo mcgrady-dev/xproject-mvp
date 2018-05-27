@@ -21,7 +21,6 @@ import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
-import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -70,7 +69,6 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
         int layoutId = getLayoutId();
         if (layoutId > 0) {
             mView = inflater.inflate(layoutId, container, false);
-            ButterKnife.bind(this, mView);
         }
 
         initInject(savedInstanceState);

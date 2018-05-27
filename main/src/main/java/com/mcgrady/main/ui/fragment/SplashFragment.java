@@ -26,7 +26,6 @@ public class SplashFragment extends BaseFragment {
 
     private boolean isShowGuide;
 
-//    @BindView(R.id.main_splash_view_pager)
     ViewPager viewPager;
 
     public static SplashFragment newInstance() {
