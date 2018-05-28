@@ -6,9 +6,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcgrady.core.base.BaseModuleApplication;
 
 /**
- * @author: mcgrady <mogui@weyee.com>
- * @date: 2018/4/25
- * @des:
+ * <p></p>
+ *
+ * @author: mcgrady
+ * @date: 2018/5/28
  */
 @Route(path = "/news/NewsApp")
 public class NewsApp extends BaseModuleApplication {
