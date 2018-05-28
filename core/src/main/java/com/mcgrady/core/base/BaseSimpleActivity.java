@@ -24,8 +24,6 @@ import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -41,7 +39,6 @@ public abstract class BaseSimpleActivity extends SupportActivity implements Life
 
     protected Context mContext;
     private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
-    private Unbinder mUnbinder;
 
     /**
      * 封装findViewById方法
@@ -60,7 +57,6 @@ public abstract class BaseSimpleActivity extends SupportActivity implements Life
         int layoutId = getLayoutId();
         if (layoutId > 0) {
             setContentView(layoutId);
-            mUnbinder = ButterKnife.bind(this);
         }
 
         mContext = this;
@@ -85,7 +81,6 @@ public abstract class BaseSimpleActivity extends SupportActivity implements Life
     protected void onDestroy() {
         lifecycleSubject.onNext(ActivityEvent.DESTROY);
         super.onDestroy();
-        mUnbinder.unbind();
         LogUtils.i(TAG, "activity: " + getClass().getSimpleName() + " onDestroy()");
     }
 
