@@ -41,6 +41,7 @@ dependencies {
     api deps.rx.lifecycle
     api deps.rx.lifecycle_android
     api deps.rx.lifecycle_components
+    api deps.rx.bus
 
     // network
     api deps.retrofit.runtime

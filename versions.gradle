@@ -98,6 +98,7 @@ rx.lifecycle_navi = "com.trello.rxlifecycle2:rxlifecycle-navi:$versions.rxlifecy
 rx.lifecycle_android = "com.trello.rxlifecycle2:rxlifecycle-android:$versions.rxlifecycle"
 rx.lifecycle_components = "com.trello.rxlifecycle2:rxlifecycle-components:$versions.rxlifecycle"
 rx.permission = "com.tbruyelle.rxpermissions2:rxpermissions:$versions.rxpermission"
+rx.bus = "com.blankj:rxbus:$versions.rxbus"
 deps.rx = rx
 
 
