@@ -3,6 +3,7 @@ package com.mcgrady.main.ui.fragment;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.AppUtils;
@@ -11,6 +12,7 @@ import com.mcgrady.core.Constants;
 import com.mcgrady.core.base.BaseFragment;
 import com.mcgrady.main.R;
 import com.mcgrady.main.ui.adapter.SplashViewPagerAdapter;
+import com.rd.PageIndicatorView;
 
 /**
  * <p>引导页</p>
@@ -26,7 +28,9 @@ public class SplashFragment extends BaseFragment {
 
     private boolean isShowGuide;
 
-    ViewPager viewPager;
+    private ViewPager viewPager;
+    private PageIndicatorView indicatorView;
+    private TextView tvJoin;
 
     public static SplashFragment newInstance() {
         Bundle args = new Bundle();
@@ -45,6 +49,8 @@ public class SplashFragment extends BaseFragment {
     protected void initEventAndData(View view) {
 
         viewPager = $(R.id.main_splash_view_pager);
+        indicatorView = $(R.id.main_splash_indicator_view);
+        tvJoin = $(R.id.main_splash_tv_join);
 
         String version = SPUtils.getInstance(Constants.SP_FILE_NAME_VERSION).getString(Constants.VERSION);
         isShowGuide = version.equals(AppUtils.getAppVersionName());
@@ -65,13 +71,16 @@ public class SplashFragment extends BaseFragment {
                 public void onPageSelected(int position) {
                     if (position == guides.length - 1) {
                         // gone indicator
-
+                        indicatorView.setVisibility(View.GONE);
+                        tvJoin.setVisibility(View.VISIBLE);
                     } else {
                         // visible indicator
-
+                        indicatorView.setVisibility(View.VISIBLE);
+                        tvJoin.setVisibility(View.INVISIBLE);
                     }
 
                     // set indicator
+                    indicatorView.setSelected(position);
                 }
 
                 @Override
@@ -83,6 +92,10 @@ public class SplashFragment extends BaseFragment {
         } else {
             // gone root layout
         }
+
+        tvJoin.setOnClickListener(view1 -> {
+            // show home
+        });
     }
 
     @Override

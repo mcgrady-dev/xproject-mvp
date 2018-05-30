@@ -51,4 +51,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor deps.arouter_compiler
     implementation project(':core')
+
+    implementation deps.indicator
 }

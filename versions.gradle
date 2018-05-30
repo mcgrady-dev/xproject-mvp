@@ -34,6 +34,8 @@ versions.butterknife = "8.4.0"
 versions.fragmentation = "1.3.3"
 versions.easy_dialog = "1.1.2"
 versions.okhttp = "3.10.0"
+versions.indicator = "1.0.1@aar"
+versions.rxbus = "1.1"
 
 
 def deps = [:]
@@ -85,6 +87,7 @@ deps.butterknife = butterknife
 deps.photo_view = "com.github.chrisbanes:PhotoView:$versions.photo_view"
 deps.recycler_adapter_helper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:$versions.recycler_adapter_helper"
 deps.easy_dialog = "com.github.tianzhijiexian:EasyDialog:$versions.easy_dialog"
+deps.indicator = "com.romandanylyk:pageindicatorview:$versions.indicator"
 
 
 def rx = [:]
