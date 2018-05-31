@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
@@ -62,9 +63,25 @@ public class MainActivity extends BaseActivity {
                 LogUtils.i(TAG, "onFragmentStopped-->" + f.getClass().getSimpleName());
             }
         }, true);
+
+        RxBus.getDefault().subscribe(this, TAG, (RxBus.Callback<String>) s -> {
+            switch (s) {
+                case "SHOW HOME":
+                    loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
     @Override
     public void initInject(Bundle savedInstanceState) {
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxBus.getDefault().unregister(this);
     }
 }

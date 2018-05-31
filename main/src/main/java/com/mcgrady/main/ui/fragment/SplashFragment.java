@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.mcgrady.core.Constants;
 import com.mcgrady.core.base.BaseFragment;
 import com.mcgrady.main.R;
+import com.mcgrady.main.ui.activity.MainActivity;
 import com.mcgrady.main.ui.adapter.SplashViewPagerAdapter;
 import com.rd.PageIndicatorView;
 
@@ -95,6 +97,7 @@ public class SplashFragment extends BaseFragment {
 
         tvJoin.setOnClickListener(view1 -> {
             // show home
+            RxBus.getDefault().post("SHOW HOME", MainActivity.TAG);
         });
     }
 
