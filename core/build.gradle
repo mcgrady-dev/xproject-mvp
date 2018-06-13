@@ -34,6 +34,8 @@ dependencies {
     api deps.kotlin.stdlib
     api deps.fragmentation
     api deps.utils
+    debugImplementation deps.leakcanary
+    releaseImplementation deps.leakcanary_no_op
 
     // rx
     api deps.rx.java2

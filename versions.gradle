@@ -36,6 +36,7 @@ versions.easy_dialog = "1.1.2"
 versions.okhttp = "3.10.0"
 versions.indicator = "1.0.1@aar"
 versions.rxbus = "1.1"
+versions.leakcanary = "1.5.4"
 
 
 def deps = [:]
@@ -74,7 +75,6 @@ deps.dagger = dagger
 def kotlin = [:]
 kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
 kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
-kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 deps.kotlin = kotlin
 
 def butterknife = [:]
@@ -103,7 +103,6 @@ deps.rx = rx
 
 
 //other
-deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
 deps.persistent_cookie = "com.github.franmontiel:PersistentCookieJar:$versions.persistent_cookie"
 deps.gson = "com.google.code.gson:gson:$versions.gson"
@@ -118,7 +117,14 @@ deps.javax_annotation = "org.glassfish:javax.annotation:$versions.javax_annotati
 deps.fragmentation = "me.yokeyword:fragmentation:$versions.fragmentation"
 deps.okhttp3 = "com.squareup.okhttp3:okhttp:$versions.okhttp"
 deps.okhttp3_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+deps.leakcanary = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+deps.leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
 ext.deps = deps
+
+def build_plugin = [:]
+build_plugin.gradle = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+build_plugin.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+ext.build_plugin = build_plugin
 
 def build_versions = [:]
 build_versions.min_sdk = 16

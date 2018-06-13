@@ -13,9 +13,9 @@ import com.mcgrady.core.di.module.DataModule;
 import com.mcgrady.core.http.IHttpHelper;
 import com.mcgrady.core.utils.ActivityStack;
 import com.mcgrady.core.utils.AppContext;
+import com.squareup.leakcanary.LeakCanary;
 
 import me.yokeyword.fragmentation.Fragmentation;
-import me.yokeyword.fragmentation.helper.ExceptionHandler;
 
 /**
  * <p>app基类</p>
@@ -44,16 +44,10 @@ public class BaseApplication extends Application {
         Fragmentation.builder()
                 .stackViewMode(Fragmentation.BUBBLE)
                 .debug(AppUtils.isAppDebug())
-                .handleException(new ExceptionHandler() {
-                    @Override
-                    public void onException(Exception e) {
-                        // 以Bugtags为例子: 手动把捕获到的 Exception 传到 Bugtags 后台。
-                        // Bugtags.sendException(e);
-                    }
+                .handleException(e -> {
+                    // 以Bugtags为例子: 手动把捕获到的 Exception 传到 Bugtags 后台。
+                    // Bugtags.sendException(e);
                 }).install();
-
-        // 初始化错误收集
-//        CrashHandler.init(new CrashHandler(getApplicationContext()));
 
         // 初始化路由
         if (AppUtils.isAppDebug()) {
@@ -67,9 +61,18 @@ public class BaseApplication extends Application {
         ARouter.init(this);
 
         // 在子线程中完成初始化操作
-//        AppInitService.start(this);
+        // AppInitService.start(this);
 
         registerActivityLifecycleCallbacks(new ActivitySwitchCallbacks());
+
+        if (AppUtils.isAppDebug()) {
+            if (LeakCanary.isInAnalyzerProcess(this)) {
+                // This process is dedicated to LeakCanary for heap analysis.
+                // You should not init your app in this process.
+                return;
+            }
+            LeakCanary.install(this);
+        }
     }
 
     public void exitApp() {
