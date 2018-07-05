@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.mcgrady.core.Constants;
+import com.mcgrady.core.event.Event;
 import com.mcgrady.core.base.BaseActivity;
 import com.mcgrady.main.R;
 import com.mcgrady.main.ui.fragment.HomeFragment;
@@ -64,13 +65,10 @@ public class MainActivity extends BaseActivity {
             }
         }, true);
 
-        RxBus.getDefault().subscribe(this, TAG, (RxBus.Callback<String>) s -> {
-            switch (s) {
-                case "SHOW HOME":
-                    loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
-                    break;
-                default:
-                    break;
+        RxBus.getDefault().subscribe(this, new RxBus.Callback<Event>() {
+            @Override
+            public void onEvent(Event event) {
+                loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
             }
         });
     }
