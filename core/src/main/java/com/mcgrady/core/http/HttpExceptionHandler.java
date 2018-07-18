@@ -18,8 +18,10 @@ import retrofit2.HttpException;
  *
  * @author: mcgrady
  * @date: 2018/6/21
+ * @see {@link HttpErrorException}
  */
 
+@Deprecated
 public class HttpExceptionHandler {
 
     @NonNull

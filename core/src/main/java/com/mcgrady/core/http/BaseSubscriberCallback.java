@@ -7,12 +7,11 @@ package com.mcgrady.core.http;
  * @date: 2018/6/21
  */
 
-public abstract class BaseSubscriberListener<T> extends SubscriberListener<T> {
+public abstract class BaseSubscriberCallback<T> extends SubscriberCallback<T> {
 
 
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        HttpExceptionHandler.RespondThrowable respondThrowable = HttpExceptionHandler.handleException(e);
     }
 }

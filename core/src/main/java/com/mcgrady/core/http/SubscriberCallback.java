@@ -1,7 +1,5 @@
 package com.mcgrady.core.http;
 
-import com.mcgrady.core.http.params.HttpErrorResponse;
-
 import retrofit2.HttpException;
 
 /**
@@ -11,7 +9,7 @@ import retrofit2.HttpException;
  * @date: 2018/6/21
  */
 
-public abstract class SubscriberListener<T> {
+public abstract class SubscriberCallback<T> {
 
     /**
      * 成功
@@ -25,7 +23,7 @@ public abstract class SubscriberListener<T> {
      *
      * @param error
      */
-    public abstract void onFail(HttpErrorResponse error);
+    public abstract void onFail(HttpErrorException error);
 
     /**
      * 抛出异常,还是在onFail中处理

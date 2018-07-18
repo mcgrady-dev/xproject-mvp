@@ -5,15 +5,15 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.core.http.ApiResponse;
-import com.mcgrady.core.http.HttpExceptionHandler;
+import com.mcgrady.core.http.HttpErrorException;
 import com.mcgrady.core.http.ProgressCancelListener;
-import com.mcgrady.core.http.SubscriberListener;
-import com.mcgrady.core.http.params.HttpErrorResponse;
+import com.mcgrady.core.http.SubscriberCallback;
 
 import io.reactivex.subscribers.ResourceSubscriber;
 
 /**
- * <p>类说明</p>
+ * <p>在Http请求结束时，关闭ProgressDialog
+ * 调用者自己对请求数据进行处理</p>
  *
  * @author: mcgrady
  * @date: 2018/6/21
@@ -22,33 +22,33 @@ import io.reactivex.subscribers.ResourceSubscriber;
 public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T> implements ProgressCancelListener {
 
     private static final String TAG = BaseSubscriber.class.getSimpleName();
-    protected SubscriberListener subscriberListener;
+    protected SubscriberCallback subscriberCallback;
     private Context context;
 
     /**
-     * 该构造会出现一个自动弹出和消失的dialog,一般使用与通用情况,特殊情况请自行处理,也可以通过{@link SubscriberListener#isShowLoading()}
+     * 该构造会出现一个自动弹出和消失的dialog,一般使用与通用情况,特殊情况请自行处理,也可以通过{@link SubscriberCallback#isShowLoading()}
      *
-     * @param subscriberListener
+     * @param subscriberCallback
      * @param context
      */
-    public BaseSubscriber(SubscriberListener subscriberListener, Context context) {
-        this.subscriberListener = subscriberListener;
+    public BaseSubscriber(SubscriberCallback subscriberCallback, Context context) {
+        this.subscriberCallback = subscriberCallback;
         this.context = context;
     }
 
     /**
      * 使用该构造方法没有LoadingDialog
      *
-     * @param subscriberListener
+     * @param subscriberCallback
      */
-    public BaseSubscriber(SubscriberListener subscriberListener) {
-        this.subscriberListener = subscriberListener;
+    public BaseSubscriber(SubscriberCallback subscriberCallback) {
+        this.subscriberCallback = subscriberCallback;
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (subscriberListener != null && subscriberListener.isShowLoading()) {
+        if (subscriberCallback != null && subscriberCallback.isShowLoading()) {
             onBegin();
         }
     }
@@ -59,8 +59,8 @@ public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T>
      */
     public void onBegin() {
         Log.i(TAG, "onBegin");
-        if (subscriberListener != null) {
-            subscriberListener.onBegin();
+        if (subscriberCallback != null) {
+            subscriberCallback.onBegin();
         }
     }
 
@@ -73,8 +73,8 @@ public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T>
     @Override
     public void onError(Throwable e) {
         LogUtils.i(TAG, "onError:" + e.toString());
-        if (subscriberListener != null) {
-            subscriberListener.onError(e);
+        if (subscriberCallback != null) {
+            subscriberCallback.onError(e);
         }
         onComplete();
     }
@@ -85,10 +85,10 @@ public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T>
     @Override
     public void onComplete() {
         LogUtils.i(TAG, "onCompleted");
-        if (subscriberListener != null && subscriberListener.isShowLoading()) {
+        if (subscriberCallback != null && subscriberCallback.isShowLoading()) {
 //            dismissProgressDialog();
-            if (subscriberListener != null) {
-                subscriberListener.onCompleted();
+            if (subscriberCallback != null) {
+                subscriberCallback.onCompleted();
             }
         }
         if (!this.isDisposed()) {
@@ -105,13 +105,12 @@ public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T>
     @Override
     public void onNext(T response) {
         LogUtils.i(TAG, "onNext");
-        if (subscriberListener != null) {
+        if (subscriberCallback != null) {
             if (response!=null) {
-                subscriberListener.onSuccess(response);
+                subscriberCallback.onSuccess(response);
             }
             else {
-                subscriberListener.onFail(new HttpErrorResponse("数据为空", HttpExceptionHandler.ERROR.NO_DATA_ERROR));
-
+                subscriberCallback.onFail(new HttpErrorException("数据为空", HttpErrorException.NO_DATA_ERROR));
             }
         }
     }
