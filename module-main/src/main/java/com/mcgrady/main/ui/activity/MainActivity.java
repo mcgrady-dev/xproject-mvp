@@ -11,8 +11,8 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.mcgrady.core.Constants;
+import com.mcgrady.core.base.BasePresenterActivity;
 import com.mcgrady.core.event.Event;
-import com.mcgrady.core.base.BaseActivity;
 import com.mcgrady.main.R;
 import com.mcgrady.main.ui.fragment.BottomNavigationFragment;
 import com.mcgrady.main.ui.fragment.SplashFragment;
@@ -25,7 +25,7 @@ import com.mcgrady.main.ui.fragment.SplashFragment;
  * @date: 2018/5/16
  */
 @Route(path = "/main/MainActivity")
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BasePresenterActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
