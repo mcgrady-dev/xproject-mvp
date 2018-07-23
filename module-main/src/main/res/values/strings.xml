@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">main</string>
+
+    <string name="tab_news">NEWS</string>
+    <string name="tab_girl">GIRL</string>
+    <string name="tab_profile">ME</string>
+
 </resources>

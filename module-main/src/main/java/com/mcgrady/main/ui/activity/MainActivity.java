@@ -14,7 +14,7 @@ import com.mcgrady.core.Constants;
 import com.mcgrady.core.event.Event;
 import com.mcgrady.core.base.BaseActivity;
 import com.mcgrady.main.R;
-import com.mcgrady.main.ui.fragment.HomeFragment;
+import com.mcgrady.main.ui.fragment.BottomNavigationFragment;
 import com.mcgrady.main.ui.fragment.SplashFragment;
 
 
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
         String version = SPUtils.getInstance(Constants.SP_FILE_NAME_VERSION).getString(Constants.VERSION);
         if (version.equals(AppUtils.getAppVersionName())) {
             loadRootFragment(R.id.fl_container, savedInstanceState == null ?
-                    HomeFragment.newInstance() : findFragment(HomeFragment.class));
+                    BottomNavigationFragment.newInstance() : findFragment(BottomNavigationFragment.class));
         } else {
             loadRootFragment(R.id.fl_container, savedInstanceState == null ?
                     SplashFragment.newInstance() : findFragment(SplashFragment.class));
@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
         RxBus.getDefault().subscribe(this, new RxBus.Callback<Event>() {
             @Override
             public void onEvent(Event event) {
-                loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
+                loadRootFragment(R.id.fl_container, BottomNavigationFragment.newInstance());
             }
         });
     }

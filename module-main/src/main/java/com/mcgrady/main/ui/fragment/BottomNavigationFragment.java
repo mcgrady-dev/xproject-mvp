@@ -3,7 +3,6 @@ package com.mcgrady.main.ui.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcgrady.core.base.BaseFragment;
 import com.mcgrady.main.R;
 
@@ -13,12 +12,11 @@ import com.mcgrady.main.R;
  * @author: mcgrady
  * @date: 2018/5/16
  */
-@Route(path = "/main/HomeFragment")
-public class HomeFragment extends BaseFragment {
+public class BottomNavigationFragment extends BaseFragment {
 
-    public static HomeFragment newInstance() {
+    public static BottomNavigationFragment newInstance() {
         Bundle args = new Bundle();
-        HomeFragment fragment = new HomeFragment();
+        BottomNavigationFragment fragment = new BottomNavigationFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -26,7 +24,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.main_fragment_home;
+        return R.layout.main_fragment_bottom_navigation;
     }
 
     @Override

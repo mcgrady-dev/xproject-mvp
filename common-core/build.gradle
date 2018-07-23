@@ -28,6 +28,7 @@ dependencies {
 
     // support
     api deps.support.appcompat_v7
+    api deps.support.design
     api deps.support.constraint
 
     // other

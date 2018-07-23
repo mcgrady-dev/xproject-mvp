@@ -98,7 +98,6 @@ public class SplashFragment extends BaseFragment {
         tvJoin.setOnClickListener(view1 -> {
             // show home
             RxBus.getDefault().post(new Event(0));
-//            loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
         });
     }
 
