@@ -11,7 +11,6 @@ import com.mcgrady.core.di.component.DaggerAppComponent;
 import com.mcgrady.core.di.module.AppModule;
 import com.mcgrady.core.di.module.DataModule;
 import com.mcgrady.core.http.IHttpHelper;
-import com.mcgrady.core.utils.ActivityStack;
 import com.mcgrady.core.utils.AppContext;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -76,7 +75,7 @@ public class BaseApplication extends Application {
     }
 
     public void exitApp() {
-        ActivityStack.getInstance().clearAllActivity();
+//        ActivityStack.getInstance().clearAllActivity();
     }
 
     public AppComponent getAppComponent() {
