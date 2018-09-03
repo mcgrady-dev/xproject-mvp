@@ -123,11 +123,6 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
         super.onHiddenChanged(hidden);
     }
 
-    @Override
-    public boolean onBackPressedSupport() {
-        return super.onBackPressedSupport();
-    }
-
     /**
      * 当Fragment对用户可见时回调
      */

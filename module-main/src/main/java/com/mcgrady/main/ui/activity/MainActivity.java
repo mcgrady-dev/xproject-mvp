@@ -2,6 +2,7 @@ package com.mcgrady.main.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
@@ -10,10 +11,12 @@ import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.mcgrady.core.Constants;
 import com.mcgrady.core.base.BasePresenterActivity;
-import com.mcgrady.core.event.Event;
+import com.mcgrady.core.utils.MultiClickUtil;
 import com.mcgrady.main.R;
+import com.mcgrady.main.event.LoadMainBottomNavigationEvent;
 import com.mcgrady.main.ui.fragment.BottomNavigationFragment;
 import com.mcgrady.main.ui.fragment.SplashFragment;
 
@@ -65,9 +68,10 @@ public class MainActivity extends BasePresenterActivity {
             }
         }, true);
 
-        RxBus.getDefault().subscribe(this, new RxBus.Callback<Event>() {
+        RxBus.getDefault().subscribe(this, new RxBus.Callback<LoadMainBottomNavigationEvent>() {
             @Override
-            public void onEvent(Event event) {
+            public void onEvent(LoadMainBottomNavigationEvent event) {
+                LogUtils.d(" model = " + event.toString());
                 loadRootFragment(R.id.fl_container, BottomNavigationFragment.newInstance());
             }
         });
@@ -75,6 +79,15 @@ public class MainActivity extends BasePresenterActivity {
 
     @Override
     public void initInject(Bundle savedInstanceState) {
+    }
+
+    @Override
+    public void onBackPressedSupport() {
+        if (MultiClickUtil.isMultiClick(2000L)) {
+            ActivityCompat.finishAfterTransition(this);
+        } else {
+            ToastUtils.showShort("再点一次退出");
+        }
     }
 
     @Override

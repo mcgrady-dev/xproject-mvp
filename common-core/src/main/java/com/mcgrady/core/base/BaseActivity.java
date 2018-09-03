@@ -1,6 +1,7 @@
 package com.mcgrady.core.base;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -124,7 +125,7 @@ public abstract class BaseActivity extends SupportActivity implements LifecycleP
     }
 
     /**
-     * 该方法回调时机为,Activity回退栈内Fragment的数量 小于等于1 时,默认finish Activity
+     * 该方法回调时机为：Activity回退栈内Fragment的数量 <=1 时,默认{@link Activity#finish()}
      * 请尽量复写该方法,避免复写onBackPress(),以保证SupportFragment内的onBackPressedSupport()回退事件正常执行
      */
     @Override

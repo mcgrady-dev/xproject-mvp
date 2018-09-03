@@ -29,7 +29,6 @@ public class BottomNavigationFragment extends BaseFragment {
 
     @Override
     protected void initEventAndData(View view) {
-
     }
 
     @Override
