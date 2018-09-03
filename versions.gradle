@@ -31,11 +31,11 @@ versions.recycler_adapter_helper = "2.9.38"
 versions.rxlifecycle = "2.2.1"
 versions.javax_annotation = "10.0-b28"
 versions.butterknife = "8.4.0"
-versions.fragmentation = "1.3.3"
+versions.fragmentation = "1.3.6"
 versions.easy_dialog = "1.1.2"
 versions.okhttp = "3.10.0"
 versions.indicator = "1.0.1@aar"
-versions.rxbus = "1.1"
+versions.rxbus = "1.2"
 versions.leakcanary = "1.5.4"
 
 
