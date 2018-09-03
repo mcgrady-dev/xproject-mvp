@@ -71,7 +71,6 @@ public class MainActivity extends BasePresenterActivity {
         RxBus.getDefault().subscribe(this, new RxBus.Callback<LoadMainBottomNavigationEvent>() {
             @Override
             public void onEvent(LoadMainBottomNavigationEvent event) {
-                LogUtils.d(" model = " + event.toString());
                 loadRootFragment(R.id.fl_container, BottomNavigationFragment.newInstance());
             }
         });

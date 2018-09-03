@@ -96,7 +96,7 @@ public class SplashFragment extends BaseFragment {
         }
 
         tvJoin.setOnClickListener(view1 -> {
-            RxBus.getDefault().post(new LoadMainBottomNavigationEvent("mcgrady", 18));
+            RxBus.getDefault().post(new LoadMainBottomNavigationEvent());
         });
     }
 
