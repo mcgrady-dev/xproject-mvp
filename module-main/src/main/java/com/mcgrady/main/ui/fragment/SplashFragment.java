@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.mcgrady.core.Constants;
 import com.mcgrady.core.base.BaseFragment;
@@ -34,6 +35,8 @@ public class SplashFragment extends BaseFragment {
     private PageIndicatorView indicatorView;
     private TextView tvJoin;
 
+    View fakeStatusBar;
+
     public static SplashFragment newInstance() {
         Bundle args = new Bundle();
         SplashFragment fragment = new SplashFragment();
@@ -49,10 +52,12 @@ public class SplashFragment extends BaseFragment {
 
     @Override
     protected void initEventAndData(View view) {
-
         viewPager = $(R.id.main_splash_view_pager);
         indicatorView = $(R.id.main_splash_indicator_view);
         tvJoin = $(R.id.main_splash_tv_join);
+        fakeStatusBar = $(R.id.fake_status_bar);
+
+        BarUtils.setStatusBarAlpha(fakeStatusBar, 0);
 
         String version = SPUtils.getInstance(Constants.SP_FILE_NAME_VERSION).getString(Constants.VERSION);
         isShowGuide = version.equals(AppUtils.getAppVersionName());
