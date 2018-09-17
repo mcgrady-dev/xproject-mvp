@@ -42,6 +42,11 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
     protected Context mContext;
     private final BehaviorSubject<FragmentEvent> lifecycleSubject = BehaviorSubject.create();
 
+    /**
+     * 上次点击时间
+     */
+    private long lastClick = 0;
+
     @Override
     public void onAttach(Context context) {
         this.mContext = context;
@@ -145,6 +150,19 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
 
     protected abstract void initEventAndData(View view);
 
+    /**
+     * 判断是否快速点击
+     *
+     * @return {@code true}: 是<br>{@code false}: 否
+     */
+    private boolean isFastClick() {
+        long now = System.currentTimeMillis();
+        if (now - lastClick >= 200) {
+            lastClick = now;
+            return false;
+        }
+        return true;
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     // keyboard start

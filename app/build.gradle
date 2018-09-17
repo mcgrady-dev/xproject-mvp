@@ -57,11 +57,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.butterknife
+    annotationProcessor deps.butterknife_compiler
+
     implementation deps.support.multidex
     implementation project(':common-core')
     if (!isModule.toBoolean()) {
-        implementation project(':main')
-        implementation project(':news')
+        implementation project(':module-main')
+        implementation project(':module-news')
     }
 }
 

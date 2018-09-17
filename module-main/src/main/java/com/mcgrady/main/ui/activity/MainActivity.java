@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -35,6 +36,7 @@ public class MainActivity extends BasePresenterActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
+        BarUtils.setStatusBarAlpha(this, 0);
         super.onCreate(savedInstanceState);
     }
 

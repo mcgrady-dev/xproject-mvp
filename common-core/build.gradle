@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -32,6 +33,9 @@ dependencies {
     api deps.support.constraint
 
     // other
+    implementation deps.butterknife
+    annotationProcessor deps.butterknife_compiler
+
     api deps.kotlin.stdlib
     api deps.fragmentation
     api deps.utils

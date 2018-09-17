@@ -2,6 +2,7 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
+    apply plugin: 'com.jakewharton.butterknife'
 }
 
 android {
@@ -49,6 +50,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.butterknife
+    annotationProcessor deps.butterknife_compiler
+
     annotationProcessor deps.arouter_compiler
     implementation project(':common-core')
 

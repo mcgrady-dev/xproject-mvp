@@ -25,6 +25,8 @@ import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -40,6 +42,12 @@ public abstract class BaseActivity extends SupportActivity implements LifecycleP
 
     protected Context mContext;
     private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
+    private Unbinder mUnbinder;
+
+    /**
+     * 上次点击时间
+     */
+    private long lastClick = 0;
 
     /**
      * 封装findViewById方法
@@ -58,6 +66,7 @@ public abstract class BaseActivity extends SupportActivity implements LifecycleP
         int layoutId = getLayoutId();
         if (layoutId > 0) {
             setContentView(layoutId);
+            mUnbinder = ButterKnife.bind(this);
         }
 
         mContext = this;
@@ -70,18 +79,16 @@ public abstract class BaseActivity extends SupportActivity implements LifecycleP
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressedSupport();
-            }
-        });
+        toolBar.setNavigationOnClickListener(view -> onBackPressedSupport());
     }
 
     @Override
     protected void onDestroy() {
         lifecycleSubject.onNext(ActivityEvent.DESTROY);
         super.onDestroy();
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
         LogUtils.i(TAG, "activity: " + getClass().getSimpleName() + " onDestroy()");
     }
 
@@ -142,6 +149,14 @@ public abstract class BaseActivity extends SupportActivity implements LifecycleP
 
     protected abstract void initEventAndData(Bundle savedInstanceState);
 
+    private boolean isFastClick() {
+        long now = System.currentTimeMillis();
+        if (now - lastClick >= 200) {
+            lastClick = now;
+            return false;
+        }
+        return true;
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     // RxLifecycle start
