@@ -184,9 +184,9 @@ public class HttpHelper implements IHttpHelper {
         OkHttpClient.Builder builder =
                 new OkHttpClient.Builder()
                         .cache(cache)
-                        .addInterceptor(cacheInterceptor)
-                        .addInterceptor(tokenInterceptor)
-                        .addNetworkInterceptor(cacheInterceptor)
+//                        .addInterceptor(cacheInterceptor)
+//                        .addInterceptor(tokenInterceptor)
+//                        .addNetworkInterceptor(cacheInterceptor)
                         .connectTimeout(sNetConfig.connectTimeoutMills != 0 ? sNetConfig.connectTimeoutMills : 15, TimeUnit.SECONDS)
                         .writeTimeout(15, TimeUnit.SECONDS)
                         .readTimeout(sNetConfig.readTimeoutMills != 0 ? sNetConfig.readTimeoutMills : 15, TimeUnit.SECONDS)

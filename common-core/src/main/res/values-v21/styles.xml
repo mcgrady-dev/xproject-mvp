@@ -12,7 +12,7 @@
 
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@mipmap/splash_bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
 
 </resources>

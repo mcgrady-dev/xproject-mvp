@@ -1,10 +1,8 @@
 package com.mcgrady.core.base;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.mcgrady.core.http.ApiResponse;
 import com.mcgrady.core.http.HttpErrorException;
 import com.mcgrady.core.http.ProgressCancelListener;
 import com.mcgrady.core.http.SubscriberCallback;
@@ -19,11 +17,11 @@ import io.reactivex.subscribers.ResourceSubscriber;
  * @date: 2018/6/21
  */
 
-public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T> implements ProgressCancelListener {
+public class BaseSubscriber<T> extends ResourceSubscriber<T> implements ProgressCancelListener {
 
     private static final String TAG = BaseSubscriber.class.getSimpleName();
     protected SubscriberCallback subscriberCallback;
-    private Context context;
+    private Context mContext;
 
     /**
      * 该构造会出现一个自动弹出和消失的dialog,一般使用与通用情况,特殊情况请自行处理,也可以通过{@link SubscriberCallback#isShowLoading()}
@@ -33,7 +31,7 @@ public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T>
      */
     public BaseSubscriber(SubscriberCallback subscriberCallback, Context context) {
         this.subscriberCallback = subscriberCallback;
-        this.context = context;
+        this.mContext = context;
     }
 
     /**
@@ -58,7 +56,7 @@ public class BaseSubscriber<T extends ApiResponse> extends ResourceSubscriber<T>
      * 显示ProgressDialog
      */
     public void onBegin() {
-        Log.i(TAG, "onBegin");
+        LogUtils.i(TAG, "onBegin");
         if (subscriberCallback != null) {
             subscriberCallback.onBegin();
         }
