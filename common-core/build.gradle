@@ -60,7 +60,6 @@ dependencies {
     // di
     api deps.dagger.runtime
     annotationProcessor deps.dagger.compiler
-    compileOnly deps.javax_annotation
 
     // arouter
     api deps.arouter_api

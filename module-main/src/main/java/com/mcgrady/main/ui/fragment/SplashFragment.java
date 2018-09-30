@@ -1,6 +1,5 @@
 package com.mcgrady.main.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -10,22 +9,14 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.PhoneUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.TimeUtils;
 import com.mcgrady.core.Constants;
 import com.mcgrady.core.base.BaseFragment;
-import com.mcgrady.core.http.BaseSubscriberCallback;
-import com.mcgrady.core.http.HttpErrorException;
-import com.mcgrady.core.http.HttpHelper;
-import com.mcgrady.core.http.IHttpHelper;
-import com.mcgrady.core.utils.rx.RxUtil;
 import com.mcgrady.main.R;
+import com.mcgrady.main.di.MainDiHelper;
 import com.mcgrady.main.event.LoadMainBottomNavigationEvent;
-import com.mcgrady.main.module.ISplashApi;
-import com.mcgrady.main.module.bean.SplashPicBean;
-import com.mcgrady.main.net.SplashSubscriber;
+import com.mcgrady.main.persenter.MainPersenter;
+import com.mcgrady.main.persenter.contract.MainContract;
 import com.mcgrady.main.ui.adapter.SplashViewPagerAdapter;
 import com.rd.PageIndicatorView;
 
@@ -36,7 +27,7 @@ import com.rd.PageIndicatorView;
  * @date: 2018/5/16
  */
 @Route(path = "/main/SplashFragment")
-public class SplashFragment extends BaseFragment {
+public class SplashFragment extends BaseFragment<MainPersenter> implements MainContract.IView {
 
     private int[] guides = {R.mipmap.lichun_1, R.mipmap.jingze_2, R.mipmap.chunfen_3, R.mipmap.lixia_4,
             R.mipmap.xiazhi_5, R.mipmap.liqiu_6, R.mipmap.qiufen_7, R.mipmap.lidong_8, R.mipmap.dongzhi_9};
@@ -116,37 +107,34 @@ public class SplashFragment extends BaseFragment {
             RxBus.getDefault().post(new LoadMainBottomNavigationEvent());
         });
 
-        HttpHelper httpHelper = new HttpHelper(getAContext());
-        IHttpHelper.NetConfig netConfig = new IHttpHelper.NetConfig();
-        netConfig.baseURL = "http://static.owspace.com/";
-        httpHelper.initConfig(netConfig);
-        @SuppressLint("MissingPermission")
-        String deviceId = PhoneUtils.getDeviceId();
-        httpHelper.createApi(ISplashApi.class).getOwspacePicList("android", "1.3.0",
-                TimeUtils.getNowMills(), deviceId)
-                .compose(RxUtil.rxSchedulerHelper())
-                .compose(bindLifecycle())
-                .subscribe(new SplashSubscriber<>(new BaseSubscriberCallback() {
-                    @Override
-                    public void onSuccess(Object response) {
-                        LogUtils.d(((SplashPicBean)response).toString());
-                    }
 
-                    @Override
-                    public void onFail(HttpErrorException error) {
-
-                    }
-
-                    @Override
-                    public void checkReLogin(String errorCode, String errorMsg) {
-
-                    }
-                }));
+//        @SuppressLint("MissingPermission")
+//        String deviceId = PhoneUtils.getDeviceId();
+//        mHttpHelper.createApi(ISplashApi.class).getOwspacePicList("android", "1.3.0",
+//                TimeUtils.getNowMills(), deviceId)
+//                .compose(RxUtil.rxSchedulerHelper())
+//                .compose(bindLifecycle())
+//                .subscribe(new SplashSubscriber<>(new BaseSubscriberCallback() {
+//                    @Override
+//                    public void onSuccess(Object response) {
+//                        LogUtils.d(((SplashPicBean)response).toString());
+//                    }
+//
+//                    @Override
+//                    public void onFail(HttpErrorException error) {
+//
+//                    }
+//
+//                    @Override
+//                    public void checkReLogin(String errorCode, String errorMsg) {
+//
+//                    }
+//                }));
 
     }
 
     @Override
     public void initInject(Bundle savedInstanceState) {
-
+        MainDiHelper.getFragmentComponent(getFragmentModule()).inject(this);
     }
 }

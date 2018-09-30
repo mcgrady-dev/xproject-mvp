@@ -11,18 +11,15 @@ import dagger.Component;
 
 /**
  * <p></p>
+ *
  * @author: mcgrady
  * @date: 2018/5/9
  */
 @Singleton
-@Component(modules = {DataModule.class,AppModule.class})
+@Component(modules = {AppModule.class, DataModule.class})
 public interface AppComponent {
 
     BaseApplication getContext();
 
     HttpHelper httpHelper();
-
-//    DBHelper dbHelper();
-//
-//    Random random();
 }

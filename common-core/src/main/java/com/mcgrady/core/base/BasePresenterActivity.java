@@ -11,16 +11,19 @@ import javax.inject.Inject;
 
 /**
  * <p>MVP activity基类</p>
+ *
  * @author: mcgrady
  * @date: 2018/5/9
  */
-public abstract class BasePresenterActivity<T extends IBasePresenter> extends BaseActivity implements IBaseView {
+public abstract class BasePresenterActivity<T extends IBasePresenter> extends BaseActivity implements IBaseView, ISupportDagger {
 
     @Inject
+    @Nullable
     protected T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        initInject(savedInstanceState);
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }

@@ -1,12 +1,12 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion build_versions.target_sdk
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-        versionCode 1
-        versionName "1.0"
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -27,6 +27,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation deps.butterknife
+    annotationProcessor deps.butterknife_compiler
+
+    implementation deps.support.multidex
     annotationProcessor deps.arouter_compiler
     implementation project(':common-core')
+    implementation project(':module-main')
+    implementation project(':module-news')
+
+    // di
+    annotationProcessor deps.dagger.compiler
 }

@@ -63,10 +63,11 @@ dependencies {
 
     implementation deps.support.multidex
     implementation project(':common-core')
-    if (!isModule.toBoolean()) {
-        implementation project(':module-main')
-        implementation project(':module-news')
-    }
+    implementation project(':module-main')
+    implementation project(':module-news')
+
+    // di
+    annotationProcessor deps.dagger.compiler
 }
 
 static def buildTime() {

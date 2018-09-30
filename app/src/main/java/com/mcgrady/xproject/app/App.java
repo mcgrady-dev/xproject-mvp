@@ -3,8 +3,6 @@ package com.mcgrady.xproject.app;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.mcgrady.core.base.ApplicationLike;
 import com.mcgrady.core.base.BaseApplication;
 import com.mcgrady.core.http.IHttpHelper;
 
@@ -15,10 +13,6 @@ import com.mcgrady.core.http.IHttpHelper;
  */
 public class App extends BaseApplication {
 
-    @Autowired(name = "/main/MainApp")
-    ApplicationLike mMainApp;
-    @Autowired(name = "/news/NewsApp")
-    ApplicationLike mNewsApp;
     public static synchronized BaseApplication getInstance() {
         return instance;
     }
@@ -35,6 +29,6 @@ public class App extends BaseApplication {
 
     @Override
     public IHttpHelper.NetConfig getNetConfig() {
-        return new IHttpHelper.NetConfig().configBaseURL("");
+        return new IHttpHelper.NetConfig().configBaseURL("http://static.owspace.com/");
     }
 }

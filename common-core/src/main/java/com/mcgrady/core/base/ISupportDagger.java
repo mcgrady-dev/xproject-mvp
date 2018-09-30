@@ -7,7 +7,7 @@ import android.os.Bundle;
  * @author: mcgrady
  * @date: 2018/5/9
  */
-public interface IDaggerInject {
+public interface ISupportDagger {
 
     void initInject(Bundle savedInstanceState);
 }

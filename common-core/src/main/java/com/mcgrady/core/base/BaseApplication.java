@@ -1,6 +1,7 @@
 package com.mcgrady.core.base;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.AppUtils;
@@ -22,7 +23,8 @@ import me.yokeyword.fragmentation.Fragmentation;
  * @author: mcgrady
  * @date: 2018/5/9
  */
-public class BaseApplication extends Application {
+public class BaseApplication extends Application implements ISupportApplication {
+
 
     protected static BaseApplication instance;
 
@@ -78,6 +80,8 @@ public class BaseApplication extends Application {
 //        ActivityStack.getInstance().clearAllActivity();
     }
 
+    @NonNull
+    @Override
     public AppComponent getAppComponent() {
         return DaggerAppComponent.builder()
                 .dataModule(new DataModule(getNetConfig()))
@@ -85,6 +89,12 @@ public class BaseApplication extends Application {
                 .build();
     }
 
+    @Override
+    public DaggerAppComponent.Builder getAppComponentBuilder() {
+        return null;
+    }
+
+    @Override
     public IHttpHelper.NetConfig getNetConfig() {
         return null;
     }

@@ -33,7 +33,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * @author: mcgrady
  * @date: 2018/5/9
  */
-public abstract class BaseLazyFragment extends SupportFragment implements LifecycleProvider<FragmentEvent>, IDaggerInject {
+public abstract class BaseLazyFragment extends SupportFragment implements LifecycleProvider<FragmentEvent> {
     private static final String TAG = BaseLazyFragment.class.getSimpleName();
     public static final Handler handler = new Handler();
 
@@ -76,7 +76,6 @@ public abstract class BaseLazyFragment extends SupportFragment implements Lifecy
             mView = inflater.inflate(layoutId, container, false);
         }
 
-        initInject(savedInstanceState);
         return mView;
     }
 

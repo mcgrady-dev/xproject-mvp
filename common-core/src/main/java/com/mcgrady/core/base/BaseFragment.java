@@ -15,9 +15,13 @@ import javax.inject.Inject;
  * @author: mcgrady
  * @date: 2018/5/9
  */
-public abstract class BaseFragment<T extends IBasePresenter> extends BaseLazyFragment implements IBaseView {
+public abstract class BaseFragment<T extends IBasePresenter> extends BaseLazyFragment implements IBaseView, ISupportDagger {
 
+    /**
+     * 如果当前页面逻辑简单, Presenter可以为null
+     */
     @Inject
+    @Nullable
     protected T mPresenter;
 
     protected FragmentModule getFragmentModule() {
@@ -30,6 +34,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends BaseLazyFra
     }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        initInject(savedInstanceState);
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
