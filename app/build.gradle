@@ -36,38 +36,31 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            //给applicationId添加后缀“.debug”
-            applicationIdSuffix ".debug"
-            //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            zipAlignEnabled false
-            shrinkResources false
-            minifyEnabled false
-            debuggable true
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//
+//        debug {
+//            //给applicationId添加后缀“.debug”
+//            applicationIdSuffix ".debug"
+//            //manifestPlaceholders = [app_icon: "@drawable/launch_beta"]
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+//            zipAlignEnabled false
+//            shrinkResources false
+//            minifyEnabled false
+//            debuggable true
+//        }
+//    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation deps.butterknife
-    annotationProcessor deps.butterknife_compiler
+    api 'me.jessyan:arms:2.5.0'
 
-    implementation deps.support.multidex
-    implementation project(':common-core')
-    implementation project(':module-main')
-    implementation project(':module-news')
 
-    // di
-    annotationProcessor deps.dagger.compiler
 }
 
 static def buildTime() {
