@@ -1,68 +1,49 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion build_versions.target_sdk
-    defaultConfig {
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        versionCode 1
-        versionName "1.0"
-    }
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
     }
 
     buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
-    // support
-    api deps.support.appcompat_v7
-    api deps.support.design
-    api deps.support.constraint
+    api 'me.jessyan:arms:2.5.0'
 
-    // other
-    implementation deps.butterknife
-    annotationProcessor deps.butterknife_compiler
+    api(rootProject.ext.dependencies["arouter"]) {
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+    }
 
-    api deps.kotlin.stdlib
-    api deps.fragmentation
-    api deps.utils
-    debugImplementation deps.leakcanary
-    releaseImplementation deps.leakcanary_no_op
-
-    // rx
-    api deps.rx.java2
-    api deps.rx.android
-    api deps.rx.lifecycle
-    api deps.rx.lifecycle_android
-    api deps.rx.lifecycle_components
-    api deps.rx.bus
-
-    // network
-    api deps.retrofit.runtime
-    api deps.retrofit.gson
-    api deps.retrofit.adapter
-    api deps.persistent_cookie
-    api deps.okhttp3_logging_interceptor
-
-    // di
-    api deps.dagger.runtime
-    annotationProcessor deps.dagger.compiler
-
-    // arouter
-    api deps.arouter_api
-
-
+    api rootProject.ext.dependencies["util-code"]
+    api rootProject.ext.dependencies["toast"]
 }

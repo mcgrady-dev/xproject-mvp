@@ -1,1 +1,1 @@
-include ':app', ':common-core'
+include ':app', ':common-core', ':common-res', ':module-main', ':module-news'
