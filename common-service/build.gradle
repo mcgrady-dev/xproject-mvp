@@ -4,11 +4,6 @@ android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
-
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
@@ -24,15 +19,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-
-    api rootProject.ext.dependencies["support-v4"]
-    api rootProject.ext.dependencies["appcompat-v7"]
-    api rootProject.ext.dependencies["design"]
-
-    api rootProject.ext.dependencies["basepopup"]
-    api rootProject.ext.dependencies["baseadapter"]
+    compileOnly rootProject.ext.dependencies["arouter"]
+    compileOnly rootProject.ext.dependencies["appcompat-v7"]
 }
+

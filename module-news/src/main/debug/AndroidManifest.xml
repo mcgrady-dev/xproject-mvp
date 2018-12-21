@@ -45,7 +45,7 @@
         信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
         声明 CommonSDK 的 ConfigModule -->
         <meta-data
-            android:name="com.mcgrady.core.app.Config"
+            android:name="com.mcgrady.common_core.app.Config"
             android:value="ConfigModule"/>
         <meta-data
             android:name="com.mcgrady.news.app.Config"

@@ -1,4 +1,4 @@
-package com.mcgrady.xproject.app;
+package com.mcgrady.common_core.app;
 
 import android.app.Application;
 import android.content.Context;
@@ -11,15 +11,13 @@ import com.jess.arms.integration.ConfigModule;
 import java.util.List;
 
 /**
- * <p>组件的全局配置信息在此配置, 需要将此实现类声明到 AndroidManifest 中
- *  common-core 中已有 {@link com.mcgrady.common_core.app.Config} 配置有组件可公用的配置信息
- *  这里用来配置一些组件自身私有的配置信息</p>
+ * <p></p>
  *
  * @author: mcgrady
  * @date: 2018/12/20
  */
 
-public final class Config implements ConfigModule {
+public class Config implements ConfigModule {
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
@@ -28,16 +26,15 @@ public final class Config implements ConfigModule {
 
     @Override
     public void injectAppLifecycle(Context context, List<AppLifecycles> lifecycles) {
-
+        // AppDelegate.Lifecycle 的所有方法都会在基类Application对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
+        lifecycles.add(new com.mcgrady.common_core.app.AppLifecyclesImpl());
     }
 
     @Override
     public void injectActivityLifecycle(Context context, List<Application.ActivityLifecycleCallbacks> lifecycles) {
-
     }
 
     @Override
     public void injectFragmentLifecycle(Context context, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
-
     }
 }
