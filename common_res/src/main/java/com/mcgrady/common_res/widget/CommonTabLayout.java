@@ -27,8 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mcgrady.common_res.R;
-import com.mcgrady.common_res.listener.CustomTabEntity;
-import com.mcgrady.common_res.listener.OnTabSelectListener;
+import com.mcgrady.common_res.interf.CustomTabEntity;
+import com.mcgrady.common_res.interf.OnTabSelectListener;
 import com.mcgrady.common_res.utils.FragmentChangeManager;
 import com.mcgrady.common_res.utils.UnreadMsgUtils;
 

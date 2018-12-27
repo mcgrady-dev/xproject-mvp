@@ -1,4 +1,4 @@
-package com.mcgrady.common_res.listener;
+package com.mcgrady.common_res.interf;
 
 public interface OnTabSelectListener {
     void onTabSelect(int position);

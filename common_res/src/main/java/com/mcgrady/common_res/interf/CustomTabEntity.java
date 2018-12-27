@@ -1,4 +1,4 @@
-package com.mcgrady.common_res.listener;
+package com.mcgrady.common_res.interf;
 
 import android.support.annotation.DrawableRes;
 
