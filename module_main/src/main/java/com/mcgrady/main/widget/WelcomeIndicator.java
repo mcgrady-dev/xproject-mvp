@@ -41,8 +41,8 @@ public class WelcomeIndicator extends LinearLayout {
 
 
         heightSelect = ConvertUtils.dp2px(24);
-        bmpSelect= BitmapFactory.decodeResource(getResources(), R.mipmap.welcome_indicator_point_select);
-        bmpNomal= BitmapFactory.decodeResource(getResources(), R.mipmap.welcome_indicator_point_nomal);
+        bmpSelect= BitmapFactory.decodeResource(getResources(), R.mipmap.main_ic_indicator_point_select);
+        bmpNomal= BitmapFactory.decodeResource(getResources(), R.mipmap.main_ic_indicator_point_nomal);
     }
 
     public void init(int count){

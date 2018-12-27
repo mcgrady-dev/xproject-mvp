@@ -1,8 +1,24 @@
 <resources>
-    <string name="app_name">xproject-module-main</string>
+    <string name="main_app_name">xproject-module-main</string>
 
     <string name="main_login">登录</string>
     <string name="main_register">注册</string>
     <string name="main_skip">跳过</string>
+    <string name="main_select_country">请选择国家地区</string>
+    <string name="main_write_identify_code">请输入短信验证码</string>
+    <string name="main_write_phone_num">请填写手机号码</string>
+    <string name="main_send">发送</string>
+    <string name="main_verify_and_login">验证并登录</string>
+    <string name="main_title_phone">+86</string>
+    <string name="main_password">密码</string>
+    <string name="main_forget_password">忘记密码?</string>
+    <string name="main_input_password_hint">请输入用户密码</string>
+    <string name="main_use_social_account">使用社交账号快速登录</string>
+    <string name="main_weibo_login">微博登录</string>
+    <string name="main_wechat_login">微信登录</string>
+    <string name="main_qq_login">QQ登录</string>
+    <string name="main_share_community">分享到社区</string>
+    <string name="main_privacy_policy">隐私政策</string>
+    <string name="main_download_xhs_app">下载原版小红书</string>
 
 </resources>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/rl_parent"
+        android:id="@+id/main_rl_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"
@@ -14,21 +14,21 @@
         android:orientation="vertical">
 
         <com.mcgrady.main.widget.ChildViewPager
-            android:id="@+id/vp_imageanim"
+            android:id="@+id/main_vp_imageanim"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
             android:background="@drawable/main_shape_round_red"/>
 
         <com.mcgrady.main.widget.ChildViewPager
-            android:id="@+id/vp_textanim"
+            android:id="@+id/main_vp_textanim"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_above="@+id/rl_indicator"
+            android:layout_above="@+id/main_rl_indicator"
             android:background="#FFF"/>
 
         <RelativeLayout
-            android:id="@+id/rl_indicator"
+            android:id="@+id/main_rl_indicator"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
@@ -36,7 +36,7 @@
             android:orientation="vertical">
 
             <com.mcgrady.main.widget.WelcomeIndicator
-                android:id="@+id/view_indicator"
+                android:id="@+id/main_view_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -45,7 +45,7 @@
             </com.mcgrady.main.widget.WelcomeIndicator>
 
             <TextView
-                android:id="@+id/tv_skip"
+                android:id="@+id/main_tv_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

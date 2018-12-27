@@ -6,6 +6,7 @@ import android.os.Environment;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -65,7 +66,13 @@ public class ShareConfig {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            StreamUtil.close(fis);
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
         return props;
     }
@@ -83,7 +90,13 @@ public class ShareConfig {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            StreamUtil.close(fos);
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
     }
 

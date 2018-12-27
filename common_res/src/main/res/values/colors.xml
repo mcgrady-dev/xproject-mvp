@@ -7,8 +7,10 @@
     <color name="public_white90">#EEFFFFFF</color>
     <color name="public_black">#000000</color>
     <color name="public_black_alpha60">#99000000</color>
+    <color name="public_color_363636">#363636</color>
     <color name="public_color_transparent">#00000000</color>
     <color name="public_color_4A4A4A">#4A4A4A</color>
+    <color name="public_color_ff909090">#ff909090</color>
     <color name="public_color_443636">#443636</color>
     <color name="public_color_53A8F4">#53A8F4</color>
     <color name="public_color_53A7F3">#53A7F3</color>
@@ -16,6 +18,7 @@
     <color name="public_color_E5E5E5">#E5E5E5</color>
     <color name="public_color_F6F6F6">#F6F6F6</color>
     <color name="public_color_FFFFFF">#FFFFFF</color>
+    <color name="public_color_ACACAC">#ACACAC</color>
     <color name="public_color_959292">#959292</color>
     <color name="public_color_CDD3D7">#CDD3D7</color>
     <color name="public_color_B8B6B6">#B8B6B6</color>
@@ -24,6 +27,7 @@
     <color name="public_color_DDDDDD">#DDDDDD</color>
     <color name="public_color_06CB7E">#06CB7E</color>
     <color name="public_color_56d292">#56d292</color>
+    <color name="public_color_67da9f">#67da9f</color>
     <color name="public_color_C8C7CC">#C8C7CC</color>
     <color name="public_color_6C6C6C">#6C6C6C</color>
     <color name="public_color_666F80">#666F80</color>

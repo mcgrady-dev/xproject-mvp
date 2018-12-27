@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.mcgrady.main.R;
+import com.mcgrady.main.mvp.ui.fragment.xhs.XhsLoginFragment;
+import com.mcgrady.main.mvp.ui.fragment.xhs.XhsWelcomeFragment;
 
 /**
  * <p>类说明</p>
@@ -17,7 +19,11 @@ import com.mcgrady.main.R;
 
 public class XhsWelcomeActivity extends BaseActivity {
 
+    private XhsLoginFragment loginFragment;
+    private XhsWelcomeFragment welcomeFragment;
+
     @Override
+
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
 
     }
