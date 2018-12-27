@@ -68,8 +68,8 @@ dependencies {
         runtimeOnly project(":module-news")
     }
 
-    implementation project(':common-core')
-    implementation project(':common-res')
+    implementation project(':common_core')
+    implementation project(':common_res')
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]

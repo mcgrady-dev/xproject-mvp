@@ -1,1 +1,1 @@
-include ':app', ':common-core', ':common-res', ':module-main', ':module-news', ':common-service'
+include ':app', ':common_core', ':common_res', ':module_main', ':module_news', ':common_service', ':common_social'
