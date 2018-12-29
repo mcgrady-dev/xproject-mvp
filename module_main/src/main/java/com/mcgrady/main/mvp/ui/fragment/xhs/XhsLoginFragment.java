@@ -1,5 +1,7 @@
 package com.mcgrady.main.mvp.ui.fragment.xhs;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +11,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ConvertUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.mcgrady.common_res.widget.SlidingTabLayout;
@@ -40,6 +45,9 @@ public class XhsLoginFragment extends BaseFragment {
     private SlidingTabLayout tabLayout;
     @BindView(R2.id.main_view_pager_fragment)
     private ViewPager viewPager;
+    @BindView(R2.id.main_ll_parent)
+    private LinearLayout llParent;
+
 
     private String[] titleList;
     private ArrayList<Fragment> fragmentList;
@@ -85,5 +93,17 @@ public class XhsLoginFragment extends BaseFragment {
     @Override
     public void setData(@Nullable Object data) {
 
+    }
+
+    public void playInAnim() {
+
+        AnimatorSet mAnimatorSet;
+        ObjectAnimator anim3 = ObjectAnimator.ofFloat(llParent, "y", ScreenUtils.getScreenHeight(),
+                ConvertUtils.px2dp(160));
+
+        mAnimatorSet = new AnimatorSet();
+        mAnimatorSet.play(anim3);
+        mAnimatorSet.setDuration(1000);
+        mAnimatorSet.start();
     }
 }

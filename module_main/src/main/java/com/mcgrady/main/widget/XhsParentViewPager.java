@@ -78,10 +78,9 @@ public class XhsParentViewPager extends ViewPager {
             }
             if (ev.getAction() == MotionEvent.ACTION_UP) {
                 if (mCx - left > 0 && right - mCx > 0 && mCy - top > 0 && bottom - mCy > 0 && !mLoginPageLock && mSkipFlag) {
-                    //todo:
-//                    if (welcomeFragment.getImageFragmentStatePagerAdapter() != null) {
-//                        welcomeFragment.getImageFragmentStatePagerAdapter().onSkip();
-//                    }
+                    if (welcomeFragment.getXhsWelcomeListener() != null) {
+                        welcomeFragment.getXhsWelcomeListener().onSkip();
+                    }
                 }
                 mSkipFlag = true;
                 mCx = 0;

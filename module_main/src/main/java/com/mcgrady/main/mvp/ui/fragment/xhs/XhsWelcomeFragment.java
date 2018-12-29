@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.mcgrady.main.R;
+import com.mcgrady.main.R2;
+import com.mcgrady.main.interf.XhsWelcomeListener;
 import com.mcgrady.main.widget.ChildViewPager;
 import com.mcgrady.main.widget.WelcomeIndicator;
 
@@ -32,23 +34,25 @@ import butterknife.BindView;
  */
 public class XhsWelcomeFragment extends BaseFragment {
 
-    @BindView(R.id.main_vp_imageanim)
+    @BindView(R2.id.main_vp_imageanim)
     ChildViewPager vpImageAnim;
-    @BindView(R.id.main_vp_textanim)
+    @BindView(R2.id.main_vp_textanim)
     ChildViewPager vpTextAnim;
-    @BindView(R.id.main_view_indicator)
+    @BindView(R2.id.main_view_indicator)
     WelcomeIndicator viewIndicator;
-    @BindView(R.id.main_tv_skip)
+    @BindView(R2.id.main_tv_skip)
     TextView tvSkip;
-    @BindView(R.id.main_rl_indicator)
+    @BindView(R2.id.main_rl_indicator)
     RelativeLayout rlIndicator;
-    @BindView(R.id.main_rl_parent)
+    @BindView(R2.id.main_rl_parent)
     RelativeLayout rlParent;
+
 
     private int oldPosition = -1;
     private boolean isMoveParent = false;
     private boolean fristPageSuperLock = false;
-//    XhsImageFragmentStatePagerAdapter imageFragmentStatePagerAdapter;
+
+    private XhsWelcomeListener xhsWelcomeListener;
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
@@ -94,7 +98,11 @@ public class XhsWelcomeFragment extends BaseFragment {
         return fristPageSuperLock;
     }
 
-//    public XhsImageFragmentStatePagerAdapter getImageFragmentStatePagerAdapter() {
-//        return imageFragmentStatePagerAdapter;
-//    }
+    public void setXhsWelcomeListener(XhsWelcomeListener xhsWelcomeListener) {
+        this.xhsWelcomeListener = xhsWelcomeListener;
+    }
+
+    public XhsWelcomeListener getXhsWelcomeListener() {
+        return xhsWelcomeListener;
+    }
 }
