@@ -1,29 +1,18 @@
 package com.mcgrady.main.mvp.ui.fragment.xhs;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import com.blankj.utilcode.util.ConvertUtils;
-import com.blankj.utilcode.util.ScreenUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
-import com.mcgrady.common_res.widget.SlidingTabLayout;
 import com.mcgrady.main.R;
-import com.mcgrady.main.R2;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
 
 
 /**
@@ -41,12 +30,12 @@ import butterknife.BindView;
 public class XhsLoginFragment extends BaseFragment {
 
 
-    @BindView(R2.id.main_sliding_tab_layout)
-    private SlidingTabLayout tabLayout;
-    @BindView(R2.id.main_view_pager_fragment)
-    private ViewPager viewPager;
-    @BindView(R2.id.main_ll_parent)
-    private LinearLayout llParent;
+//    @BindView(R2.id.main_sliding_tab_layout)
+//    private SlidingTabLayout tabLayout;
+//    @BindView(R2.id.main_view_pager_fragment)
+//    private ViewPager viewPager;
+//    @BindView(R2.id.main_ll_parent)
+//    private LinearLayout llParent;
 
 
     private String[] titleList;
@@ -64,30 +53,30 @@ public class XhsLoginFragment extends BaseFragment {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
-        titleList = new String[]{"登录", "注册"};
-        fragmentList = new ArrayList<>();
-        fragmentList.add(new XhsLoginPageFragment());
-        fragmentList.add(new XhsRegisterPageFragment());
-
-        viewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                return fragmentList.get(i);
-            }
-
-            @Override
-            public int getCount() {
-                return fragmentList.size();
-            }
-
-            @Nullable
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return titleList[position];
-            }
-        });
-
-        tabLayout.setViewPager(viewPager, titleList);
+//        titleList = new String[]{"登录", "注册"};
+//        fragmentList = new ArrayList<>();
+//        fragmentList.add(new XhsLoginPageFragment());
+//        fragmentList.add(new XhsRegisterPageFragment());
+//
+//        viewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
+//            @Override
+//            public Fragment getItem(int i) {
+//                return fragmentList.get(i);
+//            }
+//
+//            @Override
+//            public int getCount() {
+//                return fragmentList.size();
+//            }
+//
+//            @Nullable
+//            @Override
+//            public CharSequence getPageTitle(int position) {
+//                return titleList[position];
+//            }
+//        });
+//
+//        tabLayout.setViewPager(viewPager, titleList);
     }
 
     @Override
@@ -97,13 +86,13 @@ public class XhsLoginFragment extends BaseFragment {
 
     public void playInAnim() {
 
-        AnimatorSet mAnimatorSet;
-        ObjectAnimator anim3 = ObjectAnimator.ofFloat(llParent, "y", ScreenUtils.getScreenHeight(),
-                ConvertUtils.px2dp(160));
-
-        mAnimatorSet = new AnimatorSet();
-        mAnimatorSet.play(anim3);
-        mAnimatorSet.setDuration(1000);
-        mAnimatorSet.start();
+//        AnimatorSet mAnimatorSet;
+//        ObjectAnimator anim3 = ObjectAnimator.ofFloat(llParent, "y", ScreenUtils.getScreenHeight(),
+//                ConvertUtils.px2dp(160));
+//
+//        mAnimatorSet = new AnimatorSet();
+//        mAnimatorSet.play(anim3);
+//        mAnimatorSet.setDuration(1000);
+//        mAnimatorSet.start();
     }
 }
