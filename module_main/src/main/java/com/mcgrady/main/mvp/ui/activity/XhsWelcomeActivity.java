@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.jess.arms.base.BaseActivity;
-import com.jess.arms.di.component.AppComponent;
+import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
 import com.mcgrady.main.mvp.ui.fragment.xhs.XhsLoginFragment;

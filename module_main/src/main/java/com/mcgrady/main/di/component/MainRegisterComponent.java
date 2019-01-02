@@ -1,15 +1,13 @@
 package com.mcgrady.main.di.component;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
-import com.jess.arms.di.component.AppComponent;
-
+import com.mcgrady.common_core.di.component.AppComponent;
+import com.mcgrady.common_core.di.scope.ActivityScope;
 import com.mcgrady.main.di.module.MainRegisterModule;
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
-
-import com.jess.arms.di.scope.ActivityScope;
 import com.mcgrady.main.mvp.ui.activity.MainRegisterActivity;
+
+import dagger.BindsInstance;
+import dagger.Component;
 
 
 /**

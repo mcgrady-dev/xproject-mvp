@@ -2,10 +2,10 @@ package com.mcgrady.main.mvp.presenter;
 
 import android.app.Application;
 
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.http.imageloader.ImageLoader;
-import com.jess.arms.integration.AppManager;
-import com.jess.arms.mvp.BasePresenter;
+import com.mcgrady.common_core.di.scope.ActivityScope;
+import com.mcgrady.common_core.http.imageloader.ImageLoader;
+import com.mcgrady.common_core.intergration.AppManager;
+import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.main.mvp.contract.MainLoginContract;
 
 import javax.inject.Inject;

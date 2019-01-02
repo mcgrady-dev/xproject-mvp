@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
-import com.jess.arms.base.delegate.AppLifecycles;
+import com.mcgrady.common_core.base.delegate.AppLifecycles;
 
 /**
  * <p>类说明</p>

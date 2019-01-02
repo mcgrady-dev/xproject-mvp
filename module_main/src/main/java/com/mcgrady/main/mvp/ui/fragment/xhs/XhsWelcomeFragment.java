@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.jess.arms.base.BaseFragment;
-import com.jess.arms.di.component.AppComponent;
+import com.mcgrady.common_core.base.BaseFragment;
+import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
 import com.mcgrady.main.interf.XhsWelcomeListener;

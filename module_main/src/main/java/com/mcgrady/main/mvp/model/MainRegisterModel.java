@@ -3,9 +3,9 @@ package com.mcgrady.main.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.integration.IRepositoryManager;
-import com.jess.arms.mvp.BaseModel;
+import com.mcgrady.common_core.di.scope.ActivityScope;
+import com.mcgrady.common_core.intergration.IRepositoryManager;
+import com.mcgrady.common_core.mvp.BaseModel;
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
 
 import javax.inject.Inject;

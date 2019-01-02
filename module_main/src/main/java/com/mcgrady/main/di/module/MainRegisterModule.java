@@ -1,13 +1,11 @@
 package com.mcgrady.main.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
-
-import dagger.Binds;
-import dagger.Module;
-import dagger.Provides;
 
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
 import com.mcgrady.main.mvp.model.MainRegisterModel;
+
+import dagger.Binds;
+import dagger.Module;
 
 
 /**

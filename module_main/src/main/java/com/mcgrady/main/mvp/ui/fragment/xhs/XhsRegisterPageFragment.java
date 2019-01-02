@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jess.arms.base.BaseFragment;
-import com.jess.arms.di.component.AppComponent;
+import com.mcgrady.common_core.base.BaseFragment;
+import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 
 /**

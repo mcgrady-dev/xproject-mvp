@@ -4,9 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.jess.arms.base.delegate.AppLifecycles;
-import com.jess.arms.di.module.GlobalConfigModule;
-import com.jess.arms.integration.ConfigModule;
+import com.mcgrady.common_core.base.delegate.AppLifecycles;
+import com.mcgrady.common_core.di.module.GlobalConfigModule;
+import com.mcgrady.common_core.intergration.ConfigModule;
 
 import java.util.List;
 
