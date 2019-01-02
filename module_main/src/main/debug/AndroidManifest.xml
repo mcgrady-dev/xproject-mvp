@@ -48,7 +48,7 @@
         声明 CommonSDK 的 ConfigModule
         -->
         <meta-data
-            android:name="com.mcgrady.common_core.app.Config"
+            android:name="com.mcgrady.common_core.app.AppConfig"
             android:value="ConfigModule" />
         <meta-data
             android:name="com.mcgrady.main.app.Config"
