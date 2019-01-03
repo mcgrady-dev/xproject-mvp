@@ -28,6 +28,8 @@ import android.view.ViewGroup;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.intergration.cache.Cache;
 
+import me.yokeyword.fragmentation.ISupportFragment;
+
 
 /**
  * ================================================
@@ -39,7 +41,7 @@ import com.mcgrady.common_core.intergration.cache.Cache;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public interface IFragment {
+public interface IFragment extends ISupportFragment {
 
     /**
      * 提供在 {@link Fragment} 生命周期内的缓存容器, 可向此 {@link Fragment} 存取一些必要的数据

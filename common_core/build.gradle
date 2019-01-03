@@ -120,6 +120,7 @@ dependencies {
 
     api rootProject.ext.dependencies["util-code"]
     api rootProject.ext.dependencies["toast"]
+    api rootProject.ext.dependencies["fragmentation"]
 
     api(rootProject.ext.dependencies["arouter"]) {
         exclude module: 'support-v4'

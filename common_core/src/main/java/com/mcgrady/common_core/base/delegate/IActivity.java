@@ -25,6 +25,8 @@ import android.support.v4.app.FragmentManager;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.intergration.cache.Cache;
 
+import me.yokeyword.fragmentation.ISupportActivity;
+
 
 /**
  * ================================================
@@ -36,7 +38,7 @@ import com.mcgrady.common_core.intergration.cache.Cache;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public interface IActivity {
+public interface IActivity extends ISupportActivity {
 
     /**
      * 提供在 {@link Activity} 生命周期内的缓存容器, 可向此 {@link Activity} 存取一些必要的数据
