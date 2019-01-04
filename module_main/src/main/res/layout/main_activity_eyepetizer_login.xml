@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@mipmap/splash_bg"
+    tools:background="@android:color/white"
+    android:fitsSystemWindows="false">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#60000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Welcome!"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Hope you enjoy the stay"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="45dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="25dp"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="登 录"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/public_color_f6f4f4"
+                android:textColorHint="@color/public_color_f6f4f4">
+
+                <EditText
+                    android:id="@+id/mEtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawableBottom="@drawable/main_select_edit_text"
+                    android:hint="邮箱"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:textColor="@android:color/white"
+                    android:textCursorDrawable="@drawable/main_ic_cursor"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+            <ImageView
+                android:id="@+id/mIvClearAccount"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_ic_et_clear"
+                android:alpha="0"
+                tools:alpha="1"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/public_color_f6f4f4"
+                android:textColorHint="@color/public_color_f6f4f4">
+
+                <EditText
+                    android:id="@+id/mEtPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawableBottom="@drawable/main_select_edit_text"
+                    android:hint="密码"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:textColor="@android:color/white"
+                    android:textCursorDrawable="@drawable/main_ic_cursor"
+                    android:textSize="15sp" />
+            </android.support.design.widget.TextInputLayout>
+            <ImageView
+                android:id="@+id/mIvClearPwd"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_ic_et_clear"
+                android:alpha="0"
+                tools:alpha="1"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/mFabToLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/main_ic_next"
+                app:backgroundTint="@android:color/white"
+                app:fabCustomSize="55dp" />
+
+            <ProgressBar
+                android:id="@+id/mProBar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@android:color/white"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/mTvToSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="45dp"
+            android:text="还没有账号?"
+            android:textColor="#f6f4f4"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>

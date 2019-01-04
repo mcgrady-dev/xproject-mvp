@@ -54,7 +54,8 @@
             android:name="com.mcgrady.main.app.Config"
             android:value="ConfigModule" />
 
-        <activity android:name=".mvp.ui.activity.MainRegisterActivity"></activity>
+        <activity android:name=".mvp.ui.activity.MainRegisterActivity" />
+        <activity android:name=".mvp.ui.activity.EyepetizerLoginActivity"></activity>
     </application>
 
 </manifest>
