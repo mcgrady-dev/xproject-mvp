@@ -126,4 +126,9 @@ dependencies {
         exclude module: 'support-v4'
         exclude module: 'support-annotations'
     }
+
+    api(rootProject.ext.dependencies["rxpermissions"]) {
+        exclude module: 'support-annotations'
+        exclude module: 'rxjava'
+    }
 }

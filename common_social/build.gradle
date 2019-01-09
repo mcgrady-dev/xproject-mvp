@@ -24,11 +24,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 支付宝 SDK AAR 包所需的配置
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-
+    api fileTree(include: ['*.jar'], dir: 'libs')
     api project(':common_core')
     api project(':common_res')
+    implementation files('libs/libammsdk.jar')
+    implementation (name:'alipaySdk-15.5.9-20181123210601',ext:'aar')
 }
