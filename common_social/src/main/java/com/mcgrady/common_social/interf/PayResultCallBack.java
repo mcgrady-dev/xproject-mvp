@@ -7,7 +7,7 @@ package com.mcgrady.common_social.interf;
  * @date: 2019/1/9
  */
 
-public interface OnPayListener {
+public interface PayResultCallBack {
 
     void onPaySuccess(String result);
 

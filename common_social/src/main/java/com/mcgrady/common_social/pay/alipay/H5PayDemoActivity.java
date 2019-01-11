@@ -1,4 +1,4 @@
-package com.mcgrady.common_social.mvp.view.activity;
+package com.mcgrady.common_social.pay.alipay;
 
 import android.app.Activity;
 import android.app.AlertDialog;

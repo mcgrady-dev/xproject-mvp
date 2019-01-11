@@ -1,4 +1,4 @@
-package com.mcgrady.common_social.pay.alipay;
+package com.mcgrady.common_social.util;
 
 public final class Base64 {
 

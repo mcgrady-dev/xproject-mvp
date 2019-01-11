@@ -1,4 +1,4 @@
-package com.mcgrady.common_social.pay.alipay;
+package com.mcgrady.common_social.util;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
