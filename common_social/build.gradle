@@ -34,9 +34,11 @@ android {
 }
 
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar','*.aar'], dir: 'libs')
     api project(':common_core')
     api project(':common_res')
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-    implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+    api(rootProject.ext.dependencies["xpay"]) {
+        exclude module: 'support-annotations'
+        exclude module: 'rxjava'
+    }
 }
