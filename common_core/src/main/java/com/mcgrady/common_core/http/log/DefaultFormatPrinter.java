@@ -17,7 +17,6 @@ package com.mcgrady.common_core.http.log;
 
 import android.text.TextUtils;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.common_core.utils.CharacterHandler;
 
 import java.util.List;
@@ -77,11 +76,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
         final String requestBody = LINE_SEPARATOR + BODY_TAG + LINE_SEPARATOR + bodyString;
         final String tag = getTag(true);
 
-        LogUtils.d(tag, REQUEST_UP_LINE);
+        RequestLogUtils.debugInfo(tag, REQUEST_UP_LINE);
         logLines(tag, new String[]{URL_TAG + request.url()}, false);
         logLines(tag, getRequest(request), true);
         logLines(tag, requestBody.split(LINE_SEPARATOR), true);
-        LogUtils.d(tag, END_LINE);
+        RequestLogUtils.debugInfo(tag, END_LINE);
     }
 
     /**
@@ -93,11 +92,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
     public void printFileRequest(Request request) {
         final String tag = getTag(true);
 
-        LogUtils.d(tag, REQUEST_UP_LINE);
+        RequestLogUtils.debugInfo(tag, REQUEST_UP_LINE);
         logLines(tag, new String[]{URL_TAG + request.url()}, false);
         logLines(tag, getRequest(request), true);
         logLines(tag, OMITTED_REQUEST, true);
-        LogUtils.d(tag, END_LINE);
+        RequestLogUtils.debugInfo(tag, END_LINE);
     }
 
     /**
@@ -123,11 +122,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
         final String tag = getTag(false);
         final String[] urlLine = {URL_TAG + responseUrl, N};
 
-        LogUtils.d(tag, RESPONSE_UP_LINE);
+        RequestLogUtils.debugInfo(tag, RESPONSE_UP_LINE);
         logLines(tag, urlLine, true);
         logLines(tag, getResponse(headers, chainMs, code, isSuccessful, segments, message), true);
         logLines(tag, responseBody.split(LINE_SEPARATOR), true);
-        LogUtils.d(tag, END_LINE);
+        RequestLogUtils.debugInfo(tag, END_LINE);
     }
 
     /**
@@ -147,11 +146,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
         final String tag = getTag(false);
         final String[] urlLine = {URL_TAG + responseUrl, N};
 
-        LogUtils.d(tag, RESPONSE_UP_LINE);
+        RequestLogUtils.debugInfo(tag, RESPONSE_UP_LINE);
         logLines(tag, urlLine, true);
         logLines(tag, getResponse(headers, chainMs, code, isSuccessful, segments, message), true);
         logLines(tag, OMITTED_RESPONSE, true);
-        LogUtils.d(tag, END_LINE);
+        RequestLogUtils.debugInfo(tag, END_LINE);
     }
 
 
@@ -170,7 +169,7 @@ public class DefaultFormatPrinter implements FormatPrinter {
                 int start = i * MAX_LONG_SIZE;
                 int end = (i + 1) * MAX_LONG_SIZE;
                 end = end > line.length() ? line.length() : end;
-                LogUtils.d(resolveTag(tag), DEFAULT_LINE + line.substring(start, end));
+                RequestLogUtils.debugInfo(resolveTag(tag), DEFAULT_LINE + line.substring(start, end));
             }
         }
     }

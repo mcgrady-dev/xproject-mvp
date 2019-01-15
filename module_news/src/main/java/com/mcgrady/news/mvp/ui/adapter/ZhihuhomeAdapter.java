@@ -1,5 +1,7 @@
 package com.mcgrady.news.mvp.ui.adapter;
 
+import android.content.Context;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mcgrady.common_core.di.component.AppComponent;
@@ -23,10 +25,10 @@ public class ZhihuhomeAdapter extends BaseQuickAdapter<DailyListBean.StoriesBean
     private AppComponent appComponent;
     private ImageLoader imageLoader;
 
-    public ZhihuhomeAdapter() {
+    public ZhihuhomeAdapter(Context context) {
         super(R.layout.news_item_zhihu_home, null);
 
-        appComponent = Utils.obtainAppComponentFromContext(mContext);
+        appComponent = Utils.obtainAppComponentFromContext(context);
         imageLoader = appComponent.imageLoader();
     }
 

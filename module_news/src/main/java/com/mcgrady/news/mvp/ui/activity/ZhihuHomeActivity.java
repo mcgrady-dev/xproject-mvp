@@ -58,7 +58,7 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         ViewUtils.configRecyclerView(recyclerView, layoutManager);
 
-        adapter = new ZhihuhomeAdapter();
+        adapter = new ZhihuhomeAdapter(this);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -113,5 +113,6 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     @Override
     public void notifyDataSetChanged(List<DailyListBean.StoriesBean> list) {
         adapter.setNewData(list);
+        refreshLayout.finishRefresh();
     }
 }
