@@ -9,13 +9,13 @@
     </item>
     <item android:state_enabled="true" android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/public_colorPrimary" />
+            <solid android:color="@color/colorPrimary" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/public_colorAccent" />
+            <solid android:color="@color/colorAccent" />
             <corners android:radius="8dp" />
         </shape>
     </item>

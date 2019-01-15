@@ -56,8 +56,8 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="25dp"
-            android:textColor="@color/public_color_f6f4f4"
-            android:textColorHint="@color/public_color_f6f4f4">
+            android:textColor="@color/color_f6f4f4"
+            android:textColorHint="@color/color_f6f4f4">
 
             <EditText
                 android:id="@+id/mEtEmail"
@@ -79,8 +79,8 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="25dp"
-            android:textColor="@color/public_color_f6f4f4"
-            android:textColorHint="@color/public_color_f6f4f4">
+            android:textColor="@color/color_f6f4f4"
+            android:textColorHint="@color/color_f6f4f4">
 
             <EditText
                 android:id="@+id/mEtPwd"
@@ -101,8 +101,8 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="25dp"
-            android:textColor="@color/public_color_f6f4f4"
-            android:textColorHint="@color/public_color_f6f4f4">
+            android:textColor="@color/color_f6f4f4"
+            android:textColorHint="@color/color_f6f4f4">
 
             <EditText
                 android:id="@+id/mEtConfirmPwd"

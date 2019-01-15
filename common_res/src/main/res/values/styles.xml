@@ -1,29 +1,29 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="public_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/public_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/public_colorPrimaryDark</item>
-        <item name="colorAccent">@color/public_colorAccent</item>
-        <item name="android:windowAnimationStyle">@style/public_Activity_Animation</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/Activity_Animation</item>
     </style>
 
-    <style name="public_Activity_Animation">
-        <item name="android:activityOpenEnterAnimation">@anim/public_translate_right_to_center</item>
-        <item name="android:activityOpenExitAnimation">@anim/public_translate_center_to_left</item>
-        <item name="android:activityCloseEnterAnimation">@anim/public_translate_left_to_center</item>
-        <item name="android:activityCloseExitAnimation">@anim/public_translate_center_to_right</item>
+    <style name="Activity_Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/translate_right_to_center</item>
+        <item name="android:activityOpenExitAnimation">@anim/translate_center_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/translate_left_to_center</item>
+        <item name="android:activityCloseExitAnimation">@anim/translate_center_to_right</item>
     </style>
 
-    <style name="public_dialog_inout_anim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/public_dialog_enter</item>
+    <style name="dialog_inout_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
         //进入时的动画
-        <item name="android:windowExitAnimation">@anim/public_dialog_exit</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
         //退出时的动画
     </style>
 
-    <style name="public_dialog_progress" parent="android:style/Theme.Dialog">
+    <style name="dialog_progress" parent="android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -37,10 +37,10 @@
     </style>
 
     <!-- 默认水平分割线样式 -->
-    <style name="public_horizontal_line">
+    <style name="horizontal_line">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
-        <item name="android:background">@color/public_color_line</item>
+        <item name="android:background">@color/color_line</item>
     </style>
 
     <!-- 默认圆角按钮样式 -->
@@ -48,7 +48,7 @@
         <item name="android:paddingLeft">30dp</item>
         <item name="android:paddingRight">30dp</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/public_white90</item>
+        <item name="android:textColor">@color/white90</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/public_selector_button</item>
         <item name="android:foreground">@null</item>

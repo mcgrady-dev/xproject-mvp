@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_above="@+id/main_rl_indicator"
-            android:background="#FFF"/>
+            android:background="@color/white"/>
 
         <RelativeLayout
             android:id="@+id/main_rl_indicator"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="#FFF"
+                android:background="@color/white"
                 android:orientation="vertical">
             </com.mcgrady.main.widget.WelcomeIndicator>
 
@@ -57,7 +57,7 @@
                 android:paddingRight="6dp"
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
-                android:textColor="@color/public_color_56d292"
+                android:textColor="@color/color_56D292"
                 android:textSize="20sp"/>
         </RelativeLayout>
     </RelativeLayout>

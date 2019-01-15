@@ -19,7 +19,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/main_select_country"
-            android:textColor="#ff818181"
+            android:textColor="@color/color_FF818181"
             android:textSize="16sp" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_marginRight="10dip"
             android:layout_weight="1"
             android:gravity="right"
-            android:textColor="#ff363636"
+            android:textColor="@color/color_363636"
             android:textSize="16sp" />
 
         <ImageView
@@ -46,7 +46,7 @@
         android:layout_height="0.6dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:background="#e3e3e3"/>
+        android:background="@color/color_E3E3E3"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
             android:clickable="false"
             android:gravity="center"
             android:text="+86"
-            android:textColor="#ff363636"
+            android:textColor="@color/color_363636"
             android:textSize="16sp" />
 
 
@@ -81,7 +81,7 @@
             android:inputType="number"
             android:singleLine="true"
             android:maxLength="11"
-            android:textColor="#ff363636"
+            android:textColor="@color/color_363636"
             android:drawablePadding="8dp"
             android:textSize="16sp" />
 
@@ -91,7 +91,7 @@
         android:layout_height="0.6dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:background="#e3e3e3"/>
+        android:background="@color/color_E3E3E3"/>
 
     <EditText
         android:id="@+id/et_put_identify"
@@ -100,7 +100,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:background="@null"
-        android:textColor="#ff363636"
+        android:textColor="@color/color_363636"
         android:textSize="16sp"
         android:padding="5dp"
         android:paddingLeft="12dp"
@@ -114,7 +114,7 @@
         android:layout_height="0.6dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:background="#e3e3e3"/>
+        android:background="@color/color_E3E3E3"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,7 +132,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/public_selector_button"
             android:text="@string/main_send"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:layout_alignParentLeft="true"
             android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
             android:background="@drawable/public_selector_button"
             android:text="@string/main_verify_and_login"
             android:layout_alignParentRight="true"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </LinearLayout>

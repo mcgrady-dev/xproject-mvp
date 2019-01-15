@@ -36,9 +36,9 @@
         android:textColor="#ffffff"
         android:textSize="11.5sp"
         android:visibility="gone"
-        mv:public_mv_backgroundColor="#FD481F"
-        mv:public_mv_isRadiusHalfHeight="true"
-        mv:public_mv_strokeColor="#ffffff"
-        mv:public_mv_strokeWidth="1dp"/>
+        mv:mv_backgroundColor="#FD481F"
+        mv:mv_isRadiusHalfHeight="true"
+        mv:mv_strokeColor="#ffffff"
+        mv:mv_strokeWidth="1dp"/>
 
 </RelativeLayout>

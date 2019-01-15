@@ -58,7 +58,7 @@ public class ClearEditText extends EditText
         super.setOnTouchListener(this);
         super.setOnFocusChangeListener(this);
         super.addTextChangedListener(this);
-        ViewCompat.setBackgroundTintList(this, ContextCompat.getColorStateList(context, R.color.public_black_alpha60));
+        ViewCompat.setBackgroundTintList(this, ContextCompat.getColorStateList(context, R.color.black_alpha60));
     }
 
     private void setClearIconVisible(final boolean visible) {

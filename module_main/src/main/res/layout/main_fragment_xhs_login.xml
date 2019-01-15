@@ -15,7 +15,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:orientation="horizontal"
@@ -28,7 +28,7 @@
                 android:layout_marginBottom="12dp"
                 android:layout_marginTop="12dp"
                 android:orientation="horizontal"
-                android:textColor="@color/public_color_363636">
+                android:textColor="@color/color_363636">
 
                 <TextView
                     android:id="@+id/main_tv_phonetitle"
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/main_title_phone"
-                    android:textColor="@color/public_color_363636"
+                    android:textColor="@color/color_363636"
                     android:textSize="18sp"/>
 
                 <EditText
@@ -45,8 +45,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/main_tv_phonetitle"
                     android:background="@null"
-                    android:textColor="@color/public_color_363636"
-                    android:textColorHint="@color/public_color_ACACAC"
+                    android:textColor="@color/color_363636"
+                    android:textColorHint="@color/color_ACACAC"
                     android:inputType="number"
                     android:singleLine="true"
                     android:maxLength="11"
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/main_password"
-                    android:textColor="@color/public_color_363636"
+                    android:textColor="@color/color_363636"
                     android:textSize="18sp"/>
 
                 <EditText
@@ -90,8 +90,8 @@
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:maxLength="20"
-                    android:textColor="@color/public_color_363636"
-                    android:textColorHint="@color/public_color_ACACAC"
+                    android:textColor="@color/color_363636"
+                    android:textColorHint="@color/color_ACACAC"
                     android:textSize="18sp"/>
 
                 <TextView
@@ -101,7 +101,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="@string/main_forget_password"
-                    android:textColor="@color/public_color_67da9f"
+                    android:textColor="@color/color_67da9f"
                     android:textSize="18sp"/>
                 <ImageView
                     android:id="@+id/main_btn_login"
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/main_use_social_account"
-                    android:textColor="@color/public_color_ACACAC"
+                    android:textColor="@color/color_ACACAC"
                     android:textSize="14sp"/>
 
                 <View
@@ -186,7 +186,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/main_weibo_login"
-                        android:textColor="@color/public_color_363636"
+                        android:textColor="@color/color_363636"
                         android:textSize="14sp"/>
                 </RelativeLayout>
 
@@ -212,7 +212,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/main_wechat_login"
-                        android:textColor="@color/public_color_363636"
+                        android:textColor="@color/color_363636"
                         android:textSize="14sp"/>
                 </RelativeLayout>
 
@@ -238,7 +238,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/main_qq_login"
-                        android:textColor="@color/public_color_363636"
+                        android:textColor="@color/color_363636"
                         android:textSize="14sp"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -255,7 +255,7 @@
         android:text="@string/main_download_xhs_app"
         android:gravity="center"
         android:layout_above="@+id/main_ly_sharefunc"
-        android:textColor="@color/public_color_ff909090"
+        android:textColor="@color/color_FF909090"
         android:textSize="17sp"/>
 
 
@@ -286,7 +286,7 @@
                 android:layout_marginBottom="20dp"
                 android:drawablePadding="0dp"
                 android:text="@string/main_share_community"
-                android:textColor="@color/public_color_ff909090"
+                android:textColor="@color/color_FF909090"
                 android:textSize="12sp" />
 
             <TextView
@@ -295,7 +295,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="@string/main_privacy_policy"
-                android:textColor="@color/public_color_ff909090"
+                android:textColor="@color/color_FF909090"
                 android:textSize="12sp"/>
         </LinearLayout>
     </RelativeLayout>

@@ -7,7 +7,7 @@
     android:background="@android:color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".mvp.ui.activity.LoginActivityActivity">
+    tools:context=".mvp.ui.activity.MainLoginActivity">
 
     <!--<com.hjq.bar.TitleBar-->
     <!--android:id="@+id/tb_login_title"-->
@@ -39,7 +39,7 @@
         android:maxLines="1" />
 
     <View
-        style="@style/public_horizontal_line"
+        style="@style/horizontal_line"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
@@ -57,7 +57,7 @@
         android:maxLines="1" />
 
     <View
-        style="@style/public_horizontal_line"
+        style="@style/horizontal_line"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
@@ -70,7 +70,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="60dp"
         android:text="忘记密码"
-        android:textColor="@color/public_colorAccent" />
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:id="@+id/btn_login_commit"

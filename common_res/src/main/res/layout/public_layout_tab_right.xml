@@ -34,12 +34,12 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/public_ll_tap"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="11.5sp"
         android:visibility="gone"
-        mv:public_mv_backgroundColor="#FD481F"
-        mv:public_mv_isRadiusHalfHeight="true"
-        mv:public_mv_strokeColor="#ffffff"
-        mv:public_mv_strokeWidth="1dp"/>
+        mv:mv_backgroundColor="#FD481F"
+        mv:mv_isRadiusHalfHeight="true"
+        mv:mv_strokeColor="@color/white"
+        mv:mv_strokeWidth="1dp"/>
 
 </RelativeLayout>

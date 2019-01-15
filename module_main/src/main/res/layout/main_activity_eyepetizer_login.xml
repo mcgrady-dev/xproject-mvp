@@ -60,8 +60,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/public_color_f6f4f4"
-                android:textColorHint="@color/public_color_f6f4f4">
+                android:textColor="@color/color_f6f4f4"
+                android:textColorHint="@color/color_f6f4f4">
 
                 <EditText
                     android:id="@+id/mEtEmail"
@@ -98,8 +98,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/public_color_f6f4f4"
-                android:textColorHint="@color/public_color_f6f4f4">
+                android:textColor="@color/color_f6f4f4"
+                android:textColorHint="@color/color_f6f4f4">
 
                 <EditText
                     android:id="@+id/mEtPwd"

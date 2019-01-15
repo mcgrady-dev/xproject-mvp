@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.jessyan.armscomponent.gank">
+    package="com.mcgrady.main">
 
     <application>
         <activity
-            android:name="com.mcgrady.main.mvp.ui.activity.LoginActivityActivity"
+            android:name=".mvp.ui.activity.MainLoginActivity"
             android:configChanges="orientation|screenSize"
             android:label="login"
             android:screenOrientation="portrait" />
