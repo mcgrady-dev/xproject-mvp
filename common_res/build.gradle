@@ -32,7 +32,16 @@ dependencies {
     api rootProject.ext.dependencies["support-v4"]
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
 
     api rootProject.ext.dependencies["basepopup"]
-    api rootProject.ext.dependencies["baseadapter"]
+    api (rootProject.ext.dependencies["baseadapter"]) {
+        exclude module: 'recyclerview-v7'
+    }
+    api (rootProject.ext.dependencies["smart-refreshlayout"]) {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'design'
+    }
 }

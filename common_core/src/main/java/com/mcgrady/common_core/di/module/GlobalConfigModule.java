@@ -30,6 +30,7 @@ import com.mcgrady.common_core.intergration.cache.Cache;
 import com.mcgrady.common_core.intergration.cache.CacheType;
 import com.mcgrady.common_core.intergration.cache.IntelligentCache;
 import com.mcgrady.common_core.intergration.cache.LruCache;
+import com.mcgrady.common_core.intergration.listener.ResponseErrorListener;
 import com.mcgrady.common_core.utils.DataHelper;
 import com.mcgrady.common_core.utils.Preconditions;
 
@@ -46,7 +47,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.internal.Util;

@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.intergration.IRepositoryManager;
+import com.mcgrady.common_core.intergration.manager.IRepositoryManager;
 import com.mcgrady.common_core.mvp.BaseModel;
 import com.mcgrady.main.mvp.contract.EyepetizerLoginContract;
 

@@ -22,9 +22,9 @@ import android.support.v4.app.FragmentManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mcgrady.common_core.intergration.AppManager;
-import com.mcgrady.common_core.intergration.IRepositoryManager;
-import com.mcgrady.common_core.intergration.RepositoryManager;
+import com.mcgrady.common_core.intergration.manager.AppManager;
+import com.mcgrady.common_core.intergration.manager.IRepositoryManager;
+import com.mcgrady.common_core.intergration.manager.RepositoryManager;
 import com.mcgrady.common_core.intergration.cache.Cache;
 import com.mcgrady.common_core.intergration.cache.CacheType;
 import com.mcgrady.common_core.intergration.lifecycle.ActivityLifecycle;

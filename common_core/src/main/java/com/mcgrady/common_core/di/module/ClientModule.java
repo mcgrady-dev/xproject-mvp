@@ -22,6 +22,8 @@ import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 import com.mcgrady.common_core.http.GlobalHttpHandler;
 import com.mcgrady.common_core.http.log.RequestInterceptor;
+import com.mcgrady.common_core.intergration.handler.RxErrorHandler;
+import com.mcgrady.common_core.intergration.listener.ResponseErrorListener;
 import com.mcgrady.common_core.utils.DataHelper;
 
 import java.io.File;
@@ -38,8 +40,6 @@ import dagger.Module;
 import dagger.Provides;
 import io.rx_cache2.internal.RxCache;
 import io.victoralbertos.jolyglot.GsonSpeaker;
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener;
 import okhttp3.Dispatcher;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;

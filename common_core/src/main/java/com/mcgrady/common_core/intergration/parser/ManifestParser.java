@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mcgrady.common_core.intergration;
+package com.mcgrady.common_core.intergration.parser;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+
+import com.mcgrady.common_core.intergration.config.ConfigModule;
 
 import java.util.ArrayList;
 import java.util.List;

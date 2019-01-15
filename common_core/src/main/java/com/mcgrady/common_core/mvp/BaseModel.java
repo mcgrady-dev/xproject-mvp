@@ -20,7 +20,7 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.mcgrady.common_core.intergration.IRepositoryManager;
+import com.mcgrady.common_core.intergration.manager.IRepositoryManager;
 
 
 /**

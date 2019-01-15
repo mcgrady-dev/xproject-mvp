@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mcgrady.common_core.intergration;
+package com.mcgrady.common_core.intergration.manager;
 
 import android.app.Application;
 import android.content.Context;

@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.intergration.AppManager;
+import com.mcgrady.common_core.intergration.manager.AppManager;
 import com.mcgrady.common_core.utils.Preconditions;
 import com.mcgrady.main.R;
 import com.mcgrady.main.di.component.DaggerMainRegisterComponent;

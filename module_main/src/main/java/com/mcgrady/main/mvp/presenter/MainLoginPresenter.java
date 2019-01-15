@@ -4,13 +4,13 @@ import android.app.Application;
 
 import com.mcgrady.common_core.di.scope.ActivityScope;
 import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.intergration.AppManager;
+import com.mcgrady.common_core.intergration.handler.RxErrorHandler;
+import com.mcgrady.common_core.intergration.manager.AppManager;
 import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.main.mvp.contract.MainLoginContract;
 
 import javax.inject.Inject;
 
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 
 /**

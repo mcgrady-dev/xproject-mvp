@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mcgrady.common_core.intergration;
+package com.mcgrady.common_core.intergration.manager;
 
 import android.app.Activity;
 import android.app.Application;
@@ -27,6 +27,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.hjq.toast.ToastUtils;
+import com.mcgrady.common_core.intergration.config.ConfigModule;
 
 import java.util.Arrays;
 import java.util.Iterator;

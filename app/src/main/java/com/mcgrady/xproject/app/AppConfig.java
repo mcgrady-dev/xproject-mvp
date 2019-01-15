@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
-import com.mcgrady.common_core.intergration.ConfigModule;
+import com.mcgrady.common_core.intergration.config.ConfigModule;
 
 import java.util.List;
 
