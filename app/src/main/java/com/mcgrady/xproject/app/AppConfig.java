@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>组件的全局配置信息在此配置, 需要将此实现类声明到 AndroidManifest 中
- *  common-core 中已有 {@link com.mcgrady.common_core.app.AppConfig} 配置有组件可公用的配置信息
+ *  common-core 中已有 {@link com.mcgrady.common_core.config.AppConfig} 配置有组件可公用的配置信息
  *  这里用来配置一些组件自身私有的配置信息</p>
  *
  * @author: mcgrady

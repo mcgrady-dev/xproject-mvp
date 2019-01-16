@@ -23,7 +23,7 @@ import com.bumptech.glide.GlideBuilder;
 /**
  * ================================================
  * 如果你想具有配置 @{@link Glide} 的权利,则需要让 {@link com.mcgrady.common_core.http.imageloader.BaseImageLoaderStrategy}
- * 的实现类也必须实现 {@link GlideAppliesOptions}
+ * 的实现类也必须实现 {@link GlideAppOptions}
  * <p>
  * Created by JessYan on 13/08/2017 22:02
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
@@ -31,7 +31,7 @@ import com.bumptech.glide.GlideBuilder;
  * ================================================
  */
 
-public interface GlideAppliesOptions {
+public interface GlideAppOptions {
 
     /**
      * 配置 @{@link Glide} 的自定义参数,此方法在 @{@link Glide} 初始化时执行(@{@link Glide} 在第一次被调用时初始化),只会执行一次

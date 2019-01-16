@@ -31,6 +31,8 @@ public interface ZhihuService {
     @GET("/api/4/news/latest")
     Observable<DailyListBean> getDailyList();
 
+    Observable<DailyListBean> getBeforeDailyList();
+
     /**
      * 日报详情
      */

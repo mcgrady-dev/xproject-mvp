@@ -17,6 +17,7 @@ package com.mcgrady.common_core.http.log;
 
 import android.support.annotation.Nullable;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.common_core.http.GlobalHttpHandler;
 import com.mcgrady.common_core.utils.CharacterHandler;
 import com.mcgrady.common_core.utils.UrlEncoderUtils;
@@ -40,7 +41,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.BufferedSource;
-import timber.log.Timber;
 
 
 /**
@@ -108,7 +108,7 @@ public class RequestInterceptor implements Interceptor {
         try {
             originalResponse = chain.proceed(request);
         } catch (Exception e) {
-            Timber.w("Http Error: " + e);
+            LogUtils.w("Http Error: " + e);
             throw e;
         }
         long t2 = logResponse ? System.nanoTime() : 0;

@@ -20,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -35,7 +36,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * ================================================
@@ -44,7 +44,7 @@ import timber.log.Timber;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageConfigImpl>, GlideAppliesOptions {
+public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageConfigImpl>, GlideAppOptions {
     @Override
     public void loadImage(Context ctx, ImageConfigImpl config) {
         Preconditions.checkNotNull(ctx, "Context is required");
@@ -128,8 +128,7 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
             glideRequest.fitCenter();
         }
 
-        glideRequest
-                .into(config.getImageView());
+        glideRequest.into(config.getImageView());
     }
 
     @Override
@@ -169,6 +168,6 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
 
     @Override
     public void applyGlideOptions(Context context, GlideBuilder builder) {
-        Timber.w("applyGlideOptions");
+        LogUtils.w("applyGlideOptions");
     }
 }

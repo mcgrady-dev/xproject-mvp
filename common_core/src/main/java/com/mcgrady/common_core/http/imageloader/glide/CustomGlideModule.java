@@ -37,6 +37,7 @@ import com.mcgrady.common_core.utils.Utils;
 import java.io.File;
 import java.io.InputStream;
 
+
 /**
  * ================================================
  * {@link AppGlideModule} 的默认实现类
@@ -48,7 +49,7 @@ import java.io.InputStream;
  * ================================================
  */
 @GlideModule(glideName = "GlideArms")
-public class GlideConfiguration extends AppGlideModule {
+public class CustomGlideModule extends AppGlideModule {
     public static final int IMAGE_DISK_CACHE_MAX_SIZE = 100 * 1024 * 1024;//图片缓存文件最大值为100Mb
 
     @Override
@@ -73,11 +74,11 @@ public class GlideConfiguration extends AppGlideModule {
         builder.setBitmapPool(new LruBitmapPool(customBitmapPoolSize));
 
         //将配置 Glide 的机会转交给 GlideImageLoaderStrategy,如你觉得框架提供的 GlideImageLoaderStrategy
-        //并不能满足自己的需求,想自定义 BaseImageLoaderStrategy,那请你最好实现 GlideAppliesOptions
-        //因为只有成为 GlideAppliesOptions 的实现类,这里才能调用 applyGlideOptions(),让你具有配置 Glide 的权利
+        //并不能满足自己的需求,想自定义 BaseImageLoaderStrategy,那请你最好实现 GlideAppOptions
+        //因为只有成为 GlideAppOptions 的实现类,这里才能调用 applyGlideOptions(),让你具有配置 Glide 的权利
         BaseImageLoaderStrategy loadImgStrategy = appComponent.imageLoader().getLoadImgStrategy();
-        if (loadImgStrategy != null && loadImgStrategy instanceof GlideAppliesOptions) {
-            ((GlideAppliesOptions) loadImgStrategy).applyGlideOptions(context, builder);
+        if (loadImgStrategy != null && loadImgStrategy instanceof GlideAppOptions) {
+            ((GlideAppOptions) loadImgStrategy).applyGlideOptions(context, builder);
         }
     }
 

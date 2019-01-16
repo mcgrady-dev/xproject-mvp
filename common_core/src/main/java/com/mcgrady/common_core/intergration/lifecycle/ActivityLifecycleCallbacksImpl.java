@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.common_core.utils.Utils;
 
-import timber.log.Timber;
-
 /**
  * <p>类说明</p>
  *
@@ -28,7 +26,7 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
 
     @Override
     public void onActivityStarted(Activity activity) {
-        Timber.i(activity + " - onActivityStarted");
+        LogUtils.i(activity + " - onActivityStarted");
         if (!activity.getIntent().getBooleanExtra("isInitToolbar", false)) {
             //由于加强框架的兼容性,故将 setContentView 放到 onActivityCreated 之后,onActivityStarted 之前执行
             //而 findViewById 必须在 Activity setContentView() 后才有效,所以将以下代码从之前的 onActivityCreated 中移动到 onActivityStarted 中执行
@@ -63,7 +61,7 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
 
     @Override
     public void onActivityPaused(Activity activity) {
-        Timber.i(activity + " - onActivityPaused");
+        LogUtils.i(activity + " - onActivityPaused");
     }
 
     @Override
