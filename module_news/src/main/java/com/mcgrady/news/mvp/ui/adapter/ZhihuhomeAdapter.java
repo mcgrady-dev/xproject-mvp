@@ -5,8 +5,8 @@ import android.content.Context;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mcgrady.common_core.di.component.AppComponent;
+import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
 import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.intergration.config.CommonImageConfigImpl;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.interf.IViewHolderRelease;
 import com.mcgrady.news.R;
@@ -36,12 +36,15 @@ public class ZhihuhomeAdapter extends BaseQuickAdapter<DailyListBean.StoriesBean
     protected void convert(BaseViewHolder helper, DailyListBean.StoriesBean item) {
         helper.setText(R.id.news_tv_name, item.getTitle());
 
-
+        imageLoader.loadImage(mContext, ImageConfigImpl.builder()
+                .url(item.getImages().get(0))
+                .imageView(helper.getView(R.id.news_iv_avatar))
+                .build());
     }
 
     @Override
     public void onRelease(BaseViewHolder helper) {
-        imageLoader.clear(appComponent.application(), CommonImageConfigImpl.builder()
+        imageLoader.clear(appComponent.application(), ImageConfigImpl.builder()
                 .imageView(helper.getView(R.id.news_iv_avatar))
                 .build());
     }
