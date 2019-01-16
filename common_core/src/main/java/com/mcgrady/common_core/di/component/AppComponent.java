@@ -25,7 +25,7 @@ import com.mcgrady.common_core.di.module.AppModule;
 import com.mcgrady.common_core.di.module.ClientModule;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
 import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.intergration.config.ConfigModule;
+import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.intergration.manager.AppManager;
 import com.mcgrady.common_core.intergration.manager.IRepositoryManager;
 import com.mcgrady.common_core.intergration.cache.Cache;

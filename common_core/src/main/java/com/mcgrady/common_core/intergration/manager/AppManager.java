@@ -27,7 +27,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.hjq.toast.ToastUtils;
-import com.mcgrady.common_core.intergration.config.ConfigModule;
+import com.mcgrady.common_core.config.ConfigModule;
 
 import java.util.Arrays;
 import java.util.Iterator;

@@ -28,7 +28,7 @@ import android.support.v4.app.Fragment;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.di.component.DaggerAppComponent;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
-import com.mcgrady.common_core.intergration.config.ConfigModule;
+import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.intergration.parser.ManifestParser;
 import com.mcgrady.common_core.intergration.cache.IntelligentCache;
 import com.mcgrady.common_core.utils.Preconditions;

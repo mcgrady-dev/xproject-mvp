@@ -1,6 +1,9 @@
 package com.mcgrady.common_core.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
 
 import com.mcgrady.common_core.base.delegate.IApp;
 import com.mcgrady.common_core.di.component.AppComponent;
@@ -41,5 +44,40 @@ public class Utils {
         Preconditions.checkNotNull(context, "%s cannot be null", Context.class.getName());
         Preconditions.checkState(context.getApplicationContext() instanceof IApp, "%s must be implements %s", context.getApplicationContext().getClass().getName(), IApp.class.getName());
         return ((IApp) context.getApplicationContext()).getAppComponent();
+    }
+
+    /**
+     * 获得资源
+     */
+    public static Resources getResources(Context context) {
+        return context.getResources();
+    }
+
+    /**
+     * findview
+     *
+     * @param view
+     * @param viewName
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T findViewByName(Context context, View view, String viewName) {
+        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
+        T v = (T) view.findViewById(id);
+        return v;
+    }
+
+    /**
+     * findview
+     *
+     * @param activity
+     * @param viewName
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T findViewByName(Context context, Activity activity, String viewName) {
+        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
+        T v = (T) activity.findViewById(id);
+        return v;
     }
 }

@@ -19,7 +19,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.mcgrady.common_core.intergration.config.ConfigModule;
+import com.mcgrady.common_core.config.ConfigModule;
 
 import java.util.ArrayList;
 import java.util.List;

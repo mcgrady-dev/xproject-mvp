@@ -26,7 +26,7 @@ import com.mcgrady.common_core.base.delegate.ActivityDelegate;
 import com.mcgrady.common_core.base.delegate.ActivityDelegateImpl;
 import com.mcgrady.common_core.base.delegate.IActivity;
 import com.mcgrady.common_core.intergration.manager.AppManager;
-import com.mcgrady.common_core.intergration.config.ConfigModule;
+import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.intergration.cache.Cache;
 import com.mcgrady.common_core.intergration.cache.IntelligentCache;
 import com.mcgrady.common_core.utils.Preconditions;
