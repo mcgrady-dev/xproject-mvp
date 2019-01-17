@@ -23,13 +23,14 @@ import com.mcgrady.news.mvp.presenter.ZhihuHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuhomeAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener {
+public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener, OnLoadMoreListener {
 
     @BindView(R2.id.news_refresh_zhihu)
     SmartRefreshLayout refreshLayout;
@@ -69,6 +70,7 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
         adapter.bindToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setOnLoadMoreListener(this);
         refreshLayout.autoRefresh();
     }
 
@@ -78,8 +80,12 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     }
 
     @Override
-    public void showLoading() {
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        mPresenter.requestBeforeDailyList();
+    }
 
+    @Override
+    public void showLoading() {
     }
 
     @Override
@@ -114,5 +120,11 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     public void notifyDataSetChanged(List<DailyListBean.StoriesBean> list) {
         adapter.setNewData(list);
         refreshLayout.finishRefresh();
+    }
+
+    @Override
+    public void loadMoreData(List<DailyListBean.StoriesBean> list) {
+        adapter.addData(list);
+        refreshLayout.finishLoadMore();
     }
 }

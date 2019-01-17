@@ -36,7 +36,7 @@ public interface ZhihuService {
      */
     @Headers({DOMAIN_NAME_HEADER + ZHIHU_DOMAIN_NAME})
     @GET("/api/4/news/before/{date}")
-    Observable<DailyListBean> getBeforeDailyList(@Path("date") int date);
+    Observable<DailyListBean> getBeforeDailyList(@Path("date") String date);
 
     /**
      * 日报详情

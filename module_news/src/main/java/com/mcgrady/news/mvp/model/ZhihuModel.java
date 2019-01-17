@@ -51,4 +51,10 @@ public class ZhihuModel extends BaseModel implements ZhihuHomeContract.Model {
         return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
                 .getDailyList();
     }
+
+    @Override
+    public Observable<DailyListBean> getBeforeDailyList(String date) {
+        return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
+                .getBeforeDailyList(date);
+    }
 }

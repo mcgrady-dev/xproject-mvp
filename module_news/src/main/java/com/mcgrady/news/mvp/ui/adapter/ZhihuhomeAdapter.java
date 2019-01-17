@@ -26,7 +26,7 @@ public class ZhihuhomeAdapter extends BaseQuickAdapter<DailyListBean.StoriesBean
     private ImageLoader imageLoader;
 
     public ZhihuhomeAdapter(Context context) {
-        super(R.layout.news_item_zhihu_home, null);
+        super(R.layout.news_item_zhihu_home_list, null);
 
         appComponent = Utils.obtainAppComponentFromContext(context);
         imageLoader = appComponent.imageLoader();
@@ -34,18 +34,18 @@ public class ZhihuhomeAdapter extends BaseQuickAdapter<DailyListBean.StoriesBean
 
     @Override
     protected void convert(BaseViewHolder helper, DailyListBean.StoriesBean item) {
-        helper.setText(R.id.news_tv_name, item.getTitle());
+        helper.setText(R.id.list_item_title, item.getTitle());
 
         imageLoader.loadImage(mContext, ImageConfigImpl.builder()
                 .url(item.getImages().get(0))
-                .imageView(helper.getView(R.id.news_iv_avatar))
+                .imageView(helper.getView(R.id.list_item_image))
                 .build());
     }
 
     @Override
     public void onRelease(BaseViewHolder helper) {
         imageLoader.clear(appComponent.application(), ImageConfigImpl.builder()
-                .imageView(helper.getView(R.id.news_iv_avatar))
+                .imageView(helper.getView(R.id.list_item_image))
                 .build());
     }
 }
