@@ -51,7 +51,7 @@
             android:name="com.mcgrady.common_core.config.AppConfig"
             android:value="ConfigModule" />
         <meta-data
-            android:name="com.mcgrady.main.app.Config"
+            android:name="com.mcgrady.main.app.AppConfig"
             android:value="ConfigModule" />
 
         <activity android:name=".mvp.ui.activity.MainRegisterActivity" />

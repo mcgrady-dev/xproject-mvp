@@ -1,12 +1,18 @@
-package com.mcgrady.main.app;
+package com.mcgrady.news.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
+import com.mcgrady.common_core.intergration.cache.IntelligentCache;
 import com.mcgrady.common_core.config.ConfigModule;
+import com.mcgrady.common_core.utils.Utils;
+import com.mcgrady.news.BuildConfig;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
@@ -17,8 +23,7 @@ import java.util.List;
  * @date: 2018/12/20
  */
 
-public class Config implements ConfigModule {
-
+public class AppConfig implements ConfigModule {
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
 
@@ -36,6 +41,16 @@ public class Config implements ConfigModule {
 
     @Override
     public void injectFragmentLifecycle(Context context, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
-
+        if (BuildConfig.IS_BUILD_MODULE) {
+            lifecycles.add(new FragmentManager.FragmentLifecycleCallbacks() {
+                @Override
+                public void onFragmentDestroyed(@NonNull FragmentManager fm, @NonNull Fragment f) {
+                    ((RefWatcher) Utils.obtainAppComponentFromContext(f.getActivity())
+                            .extras()
+                            .get(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())))
+                            .watch(f);
+                }
+            });
+        }
     }
 }

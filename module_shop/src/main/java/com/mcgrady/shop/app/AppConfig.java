@@ -17,7 +17,7 @@ import java.util.List;
  * @date: 2018/12/20
  */
 
-public class Config implements ConfigModule {
+public class AppConfig implements ConfigModule {
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
 
