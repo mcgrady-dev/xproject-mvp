@@ -9,4 +9,5 @@ dependencies {
 
     api project(':common_core')
     api project(':common_res')
+    api rootProject.ext.dependencies["banner"]
 }

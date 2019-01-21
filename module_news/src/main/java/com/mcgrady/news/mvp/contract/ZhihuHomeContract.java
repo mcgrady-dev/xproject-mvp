@@ -27,6 +27,8 @@ public interface ZhihuHomeContract {
 
         void notifyDataSetChanged(List<DailyListBean.StoriesBean> list);
 
+        void setBanner(List<DailyListBean.TopStoriesBean> topList);
+
         void loadMoreData(List<DailyListBean.StoriesBean> list);
     }
 

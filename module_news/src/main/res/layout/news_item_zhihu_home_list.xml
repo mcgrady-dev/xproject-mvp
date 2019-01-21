@@ -78,7 +78,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <RelativeLayout
-                android:background="#7f010031"
+                android:background="#ffeaeaea"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp" />
             <RelativeLayout

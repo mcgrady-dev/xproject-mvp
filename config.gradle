@@ -60,6 +60,8 @@ ext {
             "pickerview"               : "com.contrarywind:Android-PickerView:3.2.5",
             "ucrop"                    : "com.github.yalantis:ucrop:2.2.2",
             "smart-refreshlayout"      : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-19",
+            "statusbar-util"           : "com.jaeger.statusbarutil:library:1.5.1",
+            "banner"                   : "com.youth.banner:banner:1.4.10",
 
             //rx1
             "rxlifecycle"              : "com.trello:rxlifecycle:${version["rxlifecycleSdkVersion"]}",

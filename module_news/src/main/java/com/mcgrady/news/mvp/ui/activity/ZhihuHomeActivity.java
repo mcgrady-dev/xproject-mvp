@@ -1,18 +1,27 @@
 package com.mcgrady.news.mvp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.di.component.AppComponent;
+import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
 import com.mcgrady.common_core.intergration.manager.AppManager;
 import com.mcgrady.common_core.utils.Preconditions;
+import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.utils.ViewUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
@@ -25,19 +34,26 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener, OnLoadMoreListener {
+public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener, OnLoadMoreListener, OnBannerListener {
 
     @BindView(R2.id.news_refresh_zhihu)
     SmartRefreshLayout refreshLayout;
     @BindView(R2.id.news_recycler_zhihu)
     RecyclerView recyclerView;
 
+    private Banner banner;
     private ZhihuhomeAdapter adapter;
+
+    private AppComponent mAppComponent;
+    private com.mcgrady.common_core.http.imageloader.ImageLoader mImageLoader;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -56,6 +72,9 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        mAppComponent = Utils.obtainAppComponentFromContext(this);
+        mImageLoader = mAppComponent.imageLoader();
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         ViewUtils.configRecyclerView(recyclerView, layoutManager);
 
@@ -67,11 +86,28 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
             }
         });
 
+        View header = LayoutInflater.from(this).inflate(R.layout.news_header_banner, null);
+        banner = header.findViewById(R.id.news_banner);
+        banner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.getScreenHeight() / 4));
+        adapter.setHeaderView(header);
+
         adapter.bindToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setOnLoadMoreListener(this);
         refreshLayout.autoRefresh();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        banner.startAutoPlay();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        banner.stopAutoPlay();
     }
 
     @Override
@@ -123,8 +159,30 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     }
 
     @Override
+    public void setBanner(List<DailyListBean.TopStoriesBean> topList) {
+        banner.setImages(topList)
+            .setImageLoader(new ImageLoader() {
+                @Override
+                public void displayImage(Context context, Object bean, ImageView imageView) {
+                    mImageLoader.loadImage(ZhihuHomeActivity.this,
+                        ImageConfigImpl.builder()
+                            .url(((DailyListBean.TopStoriesBean) bean).getImage())
+                            .imageView(imageView)
+                            .build());
+                }
+            })
+            .setOnBannerListener(ZhihuHomeActivity.this)
+            .start();
+    }
+
+    @Override
     public void loadMoreData(List<DailyListBean.StoriesBean> list) {
         adapter.addData(list);
         refreshLayout.finishLoadMore();
+    }
+
+    @Override
+    public void OnBannerClick(int position) {
+        ToastUtils.show("你点击了: " + position);
     }
 }

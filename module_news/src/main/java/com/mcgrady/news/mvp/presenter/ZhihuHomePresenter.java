@@ -53,6 +53,7 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
                 @Override
                 public void onNext(DailyListBean dailyListBean) {
                     mDate = dailyListBean.getDate();
+                    mRootView.setBanner(dailyListBean.getTop_stories());
                     mRootView.notifyDataSetChanged(dailyListBean.getStories());
                 }
             });
