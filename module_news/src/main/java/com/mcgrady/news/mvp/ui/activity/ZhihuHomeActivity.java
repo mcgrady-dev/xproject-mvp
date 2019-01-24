@@ -8,10 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toolbar;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -44,6 +46,8 @@ import butterknife.BindView;
 
 public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener, OnLoadMoreListener, OnBannerListener {
 
+    @BindView(R2.id.public_toolbar)
+    Toolbar toolbar;
     @BindView(R2.id.news_refresh_zhihu)
     SmartRefreshLayout refreshLayout;
     @BindView(R2.id.news_recycler_zhihu)
@@ -71,6 +75,12 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.);
+        return true;
+    }
+
+    @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         mAppComponent = Utils.obtainAppComponentFromContext(this);
         mImageLoader = mAppComponent.imageLoader();
@@ -93,6 +103,7 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
         adapter.bindToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
+
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setOnLoadMoreListener(this);
         refreshLayout.autoRefresh();

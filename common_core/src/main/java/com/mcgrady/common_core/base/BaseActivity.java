@@ -16,17 +16,16 @@
 package com.mcgrady.common_core.base;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.InflateException;
 import android.view.MotionEvent;
 
 import com.jaeger.library.StatusBarUtil;
-import com.mcgrady.common_core.R;
 import com.mcgrady.common_core.base.delegate.IActivity;
 import com.mcgrady.common_core.intergration.cache.Cache;
 import com.mcgrady.common_core.intergration.cache.CacheType;
@@ -94,7 +93,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
 //    @Override
-//    public View onCreateView(String name, Context context, AttributeSet attrs) {
+//    public View onCreateView(String name, Context context, AttributeSet attrs) {exit
 //        View view = convertAutoView(name, context, attrs);
 //        return view == null ? super.onCreateView(name, context, attrs) : view;
 //    }
@@ -121,7 +120,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.color_blue));
+        StatusBarUtil.setColor(this, Color.parseColor("#50a7ff"), 255);
     }
 
     @Override

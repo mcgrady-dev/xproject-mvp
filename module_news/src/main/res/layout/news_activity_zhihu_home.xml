@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/news_refresh_zhihu"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_recycler_zhihu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff3f3f3"
-        tools:listitem="@android:layout/simple_list_item_1"/>
+    <include layout="@layout/public_layout_toolbar_single" />
 
-</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/news_refresh_zhihu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/news_recycler_zhihu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff3f3f3"
+            tools:listitem="@layout/news_item_zhihu_home_list"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+</LinearLayout>
