@@ -8,12 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -32,6 +30,7 @@ import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
 import com.mcgrady.news.mvp.model.entity.DailyListBean;
 import com.mcgrady.news.mvp.presenter.ZhihuHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuhomeAdapter;
+import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -46,8 +45,8 @@ import butterknife.BindView;
 
 public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener, OnLoadMoreListener, OnBannerListener {
 
-    @BindView(R2.id.public_toolbar)
-    Toolbar toolbar;
+    @BindView(R2.id.news_titlebar_zhihu_home)
+    TitleBar titleBar;
     @BindView(R2.id.news_refresh_zhihu)
     SmartRefreshLayout refreshLayout;
     @BindView(R2.id.news_recycler_zhihu)
@@ -72,12 +71,6 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
         return R.layout.news_activity_zhihu_home;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.);
-        return true;
     }
 
     @Override

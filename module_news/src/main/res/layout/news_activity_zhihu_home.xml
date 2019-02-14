@@ -3,10 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <include layout="@layout/public_layout_toolbar_single" />
+    <com.mcgrady.xtitlebar.TitleBar
+        android:id="@+id/news_titlebar_zhihu_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="首页"
+        app:titleColor="@color/white"
+        app:titleSize="18sp"
+        app:leftDrawableRes="@mipmap/public_ic_ab_back_mtrl_am_alpha"
+        app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"
+        app:titleBarColor="#3983F4"/>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/news_refresh_zhihu"

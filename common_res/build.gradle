@@ -44,4 +44,5 @@ dependencies {
         exclude module: 'recyclerview-v7'
         exclude module: 'design'
     }
+    api rootProject.ext.dependencies["xtitlebar"]
 }
