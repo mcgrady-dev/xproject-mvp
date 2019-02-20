@@ -19,7 +19,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
-import com.mcgrady.common_core.intergration.manager.AppManager;
+import com.mcgrady.common_core.manager.AppManager;
 import com.mcgrady.common_core.utils.Preconditions;
 
 
@@ -74,5 +74,14 @@ public interface IView {
      */
     default void killMyself() {
 
+    }
+
+    /**
+     * finish load more.
+     * 完成加载
+     * @param success 数据是否成功
+     * @return RefreshLayout
+     */
+    default void finishLoadMore(boolean success) {
     }
 }

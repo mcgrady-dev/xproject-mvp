@@ -19,7 +19,7 @@ import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
-import com.mcgrady.common_core.intergration.manager.AppManager;
+import com.mcgrady.common_core.manager.AppManager;
 import com.mcgrady.common_core.utils.Preconditions;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.utils.ViewUtils;
@@ -43,7 +43,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View, OnRefreshListener, OnLoadMoreListener, OnBannerListener {
+public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View,
+        OnRefreshListener, OnLoadMoreListener, OnBannerListener {
 
     @BindView(R2.id.news_titlebar_zhihu_home)
     TitleBar titleBar;
@@ -125,15 +126,6 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     }
 
     @Override
-    public void showLoading() {
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
     public void showMessage(@NonNull String message) {
         Preconditions.checkNotNull(message);
         AppManager.getAppManager().showSnackbar(message, false);
@@ -152,8 +144,8 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     }
 
     @Override
-    public void killMyself() {
-        finish();
+    public void finishLoadMore(boolean success) {
+        refreshLayout.finishLoadMore(success);
     }
 
     @Override
@@ -181,8 +173,8 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
     @Override
     public void loadMoreData(List<DailyListBean.StoriesBean> list) {
-        adapter.addData(list);
         refreshLayout.finishLoadMore();
+        adapter.addData(list);
     }
 
     @Override

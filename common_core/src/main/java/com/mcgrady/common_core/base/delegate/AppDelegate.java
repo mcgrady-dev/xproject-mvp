@@ -29,8 +29,8 @@ import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.di.component.DaggerAppComponent;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
 import com.mcgrady.common_core.config.ConfigModule;
-import com.mcgrady.common_core.intergration.parser.ManifestParser;
-import com.mcgrady.common_core.intergration.cache.IntelligentCache;
+import com.mcgrady.common_core.parser.ManifestParser;
+import com.mcgrady.common_core.cache.IntelligentCache;
 import com.mcgrady.common_core.utils.Preconditions;
 
 import java.util.ArrayList;

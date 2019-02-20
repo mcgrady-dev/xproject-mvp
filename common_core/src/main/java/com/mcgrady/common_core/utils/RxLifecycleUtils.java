@@ -15,9 +15,9 @@
  */
 package com.mcgrady.common_core.utils;
 
-import com.mcgrady.common_core.intergration.lifecycle.ActivityLifecycleable;
-import com.mcgrady.common_core.intergration.lifecycle.FragmentLifecycleable;
-import com.mcgrady.common_core.intergration.lifecycle.Lifecycleable;
+import com.mcgrady.common_core.lifecycle.ActivityLifecycleable;
+import com.mcgrady.common_core.lifecycle.FragmentLifecycleable;
+import com.mcgrady.common_core.lifecycle.Lifecycleable;
 import com.mcgrady.common_core.mvp.IView;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;

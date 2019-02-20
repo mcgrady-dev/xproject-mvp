@@ -27,9 +27,9 @@ import android.view.MotionEvent;
 
 import com.jaeger.library.StatusBarUtil;
 import com.mcgrady.common_core.base.delegate.IActivity;
-import com.mcgrady.common_core.intergration.cache.Cache;
-import com.mcgrady.common_core.intergration.cache.CacheType;
-import com.mcgrady.common_core.intergration.lifecycle.ActivityLifecycleable;
+import com.mcgrady.common_core.cache.Cache;
+import com.mcgrady.common_core.cache.CacheType;
+import com.mcgrady.common_core.lifecycle.ActivityLifecycleable;
 import com.mcgrady.common_core.mvp.IPresenter;
 import com.mcgrady.common_core.utils.Utils;
 import com.trello.rxlifecycle2.android.ActivityEvent;

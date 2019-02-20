@@ -29,10 +29,10 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
-    api rootProject.ext.dependencies["support-v4"]
-    api rootProject.ext.dependencies["appcompat-v7"]
-    api rootProject.ext.dependencies["design"]
-    api rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["support-v4"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
 
     api rootProject.ext.dependencies["basepopup"]
     api (rootProject.ext.dependencies["baseadapter"]) {

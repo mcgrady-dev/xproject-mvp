@@ -22,8 +22,8 @@ import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 import com.mcgrady.common_core.http.GlobalHttpHandler;
 import com.mcgrady.common_core.http.log.RequestInterceptor;
-import com.mcgrady.common_core.intergration.handler.RxErrorHandler;
-import com.mcgrady.common_core.intergration.listener.ResponseErrorListener;
+import com.mcgrady.common_core.handler.RxErrorHandler;
+import com.mcgrady.common_core.listener.ResponseErrorListener;
 import com.mcgrady.common_core.utils.DataHelper;
 
 import java.io.File;

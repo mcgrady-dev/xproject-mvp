@@ -23,7 +23,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 
 import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.intergration.cache.Cache;
+import com.mcgrady.common_core.cache.Cache;
 
 import me.yokeyword.fragmentation.ISupportActivity;
 
@@ -45,7 +45,7 @@ public interface IActivity extends ISupportActivity {
      * 此缓存容器和 {@link Activity} 的生命周期绑定, 如果 {@link Activity} 在屏幕旋转或者配置更改的情况下
      * 重新创建, 那此缓存容器中的数据也会被清空, 如果你想避免此种情况请使用 <a href="https://github.com/JessYanCoding/LifecycleModel">LifecycleModel</a>
      *
-     * @return like {@link com.mcgrady.common_core.intergration.cache.LruCache}
+     * @return like {@link com.mcgrady.common_core.cache.LruCache}
      */
     @NonNull
     Cache<String, Object> provideCache();
@@ -76,7 +76,7 @@ public interface IActivity extends ISupportActivity {
      * 这个 Activity 是否会使用 Fragment,框架会根据这个属性判断是否注册 {@link FragmentManager.FragmentLifecycleCallbacks}
      * 如果返回{@code false},那意味着这个 Activity 不需要绑定 Fragment,那你再在这个 Activity 中绑定继承于
      * {@link com.mcgrady.common_core.base.BaseFragment} 的 Fragment 将不起任何作用
-     * @see com.mcgrady.common_core.intergration.lifecycle.ActivityLifecycle#registerFragmentCallbacks (Fragment 的注册过程)
+     * @see com.mcgrady.common_core.lifecycle.ActivityLifecycle#registerFragmentCallbacks (Fragment 的注册过程)
      *
      * @return
      */

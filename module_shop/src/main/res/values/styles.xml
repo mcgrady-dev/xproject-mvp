@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="fresco_rect" tools:ignore="ResourceName">
+        <item name="fadeDuration">300</item>
+        <item name="actualImageScaleType">centerCrop</item>
+        <item name="backgroundImage">@color/color_transparent</item>
+        <item name="placeholderImage">@color/white</item>
+        <item name="placeholderImageScaleType">none</item>
+        <item name="failureImage">@color/white</item>
+        <item name="failureImageScaleType">none</item>
+        <item name="retryImage">@color/white</item>
+        <item name="retryImageScaleType">none</item>
+        <item name="overlayImage">@color/color_transparent</item>
+        <item name="pressedStateOverlayImage">@color/color_transparent</item>
+        <item name="roundedCornerRadius">3dp</item>
+        <item name="roundingBorderWidth">1dp</item>
+        <item name="roundingBorderColor">#eeeeee</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+</resources>

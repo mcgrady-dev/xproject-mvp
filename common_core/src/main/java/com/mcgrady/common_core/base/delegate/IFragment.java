@@ -26,7 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.intergration.cache.Cache;
+import com.mcgrady.common_core.cache.Cache;
 
 import me.yokeyword.fragmentation.ISupportFragment;
 
@@ -48,7 +48,7 @@ public interface IFragment extends ISupportFragment {
      * 此缓存容器和 {@link Fragment} 的生命周期绑定, 如果 {@link Fragment} 在屏幕旋转或者配置更改的情况下
      * 重新创建, 那此缓存容器中的数据也会被清空, 如果你想避免此种情况请使用 <a href="https://github.com/JessYanCoding/LifecycleModel">LifecycleModel</a>
      *
-     * @return like {@link com.mcgrady.common_core.intergration.cache.LruCache}
+     * @return like {@link com.mcgrady.common_core.cache.LruCache}
      */
     @NonNull
     Cache<String, Object> provideCache();

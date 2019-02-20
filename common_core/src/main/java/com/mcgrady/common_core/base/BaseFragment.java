@@ -28,9 +28,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 
 import com.mcgrady.common_core.base.delegate.IFragment;
-import com.mcgrady.common_core.intergration.cache.Cache;
-import com.mcgrady.common_core.intergration.cache.CacheType;
-import com.mcgrady.common_core.intergration.lifecycle.FragmentLifecycleable;
+import com.mcgrady.common_core.cache.Cache;
+import com.mcgrady.common_core.cache.CacheType;
+import com.mcgrady.common_core.lifecycle.FragmentLifecycleable;
 import com.mcgrady.common_core.mvp.IPresenter;
 import com.mcgrady.common_core.utils.Utils;
 import com.trello.rxlifecycle2.android.FragmentEvent;

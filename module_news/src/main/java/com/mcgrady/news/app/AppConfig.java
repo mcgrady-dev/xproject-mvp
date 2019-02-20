@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
-import com.mcgrady.common_core.intergration.cache.IntelligentCache;
+import com.mcgrady.common_core.cache.IntelligentCache;
 import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.news.BuildConfig;

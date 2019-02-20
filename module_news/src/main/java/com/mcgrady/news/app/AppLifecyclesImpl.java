@@ -6,12 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.intergration.cache.IntelligentCache;
-import com.mcgrady.common_core.intergration.manager.RetrofitUrlManager;
+import com.mcgrady.common_core.cache.IntelligentCache;
+import com.mcgrady.common_core.manager.RetrofitUrlManager;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.widget.MaterialHeader;
 import com.mcgrady.news.BuildConfig;
-import com.mcgrady.news.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.squareup.leakcanary.LeakCanary;
@@ -64,7 +63,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
             });
             SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
                 //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
-                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
+                layout.setPrimaryColorsId(android.R.color.white);
 
                 return new MaterialHeader(context);
             });

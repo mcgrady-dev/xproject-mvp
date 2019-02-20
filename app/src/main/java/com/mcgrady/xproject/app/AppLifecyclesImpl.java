@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.intergration.cache.IntelligentCache;
+import com.mcgrady.common_core.cache.IntelligentCache;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.widget.MaterialHeader;
 import com.mcgrady.xproject.BuildConfig;

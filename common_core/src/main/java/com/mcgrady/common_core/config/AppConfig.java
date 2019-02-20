@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
+import com.hjq.toast.style.ToastAlipayStyle;
 import com.mcgrady.common_core.BuildConfig;
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
@@ -16,10 +17,10 @@ import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
 import com.mcgrady.common_core.http.SSLSocketClient;
 import com.mcgrady.common_core.http.imageloader.glide.GlideImageLoaderStrategy;
 import com.mcgrady.common_core.http.log.RequestInterceptor;
-import com.mcgrady.common_core.intergration.lifecycle.ActivityLifecycleCallbacksImpl;
-import com.mcgrady.common_core.intergration.lifecycle.FragmentLifecycleCallbacksImpl;
-import com.mcgrady.common_core.intergration.listener.ResponseErrorListenerImpl;
-import com.mcgrady.common_core.intergration.manager.RetrofitUrlManager;
+import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
+import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
+import com.mcgrady.common_core.listener.ResponseErrorListenerImpl;
+import com.mcgrady.common_core.manager.RetrofitUrlManager;
 
 import java.util.List;
 
@@ -87,6 +88,7 @@ public class AppConfig implements ConfigModule {
                 ARouter.init(application); // 尽可能早,推荐在Application中初始化
                 Utils.init(application);
                 ToastUtils.init(application);
+                ToastUtils.initStyle(new ToastAlipayStyle());
             }
 
             @Override

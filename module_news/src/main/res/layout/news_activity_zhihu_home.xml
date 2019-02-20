@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:ignore="MissingDefaultResource">
+    tools:ignore="MissingDefaultResource"
+    android:background="@android:color/white">
 
     <com.mcgrady.xtitlebar.TitleBar
         android:id="@+id/news_titlebar_zhihu_home"
@@ -14,7 +15,8 @@
         app:title="首页"
         app:titleColor="@color/white"
         app:titleSize="18sp"
-        app:leftDrawableRes="@mipmap/public_ic_ab_back_mtrl_am_alpha"
+        app:titleGravity="left"
+        app:leftDrawableRes="@mipmap/public_ic_back_mtrl_am_alpha"
         app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"
         app:titleBarColor="#3983F4"/>
 

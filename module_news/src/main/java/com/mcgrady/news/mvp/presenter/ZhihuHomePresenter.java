@@ -4,9 +4,9 @@ import android.text.TextUtils;
 
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.intergration.handler.ErrorHandleSubscriber;
-import com.mcgrady.common_core.intergration.handler.RetryWithDelay;
-import com.mcgrady.common_core.intergration.handler.RxErrorHandler;
+import com.mcgrady.common_core.handler.ErrorHandleSubscriber;
+import com.mcgrady.common_core.handler.RetryWithDelay;
+import com.mcgrady.common_core.handler.RxErrorHandler;
 import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.common_core.utils.RxLifecycleUtils;
 import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
@@ -56,6 +56,11 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
                     mRootView.setBanner(dailyListBean.getTop_stories());
                     mRootView.notifyDataSetChanged(dailyListBean.getStories());
                 }
+
+                @Override
+                public void onError(Throwable t) {
+                    super.onError(t);
+                }
             });
     }
 
@@ -77,6 +82,12 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
                 public void onNext(DailyListBean dailyListBean) {
                     mDate = dailyListBean.getDate();
                     mRootView.loadMoreData(dailyListBean.getStories());
+                }
+
+                @Override
+                public void onError(Throwable t) {
+                    super.onError(t);
+                    mRootView.finishLoadMore(false);
                 }
             });
     }

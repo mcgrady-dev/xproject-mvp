@@ -26,11 +26,11 @@ import com.mcgrady.common_core.http.imageloader.BaseImageLoaderStrategy;
 import com.mcgrady.common_core.http.log.DefaultFormatPrinter;
 import com.mcgrady.common_core.http.log.FormatPrinter;
 import com.mcgrady.common_core.http.log.RequestInterceptor;
-import com.mcgrady.common_core.intergration.cache.Cache;
-import com.mcgrady.common_core.intergration.cache.CacheType;
-import com.mcgrady.common_core.intergration.cache.IntelligentCache;
-import com.mcgrady.common_core.intergration.cache.LruCache;
-import com.mcgrady.common_core.intergration.listener.ResponseErrorListener;
+import com.mcgrady.common_core.cache.Cache;
+import com.mcgrady.common_core.cache.CacheType;
+import com.mcgrady.common_core.cache.IntelligentCache;
+import com.mcgrady.common_core.cache.LruCache;
+import com.mcgrady.common_core.listener.ResponseErrorListener;
 import com.mcgrady.common_core.utils.DataHelper;
 import com.mcgrady.common_core.utils.Preconditions;
 

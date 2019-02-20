@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.mcgrady.common_core.base.delegate.IApp;
 import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.intergration.exception.InvalidUrlException;
+import com.mcgrady.common_core.exception.InvalidUrlException;
 
 import okhttp3.HttpUrl;
 

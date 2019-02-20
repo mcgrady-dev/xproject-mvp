@@ -26,10 +26,10 @@ import com.mcgrady.common_core.di.module.ClientModule;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
 import com.mcgrady.common_core.http.imageloader.ImageLoader;
 import com.mcgrady.common_core.config.ConfigModule;
-import com.mcgrady.common_core.intergration.manager.AppManager;
-import com.mcgrady.common_core.intergration.manager.IRepositoryManager;
-import com.mcgrady.common_core.intergration.cache.Cache;
-import com.mcgrady.common_core.intergration.handler.RxErrorHandler;
+import com.mcgrady.common_core.manager.AppManager;
+import com.mcgrady.common_core.manager.IRepositoryManager;
+import com.mcgrady.common_core.cache.Cache;
+import com.mcgrady.common_core.handler.RxErrorHandler;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
