@@ -13,7 +13,7 @@ import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.shop.app.mvp.contract.ProductDetailsContract;
 import com.mcgrady.shop.app.mvp.presenter.ProductDetailsPresenter;
-import com.mcgrady.shop.app.mvp.ui.weiget.ProductSkuPopWin;
+import com.mcgrady.shop.app.mvp.ui.weiget.ProductSkuPopup;
 import com.mcgrady.xtitlebar.TitleBar;
 
 import butterknife.BindView;
@@ -62,7 +62,7 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
         int viewId = view.getId();
         switch (viewId) {
             case R.id.shop_tv_add_cart:
-                new ProductSkuPopWin(ProductDetailsActivity.this).showPopupWindow();
+                new ProductSkuPopup(ProductDetailsActivity.this).showPopupWindow();
                 break;
             default:
                 break;

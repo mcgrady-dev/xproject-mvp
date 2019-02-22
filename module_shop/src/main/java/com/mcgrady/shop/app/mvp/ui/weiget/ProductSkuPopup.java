@@ -15,9 +15,9 @@ import razerdp.basepopup.BasePopupWindow;
  * @date: 2019/2/20
  */
 
-public class ProductSkuPopWin extends BasePopupWindow {
+public class ProductSkuPopup extends BasePopupWindow {
 
-    public ProductSkuPopWin(Context context) {
+    public ProductSkuPopup(Context context) {
         super(context);
     }
 

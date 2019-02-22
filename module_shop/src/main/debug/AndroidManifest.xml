@@ -14,7 +14,7 @@
         android:name="com.mcgrady.common_core.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_glod_logo"
-        android:label="news"
+        android:label="@string/shop_app_name"
         android:networkSecurityConfig="@xml/public_network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

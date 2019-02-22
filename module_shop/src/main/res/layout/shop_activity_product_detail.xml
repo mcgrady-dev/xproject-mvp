@@ -107,22 +107,21 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/shop_shape_taobao_btn2_bg"
             android:text="加入购物车"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textSize="14sp"            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/shop_tv_pay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/shop_shape_taobao_btn1_bg"
             android:gravity="center"
