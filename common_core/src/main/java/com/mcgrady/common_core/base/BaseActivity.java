@@ -41,6 +41,7 @@ import butterknife.Unbinder;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
 import me.yokeyword.fragmentation.ExtraTransaction;
+import me.yokeyword.fragmentation.ISupportActivity;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportActivityDelegate;
 import me.yokeyword.fragmentation.SupportHelper;
@@ -53,7 +54,8 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * 继承于这个特定的 {@link Activity}, 然后再按照 {@link BaseActivity} 的格式, 将代码复制过去, 记住一定要实现{@link IActivity}
  * ================================================
  */
-public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity, ActivityLifecycleable {
+public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity,
+        ISupportActivity, ActivityLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
     private final SupportActivityDelegate mDelegate = new SupportActivityDelegate(this);
@@ -111,7 +113,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
                 mUnbinder = ButterKnife.bind(this);
             }
         } catch (Exception e) {
-            if (e instanceof InflateException) throw e;
+            if (e instanceof InflateException) {
+                throw e;
+            }
             e.printStackTrace();
         }
         initData(savedInstanceState);

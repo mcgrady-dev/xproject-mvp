@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
-import com.mcgrady.common_core.manager.AppManager;
 import com.mcgrady.common_core.utils.Preconditions;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.utils.ViewUtils;
@@ -128,13 +128,13 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     @Override
     public void showMessage(@NonNull String message) {
         Preconditions.checkNotNull(message);
-        AppManager.getAppManager().showSnackbar(message, false);
+        ToastUtils.show(message);
     }
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
         Preconditions.checkNotNull(intent);
-        AppManager.getAppManager().startActivity(intent);
+        ActivityUtils.startActivity(intent);
     }
 
     @Override

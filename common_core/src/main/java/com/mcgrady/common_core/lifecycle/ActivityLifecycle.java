@@ -25,10 +25,9 @@ import android.support.v4.app.FragmentManager;
 import com.mcgrady.common_core.base.delegate.ActivityDelegate;
 import com.mcgrady.common_core.base.delegate.ActivityDelegateImpl;
 import com.mcgrady.common_core.base.delegate.IActivity;
-import com.mcgrady.common_core.manager.AppManager;
-import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.cache.Cache;
 import com.mcgrady.common_core.cache.IntelligentCache;
+import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.utils.Preconditions;
 
 import java.util.List;
@@ -54,8 +53,6 @@ import dagger.Lazy;
 public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks {
 
     @Inject
-    AppManager mAppManager;
-    @Inject
     Application mApplication;
     @Inject
     Cache<String, Object> mExtras;
@@ -70,15 +67,6 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        //如果 intent 包含了此字段,并且为 true 说明不加入到 list 进行统一管理
-        boolean isNotAdd = false;
-        if (activity.getIntent() != null) {
-            isNotAdd = activity.getIntent().getBooleanExtra(AppManager.IS_NOT_ADD_ACTIVITY_LIST, false);
-        }
-
-        if (!isNotAdd) {
-            mAppManager.addActivity(activity);
-        }
 
         //配置ActivityDelegate
         if (activity instanceof IActivity) {
@@ -106,8 +94,6 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityResumed(Activity activity) {
-        mAppManager.setCurrentActivity(activity);
-
         ActivityDelegate activityDelegate = fetchActivityDelegate(activity);
         if (activityDelegate != null) {
             activityDelegate.onResume();
@@ -124,9 +110,6 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityStopped(Activity activity) {
-        if (mAppManager.getCurrentActivity() == activity) {
-            mAppManager.setCurrentActivity(null);
-        }
 
         ActivityDelegate activityDelegate = fetchActivityDelegate(activity);
         if (activityDelegate != null) {
@@ -144,7 +127,6 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-        mAppManager.removeActivity(activity);
 
         ActivityDelegate activityDelegate = fetchActivityDelegate(activity);
         if (activityDelegate != null) {

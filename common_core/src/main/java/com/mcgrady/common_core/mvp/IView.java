@@ -19,7 +19,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
-import com.mcgrady.common_core.manager.AppManager;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.mcgrady.common_core.utils.Preconditions;
 
 
@@ -66,7 +66,7 @@ public interface IView {
      */
     default void launchActivity(@NonNull Intent intent) {
         Preconditions.checkNotNull(intent);
-        AppManager.getAppManager().startActivity(intent);
+        ActivityUtils.startActivity(intent);
     }
 
     /**

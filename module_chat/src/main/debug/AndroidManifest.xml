@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mcgrady.chat">
+
+    <application
+        android:name="com.mcgrady.common_core.base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_glod_logo"
+        android:label="chat"
+        android:networkSecurityConfig="@xml/public_network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".ChatSessionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        每个业务组件需要声明两个 ConfigModule, CommonSDK 的 ConfigModule 和 业务组件自己的 ConfigModule
+        CommonSDK 的 ConfigModule 含有有每个组件都可共用的配置信息, 业务组件自己的 ConfigModule 含有自己独有的配置
+        信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
+        声明 CommonSDK 的 ConfigModule
+        -->
+        <meta-data
+            android:name="com.mcgrady.common_core.config.AppConfig"
+            android:value="ConfigModule" />
+    </application>
+
+</manifest>

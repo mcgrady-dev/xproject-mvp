@@ -3,9 +3,8 @@ package com.mcgrady.main.mvp.presenter;
 import android.app.Application;
 
 import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.http.imageloader.ImageLoader;
 import com.mcgrady.common_core.handler.RxErrorHandler;
-import com.mcgrady.common_core.manager.AppManager;
+import com.mcgrady.common_core.http.imageloader.ImageLoader;
 import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
 
@@ -33,8 +32,6 @@ public class MainRegisterPresenter extends BasePresenter<MainRegisterContract.Mo
     Application mApplication;
     @Inject
     ImageLoader mImageLoader;
-    @Inject
-    AppManager mAppManager;
 
     @Inject
     public MainRegisterPresenter(MainRegisterContract.Model model, MainRegisterContract.View rootView) {
@@ -45,7 +42,6 @@ public class MainRegisterPresenter extends BasePresenter<MainRegisterContract.Mo
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
-        this.mAppManager = null;
         this.mImageLoader = null;
         this.mApplication = null;
     }

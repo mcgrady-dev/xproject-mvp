@@ -15,21 +15,19 @@
  */
 package com.mcgrady.common_core.di.component;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
 import com.google.gson.Gson;
 import com.mcgrady.common_core.base.delegate.AppDelegate;
+import com.mcgrady.common_core.cache.Cache;
+import com.mcgrady.common_core.config.ConfigModule;
 import com.mcgrady.common_core.di.module.AppModule;
 import com.mcgrady.common_core.di.module.ClientModule;
 import com.mcgrady.common_core.di.module.GlobalConfigModule;
-import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.config.ConfigModule;
-import com.mcgrady.common_core.manager.AppManager;
-import com.mcgrady.common_core.manager.IRepositoryManager;
-import com.mcgrady.common_core.cache.Cache;
 import com.mcgrady.common_core.handler.RxErrorHandler;
+import com.mcgrady.common_core.http.imageloader.ImageLoader;
+import com.mcgrady.common_core.manager.IRepositoryManager;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
@@ -55,18 +53,6 @@ import okhttp3.OkHttpClient;
 @Component(modules = {AppModule.class, ClientModule.class, GlobalConfigModule.class})
 public interface AppComponent {
     Application application();
-
-    /**
-     * 用于管理所有 {@link Activity}
-     * 之前 {@link AppManager} 使用 Dagger 保证单例, 只能使用 {@link AppComponent#appManager()} 访问
-     * 现在直接将 AppManager 独立为单例类, 可以直接通过静态方法 {@link AppManager#getAppManager()} 访问, 更加方便
-     * 但为了不影响之前使用 {@link AppComponent#appManager()} 获取 {@link AppManager} 的项目, 所以暂时保留这种访问方式
-     *
-     * @return {@link AppManager}
-     * @deprecated Use {@link AppManager#getAppManager()} instead
-     */
-    @Deprecated
-    AppManager appManager();
 
     /**
      * 用于管理网络请求层, 以及数据缓存层

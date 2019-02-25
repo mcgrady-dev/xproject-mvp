@@ -22,10 +22,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.cache.Cache;
-
-import me.yokeyword.fragmentation.ISupportActivity;
+import com.mcgrady.common_core.di.component.AppComponent;
 
 
 /**
@@ -38,7 +36,7 @@ import me.yokeyword.fragmentation.ISupportActivity;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public interface IActivity extends ISupportActivity {
+public interface IActivity {
 
     /**
      * 提供在 {@link Activity} 生命周期内的缓存容器, 可向此 {@link Activity} 存取一些必要的数据
