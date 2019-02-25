@@ -1,15 +1,11 @@
 package com.mcgrady.main.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.blankj.utilcode.util.ActivityUtils;
-import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.utils.Preconditions;
 import com.mcgrady.main.R;
 import com.mcgrady.main.di.component.DaggerMainRegisterComponent;
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
@@ -58,18 +54,6 @@ public class MainRegisterActivity extends BaseActivity<MainRegisterPresenter> im
     @Override
     public void hideLoading() {
 
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-        Preconditions.checkNotNull(message);
-        ToastUtils.show(message);
-    }
-
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        Preconditions.checkNotNull(intent);
-        ActivityUtils.startActivity(intent);
     }
 
     @Override

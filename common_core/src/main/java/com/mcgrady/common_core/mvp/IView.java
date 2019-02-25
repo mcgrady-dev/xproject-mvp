@@ -20,7 +20,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.mcgrady.common_core.utils.Preconditions;
+import com.hjq.toast.ToastUtils;
 
 
 /**
@@ -42,14 +42,12 @@ public interface IView {
      * 显示加载
      */
     default void showLoading() {
-
     }
 
     /**
      * 隐藏加载
      */
     default void hideLoading() {
-
     }
 
     /**
@@ -57,7 +55,9 @@ public interface IView {
      *
      * @param message 消息内容, 不能为 {@code null}
      */
-    void showMessage(@NonNull String message);
+    default void showMessage(@NonNull String message) {
+        ToastUtils.show(message);
+    }
 
     /**
      * 跳转 {@link Activity}
@@ -65,7 +65,6 @@ public interface IView {
      * @param intent {@code intent} 不能为 {@code null}
      */
     default void launchActivity(@NonNull Intent intent) {
-        Preconditions.checkNotNull(intent);
         ActivityUtils.startActivity(intent);
     }
 
@@ -73,7 +72,6 @@ public interface IView {
      * 杀死自己
      */
     default void killMyself() {
-
     }
 
     /**

@@ -52,11 +52,6 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
 
     }
 
-    @Override
-    public void showMessage(@NonNull String message) {
-
-    }
-
     @OnClick(R2.id.shop_tv_add_cart)
     void OnClick(View view) {
         int viewId = view.getId();
