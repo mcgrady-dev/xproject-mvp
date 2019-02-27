@@ -12,11 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.common_core.config.RouterHub;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
 import com.mcgrady.common_core.utils.Utils;
@@ -44,6 +47,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
+@Route(path = RouterHub.ZHIHU_HOME)
 public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implements ZhihuHomeContract.View,
         OnRefreshListener, OnLoadMoreListener, OnBannerListener {
 
@@ -89,7 +93,10 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                ARouter.getInstance().build(RouterHub.ZHIHU_DAILY_DETAIL)
+                        .withInt("daily_id", 0)
+                        .withString("daily_title", "")
+                        .navigation(ZhihuHomeActivity.this);
             }
         });
 

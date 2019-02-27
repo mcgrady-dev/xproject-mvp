@@ -124,7 +124,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        StatusBarUtil.setColor(this, Color.parseColor("#50a7ff"), 255);
+        StatusBarUtil.setColor(this, Color.parseColor("#ff00a2ed"), 0);
     }
 
     @Override

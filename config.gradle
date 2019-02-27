@@ -29,6 +29,7 @@ ext {
             "cardview-v7"              : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
             "annotations"              : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
             "recyclerview-v7"          : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+            "constraint-layout"          : "com.android.support.constraint:constraint-layout:1.1.3",
 
             //network
             "retrofit"                 : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
@@ -64,6 +65,7 @@ ext {
             "banner"                   : "com.youth.banner:banner:1.4.10",
             "xtitlebar"                : "com.mcgrady:xtitlebar:1.0.1",
             "sticky-headers-recyclerview" : "com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar",
+            "agentweb"                 : "com.just.agentweb:agentweb:4.0.2",
 
             //rx1
             "rxlifecycle"              : "com.trello:rxlifecycle:${version["rxlifecycleSdkVersion"]}",
