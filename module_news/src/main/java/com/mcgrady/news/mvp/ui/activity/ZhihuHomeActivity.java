@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.di.component.AppComponent;
@@ -24,7 +25,8 @@ import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.news.di.component.DaggerZhihuHomeComponent;
 import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
-import com.mcgrady.news.mvp.model.entity.DailyListBean;
+import com.mcgrady.news.mvp.model.entity.DailyMultipleItem;
+import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuhomeAdapter;
 import com.mcgrady.xtitlebar.TitleBar;
@@ -36,6 +38,8 @@ import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -52,6 +56,8 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
     private Banner banner;
     private ZhihuhomeAdapter adapter;
+    private LinearLayoutManager linearManager;
+    private int lastTitlePostion = -1;
 
     private AppComponent mAppComponent;
     private com.mcgrady.common_core.http.imageloader.ImageLoader mImageLoader;
@@ -76,8 +82,8 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
         mAppComponent = Utils.obtainAppComponentFromContext(this);
         mImageLoader = mAppComponent.imageLoader();
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        ViewUtils.configRecyclerView(recyclerView, layoutManager);
+        linearManager = new LinearLayoutManager(this);
+        ViewUtils.configRecyclerView(recyclerView, linearManager);
 
         adapter = new ZhihuhomeAdapter(this);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -87,18 +93,61 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
             }
         });
 
-        View header = LayoutInflater.from(this).inflate(R.layout.news_header_banner, null);
-        banner = header.findViewById(R.id.news_banner);
-        banner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.getScreenHeight() / 4));
-        adapter.setHeaderView(header);
-
         adapter.bindToRecyclerView(recyclerView);
+
+        banner = (Banner) LayoutInflater.from(this).inflate(R.layout.news_header_banner, null);
+        banner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.getScreenHeight() / 3));
+        adapter.setHeaderView(banner);
+
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                changeToolbarTitle(dy);
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
 
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setOnLoadMoreListener(this);
         refreshLayout.autoRefresh();
     }
+
+    private void changeToolbarTitle(int dy) {
+        int position = linearManager.findFirstVisibleItemPosition();
+        if (lastTitlePostion == position) {
+            return;
+        }
+
+        int itemType = adapter.getItemViewType(position);
+        if (BaseQuickAdapter.HEADER_VIEW == itemType) {
+            titleBar.setTitle("首页");
+        } else if (dy > 0 && ZhihuhomeAdapter.TYPE_DATE == itemType) {
+            // postion - 1 是因为adapter有headerview
+            DailyMultipleItem<String> dateItem = (DailyMultipleItem<String>) adapter.getItem(position - 1);
+            titleBar.setTitle(adapter.getDateTitle(dateItem.getData()));
+        } else if (dy < 0) {
+            List<MultiItemEntity> subList = new ArrayList<>();
+            subList.addAll(adapter.getData().subList(0, position));
+            Collections.reverse(subList);
+            for (MultiItemEntity itemEntity : subList) {
+                if (ZhihuhomeAdapter.TYPE_DATE == itemEntity.getItemType()) {
+                    titleBar.setTitle(adapter.getDateTitle((String) ((DailyMultipleItem) itemEntity).getData()));
+                    break;
+                }
+            }
+        }
+        lastTitlePostion = position;
+    }
+
+
 
     @Override
     protected void onStart() {
@@ -134,32 +183,28 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     }
 
     @Override
-    public void notifyDataSetChanged(List<DailyListBean.StoriesBean> list) {
-        adapter.setNewData(list);
-        refreshLayout.finishRefresh();
-    }
-
-    @Override
-    public void setBanner(List<DailyListBean.TopStoriesBean> topList) {
-        banner.setImages(topList)
+    public void notifyDataSetChanged(DailyStoriesBean data) {
+        banner.setImages(data.getTop_stories())
             .setImageLoader(new ImageLoader() {
                 @Override
                 public void displayImage(Context context, Object bean, ImageView imageView) {
                     mImageLoader.loadImage(ZhihuHomeActivity.this,
-                        ImageConfigImpl.builder()
-                            .url(((DailyListBean.TopStoriesBean) bean).getImage())
-                            .imageView(imageView)
-                            .build());
+                            ImageConfigImpl.builder()
+                                    .url(((DailyStoriesBean.TopStoriesBean) bean).getImage())
+                                    .imageView(imageView)
+                                    .build());
                 }
             })
             .setOnBannerListener(ZhihuHomeActivity.this)
             .start();
+        adapter.setData(data);
+        refreshLayout.finishRefresh();
     }
 
     @Override
-    public void loadMoreData(List<DailyListBean.StoriesBean> list) {
+    public void loadMoreData(DailyStoriesBean data) {
+        adapter.addData(data);
         refreshLayout.finishLoadMore();
-        adapter.addData(list);
     }
 
     @Override

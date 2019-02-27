@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource"
-    android:background="@android:color/white">
+    android:background="#fff3f3f3"
+    tools:context=".mvp.ui.activity.ZhihuHomeActivity">
 
     <com.mcgrady.xtitlebar.TitleBar
         android:id="@+id/news_titlebar_zhihu_home"
@@ -29,7 +30,6 @@
             android:id="@+id/news_recycler_zhihu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff3f3f3"
             tools:listitem="@layout/news_item_zhihu_home_list"/>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>

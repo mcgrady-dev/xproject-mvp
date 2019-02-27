@@ -8,7 +8,7 @@ import com.mcgrady.common_core.manager.IRepositoryManager;
 import com.mcgrady.common_core.mvp.BaseModel;
 import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
 import com.mcgrady.news.mvp.model.api.ZhihuService;
-import com.mcgrady.news.mvp.model.entity.DailyListBean;
+import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
 
 import javax.inject.Inject;
 
@@ -47,13 +47,13 @@ public class ZhihuModel extends BaseModel implements ZhihuHomeContract.Model {
     }
 
     @Override
-    public Observable<DailyListBean> getDailyList() {
+    public Observable<DailyStoriesBean> getDailyList() {
         return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
                 .getDailyList();
     }
 
     @Override
-    public Observable<DailyListBean> getBeforeDailyList(String date) {
+    public Observable<DailyStoriesBean> getBeforeDailyList(String date) {
         return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
                 .getBeforeDailyList(date);
     }

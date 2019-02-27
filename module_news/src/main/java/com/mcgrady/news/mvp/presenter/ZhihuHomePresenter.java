@@ -10,7 +10,7 @@ import com.mcgrady.common_core.handler.RxErrorHandler;
 import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.common_core.utils.RxLifecycleUtils;
 import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
-import com.mcgrady.news.mvp.model.entity.DailyListBean;
+import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
 
 import javax.inject.Inject;
 
@@ -49,12 +49,11 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
             .doOnSubscribe(disposable -> mRootView.showLoading()).subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(() -> mRootView.hideLoading()).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-            .subscribe(new ErrorHandleSubscriber<DailyListBean>(mErrorHandler) {
+            .subscribe(new ErrorHandleSubscriber<DailyStoriesBean>(mErrorHandler) {
                 @Override
-                public void onNext(DailyListBean dailyListBean) {
-                    mDate = dailyListBean.getDate();
-                    mRootView.setBanner(dailyListBean.getTop_stories());
-                    mRootView.notifyDataSetChanged(dailyListBean.getStories());
+                public void onNext(DailyStoriesBean dailyStoriesBean) {
+                    mDate = dailyStoriesBean.getDate();
+                    mRootView.notifyDataSetChanged(dailyStoriesBean);
                 }
 
                 @Override
@@ -77,11 +76,11 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(() -> mRootView.hideLoading())
             .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-            .subscribe(new ErrorHandleSubscriber<DailyListBean>(mErrorHandler) {
+            .subscribe(new ErrorHandleSubscriber<DailyStoriesBean>(mErrorHandler) {
                 @Override
-                public void onNext(DailyListBean dailyListBean) {
-                    mDate = dailyListBean.getDate();
-                    mRootView.loadMoreData(dailyListBean.getStories());
+                public void onNext(DailyStoriesBean dailyStoriesBean) {
+                    mDate = dailyStoriesBean.getDate();
+                    mRootView.loadMoreData(dailyStoriesBean);
                 }
 
                 @Override
