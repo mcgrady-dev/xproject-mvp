@@ -49,7 +49,7 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
     public void loadImage(Context ctx, ImageConfigImpl config) {
         Preconditions.checkNotNull(ctx, "Context is required");
         Preconditions.checkNotNull(config, "ImageConfigImpl is required");
-        if (TextUtils.isEmpty(config.getUrl())) throw new NullPointerException("Url is required");
+        if (TextUtils.isEmpty(config.getUrl())) throw new NullPointerException("image url is required");
         Preconditions.checkNotNull(config.getImageView(), "ImageView is required");
 
 
@@ -58,7 +58,6 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
         requests = GlideArms.with(ctx);//如果context是activity则自动使用Activity的生命周期
 
         GlideRequest<Drawable> glideRequest = requests.load(config.getUrl());
-//
 
         switch (config.getCacheStrategy()) {//缓存策略
             case 0:

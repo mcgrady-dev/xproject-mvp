@@ -69,10 +69,9 @@ public interface IView {
     }
 
     /**
-     * 杀死自己
+     * {@link Activity#finish()}
      */
-    default void finish() {
-    }
+    void finish();
 
     /**
      * finish load more.
