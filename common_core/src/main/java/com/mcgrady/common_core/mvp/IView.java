@@ -71,7 +71,7 @@ public interface IView {
     /**
      * 杀死自己
      */
-    default void killMyself() {
+    default void finish() {
     }
 
     /**

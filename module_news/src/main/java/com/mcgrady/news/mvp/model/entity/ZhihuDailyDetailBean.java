@@ -24,7 +24,7 @@ import java.util.List;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class ZhihuDetailBean {
+public class ZhihuDailyDetailBean {
     /**
      * body: "<div class="main-wrap content-wrap">...</div>",
      image_source: "Yestone.com 版权图片库",

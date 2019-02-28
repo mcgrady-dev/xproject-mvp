@@ -9,15 +9,15 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
  * @date: 2019/2/26
  */
 
-public class DailyMultipleItem<T> implements MultiItemEntity {
+public class ZhihuDailyMultipleItem<T> implements MultiItemEntity {
 
     private int itemType;
     private T data;
 
-    private DailyMultipleItem() {
+    private ZhihuDailyMultipleItem() {
     }
 
-    public DailyMultipleItem(int itemType, T data) {
+    public ZhihuDailyMultipleItem(int itemType, T data) {
         this.itemType = itemType;
         this.data = data;
     }

@@ -9,8 +9,8 @@ import com.mcgrady.common_core.handler.RetryWithDelay;
 import com.mcgrady.common_core.handler.RxErrorHandler;
 import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.common_core.utils.RxLifecycleUtils;
-import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
-import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
+import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 
 import javax.inject.Inject;
 
@@ -31,14 +31,14 @@ import io.reactivex.schedulers.Schedulers;
  * ================================================
  */
 @ActivityScope
-public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, ZhihuHomeContract.View> {
+public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContract.Model, ZhihuDailyHomeContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
     String mDate;
 
     @Inject
-    public ZhihuHomePresenter(ZhihuHomeContract.Model model, ZhihuHomeContract.View rootView) {
+    public ZhihuDailyHomePresenter(ZhihuDailyHomeContract.Model model, ZhihuDailyHomeContract.View rootView) {
         super(model, rootView);
     }
 
@@ -46,14 +46,15 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
         mModel.getDailyList()
             .subscribeOn(Schedulers.io())
             .retryWhen(new RetryWithDelay(3, 2))
-            .doOnSubscribe(disposable -> mRootView.showLoading()).subscribeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mRootView.hideLoading()).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-            .subscribe(new ErrorHandleSubscriber<DailyStoriesBean>(mErrorHandler) {
+            .doFinally(() -> mRootView.finishRefresh())
+            .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+            .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
-                public void onNext(DailyStoriesBean dailyStoriesBean) {
-                    mDate = dailyStoriesBean.getDate();
-                    mRootView.notifyDataSetChanged(dailyStoriesBean);
+                public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
+                    mDate = zhihuDailyStoriesBean.getDate();
+                    mRootView.notifyDataSetChanged(zhihuDailyStoriesBean);
                 }
 
                 @Override
@@ -71,16 +72,15 @@ public class ZhihuHomePresenter extends BasePresenter<ZhihuHomeContract.Model, Z
         mModel.getBeforeDailyList(mDate)
             .subscribeOn(Schedulers.io())
             .retryWhen(new RetryWithDelay(3, 2))
-            .doOnSubscribe(disposable -> mRootView.showLoading())
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mRootView.hideLoading())
+            .doFinally(() -> mRootView.finishLoadMore())
             .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-            .subscribe(new ErrorHandleSubscriber<DailyStoriesBean>(mErrorHandler) {
+            .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
-                public void onNext(DailyStoriesBean dailyStoriesBean) {
-                    mDate = dailyStoriesBean.getDate();
-                    mRootView.loadMoreData(dailyStoriesBean);
+                public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
+                    mDate = zhihuDailyStoriesBean.getDate();
+                    mRootView.loadMoreData(zhihuDailyStoriesBean);
                 }
 
                 @Override

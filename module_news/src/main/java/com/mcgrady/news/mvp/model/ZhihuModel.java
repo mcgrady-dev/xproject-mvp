@@ -6,9 +6,11 @@ import com.google.gson.Gson;
 import com.mcgrady.common_core.di.scope.ActivityScope;
 import com.mcgrady.common_core.manager.IRepositoryManager;
 import com.mcgrady.common_core.mvp.BaseModel;
-import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
+import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
+import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.api.ZhihuService;
-import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 
 import javax.inject.Inject;
 
@@ -28,7 +30,7 @@ import io.reactivex.Observable;
  * ================================================
  */
 @ActivityScope
-public class ZhihuModel extends BaseModel implements ZhihuHomeContract.Model {
+public class ZhihuModel extends BaseModel implements ZhihuDailyHomeContract.Model, ZhihuDailyDetailContract.Model {
     @Inject
     Gson mGson;
     @Inject
@@ -47,14 +49,20 @@ public class ZhihuModel extends BaseModel implements ZhihuHomeContract.Model {
     }
 
     @Override
-    public Observable<DailyStoriesBean> getDailyList() {
+    public Observable<ZhihuDailyStoriesBean> getDailyList() {
         return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
                 .getDailyList();
     }
 
     @Override
-    public Observable<DailyStoriesBean> getBeforeDailyList(String date) {
+    public Observable<ZhihuDailyStoriesBean> getBeforeDailyList(String date) {
         return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
                 .getBeforeDailyList(date);
+    }
+
+    @Override
+    public Observable<ZhihuDailyDetailBean> getDailyDetail(int dailyId) {
+        return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
+                .getDailyDetail(dailyId);
     }
 }

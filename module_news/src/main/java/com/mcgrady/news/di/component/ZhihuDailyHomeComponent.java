@@ -2,9 +2,9 @@ package com.mcgrady.news.di.component;
 
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.news.di.module.ZhihuHomeModule;
-import com.mcgrady.news.mvp.contract.ZhihuHomeContract;
-import com.mcgrady.news.mvp.ui.activity.ZhihuHomeActivity;
+import com.mcgrady.news.di.module.ZhihuDailyHomeModule;
+import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
+import com.mcgrady.news.mvp.ui.activity.ZhihuDailyHomeActivity;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -23,17 +23,18 @@ import dagger.Component;
  * ================================================
  */
 @ActivityScope
-@Component(modules = ZhihuHomeModule.class, dependencies = AppComponent.class)
-public interface ZhihuHomeComponent {
-    void inject(ZhihuHomeActivity activity);
+@Component(modules = ZhihuDailyHomeModule.class, dependencies = AppComponent.class)
+public interface ZhihuDailyHomeComponent {
+
+    void inject(ZhihuDailyHomeActivity activity);
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        ZhihuHomeComponent.Builder view(ZhihuHomeContract.View view);
+        ZhihuDailyHomeComponent.Builder view(ZhihuDailyHomeContract.View view);
 
-        ZhihuHomeComponent.Builder appComponent(AppComponent appComponent);
+        ZhihuDailyHomeComponent.Builder appComponent(AppComponent appComponent);
 
-        ZhihuHomeComponent build();
+        ZhihuDailyHomeComponent build();
     }
 }

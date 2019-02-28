@@ -1,7 +1,7 @@
 package com.mcgrady.news.mvp.model.api;
 
-import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
-import com.mcgrady.news.mvp.model.entity.ZhihuDetailBean;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
@@ -29,19 +29,19 @@ public interface ZhihuService {
      */
     @Headers({DOMAIN_NAME_HEADER + ZHIHU_DOMAIN_NAME})
     @GET("/api/4/news/latest")
-    Observable<DailyStoriesBean> getDailyList();
+    Observable<ZhihuDailyStoriesBean> getDailyList();
 
     /**
      * 往期日报
      */
     @Headers({DOMAIN_NAME_HEADER + ZHIHU_DOMAIN_NAME})
     @GET("/api/4/news/before/{date}")
-    Observable<DailyStoriesBean> getBeforeDailyList(@Path("date") String date);
+    Observable<ZhihuDailyStoriesBean> getBeforeDailyList(@Path("date") String date);
 
     /**
      * 日报详情
      */
     @Headers({DOMAIN_NAME_HEADER + ZHIHU_DOMAIN_NAME})
     @GET("/api/4/news/{id}")
-    Observable<ZhihuDetailBean> getDetailInfo(@Path("id") int id);
+    Observable<ZhihuDailyDetailBean> getDailyDetail(@Path("id") int id);
 }

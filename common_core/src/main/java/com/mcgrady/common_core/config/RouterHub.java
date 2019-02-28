@@ -31,6 +31,6 @@ public interface RouterHub {
     /**
      * 知乎日报
      */
-    String ZHIHU_HOME = NEWS + "/ZhihuHomeActivity";
+    String ZHIHU_DAILY_HOME = NEWS + "/ZhihuDailyHomeActivity";
     String ZHIHU_DAILY_DETAIL = NEWS + "/ZhihuDailyDetailActivity";
 }

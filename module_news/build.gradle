@@ -5,11 +5,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':common_core')
     api project(':common_res')
     implementation rootProject.ext.dependencies["constraint-layout"]
+    implementation rootProject.ext.dependencies["palette-v7"]
     api rootProject.ext.dependencies["banner"]
     api rootProject.ext.dependencies["sticky-headers-recyclerview"]
     api rootProject.ext.dependencies["agentweb"]

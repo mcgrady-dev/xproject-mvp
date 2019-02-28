@@ -13,8 +13,8 @@ import com.mcgrady.common_core.http.imageloader.ImageLoader;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.interf.IViewHolderRelease;
 import com.mcgrady.news.R;
-import com.mcgrady.news.mvp.model.entity.DailyMultipleItem;
-import com.mcgrady.news.mvp.model.entity.DailyStoriesBean;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
+import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import java.util.Locale;
  * @date: 2019/1/15
  */
 
-public class ZhihuhomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>
+public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>
         implements IViewHolderRelease<BaseViewHolder> {
 
     public static final int TYPE_HEADER = 1;
@@ -39,40 +39,40 @@ public class ZhihuhomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
     private AppComponent appComponent;
     private ImageLoader imageLoader;
 
-    public ZhihuhomeAdapter(Context context) {
+    public ZhihuDailyHomeAdapter(Context context) {
         this(context, new ArrayList());
     }
-    public ZhihuhomeAdapter(Context context, List data) {
+    public ZhihuDailyHomeAdapter(Context context, List data) {
         super(data);
         addItemType(TYPE_HEADER, R.layout.news_header_banner);
-        addItemType(TYPE_DATE, R.layout.news_item_zhihu_date);
-        addItemType(TYPE_ITEM, R.layout.news_item_zhihu_home_list);
+        addItemType(TYPE_DATE, R.layout.news_item_zhihu_daily_date);
+        addItemType(TYPE_ITEM, R.layout.news_item_zhihu_daily_home);
 
         appComponent = Utils.obtainAppComponentFromContext(context);
         imageLoader = appComponent.imageLoader();
     }
 
-    public void setData(DailyStoriesBean data) {
+    public void setData(ZhihuDailyStoriesBean data) {
         List<MultiItemEntity> entities = new ArrayList<>();
 
-        entities.add(new DailyMultipleItem(TYPE_DATE, data.getDate()));
+        entities.add(new ZhihuDailyMultipleItem(TYPE_DATE, data.getDate()));
 
-        List<DailyStoriesBean.StoriesBean> stories = data.getStories();
-        for (DailyStoriesBean.StoriesBean storiesBean : stories) {
-            entities.add(new DailyMultipleItem(TYPE_ITEM, storiesBean));
+        List<ZhihuDailyStoriesBean.StoriesBean> stories = data.getStories();
+        for (ZhihuDailyStoriesBean.StoriesBean storiesBean : stories) {
+            entities.add(new ZhihuDailyMultipleItem(TYPE_ITEM, storiesBean));
         }
 
         setNewData(entities);
     }
 
-    public void addData(DailyStoriesBean data) {
+    public void addData(ZhihuDailyStoriesBean data) {
         List<MultiItemEntity> entities = new ArrayList<>();
 
-        entities.add(new DailyMultipleItem(TYPE_DATE, data.getDate()));
+        entities.add(new ZhihuDailyMultipleItem(TYPE_DATE, data.getDate()));
 
-        List<DailyStoriesBean.StoriesBean> stories = data.getStories();
-        for (DailyStoriesBean.StoriesBean storiesBean : stories) {
-            entities.add(new DailyMultipleItem(TYPE_ITEM, storiesBean));
+        List<ZhihuDailyStoriesBean.StoriesBean> stories = data.getStories();
+        for (ZhihuDailyStoriesBean.StoriesBean storiesBean : stories) {
+            entities.add(new ZhihuDailyMultipleItem(TYPE_ITEM, storiesBean));
         }
 
         addData(entities);
@@ -83,10 +83,10 @@ public class ZhihuhomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
         int itemType = item.getItemType();
         switch (itemType) {
             case TYPE_DATE:
-                helper.setText(R.id.news_tv_date, getDateTitle((String) ((DailyMultipleItem) item).getData()));
+                helper.setText(R.id.news_tv_date, getDateTitle((String) ((ZhihuDailyMultipleItem) item).getData()));
                 break;
             case TYPE_ITEM:
-                DailyStoriesBean.StoriesBean storiesBean = (DailyStoriesBean.StoriesBean) ((DailyMultipleItem) item).getData();
+                ZhihuDailyStoriesBean.StoriesBean storiesBean = (ZhihuDailyStoriesBean.StoriesBean) ((ZhihuDailyMultipleItem) item).getData();
 
                 helper.setText(R.id.list_item_title, storiesBean.getTitle());
                 List<String> imageList = storiesBean.getImages();

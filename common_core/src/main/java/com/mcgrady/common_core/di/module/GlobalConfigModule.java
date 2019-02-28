@@ -129,7 +129,7 @@ public class GlobalConfigModule {
 
 
     /**
-     * 提供图片加载框架,默认使用 {@link Glide}
+     * 提供图片加载框架,默认使用 {@link com.bumptech.glide.Glide}
      *
      * @return
      */

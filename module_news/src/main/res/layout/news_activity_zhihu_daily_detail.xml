@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/news_cl_container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,16 +10,15 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="224dp"
+        android:layout_height="256dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints"
-        android:background="@color/white"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@android:color/transparent"
             app:statusBarScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -34,7 +34,36 @@
                     android:id="@+id/news_iv_daily_header"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/color_06CB7E"/>
+                    tools:background="@color/color_06CB7E"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/shape_text_gradient"
+                    android:layout_gravity="bottom"/>
+
+                <TextView
+                    android:id="@+id/news_tv_daily_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"
+                    tools:text="他，想恒威撒旦发射点" />
+
+                <TextView
+                    android:id="@+id/news_tv_img_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="15dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    tools:text="国家公园" />
 
             </FrameLayout>
 
@@ -51,7 +80,7 @@
                 <com.mcgrady.xtitlebar.TitleBar
                     android:id="@+id/news_titlebar_zhihu_home"
                     android:layout_width="match_parent"
-                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_height="match_parent"
                     app:leftDrawableRes="@mipmap/public_ic_back_mtrl_am_alpha"
                     app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"
                     app:titleBarColor="@color/color_transparent"/>
@@ -61,102 +90,5 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
-
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textSize="18sp"
-                android:background="@color/color_53A8F4"
-                android:padding="20dp"
-                android:layout_marginTop="20dp"/>
-        </LinearLayout>
-
-
-    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
