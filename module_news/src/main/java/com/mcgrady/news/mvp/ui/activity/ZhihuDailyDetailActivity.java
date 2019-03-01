@@ -118,6 +118,7 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
                                 int rbg = vibrant.getRgb();
                                 ctbLayout.setContentScrimColor(rbg);
+                                StatusBarUtil.setColor(ZhihuDailyDetailActivity.this, changeRGBColor(rbg));
                             }
                         });
                     }
