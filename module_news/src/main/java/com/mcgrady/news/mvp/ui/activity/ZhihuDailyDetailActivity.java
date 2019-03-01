@@ -1,11 +1,18 @@
 package com.mcgrady.news.mvp.ui.activity;
 
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.graphics.Palette;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +25,7 @@ import com.mcgrady.common_core.config.RouterHub;
 import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
 import com.mcgrady.common_core.http.imageloader.ImageLoader;
+import com.mcgrady.common_core.http.imageloader.ImageRequestListener;
 import com.mcgrady.common_core.utils.HtmlUtils;
 import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.news.R;
@@ -43,6 +51,8 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     TextView tvImgSource;
     @BindView(R2.id.news_cl_container)
     CoordinatorLayout coordinatorLayout;
+    @BindView(R2.id.news_ctoolbar_layout)
+    CollapsingToolbarLayout ctbLayout;
 
     private AppComponent appComponent;
     private ImageLoader imageLoader;
@@ -91,6 +101,27 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
                 .url(dailyImgUrl)
                 .isCropCenter(true)
                 .imageView(ivDailyHeader)
+                .addListener(new ImageRequestListener() {
+                    @Override
+                    public void onLoadSuccess(Drawable resource) {
+                        BitmapDrawable bmpDraw = (BitmapDrawable) resource;
+                        Palette.from(bmpDraw.getBitmap()).generate(new Palette.PaletteAsyncListener() {
+                            @Override
+                            public void onGenerated(@Nullable Palette palette) {
+                                Palette.Swatch vibrant = palette.getVibrantSwatch();
+                                if (vibrant == null) {
+                                    for (Palette.Swatch swatch : palette.getSwatches()) {
+                                        vibrant = swatch;
+                                        break;
+                                    }
+                                }
+
+                                int rbg = vibrant.getRgb();
+                                ctbLayout.setContentScrimColor(rbg);
+                            }
+                        });
+                    }
+                })
                 .build());
 
         if (mPresenter != null) {
@@ -117,5 +148,20 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
                 .ready()
                 .go("");
         agentWeb.getUrlLoader().loadData(htmlUrl, HtmlUtils.MIME_TYPE, "UTF-8");
+    }
+
+    /**
+     * RGB颜色进行位运算处理
+     * @param rgb
+     * @return
+     */
+    private int changeRGBColor(int rgb) {
+        int red = rgb >> 16 & 0xFF;
+        int green = rgb >> 8 & 0xFF;
+        int blue = rgb & 0xFF;
+        red = (int) Math.floor(red * (1 - 0.2));
+        green = (int) Math.floor(green * (1 - 0.2));
+        blue = (int) Math.floor(blue * (1 - 0.2));
+        return Color.rgb(red, green, blue);
     }
 }

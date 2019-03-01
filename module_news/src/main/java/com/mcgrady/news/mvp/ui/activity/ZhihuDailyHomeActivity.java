@@ -93,15 +93,22 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
         adapter = new ZhihuDailyHomeAdapter(this);
         adapter.setOnItemClickListener((adapter, view, position) -> {
-            ZhihuDailyMultipleItem<ZhihuDailyStoriesBean.StoriesBean> itemEntity =
-                    (ZhihuDailyMultipleItem<ZhihuDailyStoriesBean.StoriesBean>) adapter.getItem(position);
+            int itemTpye = adapter.getItemViewType(position);
+            switch (itemTpye) {
+                case ZhihuDailyHomeAdapter.TYPE_ITEM:
+                    ZhihuDailyMultipleItem<ZhihuDailyStoriesBean.StoriesBean> itemEntity =
+                            (ZhihuDailyMultipleItem<ZhihuDailyStoriesBean.StoriesBean>) adapter.getItem(position);
 
-            ARouter.getInstance().build(RouterHub.ZHIHU_DAILY_DETAIL)
-                    .withInt("daily_id", itemEntity.getData().getId())
-                    .withString("daily_title", itemEntity.getData().getTitle())
-                    .withString("daily_img_url", itemEntity.getData().getImages() == null ?
-                            "" :itemEntity.getData().getImages().get(0))
-                    .navigation(ZhihuDailyHomeActivity.this);
+                    ARouter.getInstance().build(RouterHub.ZHIHU_DAILY_DETAIL)
+                            .withInt("daily_id", itemEntity.getData().getId())
+                            .withString("daily_title", itemEntity.getData().getTitle())
+                            .withString("daily_img_url", itemEntity.getData().getImages() == null ?
+                                    "" :itemEntity.getData().getImages().get(0))
+                            .navigation(ZhihuDailyHomeActivity.this);
+                    break;
+                default:
+                    break;
+            }
         });
 
         adapter.bindToRecyclerView(recyclerView);
