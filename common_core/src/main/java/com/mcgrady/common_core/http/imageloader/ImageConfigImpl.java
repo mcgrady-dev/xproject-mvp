@@ -45,6 +45,7 @@ public class ImageConfigImpl extends ImageConfig {
     private int imageRadius;//图片每个圆角的大小
     private int blurValue;//高斯模糊值, 值越大模糊效果越大
     private boolean isCrossFade;//是否使用淡入淡出过渡动画
+    private ImageRequestListener requestListener;
 
     private ImageConfigImpl(Builder builder) {
         this.url = builder.url;
@@ -67,6 +68,7 @@ public class ImageConfigImpl extends ImageConfig {
         this.isCrossFade = builder.isCrossFade;
         this.imageRadius = builder.imageRadius;
         this.blurValue = builder.blurValue;
+        this.requestListener = builder.requestListener;
     }
 
     public int getCacheStrategy() {
@@ -133,6 +135,10 @@ public class ImageConfigImpl extends ImageConfig {
         return imageRadius > 0;
     }
 
+    public ImageRequestListener getRequestListener() {
+        return requestListener;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -159,6 +165,7 @@ public class ImageConfigImpl extends ImageConfig {
         public DecodeFormat formate;
         public boolean isFitCenter;
         private int resizeY;
+        private ImageRequestListener requestListener;
 
         private Builder() {
         }
@@ -256,6 +263,12 @@ public class ImageConfigImpl extends ImageConfig {
             this.isFitCenter = isFitCenter;
             return this;
         }
+
+        public Builder addListener(ImageRequestListener val) {
+            this.requestListener = val;
+            return this;
+        }
+
         public ImageConfigImpl build() {
             return new ImageConfigImpl(this);
         }
