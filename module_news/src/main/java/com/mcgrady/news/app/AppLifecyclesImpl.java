@@ -12,6 +12,7 @@ import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.widget.MaterialHeader;
 import com.mcgrady.news.BuildConfig;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -68,7 +69,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
                 return new MaterialHeader(context);
             });
 
-            SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new ClassicsFooter(context));
+            SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new BallPulseFooter(context));
         }
     }
 
