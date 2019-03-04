@@ -11,14 +11,14 @@ ext {
 
     version = [
             androidSupportSdkVersion: "28.0.0",
-            retrofitSdkVersion      : "2.4.0",
-            dagger2SdkVersion       : "2.19",
-            glideSdkVersion         : "4.8.0",
+            retrofitSdkVersion      : "2.5.0",
+            dagger2SdkVersion       : "2.21",
+            glideSdkVersion         : "4.9.0",
             butterknifeSdkVersion   : "8.8.1",
-            rxlifecycleSdkVersion   : "1.0",
             rxlifecycle2SdkVersion  : "2.2.2",
+            rxlifecycle3SdkVersion  : "3.0.0",
             espressoSdkVersion      : "3.0.1",
-            canarySdkVersion        : "1.5.4"
+            canarySdkVersion        : "1.6.3"
     ]
 
     dependencies = [
@@ -37,7 +37,7 @@ ext {
             "retrofit-converter-gson"  : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
             "retrofit-adapter-rxjava"  : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
             "retrofit-adapter-rxjava2" : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
-            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.12.0",
+            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.13.1",
             "okhttp-urlconnection"     : "com.squareup.okhttp:okhttp-urlconnection:2.0.0",
             "glide"                    : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
             "glide-compiler"           : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
@@ -46,6 +46,7 @@ ext {
 
             //view
             "autolayout"               : "com.zhy:autolayout:1.4.5",
+            "autosize"                 : "me.jessyan:autosize:1.1.1",
             "butterknife"              : "com.jakewharton:butterknife:${version["butterknifeSdkVersion"]}",
             "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
             "pickerview"               : "com.contrarywind:Android-PickerView:3.2.5",
@@ -55,9 +56,8 @@ ext {
             "paginate"                 : "com.github.markomilos:paginate:0.5.1",
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "lottie"                   : "com.airbnb.android:lottie:2.7.0",
-            "autosize"                 : "me.jessyan:autosize:1.1.1",
             "toast"                    : "com.hjq:toast:5.2",
-            "basepopup"                : "com.github.razerdp:BasePopup:2.1.1",
+            "basepopup"                : "com.github.razerdp:BasePopup:2.1.8",
             "baseadapter"              : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46",
             "ucrop"                    : "com.github.yalantis:ucrop:2.2.2",
             "smart-refreshlayout"      : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20",
@@ -67,19 +67,17 @@ ext {
             "sticky-headers-recyclerview" : "com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar",
             "agentweb"                 : "com.just.agentweb:agentweb:4.0.2",
 
-            //rx1
-            "rxlifecycle"              : "com.trello:rxlifecycle:${version["rxlifecycleSdkVersion"]}",
-            "rxlifecycle-components"   : "com.trello:rxlifecycle-components:${version["rxlifecycleSdkVersion"]}",
-            "rxcache"                  : "com.github.VictorAlbertos.RxCache:runtime:1.7.0-1.x",
-            "rxcache-jolyglot-gson"    : "com.github.VictorAlbertos.Jolyglot:gson:0.0.4",
-
             //rx2
-            "rxandroid2"               : "io.reactivex.rxjava2:rxandroid:2.1.0",
-            "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.2.4",
+            "rxandroid2"               : "io.reactivex.rxjava2:rxandroid:2.1.1",
+            "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.2.7",
             "rxlifecycle2"             : "com.trello.rxlifecycle2:rxlifecycle:${version["rxlifecycle2SdkVersion"]}",
             "rxlifecycle2-android"     : "com.trello.rxlifecycle2:rxlifecycle-android:${version["rxlifecycle2SdkVersion"]}",
             "rxlifecycle2-components"  : "com.trello.rxlifecycle2:rxlifecycle-components:${version["rxlifecycle2SdkVersion"]}",
+            "rxlifecycle3"             : "com.trello.rxlifecycle3:rxlifecycle:${version["rxlifecycle3SdkVersion"]}",
+            "rxlifecycle3-android"     : "com.trello.rxlifecycle3:rxlifecycle-android:${version["rxlifecycle3SdkVersion"]}",
+            "rxlifecycle3-components"  : "com.trello.rxlifecycle3:rxlifecycle-components:${version["rxlifecycle3SdkVersion"]}",
             "rxcache2"                 : "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x",
+            "rxcache-jolyglot-gson"    : "com.github.VictorAlbertos.Jolyglot:gson:0.0.4",
             "rxpermissions2"           : "com.github.tbruyelle:rxpermissions:0.10.2",
 
             //tools
@@ -99,7 +97,7 @@ ext {
             "progressmanager"          : "me.jessyan:progressmanager:1.5.0",
             "retrofit-url-manager"     : "me.jessyan:retrofit-url-manager:1.4.0",
             "lifecyclemodel"           : "me.jessyan:lifecyclemodel:1.0.1",
-            "util-code"                : "com.blankj:utilcode:1.22.4",
+            "util-code"                : "com.blankj:utilcode:1.23.6",
             "fragmentation"            : "me.yokeyword:fragmentation:1.3.6",
             "rxpermissions"            : "com.github.tbruyelle:rxpermissions:0.10.2",
             "xpay"                     : "com.mcgrady:xpay:1.0.1",
