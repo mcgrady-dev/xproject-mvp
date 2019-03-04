@@ -1,8 +1,10 @@
 package com.mcgrady.common_res.utils;
 
+import android.app.Activity;
 import android.os.Build;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -57,5 +59,27 @@ public class ViewUtils {
         } else {
             return UUID.randomUUID().hashCode();
         }
+    }
+
+    /**
+     * 获取屏幕可用宽度
+     * @param activity
+     * @return
+     */
+    public static int getScreenWidthWithoutVirtualBar(Activity activity) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
+
+    /**
+     * 获取屏幕可用高度
+     * @param activity
+     * @return
+     */
+    public static int getScreenHeightWithoutVirtualBar(Activity activity) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.heightPixels;
     }
 }
