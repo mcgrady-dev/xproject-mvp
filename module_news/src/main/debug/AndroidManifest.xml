@@ -14,7 +14,7 @@
     <application
         android:name="com.mcgrady.common_core.base.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_glod_logo"
+        android:icon="@mipmap/zhihu_ic_launcher"
         android:label="news"
         android:networkSecurityConfig="@xml/public_network_security_config"
         android:supportsRtl="true"

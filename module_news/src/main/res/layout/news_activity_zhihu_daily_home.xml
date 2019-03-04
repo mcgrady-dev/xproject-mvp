@@ -17,7 +17,7 @@
         app:titleColor="@color/white"
         app:titleSize="18sp"
         app:titleGravity="left"
-        app:leftDrawableRes="@mipmap/public_ic_back_mtrl_am_alpha"
+        app:leftDrawableRes="@drawable/public_ic_menu"
         app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"
         app:titleBarColor="#3983F4"/>
 
