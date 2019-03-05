@@ -21,8 +21,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
-import com.trello.rxlifecycle2.RxLifecycle;
-import com.trello.rxlifecycle2.android.FragmentEvent;
+import com.trello.rxlifecycle3.android.FragmentEvent;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

@@ -1,4 +1,4 @@
-package com.mcgrady.shop.app.mvp.ui.weiget;
+package com.mcgrady.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.view.LayoutInflater;

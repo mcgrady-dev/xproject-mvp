@@ -3,6 +3,7 @@ package com.mcgrady.xproject.app;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.mcgrady.common_core.base.delegate.AppLifecycles;
@@ -33,6 +34,8 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void onCreate(@NonNull Application application) {
+        MultiDex.install(application);
+
         if (LeakCanary.isInAnalyzerProcess(application)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.

@@ -16,6 +16,8 @@ android {
         versionName rootProject.ext.android["versionName"]
 
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -51,6 +53,8 @@ dependencies {
     }
     api rootProject.ext.dependencies["annotations"]
 
+    api rootProject.ext.dependencies["multidex"]
+
     //view
     compileOnly rootProject.ext.dependencies["autolayout"]
     api(rootProject.ext.dependencies["butterknife"]) {
@@ -71,11 +75,11 @@ dependencies {
     implementation(rootProject.ext.dependencies["rxcache-jolyglot-gson"]) {
         exclude module: 'gson'
     }
-    api(rootProject.ext.dependencies["rxlifecycle2"]) {
+    api(rootProject.ext.dependencies["rxlifecycle3"]) {
         exclude module: 'rxjava'
         exclude module: 'jsr305'
     }
-    api(rootProject.ext.dependencies["rxlifecycle2-android"]) {
+    api(rootProject.ext.dependencies["rxlifecycle3-android"]) {
         exclude module: 'support-annotations'
         exclude module: 'rxjava'
         exclude module: 'rxandroid'

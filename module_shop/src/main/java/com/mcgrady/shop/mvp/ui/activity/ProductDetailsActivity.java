@@ -1,4 +1,4 @@
-package com.mcgrady.shop.app.mvp.ui.activity;
+package com.mcgrady.shop.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,9 +11,9 @@ import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_res.widget.NoScrollViewPager;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
-import com.mcgrady.shop.app.mvp.contract.ProductDetailsContract;
-import com.mcgrady.shop.app.mvp.presenter.ProductDetailsPresenter;
-import com.mcgrady.shop.app.mvp.ui.weiget.ProductSkuPopup;
+import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
+import com.mcgrady.shop.mvp.presenter.ProductDetailsPresenter;
+import com.mcgrady.shop.mvp.ui.weiget.ProductSkuPopup;
 import com.mcgrady.xtitlebar.TitleBar;
 
 import butterknife.BindView;

@@ -33,7 +33,7 @@ import com.mcgrady.common_core.cache.CacheType;
 import com.mcgrady.common_core.lifecycle.FragmentLifecycleable;
 import com.mcgrady.common_core.mvp.IPresenter;
 import com.mcgrady.common_core.utils.Utils;
-import com.trello.rxlifecycle2.android.FragmentEvent;
+import com.trello.rxlifecycle3.android.FragmentEvent;
 
 import javax.inject.Inject;
 

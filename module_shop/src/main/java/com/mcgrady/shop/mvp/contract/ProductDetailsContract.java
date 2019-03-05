@@ -1,4 +1,4 @@
-package com.mcgrady.shop.app.mvp.contract;
+package com.mcgrady.shop.mvp.contract;
 
 import com.mcgrady.common_core.mvp.IModel;
 import com.mcgrady.common_core.mvp.IView;

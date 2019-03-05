@@ -1,4 +1,4 @@
-package com.mcgrady.shop.app.mvp.ui.weiget;
+package com.mcgrady.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.mcgrady.common_res.utils.ViewUtils;
-import com.mcgrady.shop.app.mvp.model.bean.SkuAttribute;
+import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
 
 import java.util.List;
 

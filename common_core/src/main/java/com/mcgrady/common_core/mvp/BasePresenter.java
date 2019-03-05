@@ -26,7 +26,6 @@ import android.support.v4.app.SupportActivity;
 import android.view.View;
 
 import com.mcgrady.common_core.utils.Preconditions;
-import com.trello.rxlifecycle2.RxLifecycle;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
