@@ -54,7 +54,6 @@ dependencies {
     api rootProject.ext.dependencies["multidex"]
 
     //view
-    compileOnly rootProject.ext.dependencies["autolayout"]
     api(rootProject.ext.dependencies["butterknife"]) {
         exclude module: 'support-annotations'
         exclude module: 'support-compat'

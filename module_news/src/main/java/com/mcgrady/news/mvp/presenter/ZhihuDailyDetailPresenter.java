@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
- * <p>类说明</p>
+ * <p>知乎日报详情Presenter</p>
  *
  * @author: mcgrady
  * @date: 2019/2/28
