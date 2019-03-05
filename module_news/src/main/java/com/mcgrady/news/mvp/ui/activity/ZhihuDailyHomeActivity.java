@@ -93,17 +93,15 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
         adapter = new ZhihuDailyHomeAdapter(this);
         adapter.setOnItemClickListener((adapter, view, position) -> {
-            int itemTpye = adapter.getItemViewType(position);
-            switch (itemTpye) {
+            ZhihuDailyMultipleItem itemEntity = (ZhihuDailyMultipleItem) adapter.getItem(position);
+            switch (itemEntity.getItemType()) {
                 case ZhihuDailyHomeAdapter.TYPE_ITEM:
-                    ZhihuDailyMultipleItem<ZhihuDailyStoriesBean.StoriesBean> itemEntity =
-                            (ZhihuDailyMultipleItem<ZhihuDailyStoriesBean.StoriesBean>) adapter.getItem(position);
-
+                    ZhihuDailyStoriesBean.StoriesBean storiesBean = (ZhihuDailyStoriesBean.StoriesBean) itemEntity.getData();
                     ARouter.getInstance().build(RouterHub.ZHIHU_DAILY_DETAIL)
-                            .withInt("daily_id", itemEntity.getData().getId())
-                            .withString("daily_title", itemEntity.getData().getTitle())
-                            .withString("daily_img_url", itemEntity.getData().getImages() == null ?
-                                    "" :itemEntity.getData().getImages().get(0))
+                            .withInt("daily_id", storiesBean.getId())
+                            .withString("daily_title", storiesBean.getTitle())
+                            .withString("daily_img_url", storiesBean.getImages() == null ?
+                                    "" :storiesBean.getImages().get(0))
                             .navigation(ZhihuDailyHomeActivity.this);
                     break;
                 default:
