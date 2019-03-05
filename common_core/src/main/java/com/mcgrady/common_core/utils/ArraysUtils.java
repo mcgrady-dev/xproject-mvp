@@ -20,7 +20,7 @@ public class ArraysUtils {
      * @param <T>
      * @return 返回拆分后的各个集合
      */
-    public static  <T> List<List<T>> split(List<T> resList, int count){
+    public static  <T> List<List<T>> split(List<T> resList, int count) {
 
         if (resList == null || count < 1) {
             return null;
