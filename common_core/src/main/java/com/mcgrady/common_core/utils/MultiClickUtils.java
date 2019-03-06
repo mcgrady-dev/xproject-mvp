@@ -7,7 +7,7 @@ package com.mcgrady.core.utils;
  * @date: 2018/9/3
  */
 
-public class MultiClickUtil {
+public class MultiClickUtils {
 
     private static final long CLICK_INTERVAL = 500L;
     private static long lastClickTime = 0L;
