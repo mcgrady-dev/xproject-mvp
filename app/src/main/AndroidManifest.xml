@@ -21,6 +21,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
+        <meta-data
+            android:name="com.mcgrady.common_core.config.AppConfig"
+            android:value="ConfigModule"/>
+
+        <meta-data
+            android:name="com.mcgrady.common_core.config.AppConfig"
+            android:value="ConfigModule"/>
+
     </application>
 
 </manifest>
