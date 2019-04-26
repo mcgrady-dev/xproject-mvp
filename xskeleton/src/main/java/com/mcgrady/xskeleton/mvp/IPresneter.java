@@ -7,5 +7,5 @@ public interface IPresneter {
 
     void onStart();
 
-    void onDestory();
+    void onDestroy();
 }

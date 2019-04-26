@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 /**
  * 用来管理网络请求层,以及数据缓存层,以后可能添加数据库请求层
+ *
  * Created by mcgrady on 2019/4/25.
  */
 public interface IRepositoryManager {
