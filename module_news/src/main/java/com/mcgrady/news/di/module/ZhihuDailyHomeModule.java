@@ -2,9 +2,9 @@ package com.mcgrady.news.di.module;
 
 import android.annotation.SuppressLint;
 
-import com.mcgrady.common_core.di.scope.ActivityScope;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.ZhihuModel;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
 
 import dagger.Binds;
 import dagger.Module;

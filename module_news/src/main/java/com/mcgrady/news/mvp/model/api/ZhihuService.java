@@ -9,8 +9,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
-import static com.mcgrady.common_core.manager.RetrofitUrlManager.DOMAIN_NAME_HEADER;
 import static com.mcgrady.news.mvp.model.api.Api.ZHIHU_DOMAIN_NAME;
+import static com.mcgrady.xskeleton.http.RetrofitUrlManager.DOMAIN_NAME_HEADER;
 
 
 /**

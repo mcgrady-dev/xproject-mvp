@@ -1,10 +1,10 @@
 package com.mcgrady.news.di.component;
 
-import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.di.scope.ActivityScope;
 import com.mcgrady.news.di.module.ZhihuDaliyDetailModule;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.ui.activity.ZhihuDailyDetailActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
 
 import dagger.BindsInstance;
 import dagger.Component;

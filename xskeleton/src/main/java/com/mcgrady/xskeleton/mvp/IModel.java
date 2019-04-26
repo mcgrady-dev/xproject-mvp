@@ -5,5 +5,5 @@ package com.mcgrady.xskeleton.mvp;
  */
 public interface IModel {
 
-    void onDestory();
+    void onDestroy();
 }

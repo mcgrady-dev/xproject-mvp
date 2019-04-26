@@ -3,14 +3,14 @@ package com.mcgrady.news.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.manager.IRepositoryManager;
-import com.mcgrady.common_core.mvp.BaseModel;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.api.ZhihuService;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.integration.IRepositoryManager;
+import com.mcgrady.xskeleton.mvp.BaseModel;
 
 import javax.inject.Inject;
 

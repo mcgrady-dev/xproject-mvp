@@ -34,12 +34,12 @@ import io.reactivex.subjects.Subject;
  * Created by mcgrady on 2019/4/26.
  */
 @Singleton
-public class ActivityLifecycleForRxLifecycle implements Application.ActivityLifecycleCallbacks {
+public class ActivityRxLifecycle implements Application.ActivityLifecycleCallbacks {
     @Inject
     Lazy<FragmentLifecycleForRxLifecycle> mFragmentLifecycle;
 
     @Inject
-    public ActivityLifecycleForRxLifecycle() {
+    public ActivityRxLifecycle() {
     }
 
     /**

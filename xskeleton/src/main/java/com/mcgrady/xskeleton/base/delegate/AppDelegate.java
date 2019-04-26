@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import com.mcgrady.xskeleton.base.IApp;
 import com.mcgrady.xskeleton.cache.IntelligentCache;
 import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.di.component.DaggerAppComponent;
 import com.mcgrady.xskeleton.di.module.AppConfigModule;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.integration.ManifestParser;
@@ -37,8 +38,8 @@ public class AppDelegate implements IApp, AppLifecycles {
     @Named("ActivityLifecycle")
     protected Application.ActivityLifecycleCallbacks mActivityLifecycle;
     @Inject
-    @Named("ActivityLifecycleForRxLifecycle")
-    protected Application.ActivityLifecycleCallbacks mActivityLifecycleForRxLifecycle;
+    @Named("ActivityRxLifecycle")
+    protected Application.ActivityLifecycleCallbacks mActivityRxLifecycle;
     private List<ConfigModule> mModules;
     private List<AppLifecycles> mAppLifecycles = new ArrayList<>();
     private List<Application.ActivityLifecycleCallbacks> mActivityLifecycles = new ArrayList<>();
@@ -75,7 +76,7 @@ public class AppDelegate implements IApp, AppLifecycles {
         mAppComponent = DaggerAppComponent
                 .builder()
                 .application(mApplication)//提供application
-                .globalConfigModule(getGlobalConfigModule(mApplication, mModules))//全局配置
+                .appConfigModule(getAppConfigModule(mApplication, mModules))//全局配置
                 .build();
         mAppComponent.inject(this);
 
@@ -91,7 +92,7 @@ public class AppDelegate implements IApp, AppLifecycles {
         mApplication.registerActivityLifecycleCallbacks(mActivityLifecycle);
 
         //注册框架内部已实现的 RxLifecycle 逻辑
-        mApplication.registerActivityLifecycleCallbacks(mActivityLifecycleForRxLifecycle);
+        mApplication.registerActivityLifecycleCallbacks(mActivityRxLifecycle);
 
         //注册框架外部, 开发者扩展的 Activity 生命周期逻辑
         //每个 ConfigModule 的实现类可以声明多个 Activity 的生命周期回调
@@ -116,8 +117,8 @@ public class AppDelegate implements IApp, AppLifecycles {
         if (mActivityLifecycle != null) {
             mApplication.unregisterActivityLifecycleCallbacks(mActivityLifecycle);
         }
-        if (mActivityLifecycleForRxLifecycle != null) {
-            mApplication.unregisterActivityLifecycleCallbacks(mActivityLifecycleForRxLifecycle);
+        if (mActivityRxLifecycle != null) {
+            mApplication.unregisterActivityLifecycleCallbacks(mActivityRxLifecycle);
         }
         if (mComponentCallback != null) {
             mApplication.unregisterComponentCallbacks(mComponentCallback);
@@ -134,7 +135,7 @@ public class AppDelegate implements IApp, AppLifecycles {
         }
         this.mAppComponent = null;
         this.mActivityLifecycle = null;
-        this.mActivityLifecycleForRxLifecycle = null;
+        this.mActivityRxLifecycle = null;
         this.mActivityLifecycles = null;
         this.mComponentCallback = null;
         this.mAppLifecycles = null;
@@ -147,10 +148,10 @@ public class AppDelegate implements IApp, AppLifecycles {
      *
      * @return AppConfigModule
      */
-    private AppConfigModule getGlobalConfigModule(Context context, List<ConfigModule> modules) {
+    private AppConfigModule getAppConfigModule(Context context, List<ConfigModule> modules) {
         AppConfigModule.Builder builder = AppConfigModule.builder();
 
-        //遍历 ConfigModule 集合, 给全局配置 GlobalConfigModule 添加参数
+        //遍历 ConfigModule 集合, 给全局配置 AppConfigModule 添加参数
         for (ConfigModule module : modules) {
             module.applyOptions(context, builder);
         }

@@ -1,9 +1,8 @@
 package com.mcgrady.news.mvp.contract;
 
-
-import com.mcgrady.common_core.mvp.IModel;
-import com.mcgrady.common_core.mvp.IView;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xskeleton.mvp.IModel;
+import com.mcgrady.xskeleton.mvp.IView;
 
 import io.reactivex.Observable;
 
@@ -29,7 +28,7 @@ public interface ZhihuDailyHomeContract {
 
         void finishRefresh();
 
-        void finishLoadMore();
+        void finishLoadMore(boolean success);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存

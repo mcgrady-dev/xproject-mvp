@@ -14,7 +14,7 @@ public class BaseModel implements IModel {
     }
 
     @Override
-    public void onDestory() {
+    public void onDestroy() {
 
     }
 }

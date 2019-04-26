@@ -14,7 +14,6 @@ import com.mcgrady.xskeleton.utils.Utils;
  * Created by mcgrady on 2019/4/25.
  */
 public class BaseApplication extends Application implements IApp {
-
     private AppLifecycles mAppDelegate;
 
     /**

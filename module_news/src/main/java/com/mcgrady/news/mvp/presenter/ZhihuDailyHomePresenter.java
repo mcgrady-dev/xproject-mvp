@@ -3,14 +3,14 @@ package com.mcgrady.news.mvp.presenter;
 import android.text.TextUtils;
 
 import com.hjq.toast.ToastUtils;
-import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.handler.ErrorHandleSubscriber;
-import com.mcgrady.common_core.handler.RetryWithDelay;
-import com.mcgrady.common_core.handler.RxErrorHandler;
-import com.mcgrady.common_core.mvp.BasePresenter;
-import com.mcgrady.common_core.utils.RxLifecycleUtils;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.http.handler.ErrorHandleSubscriber;
+import com.mcgrady.xskeleton.http.handler.RetryWithDelay;
+import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
+import com.mcgrady.xskeleton.mvp.BasePresenter;
+import com.mcgrady.xskeleton.utils.RxLifecycleUtils;
 
 import javax.inject.Inject;
 
@@ -48,13 +48,13 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mRootView.finishRefresh())
-            .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+            .doFinally(() -> mView.finishRefresh())
+            .compose(RxLifecycleUtils.bindToLifecycle(mView))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mRootView.notifyDataSetChanged(zhihuDailyStoriesBean);
+                    mView.notifyDataSetChanged(zhihuDailyStoriesBean);
                 }
 
                 @Override
@@ -74,19 +74,19 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mRootView.finishLoadMore())
-            .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+            .doFinally(() -> mView.finishLoadMore(true))
+            .compose(RxLifecycleUtils.bindToLifecycle(mView))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mRootView.loadMoreData(zhihuDailyStoriesBean);
+                    mView.loadMoreData(zhihuDailyStoriesBean);
                 }
 
                 @Override
                 public void onError(Throwable t) {
                     super.onError(t);
-                    mRootView.finishLoadMore(false);
+                    mView.finishLoadMore(true);
                 }
             });
     }

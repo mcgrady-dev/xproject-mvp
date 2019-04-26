@@ -12,6 +12,8 @@ import com.mcgrady.xskeleton.di.module.AppConfigModule;
 import java.util.List;
 
 /**
+ * 可以给框架配置一些参数,需在 AndroidManifest 中声明实现类
+ *
  * Created by mcgrady on 2019/4/25.
  */
 public interface ConfigModule {

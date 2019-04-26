@@ -4,15 +4,14 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.SupportActivity;
-
-import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.handler.ErrorHandleSubscriber;
-import com.mcgrady.common_core.handler.RetryWithDelay;
-import com.mcgrady.common_core.handler.RxErrorHandler;
-import com.mcgrady.common_core.mvp.BasePresenter;
-import com.mcgrady.common_core.utils.RxLifecycleUtils;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.http.handler.ErrorHandleSubscriber;
+import com.mcgrady.xskeleton.http.handler.RetryWithDelay;
+import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
+import com.mcgrady.xskeleton.mvp.BasePresenter;
+import com.mcgrady.xskeleton.utils.RxLifecycleUtils;
 
 import javax.inject.Inject;
 
@@ -48,12 +47,12 @@ public class ZhihuDailyDetailPresenter extends BasePresenter<ZhihuDailyDetailCon
         mModel.getDailyDetail(dailyId)
                 .retryWhen(new RetryWithDelay(3, 2))
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> mRootView.hideLoading())
-                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .doFinally(() -> mView.hideProgress())
+                .compose(RxLifecycleUtils.bindToLifecycle(mView))
                 .subscribe(new ErrorHandleSubscriber<ZhihuDailyDetailBean>(mErrorHandler) {
                     @Override
                     public void onNext(ZhihuDailyDetailBean bean) {
-                        mRootView.setDailyDetail(bean);
+                        mView.setDailyDetail(bean);
                     }
 
                     @Override

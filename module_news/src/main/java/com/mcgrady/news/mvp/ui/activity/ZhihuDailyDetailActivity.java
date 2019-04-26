@@ -3,7 +3,6 @@ package com.mcgrady.news.mvp.ui.activity;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +11,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.graphics.Palette;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,20 +18,18 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jaeger.library.StatusBarUtil;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.NestedScrollAgentWebView;
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.config.RouterHub;
-import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
-import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.http.imageloader.ImageRequestListener;
-import com.mcgrady.common_core.utils.HtmlUtils;
-import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.news.di.component.DaggerZhihuDailyDetailComponent;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyDetailPresenter;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.imageloader.ImageLoader;
+import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
+import com.mcgrady.xskeleton.integration.RouterHub;
+import com.mcgrady.xskeleton.utils.Utils;
 
 import butterknife.BindView;
 
@@ -99,30 +95,30 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
         imageLoader.loadImage(this, ImageConfigImpl.builder()
                 .url(dailyImgUrl)
-                .isCropCenter(true)
+//                .isCropCenter(true)
                 .imageView(ivDailyHeader)
-                .addListener(new ImageRequestListener() {
-                    @Override
-                    public void onLoadSuccess(Drawable resource) {
-                        BitmapDrawable bmpDraw = (BitmapDrawable) resource;
-                        Palette.from(bmpDraw.getBitmap()).generate(new Palette.PaletteAsyncListener() {
-                            @Override
-                            public void onGenerated(@Nullable Palette palette) {
-                                Palette.Swatch vibrant = palette.getVibrantSwatch();
-                                if (vibrant == null) {
-                                    for (Palette.Swatch swatch : palette.getSwatches()) {
-                                        vibrant = swatch;
-                                        break;
-                                    }
-                                }
-
-                                int rbg = vibrant.getRgb();
-                                ctbLayout.setContentScrimColor(rbg);
-                                StatusBarUtil.setColor(ZhihuDailyDetailActivity.this, changeRGBColor(rbg));
-                            }
-                        });
-                    }
-                })
+//                .addListener(new ImageRequestListener() {
+//                    @Override
+//                    public void onLoadSuccess(Drawable resource) {
+//                        BitmapDrawable bmpDraw = (BitmapDrawable) resource;
+//                        Palette.from(bmpDraw.getBitmap()).generate(new Palette.PaletteAsyncListener() {
+//                            @Override
+//                            public void onGenerated(@Nullable Palette palette) {
+//                                Palette.Swatch vibrant = palette.getVibrantSwatch();
+//                                if (vibrant == null) {
+//                                    for (Palette.Swatch swatch : palette.getSwatches()) {
+//                                        vibrant = swatch;
+//                                        break;
+//                                    }
+//                                }
+//
+//                                int rbg = vibrant.getRgb();
+//                                ctbLayout.setContentScrimColor(rbg);
+//                                StatusBarUtil.setColor(ZhihuDailyDetailActivity.this, changeRGBColor(rbg));
+//                            }
+//                        });
+//                    }
+//                })
                 .build());
 
         if (mPresenter != null) {
@@ -131,24 +127,29 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     }
 
     @Override
+    public boolean useFragment() {
+        return false;
+    }
+
+    @Override
     public void setDailyDetail(ZhihuDailyDetailBean bean) {
 
         tvImgSource.setText(bean.getImage_source());
 
-        String htmlUrl = HtmlUtils.createHtmlData(bean.getBody(), bean.getCss(), bean.getJs());
-
-        NestedScrollAgentWebView webView = new NestedScrollAgentWebView(this);
-        CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(-1, -1);
-        lp.setBehavior(new AppBarLayout.ScrollingViewBehavior());
-
-        agentWeb = AgentWeb.with(this)
-                .setAgentWebParent(coordinatorLayout,  1, lp)
-                .closeIndicator()
-                .setWebView(webView)
-                .createAgentWeb()
-                .ready()
-                .go("");
-        agentWeb.getUrlLoader().loadData(htmlUrl, HtmlUtils.MIME_TYPE, "UTF-8");
+//        String htmlUrl = HtmlUtils.createHtmlData(bean.getBody(), bean.getCss(), bean.getJs());
+//
+//        NestedScrollAgentWebView webView = new NestedScrollAgentWebView(this);
+//        CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(-1, -1);
+//        lp.setBehavior(new AppBarLayout.ScrollingViewBehavior());
+//
+//        agentWeb = AgentWeb.with(this)
+//                .setAgentWebParent(coordinatorLayout,  1, lp)
+//                .closeIndicator()
+//                .setWebView(webView)
+//                .createAgentWeb()
+//                .ready()
+//                .go("");
+//        agentWeb.getUrlLoader().loadData(htmlUrl, HtmlUtils.MIME_TYPE, "UTF-8");
     }
 
     /**

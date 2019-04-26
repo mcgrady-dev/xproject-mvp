@@ -34,7 +34,7 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresne
     public void onDestroy() {
         unDispose();
         if (mModel != null) {
-            mModel.onDestory();
+            mModel.onDestroy();
         }
         this.mModel = null;
         this.mView = null;

@@ -17,11 +17,6 @@ import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hjq.toast.ToastUtils;
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.config.RouterHub;
-import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
-import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.utils.ViewUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
@@ -31,6 +26,11 @@ import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
+import com.mcgrady.xskeleton.integration.RouterHub;
+import com.mcgrady.xskeleton.utils.Utils;
 import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -66,7 +66,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     private int lastTitlePostion = -1;
 
     private AppComponent mAppComponent;
-    private com.mcgrady.common_core.http.imageloader.ImageLoader mImageLoader;
+    private com.mcgrady.xskeleton.imageloader.ImageLoader mImageLoader;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -136,6 +136,11 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         refreshLayout.autoRefresh();
     }
 
+    @Override
+    public boolean useFragment() {
+        return false;
+    }
+
     private void changeToolbarTitle(int dy) {
         int position = linearManager.findFirstVisibleItemPosition();
         if (lastTitlePostion == position) {
@@ -193,10 +198,10 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         super.onDestroy();
     }
 
-    @Override
-    public void finishLoadMore(boolean success) {
-        refreshLayout.finishLoadMore(success);
-    }
+//    @Override
+//    public void finishLoadMore(boolean success) {
+//        refreshLayout.finishLoadMore(success);
+//    }
 
     @Override
     public void notifyDataSetChanged(ZhihuDailyStoriesBean data) {
@@ -227,8 +232,8 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     }
 
     @Override
-    public void finishLoadMore() {
-        refreshLayout.finishLoadMore();
+    public void finishLoadMore(boolean success) {
+        refreshLayout.finishLoadMore(success);
     }
 
     @Override

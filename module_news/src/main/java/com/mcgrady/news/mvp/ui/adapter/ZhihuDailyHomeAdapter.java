@@ -7,14 +7,14 @@ import com.blankj.utilcode.util.TimeUtils;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.http.imageloader.ImageConfigImpl;
-import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.interf.IViewHolderRelease;
 import com.mcgrady.news.R;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.imageloader.ImageLoader;
+import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
+import com.mcgrady.xskeleton.utils.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

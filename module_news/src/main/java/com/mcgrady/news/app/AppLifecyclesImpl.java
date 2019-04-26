@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 
-import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.cache.IntelligentCache;
-import com.mcgrady.common_core.manager.RetrofitUrlManager;
-import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.common_res.widget.MaterialHeader;
 import com.mcgrady.news.BuildConfig;
+import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.cache.IntelligentCache;
+import com.mcgrady.xskeleton.http.RetrofitUrlManager;
+import com.mcgrady.xskeleton.utils.Utils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.squareup.leakcanary.LeakCanary;

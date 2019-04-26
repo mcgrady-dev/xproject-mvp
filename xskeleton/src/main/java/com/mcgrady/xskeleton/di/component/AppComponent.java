@@ -9,6 +9,8 @@ import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.di.module.AppConfigModule;
 import com.mcgrady.xskeleton.di.module.AppModule;
 import com.mcgrady.xskeleton.di.module.ClientModule;
+import com.mcgrady.xskeleton.imageloader.BaseImageLoaderStrategy;
+import com.mcgrady.xskeleton.imageloader.ImageLoader;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.integration.IRepositoryManager;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
@@ -34,9 +36,18 @@ public interface AppComponent {
 
     RxErrorHandler rxErrorHandler();
 
-    OkHttpClient okhttpClient();
+    OkHttpClient okHttpClient();
 
     Gson gson();
+
+    /**
+     * 图片加载管理器, 用于加载图片的管理类, 使用策略者模式, 可在运行时动态替换任何图片加载框架
+     * 需在 {@link ConfigModule#applyOptions(Context, AppConfigModule.Builder)}
+     * 中手动注册 {@link BaseImageLoaderStrategy}
+     *
+     * @return
+     */
+    ImageLoader imageLoader();
 
     /**
      * 缓存文件根目录

@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.mcgrady.xskeleton.base.IApp;
 import com.mcgrady.xskeleton.di.component.AppComponent;
-import com.mcgrady.xskeleton.integration.exception.InvalidUrlException;
+import com.mcgrady.xskeleton.http.exception.InvalidUrlException;
 
 import okhttp3.HttpUrl;
 

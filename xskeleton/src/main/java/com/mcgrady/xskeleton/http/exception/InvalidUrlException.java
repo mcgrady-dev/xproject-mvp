@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mcgrady.xskeleton.integration.exception;
+package com.mcgrady.xskeleton.http.exception;
 
 import android.text.TextUtils;
 
