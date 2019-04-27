@@ -28,6 +28,7 @@ import static com.mcgrady.news.mvp.model.api.Api.ZHIHU_DOMAIN_NAME;
  */
 public class AppLifecyclesImpl implements AppLifecycles {
 
+
     @Override
     public void attachBaseContext(@NonNull Context base) {
 

@@ -3,6 +3,7 @@ package com.mcgrady.xskeleton.base;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 
 import com.mcgrady.xskeleton.base.delegate.AppDelegate;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
@@ -25,6 +26,9 @@ public class BaseApplication extends Application implements IApp {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+
+        MultiDex.install(base);
+
         if (mAppDelegate == null)
             this.mAppDelegate = new AppDelegate(base);
         this.mAppDelegate.attachBaseContext(base);

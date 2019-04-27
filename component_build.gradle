@@ -6,6 +6,10 @@ if (isBuildModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'dexknifePlus'
+//dexKnife {
+//    enabled true
+//}
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -55,6 +59,7 @@ android {
             }
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            multiDexKeepProguard file('multidex-config.pro')
         }
     }
 

@@ -40,10 +40,11 @@
 
 ################common###############
 
--keep public class * implements com.jess.arms.integration.ConfigModule
+-keep public class * implements com.mcgrady.xskeleton.integration.ConfigModule
+-keep public class * implements class com.mcgrady.xskeleton.di.module.AppConfigModule
 
  #实体类不参与混淆
--keep class com.jess.arms.widget.** { *; } #自定义控件不参与混淆
+#-keep class com.jess.arms.widget.** { *; } #自定义控件不参与混淆
 -keep class * implements android.os.Parcelable {
   public static final android.os.Parcelable$Creator *;
 }

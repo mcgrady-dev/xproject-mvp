@@ -1,0 +1,1 @@
+-keep class com.mcgrady.xskeleton.di.module.AppConfigModule
