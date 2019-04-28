@@ -21,6 +21,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
+import com.trello.rxlifecycle3.RxLifecycle;
 import com.trello.rxlifecycle3.android.FragmentEvent;
 
 import javax.inject.Inject;
@@ -34,10 +35,10 @@ import io.reactivex.subjects.Subject;
  * Created by mcgrady on 2019/4/26.
  */
 @Singleton
-public class FragmentLifecycleForRxLifecycle extends FragmentManager.FragmentLifecycleCallbacks {
+public class FragmentRxLifecycle extends FragmentManager.FragmentLifecycleCallbacks {
 
     @Inject
-    public FragmentLifecycleForRxLifecycle() {
+    public FragmentRxLifecycle() {
     }
 
     @Override

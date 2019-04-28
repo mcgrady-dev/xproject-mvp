@@ -2,6 +2,12 @@ apply from: "../component_build.gradle"
 
 android {
     resourcePrefix "news_" //给 Module 内的资源名增加前缀, 避免资源名冲突
+
+//    buildTypes {
+//        release {
+//            multiDexKeepProguard file('multidex-config.pro')
+//        }
+//    }
 }
 
 dependencies {
@@ -13,4 +19,6 @@ dependencies {
     api rootProject.ext.dependencies["banner"]
     api rootProject.ext.dependencies["sticky-headers-recyclerview"]
     api rootProject.ext.dependencies["agentweb"]
+
+    implementation rootProject.ext.dependencies["multidex"]
 }

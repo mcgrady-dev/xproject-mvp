@@ -36,7 +36,7 @@ import io.reactivex.subjects.Subject;
 @Singleton
 public class ActivityRxLifecycle implements Application.ActivityLifecycleCallbacks {
     @Inject
-    Lazy<FragmentLifecycleForRxLifecycle> mFragmentLifecycle;
+    Lazy<FragmentRxLifecycle> mFragmentLifecycle;
 
     @Inject
     public ActivityRxLifecycle() {
