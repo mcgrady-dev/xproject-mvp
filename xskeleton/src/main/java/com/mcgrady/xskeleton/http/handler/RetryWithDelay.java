@@ -1,7 +1,5 @@
 package com.mcgrady.xskeleton.http.handler;
 
-import android.util.Log;
-
 import com.blankj.utilcode.util.LogUtils;
 
 import java.util.concurrent.TimeUnit;

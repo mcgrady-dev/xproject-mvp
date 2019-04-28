@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
+import com.google.gson.GsonBuilder;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.ToastAlipayStyle;
 import com.mcgrady.common_core.BuildConfig;
@@ -15,20 +16,21 @@ import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
 import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
 import com.mcgrady.common_core.http.SSLSocketClient;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.di.module.AppModule;
+import com.mcgrady.xskeleton.di.module.ClientModule;
 import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
 import com.mcgrady.xskeleton.http.RetrofitUrlManager;
 import com.mcgrady.xskeleton.http.log.RequestInterceptor;
 import com.mcgrady.xskeleton.imageloader.glide.GlideImageLoaderStrategy;
 import com.mcgrady.xskeleton.integration.ConfigModule;
-import com.mcgrady.xskeleton.lifecycle.ActivityLifecycleCallbacksImpl;
-import com.mcgrady.xskeleton.lifecycle.FragmentLifecycleCallbacksImpl;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
+import okhttp3.OkHttpClient;
 
 /**
- * <p></p>
+ * 含有每个组件都可公用的配置信息, 每个组件的 AndroidManifest 都应该声明此 ConfigModule
  *
  * @author: mcgrady
  * @date: 2018/12/20
@@ -47,20 +49,24 @@ public class GlobalConfig implements ConfigModule {
                 .imageLoaderStrategy(new GlideImageLoaderStrategy())
                 .globalHttpHandler(new GlobalHttpHandlerImpl(context))
                 .responseErrorListener(new ResponseErrorListenerImpl())
-                .gsonConfiguration((context1, gsonBuilder) -> {
-                    //这里可以自己自定义配置Gson的参数
-                    gsonBuilder
-                        .serializeNulls()//支持序列化null的参数
-                        .enableComplexMapKeySerialization();//支持将序列化key为object的map,默认只能序列化key为string的map
+                .gsonConfiguration(new AppModule.GsonConfig() {
+                    @Override
+                    public void configGson(@NonNull Context context, @NonNull GsonBuilder builder) {
+                        //这里可以自己自定义配置Gson的参数
+                        builder
+                            .serializeNulls()//支持序列化null的参数
+                            .enableComplexMapKeySerialization();//支持将序列化key为object的map,默认只能序列化key为string的map
+                    }
                 })
-                .okhttpConfiguration((context12, builder1) -> {
-                    builder1.sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.getTrustManager());
-                    builder1.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
-                    /**
-                     * 让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl.
-                     * 详细使用请方法查看 {@url https://github.com/JessYanCoding/RetrofitUrlManager}
-                     */
-                    RetrofitUrlManager.getInstance().with(builder1);
+                .okhttpConfiguration(new ClientModule.OkhttpConfiguration() {
+                    @Override
+                    public void configOkhttp(@NonNull Context context, @NonNull OkHttpClient.Builder builder) {
+                        builder.sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.getTrustManager());
+                        builder.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
+                        // 让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl.
+                        // 详细使用请方法查看 {@url https://github.com/JessYanCoding/RetrofitUrlManager}
+                        RetrofitUrlManager.getInstance().with(builder);
+                    }
                 })
                 .rxCacheConfiguration((context1, rxCacheBuilder) -> {
                     //这里可以自己自定义配置RxCache的参数

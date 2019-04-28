@@ -7,6 +7,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
@@ -23,7 +24,7 @@ public class SSLSocketClient {
      * 获取这个SSLSocketFactory
      * @return
      */
-    public static javax.net.ssl.SSLSocketFactory getSSLSocketFactory() {
+    public static SSLSocketFactory getSSLSocketFactory() {
         try {
             SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, getTrustManagers(), new SecureRandom());

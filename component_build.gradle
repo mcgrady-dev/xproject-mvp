@@ -47,7 +47,7 @@ android {
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            multiDexKeepProguard file('multidex-config.pro')
+//            multiDexKeepProguard file('multidex-config.pro')
         }
 
         release {
@@ -60,7 +60,7 @@ android {
             }
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            multiDexKeepProguard file('multidex-config.pro')
+//            multiDexKeepProguard file('multidex-config.pro')
         }
     }
 

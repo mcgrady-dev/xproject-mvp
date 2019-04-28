@@ -8,6 +8,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
 import com.mcgrady.xskeleton.base.BaseActivity;

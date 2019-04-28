@@ -1,4 +1,4 @@
-package com.mcgrady.xskeleton.lifecycle;
+package com.mcgrady.common_core.app;
 
 import android.content.Context;
 import android.os.Bundle;
