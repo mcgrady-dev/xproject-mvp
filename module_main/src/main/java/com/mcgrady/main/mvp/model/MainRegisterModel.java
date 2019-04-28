@@ -3,10 +3,10 @@ package com.mcgrady.main.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.manager.IRepositoryManager;
-import com.mcgrady.common_core.mvp.BaseModel;
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.integration.IRepositoryManager;
+import com.mcgrady.xskeleton.mvp.BaseModel;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.mcgrady.common_core.config;
+package com.mcgrady.common_core.app;
 
 import android.app.Application;
 import android.content.Context;
@@ -10,17 +10,18 @@ import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.ToastAlipayStyle;
 import com.mcgrady.common_core.BuildConfig;
-import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.di.module.GlobalConfigModule;
 import com.mcgrady.common_core.http.Api;
 import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
+import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
 import com.mcgrady.common_core.http.SSLSocketClient;
-import com.mcgrady.common_core.http.imageloader.glide.GlideImageLoaderStrategy;
-import com.mcgrady.common_core.http.log.RequestInterceptor;
-import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
-import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
-import com.mcgrady.common_core.listener.ResponseErrorListenerImpl;
-import com.mcgrady.common_core.manager.RetrofitUrlManager;
+import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
+import com.mcgrady.xskeleton.http.RetrofitUrlManager;
+import com.mcgrady.xskeleton.http.log.RequestInterceptor;
+import com.mcgrady.xskeleton.imageloader.glide.GlideImageLoaderStrategy;
+import com.mcgrady.xskeleton.integration.ConfigModule;
+import com.mcgrady.xskeleton.lifecycle.ActivityLifecycleCallbacksImpl;
+import com.mcgrady.xskeleton.lifecycle.FragmentLifecycleCallbacksImpl;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ import butterknife.ButterKnife;
  * @date: 2018/12/20
  */
 
-public class AppConfig implements ConfigModule {
+public class GlobalConfig implements ConfigModule {
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {

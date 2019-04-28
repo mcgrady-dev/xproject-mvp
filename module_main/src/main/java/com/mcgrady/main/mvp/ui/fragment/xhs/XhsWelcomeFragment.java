@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.mcgrady.common_core.base.BaseFragment;
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
 import com.mcgrady.main.interf.XhsWelcomeListener;
 import com.mcgrady.main.widget.ChildViewPager;
 import com.mcgrady.main.widget.WelcomeIndicator;
+import com.mcgrady.xskeleton.base.BaseFragment;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 
 import butterknife.BindView;
 

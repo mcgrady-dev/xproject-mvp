@@ -1,8 +1,7 @@
 package com.mcgrady.main.mvp.contract;
 
-
-import com.mcgrady.common_core.mvp.IModel;
-import com.mcgrady.common_core.mvp.IView;
+import com.mcgrady.xskeleton.mvp.IModel;
+import com.mcgrady.xskeleton.mvp.IView;
 
 /**
  * ================================================

@@ -1,15 +1,11 @@
 package com.mcgrady.news.mvp.ui.activity;
 
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +13,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jaeger.library.StatusBarUtil;
 import com.just.agentweb.AgentWeb;
-import com.just.agentweb.NestedScrollAgentWebView;
+import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.news.di.component.DaggerZhihuDailyDetailComponent;
@@ -28,7 +24,6 @@ import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xskeleton.imageloader.ImageLoader;
 import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
-import com.mcgrady.xskeleton.integration.RouterHub;
 import com.mcgrady.xskeleton.utils.Utils;
 
 import butterknife.BindView;

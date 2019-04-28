@@ -6,11 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 
-import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.cache.IntelligentCache;
-import com.mcgrady.common_core.manager.RetrofitUrlManager;
-import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.news.BuildConfig;
+import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.cache.IntelligentCache;
+import com.mcgrady.xskeleton.utils.Utils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -40,7 +39,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
         //使用 RetrofitUrlManager 切换 BaseUrl
         //RetrofitUrlManager.getInstance().putDomain(ZHIHU_DOMAIN_NAME, ZHIHU_DOMAIN);
         /**
-         * 当所有模块集成到宿主 App 时, 在{@link com.mcgrady.common_core.config.AppConfig}中已经执行了以下代码
+         * 当所有模块集成到宿主 App 时, 在{@link com.mcgrady.common_core.app.AppConfig}中已经执行了以下代码
          */
         if (BuildConfig.IS_BUILD_MODULE) {
             //leakCanary内存泄露检查

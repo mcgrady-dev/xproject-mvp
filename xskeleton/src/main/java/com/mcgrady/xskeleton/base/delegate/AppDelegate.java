@@ -14,7 +14,7 @@ import com.mcgrady.xskeleton.base.IApp;
 import com.mcgrady.xskeleton.cache.IntelligentCache;
 import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xskeleton.di.component.DaggerAppComponent;
-import com.mcgrady.xskeleton.di.module.AppConfigModule;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.integration.ManifestParser;
 import com.mcgrady.xskeleton.utils.Preconditions;
@@ -146,12 +146,12 @@ public class AppDelegate implements IApp, AppLifecycles {
      * 将app的全局配置信息封装进module(使用Dagger注入到需要配置信息的地方)
      * 需要在AndroidManifest中声明{@link ConfigModule}的实现类,和Glide的配置方式相似
      *
-     * @return AppConfigModule
+     * @return GlobalConfigModule
      */
-    private AppConfigModule getAppConfigModule(Context context, List<ConfigModule> modules) {
-        AppConfigModule.Builder builder = AppConfigModule.builder();
+    private GlobalConfigModule getAppConfigModule(Context context, List<ConfigModule> modules) {
+        GlobalConfigModule.Builder builder = GlobalConfigModule.builder();
 
-        //遍历 ConfigModule 集合, 给全局配置 AppConfigModule 添加参数
+        //遍历 ConfigModule 集合, 给全局配置 GlobalConfigModule 添加参数
         for (ConfigModule module : modules) {
             module.applyOptions(context, builder);
         }

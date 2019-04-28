@@ -1,10 +1,10 @@
 package com.mcgrady.main.di.component;
 
-import com.mcgrady.common_core.di.component.AppComponent;
-import com.mcgrady.common_core.di.scope.ActivityScope;
 import com.mcgrady.main.di.module.EyepetizerLoginModule;
 import com.mcgrady.main.mvp.contract.EyepetizerLoginContract;
 import com.mcgrady.main.mvp.ui.activity.EyepetizerLoginActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
 
 import dagger.BindsInstance;
 import dagger.Component;

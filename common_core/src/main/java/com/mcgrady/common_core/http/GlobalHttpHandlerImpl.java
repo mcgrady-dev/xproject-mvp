@@ -17,6 +17,8 @@ package com.mcgrady.common_core.http;
 
 import android.content.Context;
 
+import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
+
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

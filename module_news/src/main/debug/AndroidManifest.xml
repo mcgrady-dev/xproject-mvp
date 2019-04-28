@@ -31,13 +31,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".mvp.ui.activity.ZhihuDailyDetailActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ZhihuDailyDetailActivity"/>
 
         <meta-data
-            android:name="com.mcgrady.xskeleton.di.module.AppConfigModule"
-            android:value="ConfigModule" />
+            android:name="com.mcgrady.common_core.app.GlobalConfig"
+            android:value="ConfigModule"/>
+
         <meta-data
-            android:name="com.mcgrady.news.app.AppConfig"
+            android:name="com.mcgrady.news.app.GlobalConfig"
             android:value="ConfigModule" />
     </application>
 

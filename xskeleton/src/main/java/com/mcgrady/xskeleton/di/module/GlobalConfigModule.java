@@ -1,38 +1,24 @@
-/*
- * Copyright 2017 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package com.mcgrady.common_core.di.module;
+package com.mcgrady.xskeleton.di.module;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import com.mcgrady.common_core.http.BaseUrl;
-import com.mcgrady.common_core.http.GlobalHttpHandler;
-import com.mcgrady.common_core.http.imageloader.BaseImageLoaderStrategy;
-import com.mcgrady.common_core.http.log.DefaultFormatPrinter;
-import com.mcgrady.common_core.http.log.FormatPrinter;
-import com.mcgrady.common_core.http.log.RequestInterceptor;
-import com.mcgrady.common_core.cache.Cache;
-import com.mcgrady.common_core.cache.CacheType;
-import com.mcgrady.common_core.cache.IntelligentCache;
-import com.mcgrady.common_core.cache.LruCache;
-import com.mcgrady.common_core.listener.ResponseErrorListener;
-import com.mcgrady.common_core.utils.DataHelper;
-import com.mcgrady.common_core.utils.Preconditions;
+import com.bumptech.glide.Glide;
+import com.mcgrady.xskeleton.cache.Cache;
+import com.mcgrady.xskeleton.cache.CacheType;
+import com.mcgrady.xskeleton.cache.IntelligentCache;
+import com.mcgrady.xskeleton.cache.LruCache;
+import com.mcgrady.xskeleton.http.BaseUrl;
+import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
+import com.mcgrady.xskeleton.http.listener.ResponseErrorListener;
+import com.mcgrady.xskeleton.http.log.DefaultFormatPrinter;
+import com.mcgrady.xskeleton.http.log.FormatPrinter;
+import com.mcgrady.xskeleton.http.log.RequestInterceptor;
+import com.mcgrady.xskeleton.imageloader.BaseImageLoaderStrategy;
+import com.mcgrady.xskeleton.utils.DataHelper;
+import com.mcgrady.xskeleton.utils.Preconditions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,17 +38,11 @@ import okhttp3.Interceptor;
 import okhttp3.internal.Util;
 
 /**
- * ================================================
- * 框架独创的建造者模式 {@link Module},可向框架中注入外部配置的自定义参数
- *
- * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki#3.1">GlobalConfigModule Wiki 官方文档</a>
- * Created by JessYan on 2016/3/14.
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * ================================================
+ * Created by mcgrady on 2019/4/25.
  */
 @Module
 public class GlobalConfigModule {
+
     private HttpUrl mApiUrl;
     private BaseUrl mBaseUrl;
     private BaseImageLoaderStrategy mLoaderStrategy;
@@ -73,7 +53,7 @@ public class GlobalConfigModule {
     private ClientModule.RetrofitConfiguration mRetrofitConfiguration;
     private ClientModule.OkhttpConfiguration mOkhttpConfiguration;
     private ClientModule.RxCacheConfiguration mRxCacheConfiguration;
-    private AppModule.GsonConfiguration mGsonConfiguration;
+    private AppModule.GsonConfig mGsonConfig;
     private RequestInterceptor.Level mPrintHttpLogLevel;
     private FormatPrinter mFormatPrinter;
     private Cache.Factory mCacheFactory;
@@ -90,7 +70,7 @@ public class GlobalConfigModule {
         this.mRetrofitConfiguration = builder.retrofitConfiguration;
         this.mOkhttpConfiguration = builder.okhttpConfiguration;
         this.mRxCacheConfiguration = builder.rxCacheConfiguration;
-        this.mGsonConfiguration = builder.gsonConfiguration;
+        this.mGsonConfig = builder.gsonConfig;
         this.mPrintHttpLogLevel = builder.printHttpLogLevel;
         this.mFormatPrinter = builder.formatPrinter;
         this.mCacheFactory = builder.cacheFactory;
@@ -101,14 +81,12 @@ public class GlobalConfigModule {
         return new Builder();
     }
 
-
     @Singleton
     @Provides
     @Nullable
     List<Interceptor> provideInterceptors() {
         return mInterceptors;
     }
-
 
     /**
      * 提供 BaseUrl,默认使用 <"https://api.github.com/">
@@ -127,9 +105,8 @@ public class GlobalConfigModule {
         return mApiUrl == null ? HttpUrl.parse("https://api.github.com/") : mApiUrl;
     }
 
-
     /**
-     * 提供图片加载框架,默认使用 {@link com.bumptech.glide.Glide}
+     * 提供图片加载框架,默认使用 {@link Glide}
      *
      * @return
      */
@@ -139,7 +116,6 @@ public class GlobalConfigModule {
     BaseImageLoaderStrategy provideImageLoaderStrategy() {
         return mLoaderStrategy;
     }
-
 
     /**
      * 提供处理 Http 请求和响应结果的处理类
@@ -153,7 +129,6 @@ public class GlobalConfigModule {
         return mHandler;
     }
 
-
     /**
      * 提供缓存文件
      */
@@ -162,7 +137,6 @@ public class GlobalConfigModule {
     File provideCacheFile(Application application) {
         return mCacheFile == null ? DataHelper.getCacheFile(application) : mCacheFile;
     }
-
 
     /**
      * 提供处理 RxJava 错误的管理器的回调
@@ -174,7 +148,6 @@ public class GlobalConfigModule {
     ResponseErrorListener provideResponseErrorListener() {
         return mErrorListener == null ? ResponseErrorListener.EMPTY : mErrorListener;
     }
-
 
     @Singleton
     @Provides
@@ -200,8 +173,8 @@ public class GlobalConfigModule {
     @Singleton
     @Provides
     @Nullable
-    AppModule.GsonConfiguration provideGsonConfiguration() {
-        return mGsonConfiguration;
+    AppModule.GsonConfig provideGsonConfiguration() {
+        return mGsonConfig;
     }
 
     @Singleton
@@ -212,7 +185,7 @@ public class GlobalConfigModule {
 
     @Singleton
     @Provides
-    FormatPrinter provideFormatPrinter(){
+    FormatPrinter provideFormatPrinter() {
         return mFormatPrinter == null ? new DefaultFormatPrinter() : mFormatPrinter;
     }
 
@@ -225,7 +198,7 @@ public class GlobalConfigModule {
             public Cache build(CacheType type) {
                 //若想自定义 LruCache 的 size, 或者不想使用 LruCache, 想使用自己自定义的策略
                 //使用 GlobalConfigModule.Builder#cacheFactory() 即可扩展
-                switch (type.getCacheTypeId()){
+                switch (type.getCacheTypeId()) {
                     //Activity、Fragment 以及 Extras 使用 IntelligentCache (具有 LruCache 和 可永久存储数据的 Map)
                     case CacheType.EXTRAS_TYPE_ID:
                     case CacheType.ACTIVITY_CACHE_TYPE_ID:
@@ -252,7 +225,6 @@ public class GlobalConfigModule {
                 new SynchronousQueue<Runnable>(), Util.threadFactory("Arms Executor", false)) : mExecutorService;
     }
 
-
     public static final class Builder {
         private HttpUrl apiUrl;
         private BaseUrl baseUrl;
@@ -264,7 +236,7 @@ public class GlobalConfigModule {
         private ClientModule.RetrofitConfiguration retrofitConfiguration;
         private ClientModule.OkhttpConfiguration okhttpConfiguration;
         private ClientModule.RxCacheConfiguration rxCacheConfiguration;
-        private AppModule.GsonConfiguration gsonConfiguration;
+        private AppModule.GsonConfig gsonConfig;
         private RequestInterceptor.Level printHttpLogLevel;
         private FormatPrinter formatPrinter;
         private Cache.Factory cacheFactory;
@@ -297,19 +269,16 @@ public class GlobalConfigModule {
         }
 
         public Builder addInterceptor(Interceptor interceptor) {//动态添加任意个interceptor
-            if (interceptors == null) {
+            if (interceptors == null)
                 interceptors = new ArrayList<>();
-            }
             this.interceptors.add(interceptor);
             return this;
         }
-
 
         public Builder responseErrorListener(ResponseErrorListener listener) {//处理所有RxJava的onError逻辑
             this.responseErrorListener = listener;
             return this;
         }
-
 
         public Builder cacheFile(File cacheFile) {
             this.cacheFile = cacheFile;
@@ -331,8 +300,8 @@ public class GlobalConfigModule {
             return this;
         }
 
-        public Builder gsonConfiguration(AppModule.GsonConfiguration gsonConfiguration) {
-            this.gsonConfiguration = gsonConfiguration;
+        public Builder gsonConfiguration(AppModule.GsonConfig gsonConfig) {
+            this.gsonConfig = gsonConfig;
             return this;
         }
 
@@ -341,7 +310,7 @@ public class GlobalConfigModule {
             return this;
         }
 
-        public Builder formatPrinter(FormatPrinter formatPrinter){
+        public Builder formatPrinter(FormatPrinter formatPrinter) {
             this.formatPrinter = Preconditions.checkNotNull(formatPrinter, FormatPrinter.class.getCanonicalName() + "can not be null.");
             return this;
         }
@@ -359,9 +328,5 @@ public class GlobalConfigModule {
         public GlobalConfigModule build() {
             return new GlobalConfigModule(this);
         }
-
-
     }
-
-
 }

@@ -14,13 +14,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
 import com.mcgrady.main.mvp.ui.fragment.xhs.XhsLoginFragment;
 import com.mcgrady.main.mvp.ui.fragment.xhs.XhsWelcomeFragment;
 import com.mcgrady.main.widget.XhsParentViewPager;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 
 import butterknife.BindView;
 
@@ -125,6 +125,11 @@ public class XhsWelcomeActivity extends BaseActivity {
                 return 2;
             }
         });
+    }
+
+    @Override
+    public boolean useFragment() {
+        return false;
     }
 
     private void playLogoInAnim(){

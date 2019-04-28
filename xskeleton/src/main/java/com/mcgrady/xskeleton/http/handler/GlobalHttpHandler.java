@@ -3,7 +3,7 @@ package com.mcgrady.xskeleton.http.handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.mcgrady.xskeleton.di.module.AppConfigModule;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -11,7 +11,7 @@ import okhttp3.Response;
 
 /**
  * 处理 Http 请求和响应结果的处理类
- * 使用 {@link AppConfigModule.Builder#globalHttpHandler(GlobalHttpHandler)} 方法配置
+ * 使用 {@link GlobalConfigModule.Builder#globalHttpHandler(GlobalHttpHandler)} 方法配置
  *
  * Created by mcgrady on 2019/4/26.
  */

@@ -46,7 +46,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
         //使用 RetrofitUrlManager 切换 BaseUrl
         RetrofitUrlManager.getInstance().putDomain(ZHIHU_DOMAIN_NAME, ZHIHU_DOMAIN);
         /**
-         * 当所有模块集成到宿主 App 时, 在{@link com.mcgrady.common_core.config.AppConfig}中已经执行了以下代码
+         * 当所有模块集成到宿主 App 时, 在{@link com.mcgrady.common_core.app.AppConfig}中已经执行了以下代码
          */
         if (BuildConfig.IS_BUILD_MODULE) {
             //leakCanary内存泄露检查

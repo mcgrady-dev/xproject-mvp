@@ -7,8 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mcgrady.common_core.base.BaseFragment;
-import com.mcgrady.common_core.di.component.AppComponent;
+import com.mcgrady.xskeleton.base.BaseFragment;
+import com.mcgrady.xskeleton.di.component.AppComponent;
+
 
 /**
  * <p>类说明</p>

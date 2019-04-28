@@ -7,12 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.xpay.PayAPI;
 import com.mcgrady.xpay.alipay.AliPayReq;
 import com.mcgrady.xpay.interf.PayResultCallBack;
 import com.mcgrady.xpay.wxpay.WechatPayReq;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
@@ -41,6 +41,11 @@ public class PayDemoActivity extends BaseActivity {
     public void initData(@Nullable Bundle savedInstanceState) {
 
         testPay();
+    }
+
+    @Override
+    public boolean useFragment() {
+        return false;
     }
 
     private void testPay() {

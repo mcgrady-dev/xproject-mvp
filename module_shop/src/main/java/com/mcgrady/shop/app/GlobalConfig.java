@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.cache.IntelligentCache;
-import com.mcgrady.common_core.config.ConfigModule;
-import com.mcgrady.common_core.di.module.GlobalConfigModule;
-import com.mcgrady.common_core.utils.Utils;
 import com.mcgrady.news.BuildConfig;
+import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.cache.IntelligentCache;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
+import com.mcgrady.xskeleton.integration.ConfigModule;
+import com.mcgrady.xskeleton.utils.Utils;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
  * @date: 2018/12/20
  */
 
-public class AppConfig implements ConfigModule {
+public class GlobalConfig implements ConfigModule {
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
 

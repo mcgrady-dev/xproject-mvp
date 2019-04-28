@@ -8,13 +8,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.config.RouterHub;
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 
 import butterknife.BindView;
 
@@ -72,5 +69,10 @@ public class ZhihuDailySplashActivity extends BaseActivity {
                 ivSplash.startAnimation(splashAnimation);
             }
         });
+    }
+
+    @Override
+    public boolean useFragment() {
+        return false;
     }
 }

@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
-import com.mcgrady.xskeleton.di.module.AppConfigModule;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
 
 import java.util.List;
 
@@ -19,12 +19,12 @@ import java.util.List;
 public interface ConfigModule {
 
     /**
-     * 使用 {@link AppConfigModule.Builder} 给框架配置一些配置参数
+     * 使用 {@link GlobalConfigModule.Builder} 给框架配置一些配置参数
      *
      * @param context {@link Context}
-     * @param builder {@link AppConfigModule.Builder}
+     * @param builder {@link GlobalConfigModule.Builder}
      */
-    void applyOptions(@NonNull Context context, @NonNull AppConfigModule.Builder builder);
+    void applyOptions(@NonNull Context context, @NonNull GlobalConfigModule.Builder builder);
 
     /**
      * 使用 {@link AppLifecycles} 在 {@link Application} 的生命周期中注入一些操作

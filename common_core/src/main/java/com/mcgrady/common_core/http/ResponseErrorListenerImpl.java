@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mcgrady.common_core.listener;
+package com.mcgrady.common_core.http;
 
 import android.content.Context;
 import android.net.ParseException;
@@ -22,6 +22,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.hjq.toast.ToastUtils;
+import com.mcgrady.xskeleton.http.listener.ResponseErrorListener;
 
 import org.json.JSONException;
 
@@ -42,7 +43,7 @@ import retrofit2.HttpException;
 public class ResponseErrorListenerImpl implements ResponseErrorListener {
 
     @Override
-    public void handleResponseError(Context context, Throwable t) {
+    public void handlerResponseError(Context context, Throwable t) {
         LogUtils.wTag("Catch-Error", t.getMessage());
         //这里不光只能打印错误, 还可以根据不同的错误做出不同的逻辑处理
         //这里只是对几个常用错误进行简单的处理, 展示这个类的用法, 在实际开发中请您自行对更多错误进行更严谨的处理

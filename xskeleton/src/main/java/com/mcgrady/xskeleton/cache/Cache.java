@@ -3,10 +3,12 @@ package com.mcgrady.xskeleton.cache;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
+
 import java.util.Set;
 
 /**
- * 用于缓存框架中所必需的组件, 可通过{@link com.mcgrady.xskeleton.di.module.AppConfigModule}为框架提供缓存策略
+ * 用于缓存框架中所必需的组件, 可通过{@link GlobalConfigModule}为框架提供缓存策略
  * Created by mcgrady on 2019/4/26.
  */
 public interface Cache<K, V> {

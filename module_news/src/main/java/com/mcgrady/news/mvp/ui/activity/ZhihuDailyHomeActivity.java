@@ -17,6 +17,7 @@ import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hjq.toast.ToastUtils;
+import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_res.utils.ViewUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
@@ -29,9 +30,7 @@ import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
 import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
-import com.mcgrady.xskeleton.integration.RouterHub;
 import com.mcgrady.xskeleton.utils.Utils;
-import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -53,8 +52,8 @@ import butterknife.BindView;
 public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter> implements ZhihuDailyHomeContract.View,
         OnRefreshListener, OnLoadMoreListener, OnBannerListener {
 
-    @BindView(R2.id.news_titlebar_zhihu_home)
-    TitleBar titleBar;
+//    @BindView(R2.id.news_titlebar_zhihu_home)
+//    TitleBar titleBar;
     @BindView(R2.id.news_refresh_zhihu)
     SmartRefreshLayout refreshLayout;
     @BindView(R2.id.news_recycler_zhihu)
@@ -149,18 +148,18 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
         int itemType = adapter.getItemViewType(position);
         if (BaseQuickAdapter.HEADER_VIEW == itemType) {
-            titleBar.setTitle("首页");
+//            titleBar.setTitle("首页");
         } else if (dy > 0 && ZhihuDailyHomeAdapter.TYPE_DATE == itemType) {
             // postion - 1 是因为adapter有headerview
             ZhihuDailyMultipleItem<String> dateItem = (ZhihuDailyMultipleItem<String>) adapter.getItem(position - 1);
-            titleBar.setTitle(adapter.getDateTitle(dateItem.getData()));
+//            titleBar.setTitle(adapter.getDateTitle(dateItem.getData()));
         } else if (dy < 0) {
             List<MultiItemEntity> subList = new ArrayList<>();
             subList.addAll(adapter.getData().subList(0, position));
             Collections.reverse(subList);
             for (MultiItemEntity itemEntity : subList) {
                 if (ZhihuDailyHomeAdapter.TYPE_DATE == itemEntity.getItemType()) {
-                    titleBar.setTitle(adapter.getDateTitle((String) ((ZhihuDailyMultipleItem) itemEntity).getData()));
+//                    titleBar.setTitle(adapter.getDateTitle((String) ((ZhihuDailyMultipleItem) itemEntity).getData()));
                     break;
                 }
             }

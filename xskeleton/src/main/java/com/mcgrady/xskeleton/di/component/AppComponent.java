@@ -6,7 +6,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.mcgrady.xskeleton.base.delegate.AppDelegate;
 import com.mcgrady.xskeleton.cache.Cache;
-import com.mcgrady.xskeleton.di.module.AppConfigModule;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
 import com.mcgrady.xskeleton.di.module.AppModule;
 import com.mcgrady.xskeleton.di.module.ClientModule;
 import com.mcgrady.xskeleton.imageloader.BaseImageLoaderStrategy;
@@ -28,7 +28,7 @@ import okhttp3.OkHttpClient;
  * Created by mcgrady on 2019/4/25.
  */
 @Singleton
-@Component(modules = {AppModule.class, ClientModule.class, AppConfigModule.class})
+@Component(modules = {AppModule.class, ClientModule.class, GlobalConfigModule.class})
 public interface AppComponent {
     Application application();
 
@@ -42,7 +42,7 @@ public interface AppComponent {
 
     /**
      * 图片加载管理器, 用于加载图片的管理类, 使用策略者模式, 可在运行时动态替换任何图片加载框架
-     * 需在 {@link ConfigModule#applyOptions(Context, AppConfigModule.Builder)}
+     * 需在 {@link ConfigModule#applyOptions(Context, GlobalConfigModule.Builder)}
      * 中手动注册 {@link BaseImageLoaderStrategy}
      *
      * @return
@@ -52,7 +52,7 @@ public interface AppComponent {
     /**
      * 缓存文件根目录
      * (RxCache 和 Glide 的缓存都已经作为子文件夹放在这个根目录下),
-     * 应该将所有缓存都统一放到这个根目录下便于管理和清理, 可在{@link ConfigModule#applyOptions(Context, AppConfigModule.Builder)} 种配置
+     * 应该将所有缓存都统一放到这个根目录下便于管理和清理, 可在{@link ConfigModule#applyOptions(Context, GlobalConfigModule.Builder)} 种配置
      * @return
      */
     File cacheFile();
@@ -84,7 +84,7 @@ public interface AppComponent {
         @BindsInstance
         Builder application(Application application);
 
-        Builder appConfigModule(AppConfigModule appConfigModule);
+        Builder appConfigModule(GlobalConfigModule globalConfigModule);
 
         AppComponent build();
     }

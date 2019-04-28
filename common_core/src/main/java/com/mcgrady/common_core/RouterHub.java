@@ -1,4 +1,4 @@
-package com.mcgrady.xskeleton.integration;
+package com.mcgrady.common_core;
 
 /**
  * RouterHub 用来定义路由器的路由地址, 以组件名作为前缀, 对每个组件的路由地址进行分组, 可以统一查看和管理所有分组的路由地址

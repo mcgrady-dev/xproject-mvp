@@ -4,9 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.mcgrady.common_core.base.delegate.AppLifecycles;
-import com.mcgrady.common_core.di.module.GlobalConfigModule;
-import com.mcgrady.common_core.config.ConfigModule;
+import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
+import com.mcgrady.xskeleton.integration.ConfigModule;
 
 import java.util.List;
 

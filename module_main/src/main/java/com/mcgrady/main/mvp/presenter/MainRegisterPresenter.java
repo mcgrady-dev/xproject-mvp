@@ -2,11 +2,11 @@ package com.mcgrady.main.mvp.presenter;
 
 import android.app.Application;
 
-import com.mcgrady.common_core.di.scope.ActivityScope;
-import com.mcgrady.common_core.handler.RxErrorHandler;
-import com.mcgrady.common_core.http.imageloader.ImageLoader;
-import com.mcgrady.common_core.mvp.BasePresenter;
 import com.mcgrady.main.mvp.contract.MainRegisterContract;
+import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
+import com.mcgrady.xskeleton.imageloader.ImageLoader;
+import com.mcgrady.xskeleton.mvp.BasePresenter;
 
 import javax.inject.Inject;
 

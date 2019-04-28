@@ -14,8 +14,6 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
-
-        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
     }
 
     buildTypes {
@@ -51,7 +49,7 @@ dependencies {
     }
     api rootProject.ext.dependencies["annotations"]
 
-//    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["multidex"]
 
     //view
     api(rootProject.ext.dependencies["butterknife"]) {
@@ -122,10 +120,5 @@ dependencies {
     api(rootProject.ext.dependencies["statusbar-util"]) {
         exclude module: 'appcompat-v7'
         exclude module: 'design'
-    }
-
-    api(rootProject.ext.dependencies["arouter"]) {
-        exclude module: 'support-v4'
-        exclude module: 'support-annotations'
     }
 }

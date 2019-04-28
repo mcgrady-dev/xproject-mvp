@@ -3,11 +3,11 @@ package com.mcgrady.test;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * <p>类说明</p>
@@ -15,7 +15,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * @author mcgrady
  * @date 2019/3/19
  */
-public class TestFragment extends SupportFragment {
+public class TestFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

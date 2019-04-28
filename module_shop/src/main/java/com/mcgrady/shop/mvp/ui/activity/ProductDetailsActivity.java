@@ -6,14 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.common_res.widget.NoScrollViewPager;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.shop.mvp.presenter.ProductDetailsPresenter;
 import com.mcgrady.shop.mvp.ui.weiget.ProductSkuPopup;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xtitlebar.TitleBar;
 
 import butterknife.BindView;
@@ -50,6 +50,11 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    public boolean useFragment() {
+        return false;
     }
 
     @OnClick(R2.id.shop_tv_add_cart)

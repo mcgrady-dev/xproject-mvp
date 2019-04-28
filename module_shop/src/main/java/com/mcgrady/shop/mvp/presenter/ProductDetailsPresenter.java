@@ -1,7 +1,9 @@
 package com.mcgrady.shop.mvp.presenter;
 
-import com.mcgrady.common_core.mvp.BasePresenter;
+import android.support.annotation.NonNull;
+
 import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
+import com.mcgrady.xskeleton.mvp.BasePresenter;
 
 /**
  * <p>类说明</p>
@@ -13,4 +15,7 @@ import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
 public class ProductDetailsPresenter extends BasePresenter<ProductDetailsContract.Model, ProductDetailsContract.View> {
 
 
+    public ProductDetailsPresenter(@NonNull ProductDetailsContract.Model model, @NonNull ProductDetailsContract.View view) {
+        super(model, view);
+    }
 }

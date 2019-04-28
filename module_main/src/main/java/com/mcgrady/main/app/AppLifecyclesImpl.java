@@ -4,7 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.mcgrady.common_core.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+
 
 /**
  * <p>类说明</p>

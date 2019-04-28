@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.common_core.di.component.AppComponent;
 import com.mcgrady.main.R;
 import com.mcgrady.main.di.component.DaggerEyepetizerLoginComponent;
 import com.mcgrady.main.mvp.contract.EyepetizerLoginContract;
 import com.mcgrady.main.mvp.presenter.EyepetizerLoginPresenter;
+import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 
 
 /**
@@ -44,5 +44,10 @@ public class EyepetizerLoginActivity extends BaseActivity<EyepetizerLoginPresent
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    public boolean useFragment() {
+        return false;
     }
 }
