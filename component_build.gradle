@@ -6,10 +6,6 @@ if (isBuildModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'com.jakewharton.butterknife'
-//apply plugin: 'dexknifePlus'
-//dexKnife {
-//    enabled true
-//}
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -47,7 +43,6 @@ android {
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            multiDexKeepProguard file('multidex-config.pro')
         }
 
         release {
@@ -60,7 +55,6 @@ android {
             }
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            multiDexKeepProguard file('multidex-config.pro')
         }
     }
 
@@ -80,16 +74,6 @@ android {
             }
         }
     }
-
-//    dexOptions {
-//        javaMaxHeapSize "4g"
-//        jumboMode = true
-//        preDexLibraries = false
-//        additionalParameters = [
-//                '--multi-dex',//多分包
-//                '--set-max-idx-number=60000'//每个包内方法数上限
-//        ]
-//    }
 }
 
 dependencies {

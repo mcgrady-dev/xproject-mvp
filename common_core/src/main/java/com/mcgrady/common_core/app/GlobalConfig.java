@@ -15,6 +15,8 @@ import com.mcgrady.common_core.http.Api;
 import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
 import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
 import com.mcgrady.common_core.http.SSLSocketClient;
+import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
+import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.di.module.AppModule;
 import com.mcgrady.xskeleton.di.module.ClientModule;

@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jaeger.library.StatusBarUtil;
 import com.just.agentweb.AgentWeb;
+import com.just.agentweb.NestedScrollAgentWebView;
 import com.mcgrady.common_core.RouterHub;
+import com.mcgrady.common_core.utils.HtmlUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.news.di.component.DaggerZhihuDailyDetailComponent;
@@ -131,20 +134,20 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
         tvImgSource.setText(bean.getImage_source());
 
-//        String htmlUrl = HtmlUtils.createHtmlData(bean.getBody(), bean.getCss(), bean.getJs());
-//
-//        NestedScrollAgentWebView webView = new NestedScrollAgentWebView(this);
-//        CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(-1, -1);
-//        lp.setBehavior(new AppBarLayout.ScrollingViewBehavior());
-//
-//        agentWeb = AgentWeb.with(this)
-//                .setAgentWebParent(coordinatorLayout,  1, lp)
-//                .closeIndicator()
-//                .setWebView(webView)
-//                .createAgentWeb()
-//                .ready()
-//                .go("");
-//        agentWeb.getUrlLoader().loadData(htmlUrl, HtmlUtils.MIME_TYPE, "UTF-8");
+        String htmlUrl = HtmlUtils.createHtmlData(bean.getBody(), bean.getCss(), bean.getJs());
+
+        NestedScrollAgentWebView webView = new NestedScrollAgentWebView(this);
+        CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(-1, -1);
+        lp.setBehavior(new AppBarLayout.ScrollingViewBehavior());
+
+        agentWeb = AgentWeb.with(this)
+                .setAgentWebParent(coordinatorLayout,  1, lp)
+                .closeIndicator()
+                .setWebView(webView)
+                .createAgentWeb()
+                .ready()
+                .go("");
+        agentWeb.getUrlLoader().loadData(htmlUrl, HtmlUtils.MIME_TYPE, "UTF-8");
     }
 
     /**

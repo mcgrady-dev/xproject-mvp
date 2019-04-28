@@ -30,6 +30,8 @@ import java.util.regex.Pattern;
  */
 
 public class CustomWebView extends WebView {
+    private final String TAG = this.getClass().getSimpleName();
+
     private boolean useShareCss;
 
     public CustomWebView(Context context) {
@@ -118,7 +120,7 @@ public class CustomWebView extends WebView {
 //                }
 //            });
         } else {
-            LogUtils.e(CustomWebView.class.getName(), "loadDetailDataAsync error, the Context isn't ok");
+            LogUtils.e(TAG, "loadDetailDataAsync error, the Context isn't ok");
         }
     }
 

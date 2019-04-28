@@ -1,4 +1,4 @@
-package com.mcgrady.common_core.app;
+package com.mcgrady.common_core.lifecycle;
 
 import android.content.Context;
 import android.os.Bundle;
