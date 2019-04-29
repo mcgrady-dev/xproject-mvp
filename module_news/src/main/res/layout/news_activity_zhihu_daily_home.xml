@@ -9,17 +9,17 @@
     android:background="#fff3f3f3"
     tools:context=".mvp.ui.activity.ZhihuDailyHomeActivity">
 
-    <!--<com.mcgrady.xtitlebar.TitleBar-->
-        <!--android:id="@+id/news_titlebar_zhihu_home"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:title="首页"-->
-        <!--app:titleColor="@color/white"-->
-        <!--app:titleSize="18sp"-->
-        <!--app:titleGravity="left"-->
-        <!--app:leftDrawableRes="@drawable/public_ic_menu"-->
-        <!--app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"-->
-        <!--app:titleBarColor="#3983F4"/>-->
+    <com.mcgrady.xtitlebar.TitleBar
+        android:id="@+id/news_titlebar_zhihu_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="首页"
+        app:titleColor="@color/white"
+        app:titleSize="18sp"
+        app:titleGravity="left"
+        app:leftDrawableRes="@drawable/public_ic_menu"
+        app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"
+        app:titleBarColor="#3983F4"/>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/news_refresh_zhihu"
