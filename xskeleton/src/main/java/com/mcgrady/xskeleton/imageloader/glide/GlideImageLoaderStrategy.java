@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -18,12 +19,14 @@ import com.mcgrady.xskeleton.imageloader.ImageConfig;
 import com.mcgrady.xskeleton.utils.Preconditions;
 
 import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * 此类只是简单的实现了 Glide 加载的策略,方便快速使用,但大部分情况会需要应对复杂的场景
+ * Glide 加载的策略,方便快速使用,但大部分情况会需要应对复杂的场景
  * 这时可自行实现 {@link BaseImageLoaderStrategy} 和 {@link ImageConfig} 替换现有策略
  *
  * Created by mcgrady on 2019/4/26.
@@ -34,6 +37,7 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
     public void loadImage(@Nullable Context ctx, @Nullable ImageConfigImpl config) {
         Preconditions.checkNotNull(ctx, "Context is required");
         Preconditions.checkNotNull(config, "ImageConfigImpl is required");
+        if (TextUtils.isEmpty(config.getUrl())) throw new NullPointerException("Url is required");
         Preconditions.checkNotNull(config.getImageView(), "ImageView is required");
 
         GlideRequests requests;
@@ -62,17 +66,8 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
                 glideRequest.diskCacheStrategy(DiskCacheStrategy.ALL);
                 break;
         }
-
         if (config.isCrossFade()) {
             glideRequest.transition(DrawableTransitionOptions.withCrossFade());
-        }
-
-        if (config.isCenterCrop()) {
-            glideRequest.centerCrop();
-        }
-
-        if (config.isCircle()) {
-            glideRequest.circleCrop();
         }
 
         if (config.isImageRadius()) {
@@ -87,6 +82,9 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
             glideRequest.transform(config.getTransformation());
         }
 
+        if (config.getPlaceHolderDrawble() != null) {
+            glideRequest.placeholder(config.getPlaceHolderDrawble());
+        }
         if (config.getPlaceholder() != 0)//设置占位符
             glideRequest.placeholder(config.getPlaceholder());
 
@@ -96,6 +94,26 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
         if (config.getFallback() != 0)//设置请求 url 为空图片
             glideRequest.fallback(config.getFallback());
 
+        if (config.getResizeX() != 0 && config.getResizeY() != 0) {
+            glideRequest.override(config.getResizeX(), config.getResizeY());
+        }
+
+        if (config.isCropCenter()) {
+            glideRequest.centerCrop();
+        }
+
+        if (config.isCropCircle()) {
+            glideRequest.circleCrop();
+        }
+
+        if (config.isFitCenter()) {
+            glideRequest.fitCenter();
+        }
+
+        if (config.decodeFormate() != null) {
+            glideRequest.format(config.decodeFormate());
+        }
+
         glideRequest.into(config.getImageView());
     }
 
@@ -104,10 +122,6 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
         Preconditions.checkNotNull(ctx, "Context is required");
         Preconditions.checkNotNull(config, "ImageConfigImpl is required");
 
-        if (config.getImageView() != null) {
-            XGlide.get(ctx).getRequestManagerRetriever().get(ctx).clear(config.getImageView());
-        }
-
         if (config.getImageViews() != null && config.getImageViews().length > 0) {//取消在执行的任务并且释放资源
             for (ImageView imageView : config.getImageViews()) {
                 XGlide.get(ctx).getRequestManagerRetriever().get(ctx).clear(imageView);
@@ -115,21 +129,25 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
         }
 
         if (config.isClearDiskCache()) {//清除本地缓存
-            Completable.fromAction(new Action() {
-                @Override
-                public void run() throws Exception {
-                    Glide.get(ctx).clearDiskCache();
-                }
-            }).subscribeOn(Schedulers.io()).subscribe();
+            Observable.just(0)
+                    .observeOn(Schedulers.io())
+                    .subscribe(new Consumer<Integer>() {
+                        @Override
+                        public void accept(@io.reactivex.annotations.NonNull Integer integer) throws Exception {
+                            Glide.get(ctx).clearDiskCache();
+                        }
+                    });
         }
 
         if (config.isClearMemory()) {//清除内存缓存
-            Completable.fromAction(new Action() {
-                @Override
-                public void run() throws Exception {
-                    Glide.get(ctx).clearMemory();
-                }
-            }).subscribeOn(AndroidSchedulers.mainThread()).subscribe();
+            Observable.just(0)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<Integer>() {
+                        @Override
+                        public void accept(@io.reactivex.annotations.NonNull Integer integer) throws Exception {
+                            Glide.get(ctx).clearMemory();
+                        }
+                    });
         }
     }
 
