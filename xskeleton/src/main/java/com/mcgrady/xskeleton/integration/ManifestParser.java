@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
+import com.mcgrady.xskeleton.integration.ConfigModule;
+
 import java.util.ArrayList;
 import java.util.List;
 

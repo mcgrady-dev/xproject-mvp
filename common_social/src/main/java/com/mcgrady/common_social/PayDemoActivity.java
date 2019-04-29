@@ -43,11 +43,6 @@ public class PayDemoActivity extends BaseActivity {
         testPay();
     }
 
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
-
     private void testPay() {
         requestPermission(() -> {
             AliPayReq aliPayReq = new AliPayReq.Builder()

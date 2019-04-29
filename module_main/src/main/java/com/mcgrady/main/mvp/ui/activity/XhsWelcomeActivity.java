@@ -127,11 +127,6 @@ public class XhsWelcomeActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
-
     private void playLogoInAnim(){
         ObjectAnimator anim1 = ObjectAnimator.ofFloat(ivLogo, "scaleX", 1.0f, 0.5f);
         ObjectAnimator anim2 = ObjectAnimator.ofFloat(ivLogo, "scaleY", 1.0f, 0.5f);

@@ -73,9 +73,4 @@ public class ZhihuDailySplashActivity extends BaseActivity {
             }
         });
     }
-
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
 }

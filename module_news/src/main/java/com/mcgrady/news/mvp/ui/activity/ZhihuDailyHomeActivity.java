@@ -136,11 +136,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         refreshLayout.autoRefresh();
     }
 
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
-
     private void changeToolbarTitle(int dy) {
         int position = linearManager.findFirstVisibleItemPosition();
         if (lastTitlePostion == position) {

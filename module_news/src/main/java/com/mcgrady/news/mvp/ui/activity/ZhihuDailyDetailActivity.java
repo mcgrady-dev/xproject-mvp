@@ -128,11 +128,6 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     }
 
     @Override
-    public boolean useFragment() {
-        return false;
-    }
-
-    @Override
     public void setDailyDetail(ZhihuDailyDetailBean bean) {
 
         tvImgSource.setText(bean.getImage_source());

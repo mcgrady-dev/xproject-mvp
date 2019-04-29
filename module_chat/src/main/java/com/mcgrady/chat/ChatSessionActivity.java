@@ -24,9 +24,4 @@ public class ChatSessionActivity extends BaseActivity {
     public void initData(@Nullable Bundle savedInstanceState) {
 
     }
-
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
 }

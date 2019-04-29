@@ -45,9 +45,4 @@ public class MainRegisterActivity extends BaseActivity<MainRegisterPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
 
     }
-
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
 }

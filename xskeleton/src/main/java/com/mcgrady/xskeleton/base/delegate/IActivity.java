@@ -56,5 +56,7 @@ public interface IActivity {
      *
      * @return
      */
-    boolean useFragment();
+    default boolean useFragment() {
+        return false;
+    }
 }

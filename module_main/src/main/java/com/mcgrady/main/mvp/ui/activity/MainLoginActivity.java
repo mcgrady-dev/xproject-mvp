@@ -45,9 +45,4 @@ public class MainLoginActivity extends BaseActivity<MainLoginPresenter> implemen
     public void initData(@Nullable Bundle savedInstanceState) {
 
     }
-
-    @Override
-    public boolean useFragment() {
-        return false;
-    }
 }
