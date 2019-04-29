@@ -1,4 +1,4 @@
-package com.mcgrady.core.utils;
+package com.mcgrady.common_core.utils;
 
 /**
  * <p>检查View重复点击工具</p>
