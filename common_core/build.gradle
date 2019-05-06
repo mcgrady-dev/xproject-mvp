@@ -43,4 +43,7 @@ dependencies {
         exclude module: 'support-v4'
         exclude module: 'support-annotations'
     }
+
+    debugImplementation rootProject.ext.dependencies["dokit"]
+    releaseImplementation rootProject.ext.dependencies["dokit-no-op"]
 }

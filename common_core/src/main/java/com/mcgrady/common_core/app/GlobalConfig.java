@@ -3,10 +3,16 @@ package com.mcgrady.common_core.app;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
+import com.didichuxing.doraemonkit.DoraemonHooker;
+import com.didichuxing.doraemonkit.DoraemonKit;
+import com.didichuxing.doraemonkit.kit.IKit;
+import com.didichuxing.doraemonkit.kit.network.okhttp.DoraemonInterceptor;
+import com.didichuxing.doraemonkit.util.DoraemonStatisticsUtil;
 import com.google.gson.GsonBuilder;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.ToastAlipayStyle;
@@ -18,6 +24,7 @@ import com.mcgrady.common_core.http.SSLSocketClient;
 import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
 import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
+import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xskeleton.di.module.AppModule;
 import com.mcgrady.xskeleton.di.module.ClientModule;
 import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
@@ -26,6 +33,7 @@ import com.mcgrady.xskeleton.http.log.RequestInterceptor;
 import com.mcgrady.xskeleton.imageloader.glide.GlideImageLoaderStrategy;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -42,8 +50,9 @@ public class GlobalConfig implements ConfigModule {
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
+
         //Release 时,让框架不再打印 Http 请求和响应的信息
-        if (!BuildConfig.LOG_DEBUG){
+        if (!BuildConfig.LOG_DEBUG) {
             builder.printHttpLogLevel(RequestInterceptor.Level.NONE);
         }
 
@@ -75,6 +84,11 @@ public class GlobalConfig implements ConfigModule {
                     rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(true);
                     return null;
                 });
+
+
+        List<IKit> kits = new ArrayList<>();
+        kits.add(new TestSwitchKit());
+        DoraemonKit.install((Application) context, kits);
     }
 
     @Override

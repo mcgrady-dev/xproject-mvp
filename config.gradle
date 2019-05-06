@@ -100,6 +100,8 @@ ext {
             "rxpermissions"            : "com.github.tbruyelle:rxpermissions:0.10.2",
             "xpay"                     : "com.mcgrady:xpay:1.0.1",
             "fresco"                   : "com.facebook.fresco:fresco:1.12.1",
+            "dokit"                    : "com.didichuxing.doraemonkit:doraemonkit:1.1.6",
+            "dokit-no-op"              : "com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.6",
 
             //test
             "junit"                    : "junit:junit:4.12",
