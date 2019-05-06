@@ -90,6 +90,7 @@ public class GlobalConfig implements ConfigModule {
             List<IKit> kits = new ArrayList<>();
             kits.add(new TestSwitchKit());
             DoraemonKit.install((Application) context, kits);
+            DoraemonKit.hide();
         }
     }
 
