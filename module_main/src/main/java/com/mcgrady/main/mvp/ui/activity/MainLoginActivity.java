@@ -11,19 +11,6 @@ import com.mcgrady.main.mvp.presenter.MainLoginPresenter;
 import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xskeleton.di.component.AppComponent;
 
-
-/**
- * ================================================
- * Description:
- * <p>
- * Created by MVPArmsTemplate on 12/21/2018 14:30
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
- * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
- * ================================================
- */
 public class MainLoginActivity extends BaseActivity<MainLoginPresenter> implements MainLoginContract.View {
 
     @Override

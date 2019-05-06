@@ -30,7 +30,6 @@ import butterknife.BindView;
  * @author: mcgrady
  * @date: 2018/12/21
  */
-
 public class XhsWelcomeActivity extends BaseActivity {
 
     /**
