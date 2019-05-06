@@ -2,7 +2,7 @@ package com.mcgrady.main.mvp.presenter;
 
 import android.app.Application;
 
-import com.mcgrady.main.mvp.contract.EyepetizerLoginContract;
+import com.mcgrady.main.mvp.contract.CommonRegisterContract;
 import com.mcgrady.xskeleton.di.scope.ActivityScope;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 import com.mcgrady.xskeleton.imageloader.ImageLoader;
@@ -11,7 +11,7 @@ import com.mcgrady.xskeleton.mvp.BasePresenter;
 import javax.inject.Inject;
 
 @ActivityScope
-public class EyepetizerLoginPresenter extends BasePresenter<EyepetizerLoginContract.Model, EyepetizerLoginContract.View> {
+public class CommonRegisterPresenter extends BasePresenter<CommonRegisterContract.Model, CommonRegisterContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -20,8 +20,16 @@ public class EyepetizerLoginPresenter extends BasePresenter<EyepetizerLoginContr
     ImageLoader mImageLoader;
 
     @Inject
-    public EyepetizerLoginPresenter(EyepetizerLoginContract.Model model, EyepetizerLoginContract.View rootView) {
+    public CommonRegisterPresenter(CommonRegisterContract.Model model, CommonRegisterContract.View rootView) {
         super(model, rootView);
+    }
+
+    public void registerByPassword() {
+
+    }
+
+    public void registerByMobile() {
+
     }
 
     @Override

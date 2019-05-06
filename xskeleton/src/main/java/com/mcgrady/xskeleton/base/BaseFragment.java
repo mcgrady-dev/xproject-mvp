@@ -19,6 +19,8 @@ import com.trello.rxlifecycle3.android.FragmentEvent;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
 
@@ -31,6 +33,7 @@ public abstract class BaseFragment<P extends IPresneter> extends Fragment
     private final BehaviorSubject<FragmentEvent> mLifecycleSubject = BehaviorSubject.create();
     private Cache<String, Object> mCache;
     protected Context mContext;
+    private Unbinder mUnbinder;
 
     @Inject
     @Nullable
@@ -60,7 +63,9 @@ public abstract class BaseFragment<P extends IPresneter> extends Fragment
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return initView(inflater, container, savedInstanceState);
+        View rootView = initView(inflater, container, savedInstanceState);
+        mUnbinder = ButterKnife.bind(rootView);
+        return rootView;
     }
 
     @Override
@@ -73,6 +78,10 @@ public abstract class BaseFragment<P extends IPresneter> extends Fragment
     @Override
     public void onDetach() {
         super.onDetach();
-        mContext = null;
+        if (mUnbinder != null && mUnbinder != Unbinder.EMPTY) {
+            mUnbinder.unbind();
+        }
+        this.mUnbinder = null;
+        this.mContext = null;
     }
 }

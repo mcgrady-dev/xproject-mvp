@@ -4,14 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.main.R;
 import com.mcgrady.main.di.component.DaggerMainRegisterComponent;
-import com.mcgrady.main.mvp.contract.MainRegisterContract;
-import com.mcgrady.main.mvp.presenter.MainRegisterPresenter;
+import com.mcgrady.main.mvp.contract.CommonRegisterContract;
+import com.mcgrady.main.mvp.presenter.CommonRegisterPresenter;
 import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xskeleton.di.component.AppComponent;
 
-public class MainRegisterActivity extends BaseActivity<MainRegisterPresenter> implements MainRegisterContract.View {
+@Route(path = RouterHub.MAIN_COMMON_REGISTER)
+public class MainRegisterActivity extends BaseActivity<CommonRegisterPresenter> implements CommonRegisterContract.View {
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {

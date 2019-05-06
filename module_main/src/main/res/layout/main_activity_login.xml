@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,76 +9,230 @@
     android:orientation="vertical"
     tools:context=".mvp.ui.activity.MainLoginActivity">
 
-    <!--<com.hjq.bar.TitleBar-->
-    <!--android:id="@+id/tb_login_title"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/space_100"-->
-    <!--app:bar_style="transparent"-->
-    <!--app:color_right="@color/public_colorAccent"-->
-    <!--app:icon_back="false"-->
-    <!--app:title=""-->
-    <!--app:title_right="@string/login_register" />-->
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="30dp"
-        android:src="@mipmap/login_logo" />
-
-    <com.mcgrady.common_res.widget.ClearEditText
-        android:id="@+id/et_login_phone"
-        style="@style/EditTextStyle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="40dp"
-        android:hint="输入手机号码"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:maxLines="1" />
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal">
 
-    <View
-        style="@style/horizontal_line"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp" />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:src="@mipmap/login_logo" />
 
-    <com.mcgrady.common_res.widget.ClearEditText
-        android:id="@+id/et_login_password"
-        style="@style/EditTextStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:hint="请输入密码"
-        android:inputType="textPassword"
-        android:maxLength="20"
-        android:maxLines="1" />
+        <com.mcgrady.common_res.widget.ClearEditText
+            android:id="@+id/main_edt_login_phone"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:hint="输入手机号码"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:maxLines="1" />
 
-    <View
-        style="@style/horizontal_line"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp" />
+        <View
+            style="@style/horizontal_line"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp" />
+
+        <com.mcgrady.common_res.widget.ClearEditText
+            android:id="@+id/main_edt_login_password"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:maxLines="1" />
+
+        <View
+            style="@style/horizontal_line"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+
+            <TextView
+                android:id="@+id/main_tv_login_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="忘记密码？"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/main_tv_login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_gravity="right"
+                android:text="注册账号"
+                android:textColor="@color/colorAccent" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/main_btn_login_commit"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:text="登录" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_login_forget"
+        android:id="@+id/main_tv_policy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="60dp"
-        android:text="忘记密码"
-        android:textColor="@color/colorAccent" />
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        tools:text="登录注册代表同意用户协议和隐私政策"
+        android:textColor="@color/color_FF909090"
+        android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/btn_login_commit"
-        style="@style/ButtonStyle"
+    <LinearLayout
+        android:id="@+id/main_ll_third_party_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="40dp"
-        android:text="login" />
-</LinearLayout>
+        android:layout_above="@id/main_tv_policy"
+        android:orientation="horizontal"
+        android:layout_marginBottom="40dp">
+
+        <RelativeLayout
+            android:id="@+id/main_rl_weibo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/main_iv_weibo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/main_ic_logo_weibo"/>
+
+            <TextView
+                android:id="@+id/main_tv_social_title_weibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/main_iv_weibo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/main_weibo_login"
+                android:textColor="@color/color_363636"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_rl_wechat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/main_iv_wechat"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/main_ic_logo_wechat"/>
+
+            <TextView
+                android:id="@+id/tv_social_title_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/main_iv_wechat"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/main_wechat_login"
+                android:textColor="@color/color_363636"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_rl_qq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/main_iv_qq"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/main_ic_logo_qq"/>
+
+            <TextView
+                android:id="@+id/main_tv_social_title_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/main_iv_qq"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/main_qq_login"
+                android:textColor="@color/color_363636"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_rl_socialtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_ll_third_party_login"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/main_spit_view3"
+            android:layout_width="60dp"
+            android:layout_height="0.6dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/main_tv_socialtitle"
+            android:background="#e3e3e3"/>
+
+        <TextView
+            android:id="@+id/main_tv_socialtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/main_use_social_account"
+            android:textColor="@color/color_ACACAC"
+            android:textSize="14sp"/>
+
+        <View
+            android:id="@+id/main_spit_view4"
+            android:layout_width="60dp"
+            android:layout_height="0.6dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/main_tv_socialtitle"
+            android:background="#e3e3e3"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

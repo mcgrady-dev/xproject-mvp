@@ -30,4 +30,11 @@ public interface RouterHub {
     String ZHIHU_DAILY_SPLASH = MAIN + "/ZhihuDailySplashActivity";
     String ZHIHU_DAILY_HOME = NEWS + "/ZhihuDailyHomeActivity";
     String ZHIHU_DAILY_DETAIL = NEWS + "/ZhihuDailyDetailActivity";
+
+    /**
+     * 主页
+     */
+    String MAIN_COMMON_LOGIN = MAIN + "/MainLoginActivity";
+    String MAIN_COMMON_REGISTER = MAIN + "/MainRegisterActivity";
+    String MAIN_XHS_WELCOME = MAIN + "/XhsWelcomeActivity";
 }

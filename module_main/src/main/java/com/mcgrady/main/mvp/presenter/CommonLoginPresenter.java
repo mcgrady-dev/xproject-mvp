@@ -2,7 +2,7 @@ package com.mcgrady.main.mvp.presenter;
 
 import android.app.Application;
 
-import com.mcgrady.main.mvp.contract.MainLoginContract;
+import com.mcgrady.main.mvp.contract.CommonLoginContract;
 import com.mcgrady.xskeleton.di.scope.ActivityScope;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 import com.mcgrady.xskeleton.imageloader.ImageLoader;
@@ -10,8 +10,11 @@ import com.mcgrady.xskeleton.mvp.BasePresenter;
 
 import javax.inject.Inject;
 
+/**
+ * 公共的登录逻辑
+ */
 @ActivityScope
-public class MainLoginPresenter extends BasePresenter<MainLoginContract.Model, MainLoginContract.View> {
+public class CommonLoginPresenter extends BasePresenter<CommonLoginContract.Model, CommonLoginContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -20,8 +23,20 @@ public class MainLoginPresenter extends BasePresenter<MainLoginContract.Model, M
     ImageLoader mImageLoader;
 
     @Inject
-    public MainLoginPresenter(MainLoginContract.Model model, MainLoginContract.View rootView) {
+    public CommonLoginPresenter(CommonLoginContract.Model model, CommonLoginContract.View rootView) {
         super(model, rootView);
+    }
+
+    public void forgetPassword() {
+
+    }
+
+    public void loginByAccount(String user_name, String password) {
+
+    }
+
+    public void loginByMobile(String mobile_num, String ver_code) {
+
     }
 
     @Override
