@@ -32,4 +32,9 @@ public class EyepetizerLoginActivity extends BaseActivity<CommonLoginPresenter> 
     public void initData(@Nullable Bundle savedInstanceState) {
 
     }
+
+    @Override
+    public void navigation(String url) {
+
+    }
 }

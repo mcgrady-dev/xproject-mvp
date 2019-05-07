@@ -80,12 +80,13 @@
     <!--<item name="android:windowFullscreen">false</item>-->
     <!--</style>-->
 
-    <!--<style name="SplashTheme" parent="AppTheme">-->
-        <!--<item name="android:windowBackground">@mipmap/splash_bg</item>-->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@mipmap/public_splash_bg_2</item>
         <!--<item name="windowNoTitle">true</item>-->
         <!--<item name="android:windowFullscreen">true</item>-->
         <!--<item name="android:windowIsTranslucent">true</item>-->
-    <!--</style>-->
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 
     <!--<style name="WindowAnimationFadeInOut">-->
         <!--<item name="android:windowEnterAnimation">@anim/fade_in</item>-->

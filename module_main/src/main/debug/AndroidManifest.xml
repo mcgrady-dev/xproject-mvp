@@ -30,7 +30,8 @@
         <activity android:name=".mvp.ui.activity.MainRegisterActivity" />
         <activity android:name=".mvp.ui.activity.EyepetizerLoginActivity">
         </activity>
-        <activity android:name=".mvp.ui.activity.MainLoginActivity">
+        <activity android:name=".mvp.ui.activity.MainLoginActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

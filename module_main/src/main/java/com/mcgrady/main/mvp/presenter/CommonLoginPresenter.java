@@ -1,7 +1,11 @@
 package com.mcgrady.main.mvp.presenter;
 
 import android.app.Application;
+import android.text.TextUtils;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.hjq.toast.ToastUtils;
+import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
 import com.mcgrady.xskeleton.di.scope.ActivityScope;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
@@ -36,7 +40,13 @@ public class CommonLoginPresenter extends BasePresenter<CommonLoginContract.Mode
     }
 
     public void loginByMobile(String mobile_num, String ver_code) {
-
+        if (!TextUtils.isEmpty(mobile_num) && !TextUtils.isEmpty(ver_code)) {
+            ToastUtils.show("登录成功");
+            mView.navigation(RouterHub.ZHIHU_DAILY_HOME);
+            mView.finish();
+        } else {
+            ToastUtils.show("登录失败");
+        }
     }
 
     @Override

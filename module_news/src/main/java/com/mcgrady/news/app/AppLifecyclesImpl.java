@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.mcgrady.common_res.widget.MaterialHeader;
 import com.mcgrady.news.BuildConfig;
+import com.mcgrady.news.mvp.model.api.Api;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.cache.IntelligentCache;
 import com.mcgrady.xskeleton.http.RetrofitUrlManager;
@@ -16,9 +17,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-
-import static com.mcgrady.news.mvp.model.api.Api.ZHIHU_DOMAIN;
-import static com.mcgrady.news.mvp.model.api.Api.ZHIHU_DOMAIN_NAME;
 
 /**
  * <p>类说明</p>
@@ -44,7 +42,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
             return;
         }
         //使用 RetrofitUrlManager 切换 BaseUrl
-        RetrofitUrlManager.getInstance().putDomain(ZHIHU_DOMAIN_NAME, ZHIHU_DOMAIN);
+        RetrofitUrlManager.getInstance().putDomain(Api.ZHIHU_DOMAIN_NAME, Api.ZHIHU_DOMAIN);
         /**
          * 当所有模块集成到宿主 App 时, 在{@link com.mcgrady.common_core.app.AppConfig}中已经执行了以下代码
          */

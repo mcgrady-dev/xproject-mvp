@@ -10,4 +10,8 @@ public interface IView {
 
     default void hideProgress() {
     }
+
+    default void finish() {
+
+    }
 }

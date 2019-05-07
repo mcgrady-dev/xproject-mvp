@@ -69,6 +69,12 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     private com.mcgrady.xskeleton.imageloader.ImageLoader mImageLoader;
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerZhihuDailyHomeComponent
                 .builder()
