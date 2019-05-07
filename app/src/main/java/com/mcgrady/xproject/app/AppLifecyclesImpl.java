@@ -64,7 +64,6 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
             return new MaterialHeader(context);
         });
-
         SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new ClassicsFooter(context));
     }
 
