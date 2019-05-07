@@ -38,6 +38,7 @@ import okhttp3.Interceptor;
 import okhttp3.internal.Util;
 
 /**
+ * <p>全局配置</p>
  * Created by mcgrady on 2019/4/25.
  */
 @Module

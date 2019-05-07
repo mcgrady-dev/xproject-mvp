@@ -17,11 +17,10 @@ import java.util.List;
  * @date: 2018/12/20
  */
 
-public class AppConfig implements ConfigModule {
+public class GlobalConfig implements ConfigModule {
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
-
     }
 
     @Override
