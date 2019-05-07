@@ -94,8 +94,7 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
                         .url(imageList == null || imageList.isEmpty() ? "" : imageList.get(0))
                         .imageView(helper.getView(R.id.list_item_image))
                         .build());
-                helper.setGone(R.id.list_item_multipic, imageList == null || imageList.isEmpty() ?
-                        false : storiesBean.getImages().size() > 1);
+                helper.setGone(R.id.list_item_multipic, imageList != null && !imageList.isEmpty() && imageList.size() > 1);
                 break;
             default:
                 break;

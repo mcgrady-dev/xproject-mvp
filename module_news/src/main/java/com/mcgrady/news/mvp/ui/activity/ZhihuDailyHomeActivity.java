@@ -65,7 +65,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     private LinearLayoutManager linearManager;
     private int lastTitlePostion = -1;
 
-    private AppComponent mAppComponent;
     private com.mcgrady.xskeleton.imageloader.ImageLoader mImageLoader;
 
     @Override
@@ -91,8 +90,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        mAppComponent = Utils.obtainAppComponentFromContext(this);
-        mImageLoader = mAppComponent.imageLoader();
+        mImageLoader = Utils.obtainAppComponentFromContext(this).imageLoader();
 
         linearManager = new LinearLayoutManager(this);
         ViewUtils.configRecyclerView(recyclerView, linearManager);
