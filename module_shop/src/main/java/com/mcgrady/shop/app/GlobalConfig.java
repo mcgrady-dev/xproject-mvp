@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.mcgrady.news.BuildConfig;
+import com.mcgrady.shop.BuildConfig;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.cache.IntelligentCache;
 import com.mcgrady.xskeleton.di.module.GlobalConfigModule;

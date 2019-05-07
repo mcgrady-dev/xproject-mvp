@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.mcgrady.common_res.widget.NoScrollViewPager;
-import com.mcgrady.news.R;
-import com.mcgrady.news.R2;
+import com.mcgrady.shop.R;
+import com.mcgrady.shop.R2;
 import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.shop.mvp.presenter.ProductDetailsPresenter;
 import com.mcgrady.shop.mvp.ui.weiget.ProductSkuPopup;
@@ -28,13 +28,13 @@ import butterknife.OnClick;
 
 public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter> implements ProductDetailsContract.View {
 
-    @BindView(R.id.shop_tb_product_detail)
+    @BindView(R2.id.shop_tb_product_detail)
     TitleBar titlbar;
-    @BindView(R.id.shop_nsvp_product_detail)
+    @BindView(R2.id.shop_nsvp_product_detail)
     NoScrollViewPager viewPager;
-    @BindView(R.id.shop_tv_add_cart)
+    @BindView(R2.id.shop_tv_add_cart)
     TextView tvAddCart;
-    @BindView(R.id.shop_tv_pay)
+    @BindView(R2.id.shop_tv_pay)
     TextView tvPay;
 
     @Override
@@ -55,12 +55,8 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
     @OnClick(R2.id.shop_tv_add_cart)
     void OnClick(View view) {
         int viewId = view.getId();
-        switch (viewId) {
-            case R.id.shop_tv_add_cart:
-                new ProductSkuPopup(ProductDetailsActivity.this).showPopupWindow();
-                break;
-            default:
-                break;
+        if (viewId == R.id.shop_tv_add_cart) {
+            new ProductSkuPopup(ProductDetailsActivity.this).showPopupWindow();
         }
     }
 }

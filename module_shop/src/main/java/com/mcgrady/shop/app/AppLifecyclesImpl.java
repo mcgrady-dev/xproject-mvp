@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatDelegate;
 
-import com.mcgrady.news.BuildConfig;
+import com.mcgrady.shop.BuildConfig;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.cache.IntelligentCache;
 import com.mcgrady.xskeleton.utils.Utils;

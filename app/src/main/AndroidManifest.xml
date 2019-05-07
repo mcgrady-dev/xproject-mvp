@@ -21,6 +21,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
+        <activity android:name="com.mcgrady.main.mvp.ui.activity.MainLoginActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <meta-data
             android:name="com.mcgrady.common_core.app.GlobalConfig"
             android:value="ConfigModule"/>

@@ -8,7 +8,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.mcgrady.news.R;
+import com.mcgrady.shop.R;
 
 /**
  * <p>类说明</p>

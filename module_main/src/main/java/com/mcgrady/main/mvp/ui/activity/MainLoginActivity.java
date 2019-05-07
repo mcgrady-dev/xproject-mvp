@@ -45,21 +45,20 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
+        ARouter.getInstance().inject(this);
     }
 
     @OnClick({R2.id.main_tv_login_register, R2.id.main_btn_login_commit})
     void onClick(View view) {
         int viewId = view.getId();
-        switch (viewId) {
-            case R.id.main_btn_login_commit:
-                mPresenter.loginByMobile(edtMobile.getText().toString(), edtPassword.getText().toString());
-                break;
-            case R.id.main_tv_login_register:
-                ARouter.getInstance()
-                        .build(RouterHub.MAIN_COMMON_REGISTER)
-                        .navigation(MainLoginActivity.this);
-                break;
+        if (viewId == R.id.main_btn_login_commit) {
+            mPresenter.loginByMobile(edtMobile.getText().toString(), edtPassword.getText().toString());
+
+        } else if (viewId == R.id.main_tv_login_register) {
+            ARouter.getInstance()
+                    .build(RouterHub.MAIN_COMMON_REGISTER)
+                    .navigation(MainLoginActivity.this);
+
         }
     }
 

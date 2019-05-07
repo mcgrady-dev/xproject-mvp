@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mcgrady"
+        applicationId "com.mcgrady.xproject"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
@@ -70,9 +70,9 @@ dependencies {
     if (!isBuildModule.toBoolean()) {
         //在宿主 App 中使用 implementation 依赖业务组件, 业务组件的代码就会完全暴露给宿主 App, 不利于代码的隔离
         //使用 runtimeOnly 依赖业务组件, 可实现业务组件的代码在编译时对宿主 App 不可见, 仅在运行时对宿主 App 可见
-        runtimeOnly project(":module-main")
-        runtimeOnly project(":module-news")
-        runtimeOnly project(":module-shop")
+        implementation project(":module_main")
+        runtimeOnly project(":module_news")
+        runtimeOnly project(":module_shop")
     }
 
     implementation project(':common_core')
