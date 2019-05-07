@@ -44,8 +44,8 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
         //leakCanary内存泄露检查
         Utils.obtainAppComponentFromContext(application).extras()
-                .put(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())
-                        , BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
+                .put(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName()),
+                    BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
 
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
