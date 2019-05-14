@@ -27,8 +27,13 @@ public class MainRegisterActivity extends BaseActivity<CommonRegisterPresenter> 
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return R.layout.main_activity_register;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+
     }
 
     @Override

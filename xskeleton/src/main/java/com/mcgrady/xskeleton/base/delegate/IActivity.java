@@ -2,6 +2,7 @@ package com.mcgrady.xskeleton.base.delegate;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -34,13 +35,10 @@ public interface IActivity {
      */
     void setupActivityComponent(@NonNull AppComponent appComponent);
 
-    /**
-     * 初始化 View, 如果 {@link #initView(Bundle)} 返回 0, 框架则不会调用 {@link Activity#setContentView(int)}
-     *
-     * @param savedInstanceState
-     * @return
-     */
-    int initView(@Nullable Bundle savedInstanceState);
+    @LayoutRes
+    int getLayoutResId();
+
+    void initView(@Nullable Bundle savedInstanceState);
 
     /**
      * 初始化数据

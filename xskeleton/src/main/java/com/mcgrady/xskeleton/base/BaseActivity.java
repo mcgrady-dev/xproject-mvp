@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.InflateException;
+import android.view.View;
 
 import com.mcgrady.xskeleton.base.delegate.IActivity;
 import com.mcgrady.xskeleton.cache.Cache;
@@ -49,16 +50,17 @@ public abstract class BaseActivity<P extends IPresneter> extends AppCompatActivi
         return mLifecycleSubject;
     }
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            int layoutResID = initView(savedInstanceState);
+            int layoutResID = getLayoutResId();
             //如果initView返回0,框架则不会调用setContentView(),当然也不会 Bind ButterKnife
             if (layoutResID != 0) {
                 setContentView(layoutResID);
-                //绑定到butterknife
                 mUnbinder = ButterKnife.bind(this);
+                initView(savedInstanceState);
             }
         } catch (Exception e) {
             if (e instanceof InflateException) throw e;

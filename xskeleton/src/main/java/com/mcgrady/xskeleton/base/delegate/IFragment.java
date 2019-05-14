@@ -3,6 +3,7 @@ package com.mcgrady.xskeleton.base.delegate;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -36,15 +37,10 @@ public interface IFragment {
      */
     void setupFragmentComponent(@NonNull AppComponent appComponent);
 
-    /**
-     * 初始化 View
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
-    View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
+    @LayoutRes
+    int getLayoutResId();
+
+    void initView(@Nullable Bundle savedInstanceState);
 
     /**
      * 初始化数据
@@ -96,5 +92,7 @@ public interface IFragment {
      *
      * @param data 当不需要参数时 {@code data} 可以为 {@code null}
      */
-    void setData(@Nullable Object data);
+    default void setData(@Nullable Object data) {
+
+    }
 }

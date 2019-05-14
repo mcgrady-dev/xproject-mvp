@@ -33,8 +33,13 @@ public class PayDemoActivity extends BaseActivity {
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return 0;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+
     }
 
     @Override

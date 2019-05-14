@@ -13,7 +13,7 @@
         android:background="#E6E6E6" />
 
     <TextView
-        android:id="@+id/right_menu_tv"
+        android:id="@+id/shop_tv_right_menu_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"

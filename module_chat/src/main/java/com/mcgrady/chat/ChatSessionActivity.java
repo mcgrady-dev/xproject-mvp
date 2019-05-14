@@ -16,8 +16,13 @@ public class ChatSessionActivity extends BaseActivity {
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return R.layout.chat_activity_session;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+
     }
 
     @Override

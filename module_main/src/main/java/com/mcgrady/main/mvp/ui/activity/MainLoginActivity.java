@@ -39,9 +39,15 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return R.layout.main_activity_login;
     }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+
+    }
+
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {

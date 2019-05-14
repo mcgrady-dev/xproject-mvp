@@ -27,17 +27,17 @@ public class ShareScreenShotFragment extends BaseFragment {
     }
 
     @Override
-    public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.coomon_fragment_share_screenshot, container, false);
+    public int getLayoutResId() {
+        return R.layout.fragment_share_screenshot;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void setData(@Nullable Object data) {
 
     }
 }

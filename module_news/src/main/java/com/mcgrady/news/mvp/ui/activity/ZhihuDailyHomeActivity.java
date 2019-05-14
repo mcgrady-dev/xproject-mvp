@@ -84,16 +84,22 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return R.layout.news_activity_zhihu_daily_home;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+        linearManager = new LinearLayoutManager(this);
+        ViewUtils.configRecyclerView(recyclerView, linearManager);
+
+        banner = (Banner) LayoutInflater.from(this).inflate(R.layout.news_header_banner, null);
+        banner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.getScreenHeight() / 3));
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         mImageLoader = Utils.obtainAppComponentFromContext(this).imageLoader();
-
-        linearManager = new LinearLayoutManager(this);
-        ViewUtils.configRecyclerView(recyclerView, linearManager);
 
         adapter = new ZhihuDailyHomeAdapter(this);
         adapter.setOnItemClickListener((adapter, view, position) -> {
@@ -114,13 +120,8 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         });
 
         adapter.bindToRecyclerView(recyclerView);
-
-        banner = (Banner) LayoutInflater.from(this).inflate(R.layout.news_header_banner, null);
-        banner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.getScreenHeight() / 3));
         adapter.setHeaderView(banner);
-
         recyclerView.setAdapter(adapter);
-
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {

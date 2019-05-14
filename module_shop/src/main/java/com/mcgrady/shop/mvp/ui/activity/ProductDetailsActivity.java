@@ -43,8 +43,13 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return R.layout.shop_activity_product_detail;
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
+
     }
 
     @Override

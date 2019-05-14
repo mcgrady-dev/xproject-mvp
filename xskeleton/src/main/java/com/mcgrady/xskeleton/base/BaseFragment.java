@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mcgrady.xskeleton.R;
 import com.mcgrady.xskeleton.base.delegate.IFragment;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
@@ -63,8 +64,9 @@ public abstract class BaseFragment<P extends IPresneter> extends Fragment
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = initView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(getLayoutResId(), container, false);
         mUnbinder = ButterKnife.bind(rootView);
+        initView(savedInstanceState);
         return rootView;
     }
 

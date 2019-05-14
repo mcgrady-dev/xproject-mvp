@@ -67,6 +67,11 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     }
 
     @Override
+    public int getLayoutResId() {
+        return R.layout.news_activity_zhihu_daily_detail;
+    }
+
+    @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         StatusBarUtil.setTransparent(this);
@@ -79,8 +84,8 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.news_activity_zhihu_daily_detail;
+    public void initView(@Nullable Bundle savedInstanceState) {
+
     }
 
     @Override

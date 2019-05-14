@@ -38,12 +38,12 @@ public class ZhihuDailySplashActivity extends BaseActivity {
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
         return R.layout.main_activity_zhihu_daily_splash;
     }
 
     @Override
-    public void initData(@Nullable Bundle savedInstanceState) {
+    public void initView(@Nullable Bundle savedInstanceState) {
         splashAnimation = AnimationUtils.loadAnimation(this, R.anim.public_splash);
 
         splashAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -72,5 +72,11 @@ public class ZhihuDailySplashActivity extends BaseActivity {
                 ivSplash.startAnimation(splashAnimation);
             }
         });
+    }
+
+
+    @Override
+    public void initData(@Nullable Bundle savedInstanceState) {
+
     }
 }

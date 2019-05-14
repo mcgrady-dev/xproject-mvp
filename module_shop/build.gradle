@@ -5,9 +5,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     api project(':common_core')
     api project(':common_res')
-    api rootProject.ext.dependencies["fresco"]
 }
