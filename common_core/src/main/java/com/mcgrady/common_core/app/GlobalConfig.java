@@ -18,6 +18,7 @@ import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
 import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
 import com.mcgrady.common_core.http.SSLSocketClient;
 import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
+import com.mcgrady.common_core.lifecycle.AppLifecyclesImpl;
 import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.di.module.AppModule;
@@ -91,31 +92,9 @@ public class GlobalConfig implements ConfigModule {
 
     @Override
     public void injectAppLifecycle(Context context, List<AppLifecycles> lifecycles) {
-        // AppDelegate.Lifecycle 的所有方法都会在基类Application对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
-        lifecycles.add(new AppLifecycles() {
-            @Override
-            public void attachBaseContext(@NonNull Context base) {
-            }
-
-            @Override
-            public void onCreate(@NonNull Application application) {
-                if (BuildConfig.LOG_DEBUG) {
-                    ButterKnife.setDebug(true);
-                    ARouter.openLog();     // 打印日志
-                    ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-                    RetrofitUrlManager.getInstance().setDebug(true);
-                }
-
-                ARouter.init(application); // 尽可能早,推荐在Application中初始化
-                Utils.init(application);
-                ToastUtils.init(application);
-                ToastUtils.initStyle(new ToastAlipayStyle());
-            }
-
-            @Override
-            public void onTerminate(@NonNull Application application) {
-            }
-        });
+        // AppDelegate.Lifecycle 的所有方法都会在基类Application对应的生命周期中被调用,
+        // 所以在对应的方法中可以扩展一些自己需要的逻辑
+        lifecycles.add(new AppLifecyclesImpl());
     }
 
     @Override
