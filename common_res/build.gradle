@@ -45,4 +45,6 @@ dependencies {
         exclude module: 'design'
     }
     api rootProject.ext.dependencies["xtitlebar"]
+
+    api rootProject.ext.dependencies["autosize"]
 }

@@ -32,6 +32,14 @@
             </intent-filter>
         </activity>
 
+        <!--设计图尺寸-->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640"/>
+
         <meta-data
             android:name="com.mcgrady.common_core.app.GlobalConfig"
             android:value="ConfigModule"/>

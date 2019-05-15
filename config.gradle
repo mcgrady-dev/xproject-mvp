@@ -46,7 +46,7 @@ ext {
 
             //view
             "autolayout"               : "com.zhy:autolayout:1.4.5",
-            "autosize"                 : "me.jessyan:autosize:1.1.1",
+            "autosize"                 : "me.jessyan:autosize:1.1.2",
             "butterknife"              : "com.jakewharton:butterknife:${version["butterknifeSdkVersion"]}",
             "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
             "pickerview"               : "com.contrarywind:Android-PickerView:4.1.7",
