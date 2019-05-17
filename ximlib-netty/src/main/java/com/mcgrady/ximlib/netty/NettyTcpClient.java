@@ -7,16 +7,23 @@ import com.mcgrady.ximlib.ExecutorServiceFactory;
 import com.mcgrady.ximlib.IMSConfig;
 import com.mcgrady.ximlib.MsgDispatcher;
 import com.mcgrady.ximlib.MsgTimeoutTimerManager;
+import com.mcgrady.ximlib.handler.HeartbeatHandler;
+import com.mcgrady.ximlib.handler.TCPChannelInitializerHandler;
+import com.mcgrady.ximlib.handler.TCPReadHandler;
 import com.mcgrady.ximlib.interf.IMSClientInterface;
 import com.mcgrady.ximlib.interf.IMSConnectStatusCallback;
 import com.mcgrady.ximlib.interf.OnEventListener;
 import com.mcgrady.ximlib.proto.MessageProtobuf;
 
 import java.util.Vector;
-import java.util.logging.Logger;
-
+import java.util.concurrent.TimeUnit;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 
 /**
  * Created by mcgrady on 2019/5/17.
@@ -256,11 +263,39 @@ public class NettyTcpClient implements IMSClientInterface {
         }
 
         try {
+            // 之前存在的读写超时handler，先移除掉，再重新添加
+            if (channel.pipeline().get(IdleStateHandler.class.getSimpleName()) != null) {
+                channel.pipeline().remove(IdleStateHandler.class.getSimpleName());
+            }
+            // 3次心跳没响应，代表连接已断开
+            channel.pipeline().addFirst(IdleStateHandler.class.getSimpleName(), new IdleStateHandler(
+                    heartbeatInterval * 3, heartbeatInterval, 0, TimeUnit.MILLISECONDS));
 
+            // 重新添加HeartbeatHandler
+            if (channel.pipeline().get(HeartbeatHandler.class.getSimpleName()) != null) {
+                channel.pipeline().remove(HeartbeatHandler.class.getSimpleName());
+            }
+            if (channel.pipeline().get(TCPReadHandler.class.getSimpleName()) != null) {
+                channel.pipeline().addBefore(TCPReadHandler.class.getSimpleName(), HeartbeatHandler.class.getSimpleName(),
+                        new HeartbeatHandler(this));
+            }
         } catch (Exception e) {
-
+            e.printStackTrace();
+            Log.e(TAG, "添加心跳消息管理handler失败，reason：" + e.getMessage());
         }
     }
+
+    private void removeHandler(String handlerName) {
+        try {
+            if (channel != null && channel.pipeline().get(handlerName) != null) {
+                channel.pipeline().remove(handlerName);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "移除handler失败，handlerName=" + handlerName);
+        }
+    }
+
 
     @Override
     public MsgDispatcher getMesgDispatcher() {
@@ -322,6 +357,9 @@ public class NettyTcpClient implements IMSClientInterface {
         return 0;
     }
 
+    /**
+     * 从连任务
+     */
     private class ResetConnectRunnable implements Runnable {
 
         private boolean isFirst;
@@ -332,7 +370,88 @@ public class NettyTcpClient implements IMSClientInterface {
 
         @Override
         public void run() {
+            // 非首次进行重连，执行到这里即代表已经连接失败，回调连接状态到应用层
+            if (!isFirst) {
+                onConnectStatusCallback(IMSConfig.CONNECT_STATE_FAILURE);
+            }
 
+            try {
+                // 重连时，释放工作线程组，也就是停止心跳
+                loopGroup.destoryWorkLoopGroup();
+
+                while (!isClosed) {
+                    if(!isNetworkAvailable()) {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        continue;
+                    }
+
+                    // 网络可用才进行连接
+                    int status;
+                    if ((status = reconnect()) == IMSConfig.CONNECT_STATE_SUCCESSFUL) {
+                        onConnectStatusCallback(status);
+                        // 连接成功，跳出循环
+                        break;
+                    }
+
+                    if (status == IMSConfig.CONNECT_STATE_FAILURE) {
+                        onConnectStatusCallback(status);
+                        try {
+                            Thread.sleep(IMSConfig.DEFAULT_RECONNECT_INTERVAL);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } finally {
+                // 标识重连任务停止
+                isReconnecting = false;
+            }
         }
+
+        private int reconnect() {
+            // 未关闭才去连接
+            if (!isClosed) {
+                try {
+                    // 先释放EventLoop线程组
+                    if (bootstrap != null) {
+                        bootstrap.group().shutdownGracefully();
+                    }
+                } finally {
+                    bootstrap = null;
+                }
+
+                // 初始化bootstrap
+                initBootstrap();
+                return connectServer();
+            }
+            return IMSConfig.CONNECT_STATE_FAILURE;
+        }
+
+        private int connectServer() {
+            return 0;
+        }
+    }
+
+    private void initBootstrap() {
+        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
+        bootstrap = new Bootstrap();
+        bootstrap.group(loopGroup).channel(NioSocketChannel.class);
+        // 设置该选项以后，如果在两小时内没有数据的通信时，TCP会自动发送一个活动探测数据报文
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+        // 设置禁用nagle算法
+        bootstrap.option(ChannelOption.TCP_NODELAY, true);
+        // 设置连接超时时长
+        bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, getConnectTimeout());
+        // 设置初始化Channel
+        bootstrap.handler(new TCPChannelInitializerHandler(this));
+    }
+
+
+    private boolean isNetworkAvailable() {
+        return false;
     }
 }

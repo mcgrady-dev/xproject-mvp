@@ -52,6 +52,10 @@ public class ExecutorServiceFactory {
         destoryExecutorService(workPool);
     }
 
+    public synchronized void destoryWorkLoopGroup() {
+        destoryExecutorService(workPool);
+    }
+
     private synchronized void destoryExecutorService(ExecutorService executorService) {
         if (executorService != null) {
             try {
