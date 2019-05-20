@@ -37,21 +37,37 @@ public class NettyTcpClient implements IMSClientInterface {
     private Bootstrap bootstrap;
     private Channel channel;
 
-    private boolean isClosed;
-    private Vector<String> serverUrlList;
-    private OnEventListener onEventListener;
-    private IMSConnectStatusCallback imsConnectStatusCallback;
-    private MsgDispatcher msgDispather;
-    private ExecutorServiceFactory loopGroup;
-    private MsgTimeoutTimerManager msgTimeoutTimerManager;
-    private boolean isReconnecting;
-    private int connectStatus;
-    private String currentHost;
-    private Object currentPort = -1;
-    private int appStatus;
-    private int foregroundHeartbeatInterval;
-    private int backgroundHeartbeatInterval;
-    private int heartbeatInterval;
+    private boolean isClosed = false;// 标识ims是否已关闭
+    private Vector<String> serverUrlList;// ims服务器地址组
+    private OnEventListener onEventListener;// 与应用层交互的listener
+    private IMSConnectStatusCallback imsConnectStatusCallback;// ims连接状态回调监听器
+    private MsgDispatcher msgDispatcher;// 消息转发器
+    private ExecutorServiceFactory loopGroup;// 线程池工厂
+
+    private boolean isReconnecting = false;// 是否正在进行重连
+    private int connectStatus = IMSConfig.CONNECT_STATE_FAILURE;// ims连接状态，初始化为连接失败
+    // 重连间隔时长
+    private int reconnectInterval = IMSConfig.DEFAULT_RECONNECT_BASE_DELAY_TIME;
+    // 连接超时时长
+    private int connectTimeout = IMSConfig.DEFAULT_CONNECT_TIMEOUT;
+    // 心跳间隔时间
+    private int heartbeatInterval = IMSConfig.DEFAULT_HEARTBEAT_INTERVAL_FOREGROUND;
+    // 应用在后台时心跳间隔时间
+    private int foregroundHeartbeatInterval = IMSConfig.DEFAULT_HEARTBEAT_INTERVAL_FOREGROUND;
+    // 应用在前台时心跳间隔时间
+    private int backgroundHeartbeatInterval = IMSConfig.DEFAULT_HEARTBEAT_INTERVAL_BACKGROUND;
+    // app前后台状态
+    private int appStatus = IMSConfig.APP_STATUS_FOREGROUND;
+    // 消息发送超时重发次数
+    private int resendCount = IMSConfig.DEFAULT_RESEND_COUNT;
+    // 消息发送失败重发间隔时长
+    private int resendInterval = IMSConfig.DEFAULT_RESEND_INTERVAL;
+
+    private String currentHost = null;// 当前连接host
+    private int currentPort = -1;// 当前连接port
+
+    private MsgTimeoutTimerManager msgTimeoutTimerManager;// 消息发送超时定时器管理
+
 
     private NettyTcpClient() {
 
@@ -76,8 +92,8 @@ public class NettyTcpClient implements IMSClientInterface {
         this.serverUrlList = serverUrlList;
         this.onEventListener = listener;
         this.imsConnectStatusCallback = callback;
-        msgDispather = new MsgDispatcher();
-        msgDispather.setOnEventListener(listener);
+        msgDispatcher = new MsgDispatcher();
+        msgDispatcher.setOnEventListener(listener);
         loopGroup = new ExecutorServiceFactory();
         loopGroup.initBossLoopGroup();      //初始化重连线程组
         msgTimeoutTimerManager = new MsgTimeoutTimerManager(this);
@@ -116,6 +132,9 @@ public class NettyTcpClient implements IMSClientInterface {
         }
     }
 
+    /**
+     * 关闭channel
+     */
     private void closeChannel() {
         try {
             if (channel != null) {
@@ -130,6 +149,11 @@ public class NettyTcpClient implements IMSClientInterface {
         }
     }
 
+    /**
+     * 回调ims连接状态
+     *
+     * @param connectStatus
+     */
     private void onConnectStatusCallback(int connectStatus) {
         this.connectStatus = connectStatus;
         switch (connectStatus) {
@@ -212,7 +236,7 @@ public class NettyTcpClient implements IMSClientInterface {
     }
 
     @Override
-    public boolean isClose() {
+    public boolean isClosed() {
         return isClosed;
     }
 
@@ -257,7 +281,10 @@ public class NettyTcpClient implements IMSClientInterface {
         addHeartbeatHandler();
     }
 
-    private void addHeartbeatHandler() {
+    /**
+     * 添加心跳信息管理handler
+     */
+    public void addHeartbeatHandler() {
         if (channel == null || !channel.isActive() || channel.pipeline() == null) {
             return;
         }
@@ -285,6 +312,10 @@ public class NettyTcpClient implements IMSClientInterface {
         }
     }
 
+    /**
+     * 移除指定handler
+     * @param handlerName
+     */
     private void removeHandler(String handlerName) {
         try {
             if (channel != null && channel.pipeline().get(handlerName) != null) {
@@ -298,63 +329,142 @@ public class NettyTcpClient implements IMSClientInterface {
 
 
     @Override
-    public MsgDispatcher getMesgDispatcher() {
-        return null;
+    public MsgDispatcher getMsgDispatcher() {
+        return msgDispatcher;
     }
 
     @Override
     public MsgTimeoutTimerManager getMsgTimeoutTimerManager() {
-        return null;
+        return msgTimeoutTimerManager;
     }
 
     @Override
     public int getReconnectInterval() {
-        return 0;
+        if (onEventListener != null && onEventListener.getReconnectInterval() > 0) {
+            return reconnectInterval = onEventListener.getReconnectInterval();
+        }
+        return reconnectInterval;
     }
 
     @Override
     public int getConnectTimeout() {
-        return 0;
+        if (onEventListener != null && onEventListener.getConnectTimeout() > 0) {
+            return connectTimeout = onEventListener.getConnectTimeout();
+        }
+        return connectTimeout;
     }
 
     @Override
     public int getForegroundHeartbeatInterval() {
-        return 0;
+        if (onEventListener != null && onEventListener.getForegroundHeartbeatInterval() > 0) {
+            foregroundHeartbeatInterval = onEventListener.getForegroundHeartbeatInterval();
+        }
+        return foregroundHeartbeatInterval;
     }
 
     @Override
     public int getBackgroundHeartbeatInterval() {
-        return 0;
+        if (onEventListener != null && onEventListener.getBackgroundHeartbeatInterval() > 0) {
+            return backgroundHeartbeatInterval = onEventListener.getBackgroundHeartbeatInterval();
+        }
+        return backgroundHeartbeatInterval;
     }
 
     @Override
     public MessageProtobuf.Msg getHandshakeMsg() {
+        if (onEventListener != null) {
+            return onEventListener.getHandshakeMsg();
+        }
         return null;
     }
 
     @Override
     public MessageProtobuf.Msg getHeartbeatMsg() {
+        if (onEventListener != null) {
+            onEventListener.getHeartbeatMsg();
+        }
         return null;
     }
 
     @Override
     public int getServerSentReportMsgType() {
+        if (onEventListener != null) {
+            onEventListener.getServerSentReportMsgType();
+        }
         return 0;
     }
 
     @Override
     public int getClientReceivedReportMsgType() {
+        if (onEventListener != null) {
+            onEventListener.getClientReceivedReportMsgType();
+        }
         return 0;
     }
 
     @Override
     public int getResendCount() {
-        return 0;
+        if (onEventListener != null && onEventListener.getResendCount() != 0) {
+            return resendCount = onEventListener.getResendCount();
+        }
+        return resendCount;
     }
 
     @Override
     public int getResendInterval() {
-        return 0;
+        if (onEventListener != null && onEventListener.getResendInterval() > 0) {
+            return resendInterval = onEventListener.getResendInterval();
+        }
+        return resendInterval;
+    }
+
+
+    /**
+     * 初始化bootstrap
+     */
+    private void initBootstrap() {
+        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
+        bootstrap = new Bootstrap();
+        bootstrap.group(loopGroup).channel(NioSocketChannel.class);
+        // 设置该选项以后，如果在两小时内没有数据的通信时，TCP会自动发送一个活动探测数据报文
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+        // 设置禁用nagle算法
+        bootstrap.option(ChannelOption.TCP_NODELAY, true);
+        // 设置连接超时时长
+        bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, getConnectTimeout());
+        // 设置初始化Channel
+        bootstrap.handler(new TCPChannelInitializerHandler(this));
+    }
+
+    /**
+     * 从应用层获取网络是否可用
+     * @return
+     */
+    private boolean isNetworkAvailable() {
+        if (onEventListener != null) {
+            return onEventListener.isNetworkAvailable();
+        }
+        return false;
+    }
+
+    /**
+     * 连接服务器
+     */
+    private void toServer() {
+        try {
+            channel = bootstrap.connect(currentHost, currentPort).sync().channel();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Log.e(TAG, String.format("连接Server(ip[%s], port[%s])失败", currentHost, currentPort));
+    }
+
+    public int getHeartbeatInterval() {
+        return this.heartbeatInterval;
+    }
+
+    public ExecutorServiceFactory getLoopGroup() {
+        return loopGroup;
     }
 
     /**
@@ -412,6 +522,11 @@ public class NettyTcpClient implements IMSClientInterface {
             }
         }
 
+        /**
+         * 重连，首次连接也认为是第一次重连
+         *
+         * @return
+         */
         private int reconnect() {
             // 未关闭才去连接
             if (!isClosed) {
@@ -431,27 +546,59 @@ public class NettyTcpClient implements IMSClientInterface {
             return IMSConfig.CONNECT_STATE_FAILURE;
         }
 
+        /**
+         * 连接服务器
+         *
+         * @return
+         */
         private int connectServer() {
-            return 0;
+            //如果服务器地址无效，直接回调连接状态，不再进行连接
+            if (serverUrlList == null || serverUrlList.size() <= 0) {
+                return IMSConfig.CONNECT_STATE_FAILURE;
+            }
+
+            for (int i = 0; (!isClosed && i < serverUrlList.size()); i++) {
+                String serverUrl = serverUrlList.get(i);
+                if (TextUtils.isEmpty(serverUrl)) {
+                    return IMSConfig.CONNECT_STATE_FAILURE;
+                }
+
+                String[] address = serverUrl.split(" ");
+                for (int j = 0; j < IMSConfig.DEFAULT_RECONNECT_COUNT; j++) {
+                    //如果ims已关闭或网络不可用，直接回调连接状态，不再进行连接
+                    if (isClosed || !isNetworkAvailable()) {
+                        return IMSConfig.CONNECT_STATE_FAILURE;
+                    }
+
+                    //回调连接状态
+                    if (connectStatus != IMSConfig.CONNECT_STATE_CONNECTING) {
+                        onConnectStatusCallback(IMSConfig.CONNECT_STATE_CONNECTING);
+                    }
+
+                    Log.d(TAG, String.format("正在进行『%s』的第『%d』次连接，当前重连延时时长为『%dms』", serverUrl, j, j * getReconnectInterval()));
+
+                    try {
+                        currentHost = address[0];
+                        currentPort = Integer.parseInt(address[i]);
+                        toServer();
+
+                        if (channel != null) {
+                            return IMSConfig.CONNECT_STATE_SUCCESSFUL;
+                        } else {
+                            //连接失败，线程休眠，等待重连
+                            Thread.sleep(j * getReconnectInterval());
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        close();
+                        break;  //线程被中断，强制退出
+                    }
+                }
+
+            }
+
+            return IMSConfig.CONNECT_STATE_FAILURE;
         }
     }
 
-    private void initBootstrap() {
-        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
-        bootstrap = new Bootstrap();
-        bootstrap.group(loopGroup).channel(NioSocketChannel.class);
-        // 设置该选项以后，如果在两小时内没有数据的通信时，TCP会自动发送一个活动探测数据报文
-        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
-        // 设置禁用nagle算法
-        bootstrap.option(ChannelOption.TCP_NODELAY, true);
-        // 设置连接超时时长
-        bootstrap.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, getConnectTimeout());
-        // 设置初始化Channel
-        bootstrap.handler(new TCPChannelInitializerHandler(this));
-    }
-
-
-    private boolean isNetworkAvailable() {
-        return false;
-    }
 }

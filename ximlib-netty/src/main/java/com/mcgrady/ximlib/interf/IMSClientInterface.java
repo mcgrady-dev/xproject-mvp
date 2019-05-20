@@ -44,7 +44,7 @@ public interface IMSClientInterface {
      *
      * @return
      */
-    boolean isClose();
+    boolean isClosed();
 
     /**
      * 发送消息
@@ -73,7 +73,8 @@ public interface IMSClientInterface {
      *
      * @return
      */
-    MsgDispatcher getMesgDispatcher();
+    MsgDispatcher getMsgDispatcher();
+
 
     /**
      * 消息发送超时定时器
