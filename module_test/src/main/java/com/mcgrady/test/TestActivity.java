@@ -14,5 +14,10 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         LogUtils.d(TAG, "onCreate");
         setContentView(R.layout.test_activity_test);
+
+
+        if (SysNavigationBarUtils.hasSoftNavBar(getWindowManager())) {
+
+        }
     }
 }
