@@ -60,6 +60,8 @@ ext {
             "ucrop"                    : "com.github.yalantis:ucrop:2.2.2",
             "smart-refreshlayout"      : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20",
             "statusbar-util"           : "com.jaeger.statusbarutil:library:1.5.1",
+            "immersion-bar"            : "com.gyf.immersionbar:immersionbar:3.0.0-beta04",
+            "immersion-bar-components" : "com.gyf.immersionbar:immersionbar-components:3.0.0-beta04",
             "banner"                   : "com.youth.banner:banner:1.4.10",
             "xtitlebar"                : "com.mcgrady:xtitlebar:1.0.2",
             "sticky-headers-recyclerview" : "com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar",

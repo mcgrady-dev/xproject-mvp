@@ -5,8 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.InflateException;
-import android.view.View;
 
+import com.gyf.immersionbar.ImmersionBar;
+import com.mcgrady.xskeleton.R;
 import com.mcgrady.xskeleton.base.delegate.IActivity;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
@@ -61,12 +62,20 @@ public abstract class BaseActivity<P extends IPresneter> extends AppCompatActivi
                 setContentView(layoutResID);
                 mUnbinder = ButterKnife.bind(this);
                 initView(savedInstanceState);
+                initImmersionBar();
             }
         } catch (Exception e) {
             if (e instanceof InflateException) throw e;
             e.printStackTrace();
         }
         initData(savedInstanceState);
+    }
+
+    private void initImmersionBar() {
+        ImmersionBar.with(this)
+                .fitsSystemWindows(true)
+                .keyboardEnable(true).statusBarColor(R.color.design_default_color_primary)
+                .init();
     }
 
     @Override

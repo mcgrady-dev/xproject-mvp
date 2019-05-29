@@ -117,8 +117,10 @@ dependencies {
 
     api rootProject.ext.dependencies["util-code"]
     api rootProject.ext.dependencies["toast"]
-    api(rootProject.ext.dependencies["statusbar-util"]) {
+    api(rootProject.ext.dependencies["immersion-bar"]) {
         exclude module: 'appcompat-v7'
-        exclude module: 'design'
+    }
+    api(rootProject.ext.dependencies["immersion-bar-components"]) {
+        exclude module: 'appcompat-v7'
     }
 }
