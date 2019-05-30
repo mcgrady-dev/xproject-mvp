@@ -1,4 +1,4 @@
-package com.mcgrady.xupdatemanger;
+package com.mcgrady.xupdatemanager.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

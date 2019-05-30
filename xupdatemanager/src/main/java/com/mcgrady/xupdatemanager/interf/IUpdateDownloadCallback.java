@@ -1,4 +1,4 @@
-package com.mcgrady.xupdatemanger;
+package com.mcgrady.xupdatemanager.interf;
 
 import java.io.File;
 
@@ -6,7 +6,7 @@ import java.io.File;
  * @author: mcgrady
  * @date: 2019-05-28
  */
-public interface OnUpdateDownloadListener {
+public interface IUpdateDownloadCallback {
 
     void onStart();
 

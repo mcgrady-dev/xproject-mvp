@@ -1,4 +1,4 @@
-package com.mcgrady.xupdatemanger;
+package com.mcgrady.xupdatemanager.interf;
 
 import android.support.annotation.NonNull;
 
@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
  */
 public interface IUpdateDownloader<T> {
 
-    void startDownload(@NonNull T updateEntity, @NonNull OnUpdateDownloadListener listener);
+    void startDownload(@NonNull T updateEntity, @NonNull IUpdateDownloadCallback listener);
 
     void cancelDownload();
 

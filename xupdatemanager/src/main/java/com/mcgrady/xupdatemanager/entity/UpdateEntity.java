@@ -1,7 +1,9 @@
-package com.mcgrady.xupdatemanger;
+package com.mcgrady.xupdatemanager.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.mcgrady.xupdatemanager.interf.IUpdateHttpService;
 
 /**
  * @author: mcgrady
@@ -21,6 +23,15 @@ public class UpdateEntity implements Parcelable {
     private boolean isSilent;
     private boolean isAutoInstall;
 
+    private IUpdateHttpService updateHttpClient;
+
+    public IUpdateHttpService getUpdateHttpClient() {
+        return updateHttpClient;
+    }
+
+    public void setUpdateHttpClient(IUpdateHttpService updateHttpClient) {
+        this.updateHttpClient = updateHttpClient;
+    }
 
     public boolean isHasNewVersion() {
         return hasNewVersion;

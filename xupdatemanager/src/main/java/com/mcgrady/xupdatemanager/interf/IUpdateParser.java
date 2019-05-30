@@ -1,4 +1,4 @@
-package com.mcgrady.xupdatemanger;
+package com.mcgrady.xupdatemanager.interf;
 
 import android.support.annotation.NonNull;
 

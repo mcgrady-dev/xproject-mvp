@@ -61,6 +61,7 @@ dependencies {
 
     implementation project(':common_core')
     implementation project(':common_res')
+    implementation project(':xupdatemanager')
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]

@@ -1,6 +1,14 @@
-package com.mcgrady.xupdatemanger;
+package com.mcgrady.xupdatemanager;
 
 import android.app.Application;
+
+import com.mcgrady.xupdatemanager.interf.IUpdateChecker;
+import com.mcgrady.xupdatemanager.interf.IUpdateDownloadCallback;
+import com.mcgrady.xupdatemanager.interf.IUpdateDownloader;
+import com.mcgrady.xupdatemanager.interf.IUpdateHttpService;
+import com.mcgrady.xupdatemanager.interf.IUpdateParser;
+import com.mcgrady.xupdatemanager.interf.IUpdatePrompter;
+import com.mcgrady.xupdatemanager.entity.UpdateConfigure;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +37,7 @@ public class UpdateManager {
 
     private String ApkCacheDir;
 
-    private IUpdateHttpClient updateHttpClient;
+    private IUpdateHttpService updateHttpClient;
 
     private IUpdateChecker updateChecker;
 
@@ -37,7 +45,7 @@ public class UpdateManager {
 
     private IUpdateDownloader updateDownloader;
 
-    private OnUpdateDownloadListener updateDownloadListener;
+    private IUpdateDownloadCallback updateDownloadListener;
 
     private IUpdatePrompter updatePrompter;
 
@@ -76,11 +84,11 @@ public class UpdateManager {
         private boolean isWifiOnly;
         private boolean isAutoMode;
         private String ApkCacheDir;
-        private IUpdateHttpClient updateHttpClient;
+        private IUpdateHttpService updateHttpClient;
         private IUpdateChecker updateChecker;
         private IUpdateParser updateParser;
         private IUpdateDownloader updateDownloader;
-        private OnUpdateDownloadListener updateDownloadListener;
+        private IUpdateDownloadCallback updateDownloadListener;
         private IUpdatePrompter updatePrompter;
         private UpdateConfigure updateConfigure;
 
@@ -127,7 +135,7 @@ public class UpdateManager {
             return this;
         }
 
-        public Builder updateHttpClient(IUpdateHttpClient updateHttpClient) {
+        public Builder updateHttpClient(IUpdateHttpService updateHttpClient) {
             this.updateHttpClient = updateHttpClient;
             return this;
         }
@@ -147,7 +155,7 @@ public class UpdateManager {
             return this;
         }
 
-        public Builder updateDownloadListener(OnUpdateDownloadListener updateDownloadListener) {
+        public Builder updateDownloadListener(IUpdateDownloadCallback updateDownloadListener) {
             this.updateDownloadListener = updateDownloadListener;
             return this;
         }
