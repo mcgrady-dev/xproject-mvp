@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <Button
+        android:id="@+id/btn_skip_splash"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_splash_skip_btn"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="36sp"
+        android:textStyle="italic|bold"
+        android:textColor="@color/colorAccent"
+        android:text="Welcome"/>
+
+</RelativeLayout>

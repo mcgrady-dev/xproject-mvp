@@ -71,7 +71,7 @@ public abstract class BaseActivity<P extends IPresneter> extends AppCompatActivi
         initData(savedInstanceState);
     }
 
-    private void initImmersionBar() {
+    protected void initImmersionBar() {
         ImmersionBar.with(this)
                 .fitsSystemWindows(true)
                 .keyboardEnable(true).statusBarColor(R.color.design_default_color_primary)

@@ -29,12 +29,27 @@ public class ZhihuDailySplashActivity extends BaseActivity {
 
     @BindView(R2.id.main_iv_splash)
     ImageView ivSplash;
+    @BindView(R2.id.main_iv_logo)
+    ImageView ivLogo;
+    @BindView(R2.id.main_iv_splash_shadow)
+    ImageView ivSplashShadow;
 
     private Animation splashAnimation;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
 
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.FullscreenTheme);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void initImmersionBar() {
+        //不执行状态栏适配
     }
 
     @Override
@@ -56,8 +71,12 @@ public class ZhihuDailySplashActivity extends BaseActivity {
             public void onAnimationEnd(Animation animation) {
 
                 ivSplash.setVisibility(View.GONE);
+                ivSplashShadow.setVisibility(View.GONE);
+                ivLogo.setVisibility(View.GONE);
+
                 ARouter.getInstance().build(RouterHub.ZHIHU_DAILY_HOME)
                         .navigation(ZhihuDailySplashActivity.this);
+                finish();
             }
 
             @Override
@@ -78,5 +97,10 @@ public class ZhihuDailySplashActivity extends BaseActivity {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //不执行回退操作
     }
 }

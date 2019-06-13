@@ -135,7 +135,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
             }
         });
 
-
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setOnLoadMoreListener(this);
         refreshLayout.autoRefresh();

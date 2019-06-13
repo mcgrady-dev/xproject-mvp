@@ -1,6 +1,7 @@
 package com.mcgrady.common_res.utils;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Build;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -81,5 +82,16 @@ public class ViewUtils {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.heightPixels;
+    }
+
+    /**
+     * Value of dp to value of px.
+     *
+     * @param dpValue The value of dp.
+     * @return value of px
+     */
+    public static int dp2px(final float dpValue) {
+        final float scale = Resources.getSystem().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }
