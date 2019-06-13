@@ -116,3 +116,6 @@ dependencies {
         exclude module: 'appcompat-v7'
     }
 }
+
+
+apply from: '../bintray.gradle'
