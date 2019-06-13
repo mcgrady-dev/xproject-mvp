@@ -71,6 +71,7 @@ public abstract class ClientModule {
         builder
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用 RxJava
             .addConverterFactory(GsonConverterFactory.create(gson));//使用 Gson
+
         return builder.build();
     }
 

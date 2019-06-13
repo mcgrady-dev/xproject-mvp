@@ -57,7 +57,8 @@ public class RepositoryManager implements IRepositoryManager {
     }
 
     /**
-     * 根据 https://zhuanlan.zhihu.com/p/40097338 对 Retrofit 进行的优化
+     * 对 Retrofit 进行二次动态代理的优化
+     * 根据 <a>https://zhuanlan.zhihu.com/p/40097338</a>
      *
      * @param serviceClass ApiService class
      * @param <T> ApiService class
