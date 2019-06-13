@@ -8,4 +8,6 @@
     app:indicator_drawable_unselected="@drawable/news_selected_radius_gray"
     app:indicator_width="6dp"
     app:indicator_height="6dp"
-    app:indicator_margin="4dp" />
+    app:indicator_margin="4dp"
+    app:delay_time="5000"
+    app:scroll_time="3000"/>
