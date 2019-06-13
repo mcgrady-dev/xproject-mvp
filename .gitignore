@@ -53,9 +53,7 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
-library/proguard-rules.pro
 gradle/wrapper/
-app/proguard-rules.pro
 gradlew.bat
 gradlew
 .idea/
