@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
-import com.hjq.toast.style.ToastAlipayStyle;
+import com.hjq.toast.style.ToastAliPayStyle;
 import com.mcgrady.common_core.BuildConfig;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.http.RetrofitUrlManager;
@@ -36,7 +36,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
         ARouter.init(application); // 尽可能早,推荐在Application中初始化
         Utils.init(application);
         ToastUtils.init(application);
-        ToastUtils.initStyle(new ToastAlipayStyle());
+        ToastUtils.initStyle(new ToastAliPayStyle());
 
         AppUtils.registerAppStatusChangedListener(application, new Utils.OnAppStatusChangedListener() {
             @Override

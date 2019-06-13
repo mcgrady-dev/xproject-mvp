@@ -9,6 +9,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -22,7 +23,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.internal.InternalAbstract;
-import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.scwang.smartrefresh.layout.util.SmartUtil;
 
 import static android.view.View.MeasureSpec.getSize;
@@ -78,7 +78,7 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
         mSpinnerStyle = SpinnerStyle.MatchLayout;
         final View thisView = this;
         final ViewGroup thisGroup = this;
-        thisView.setMinimumHeight(DensityUtil.dp2px(100));
+        thisView.setMinimumHeight(SmartUtil.dp2px(100));
 
         mProgress = new MaterialProgressDrawable(this);
         mProgress.setBackgroundColor(CIRCLE_BG_LIGHT);
@@ -116,6 +116,8 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
         final View circleView = mCircleView;
         circleView.measure(MeasureSpec.makeMeasureSpec(mCircleDiameter, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(mCircleDiameter, MeasureSpec.EXACTLY));
+//        setMeasuredDimension(resolveSize(getSuggestedMinimumWidth(), widthMeasureSpec),
+//                resolveSize(getSuggestedMinimumHeight(), heightMeasureSpec));
     }
 
     @Override
@@ -154,7 +156,7 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
             mBezierPath.lineTo(0, mHeadHeight);
             //绘制贝塞尔曲线
             final View thisView = this;
-            mBezierPath.quadTo(thisView.getMeasuredWidth() / 2, mHeadHeight + mWaveHeight * 1.9f, thisView.getMeasuredWidth(), mHeadHeight);
+            mBezierPath.quadTo(thisView.getMeasuredWidth() / 2f, mHeadHeight + mWaveHeight * 1.9f, thisView.getMeasuredWidth(), mHeadHeight);
             mBezierPath.lineTo(thisView.getMeasuredWidth(), 0);
             canvas.drawPath(mBezierPath, mBezierPaint);
         }
@@ -188,7 +190,6 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
 
         if (isDragging || (!mProgress.isRunning() && !mFinished)) {
 
-            final View circleView = mCircleView;
             if (mState != RefreshState.Refreshing) {
                 float originalDragPercent = 1f * offset / height;
 
@@ -206,21 +207,67 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
 
                 float rotation = (-0.25f + .4f * adjustedPercent + tensionPercent * 2) * .5f;
                 mProgress.setProgressRotation(rotation);
-                circleView.setAlpha(Math.min(1f, 4f * offset / mCircleDiameter));
             }
 
-            float targetY = offset / 2 + mCircleDiameter / 2;
-            circleView.setTranslationY(Math.min(offset, targetY));//setTargetOffsetTopAndBottom(targetY - mCurrentTargetOffsetTop, true /* requires update */);
+            final View circleView = mCircleView;
+            float targetY = offset / 2f + mCircleDiameter / 2f;
+            circleView.setTranslationY(Math.min(offset, targetY));
+            circleView.setAlpha(Math.min(1f, 4f * offset / mCircleDiameter));
         }
     }
+
+//    @Override
+//    public void onPulling(float percent, int offset, int height, int maxDragHeight) {
+//        if (mShowBezierWave) {
+//            mHeadHeight = Math.min(offset, height);
+//            mWaveHeight = Math.max(0, offset - height);
+//            postInvalidate();
+//        }
+//
+//        if (mState != RefreshState.Refreshing) {
+//            float originalDragPercent = 1f * offset / height;
+//
+//            float dragPercent = Math.min(1f, Math.abs(originalDragPercent));
+//            float adjustedPercent = (float) Math.max(dragPercent - .4, 0) * 5 / 3;
+//            float extraOS = Math.abs(offset) - height;
+//            float tensionSlingshotPercent = Math.max(0, Math.min(extraOS, (float) height * 2)
+//                    / (float) height);
+//            float tensionPercent = (float) ((tensionSlingshotPercent / 4) - Math.pow(
+//                    (tensionSlingshotPercent / 4), 2)) * 2f;
+//            float strokeStart = adjustedPercent * .8f;
+//            mProgress.showArrow(true);
+//            mProgress.setStartEndTrim(0f, Math.min(MAX_PROGRESS_ANGLE, strokeStart));
+//            mProgress.setArrowScale(Math.min(1f, adjustedPercent));
+//
+//            float rotation = (-0.25f + .4f * adjustedPercent + tensionPercent * 2) * .5f;
+//            mProgress.setProgressRotation(rotation);
+//            mCircleView.setAlpha(Math.min(1f, originalDragPercent*2));
+//        }
+//
+//        float targetY = offset / 2 + mCircleDiameter / 2;
+//        mCircleView.setTranslationY(Math.min(offset, targetY));//setTargetOffsetTopAndBottom(targetY - mCurrentTargetOffsetTop, true /* requires update */);
+//    }
+//
+//    @Override
+//    public void onReleasing(float percent, int offset, int height, int maxDragHeight) {
+//        if (!mProgress.isRunning() && !mFinished) {
+//            onPulling(percent, offset, height, maxDragHeight);
+//        } else {
+//            if (mShowBezierWave) {
+//                mHeadHeight = Math.min(offset, height);
+//                mWaveHeight = Math.max(0, offset - height);
+//                postInvalidate();
+//            }
+//        }
+//    }
 
     @Override
     public void onReleased(@NonNull RefreshLayout layout, int height, int maxDragHeight) {
         mProgress.start();
-        final View circleView = mCircleView;
-        if ((int) circleView.getTranslationY() != height / 2 + mCircleDiameter / 2) {
-            circleView.animate().translationY(height / 2 + mCircleDiameter / 2);
-        }
+//        final View circleView = mCircleView;
+//        if ((int) circleView.getTranslationY() != height / 2 + mCircleDiameter / 2) {
+//            circleView.animate().translationY(height / 2 + mCircleDiameter / 2);
+//        }
     }
 
     @Override
@@ -264,6 +311,11 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
         }
     }
 
+//    @NonNull
+//    @Override
+//    public SpinnerStyle getSpinnerStyle() {
+//        return SpinnerStyle.MatchLayout;
+//    }
     //</editor-fold>
 
 
@@ -289,7 +341,7 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
         final Context context = thisView.getContext();
         int[] colors = new int[colorIds.length];
         for (int i = 0; i < colorIds.length; i++) {
-            colors[i] = SmartUtil.getColor(context, colorIds[i]);
+            colors[i] = ContextCompat.getColor(context, colorIds[i]);
         }
         return setColorSchemeColors(colors);
     }

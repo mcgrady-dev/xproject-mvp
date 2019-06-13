@@ -5,13 +5,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
 import com.didichuxing.doraemonkit.kit.IKit;
 import com.google.gson.GsonBuilder;
-import com.hjq.toast.ToastUtils;
-import com.hjq.toast.style.ToastAlipayStyle;
 import com.mcgrady.common_core.BuildConfig;
 import com.mcgrady.common_core.http.Api;
 import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
@@ -32,7 +28,6 @@ import com.mcgrady.xskeleton.integration.ConfigModule;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
 import okhttp3.OkHttpClient;
 
 /**
@@ -81,8 +76,7 @@ public class GlobalConfig implements ConfigModule {
                     return null;
                 });
 
-
-        if (!"release".equals(BuildConfig.BUILD_TYPE)) {
+        if (BuildConfig.DEBUG) {
             List<IKit> kits = new ArrayList<>();
             kits.add(new TestSwitchKit());
             DoraemonKit.install((Application) context, kits);

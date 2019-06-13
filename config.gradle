@@ -6,7 +6,9 @@ ext {
             minSdkVersion    : 19,
             targetSdkVersion : 28,
             versionCode      : 1,
-            versionName      : "1.0.0"
+            versionName      : "1.0.0",
+            jpushAppKey      : "",
+            buglyAppId       : ""
     ]
 
     version = [
@@ -54,11 +56,11 @@ ext {
             "numberprogressbar"        : "com.daimajia.numberprogressbar:library:1.4@aar",
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "lottie"                   : "com.airbnb.android:lottie:2.7.0",
-            "toast"                    : "com.hjq:toast:5.2",
+            "toast"                    : "com.hjq:toast:6.0",
             "basepopup"                : "com.github.razerdp:BasePopup:2.1.8",
             "baseadapter"              : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46",
             "ucrop"                    : "com.github.yalantis:ucrop:2.2.2",
-            "smart-refreshlayout"      : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20",
+            "smart-refreshlayout"      : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-28",
             "statusbar-util"           : "com.jaeger.statusbarutil:library:1.5.1",
             "immersion-bar"            : "com.gyf.immersionbar:immersionbar:3.0.0-beta04",
             "immersion-bar-components" : "com.gyf.immersionbar:immersionbar-components:3.0.0-beta04",
@@ -66,6 +68,8 @@ ext {
             "xtitlebar"                : "com.mcgrady:xtitlebar:1.0.2",
             "sticky-headers-recyclerview" : "com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar",
             "agentweb"                 : "com.just.agentweb:agentweb:4.0.2",
+            "super_textview"           : "com.github.lygttpod:SuperTextView:2.2.3",
+            "dialog_v3"                : "com.kongzue.dialog_v3:dialog:3.0.4",
 
             //rx2
             "rxandroid2"               : "io.reactivex.rxjava2:rxandroid:2.1.1",
@@ -117,6 +121,16 @@ ext {
             "logger"                   : "com.orhanobut:logger:2.2.0",
             "canary-debug"             : "com.squareup.leakcanary:leakcanary-android:${version["canarySdkVersion"]}",
             "canary-release"           : "com.squareup.leakcanary:leakcanary-android-no-op:${version["canarySdkVersion"]}",
-            "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1"
+            "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1",
+
+            //socialize
+            "jpush"                    : "cn.jiguang.sdk:jpush:3.3.2",
+            "jcore"                    : "cn.jiguang.sdk:jcore:2.0.1",
+            "wechat-sdk"               : "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0",
+            "bugly-crashreport"        : "com.tencent.bugly:crashreport:3.0.0",
+            "bugly-crashreport-upgrade": "com.tencent.bugly:crashreport_upgrade:3.0.0",
+            "bugly-nativecrashreport"  : "com.tencent.bugly:nativecrashreport:3.7.1",
+            "tinker"                   : "com.tencent.tinker:tinker-android-lib:1.9.9"
+
     ]
 }
