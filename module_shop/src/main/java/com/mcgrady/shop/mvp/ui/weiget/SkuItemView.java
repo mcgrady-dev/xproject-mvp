@@ -1,11 +1,14 @@
 package com.mcgrady.shop.mvp.ui.weiget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.mcgrady.shop.R;
@@ -17,7 +20,7 @@ import com.mcgrady.shop.R;
  * @date: 2019/2/20
  */
 
-public class SkuItemView extends android.support.v7.widget.AppCompatTextView {
+public class SkuItemView extends AppCompatTextView {
 
     private String attributeValue;
 
@@ -36,6 +39,7 @@ public class SkuItemView extends android.support.v7.widget.AppCompatTextView {
         init(context);
     }
 
+    @SuppressLint("ResourceType")
     private void init(Context context) {
         setTextColor(ContextCompat.getColorStateList(context, R.drawable.shop_selector_sku_item_text));
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);

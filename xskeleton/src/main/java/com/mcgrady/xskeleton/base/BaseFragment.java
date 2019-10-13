@@ -2,14 +2,14 @@ package com.mcgrady.xskeleton.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mcgrady.xskeleton.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.mcgrady.xskeleton.base.delegate.IFragment;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;

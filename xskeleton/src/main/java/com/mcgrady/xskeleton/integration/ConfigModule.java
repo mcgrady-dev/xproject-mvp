@@ -2,9 +2,10 @@ package com.mcgrady.xskeleton.integration;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
 import com.mcgrady.xskeleton.di.module.GlobalConfigModule;

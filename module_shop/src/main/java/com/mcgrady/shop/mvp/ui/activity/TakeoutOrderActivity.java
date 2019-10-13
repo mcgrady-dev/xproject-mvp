@@ -1,17 +1,16 @@
 package com.mcgrady.shop.mvp.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mcgrady.shop.R;
 import com.mcgrady.shop.R2;
 import com.mcgrady.shop.mvp.contract.TakeoutOrderContract;
 import com.mcgrady.shop.mvp.presenter.TakeoutOrderPresenter;
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
 
 import butterknife.BindView;
 
@@ -25,10 +24,6 @@ public class TakeoutOrderActivity extends BaseActivity<TakeoutOrderPresenter> im
     @BindView(R2.id.shop_recycler_right_menu)
     RecyclerView recyclerRightMenu;
 
-    @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
-    }
 
     @Override
     public int getLayoutResId() {
@@ -44,5 +39,10 @@ public class TakeoutOrderActivity extends BaseActivity<TakeoutOrderPresenter> im
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    protected TakeoutOrderPresenter createPresenter() {
+        return null;
     }
 }

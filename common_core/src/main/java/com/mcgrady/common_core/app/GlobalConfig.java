@@ -1,35 +1,5 @@
 package com.mcgrady.common_core.app;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-
-import com.didichuxing.doraemonkit.DoraemonKit;
-import com.didichuxing.doraemonkit.kit.IKit;
-import com.google.gson.GsonBuilder;
-import com.mcgrady.common_core.BuildConfig;
-import com.mcgrady.common_core.http.Api;
-import com.mcgrady.common_core.http.GlobalHttpHandlerImpl;
-import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
-import com.mcgrady.common_core.http.SSLSocketClient;
-import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
-import com.mcgrady.common_core.lifecycle.AppLifecyclesImpl;
-import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
-import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
-import com.mcgrady.xskeleton.di.module.AppModule;
-import com.mcgrady.xskeleton.di.module.ClientModule;
-import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
-import com.mcgrady.xskeleton.http.RetrofitUrlManager;
-import com.mcgrady.xskeleton.http.log.RequestInterceptor;
-import com.mcgrady.xskeleton.imageloader.glide.GlideImageLoaderStrategy;
-import com.mcgrady.xskeleton.integration.ConfigModule;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-
 /**
  * 含有每个组件都可公用的配置信息, 每个组件的 AndroidManifest 都应该声明此 ConfigModule
  *
@@ -37,7 +7,7 @@ import okhttp3.OkHttpClient;
  * @date: 2018/12/20
  */
 
-public class GlobalConfig implements ConfigModule {
+/*public class GlobalConfig implements ConfigModule {
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
@@ -100,4 +70,4 @@ public class GlobalConfig implements ConfigModule {
     public void injectFragmentLifecycle(Context context, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
         lifecycles.add(new FragmentLifecycleCallbacksImpl());
     }
-}
+}*/

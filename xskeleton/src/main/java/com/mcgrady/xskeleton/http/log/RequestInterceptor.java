@@ -1,6 +1,6 @@
 package com.mcgrady.xskeleton.http.log;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;

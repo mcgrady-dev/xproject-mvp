@@ -1,9 +1,9 @@
 package com.mcgrady.main.mvp.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -11,11 +11,9 @@ import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_res.widget.ClearEditText;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
-import com.mcgrady.main.di.component.DaggerCommonLoginComponent;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
 import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,16 +25,6 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
     ClearEditText edtMobile;
     @BindView(R2.id.main_edt_login_password)
     ClearEditText edtPassword;
-
-    @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerCommonLoginComponent
-                .builder()
-                .appComponent(appComponent)
-                .view(this)
-                .build()
-                .inject(this);
-    }
 
     @Override
     public int getLayoutResId() {
@@ -71,5 +59,10 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
     @Override
     public void navigation(String url) {
         ARouter.getInstance().build(url).navigation(MainLoginActivity.this);
+    }
+
+    @Override
+    protected CommonLoginPresenter createPresenter() {
+        return null;
     }
 }

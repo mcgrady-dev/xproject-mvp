@@ -1,9 +1,8 @@
 package com.mcgrady.main.mvp.contract;
 
 
-import com.mcgrady.common_core.RouterHub;
-import com.mcgrady.xskeleton.mvp.IModel;
-import com.mcgrady.xskeleton.mvp.IView;
+import com.mcgrady.xskeleton.base.IModel;
+import com.mcgrady.xskeleton.base.IView;
 
 public interface CommonLoginContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息

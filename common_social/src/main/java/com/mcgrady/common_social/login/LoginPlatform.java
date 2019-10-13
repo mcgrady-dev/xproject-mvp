@@ -1,6 +1,7 @@
 package com.mcgrady.common_social.login;
 
-import android.support.annotation.IntDef;
+
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

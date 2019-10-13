@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/public_color_F6F6F6"
+    android:background="@color/color_F6F6F6"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/lay_nsv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -222,5 +222,5 @@
                     android:layout_height="match_parent" />
             </FrameLayout>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

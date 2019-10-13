@@ -1,7 +1,7 @@
 package com.mcgrady.xskeleton.imageloader;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Created by mcgrady on 2019/4/26.

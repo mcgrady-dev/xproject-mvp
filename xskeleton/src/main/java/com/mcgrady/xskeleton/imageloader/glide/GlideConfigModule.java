@@ -1,7 +1,7 @@
 package com.mcgrady.xskeleton.imageloader.glide;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.bumptech.glide.Glide;

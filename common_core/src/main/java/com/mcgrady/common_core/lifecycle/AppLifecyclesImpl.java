@@ -1,25 +1,9 @@
 package com.mcgrady.common_core.lifecycle;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.annotation.NonNull;
-
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.AppUtils;
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.Utils;
-import com.hjq.toast.ToastUtils;
-import com.hjq.toast.style.ToastAliPayStyle;
-import com.mcgrady.common_core.BuildConfig;
-import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
-import com.mcgrady.xskeleton.http.RetrofitUrlManager;
-
-import butterknife.ButterKnife;
-
 /**
  * Created by mcgrady on 2019/5/14.
  */
-public class AppLifecyclesImpl implements AppLifecycles {
+/*public class AppLifecyclesImpl implements AppLifecycles {
     @Override
     public void attachBaseContext(@NonNull Context base) {
     }
@@ -55,4 +39,4 @@ public class AppLifecyclesImpl implements AppLifecycles {
     public void onTerminate(@NonNull Application application) {
         AppUtils.unregisterAppStatusChangedListener(application);
     }
-}
+}*/

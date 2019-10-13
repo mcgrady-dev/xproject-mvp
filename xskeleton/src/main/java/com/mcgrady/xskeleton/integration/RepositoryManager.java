@@ -2,8 +2,9 @@ package com.mcgrady.xskeleton.integration;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;

@@ -1,10 +1,10 @@
 package com.mcgrady.xskeleton.base;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.InflateException;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.mcgrady.xskeleton.R;
@@ -15,6 +15,7 @@ import com.mcgrady.xskeleton.lifecycle.ActivityLifecycleable;
 import com.mcgrady.xskeleton.mvp.IPresneter;
 import com.mcgrady.xskeleton.utils.Utils;
 import com.trello.rxlifecycle3.android.ActivityEvent;
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
 
@@ -26,7 +27,7 @@ import io.reactivex.subjects.Subject;
 /**
  * Created by mcgrady on 2019/4/25.
  */
-public abstract class BaseActivity<P extends IPresneter> extends AppCompatActivity
+public abstract class BaseActivity<P extends IPresneter> extends RxAppCompatActivity
         implements IActivity, ActivityLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();

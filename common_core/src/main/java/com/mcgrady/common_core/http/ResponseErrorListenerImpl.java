@@ -15,21 +15,6 @@
  */
 package com.mcgrady.common_core.http;
 
-import android.content.Context;
-import android.net.ParseException;
-
-import com.blankj.utilcode.util.LogUtils;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParseException;
-import com.hjq.toast.ToastUtils;
-import com.mcgrady.xskeleton.http.listener.ResponseErrorListener;
-
-import org.json.JSONException;
-
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-
-import retrofit2.HttpException;
 
 /**
  * ================================================
@@ -40,7 +25,7 @@ import retrofit2.HttpException;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class ResponseErrorListenerImpl implements ResponseErrorListener {
+/*public class ResponseErrorListenerImpl implements ResponseErrorListener {
 
     @Override
     public void handlerResponseError(Context context, Throwable t) {
@@ -79,4 +64,4 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
         }
         return msg;
     }
-}
+}*/

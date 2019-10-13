@@ -18,7 +18,8 @@ package com.mcgrady.xskeleton.lifecycle;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.trello.rxlifecycle3.RxLifecycle;
 import com.trello.rxlifecycle3.android.ActivityEvent;

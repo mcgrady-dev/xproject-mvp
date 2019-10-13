@@ -1,7 +1,8 @@
 package com.mcgrady.shop.mvp.contract;
 
-import com.mcgrady.xskeleton.mvp.IModel;
-import com.mcgrady.xskeleton.mvp.IView;
+
+import com.mcgrady.xskeleton.base.IModel;
+import com.mcgrady.xskeleton.base.IView;
 
 /**
  * Created by mcgrady on 2019/5/14.

@@ -1,9 +1,9 @@
 package com.mcgrady.shop.mvp.presenter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mcgrady.shop.mvp.contract.TakeoutOrderContract;
-import com.mcgrady.xskeleton.mvp.BasePresenter;
+import com.mcgrady.xskeleton.base.BasePresenter;
 
 /**
  * Created by mcgrady on 2019/5/14.

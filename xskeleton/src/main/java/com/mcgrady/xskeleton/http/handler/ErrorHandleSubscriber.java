@@ -20,12 +20,10 @@ public abstract class ErrorHandleSubscriber<T> implements Observer<T> {
 
     }
 
-
     @Override
     public void onComplete() {
 
     }
-
 
     @Override
     public void onError(@NonNull Throwable t) {

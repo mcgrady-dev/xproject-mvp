@@ -2,16 +2,18 @@ package com.mcgrady.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
-import android.support.design.internal.FlowLayout;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.blankj.utilcode.util.ConvertUtils;
+import com.google.android.material.internal.FlowLayout;
 import com.mcgrady.common_res.utils.ViewUtils;
+import com.mcgrady.shop.R;
 import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
 
 import java.util.List;
@@ -72,7 +74,7 @@ public class SkuItemLayout extends LinearLayout {
         addView(attributeValueLayout);
 
         View line = new View(context);
-        line.setBackgroundResource(Color.parseColor("#dddddd"));
+        line.setBackgroundResource(R.color.color_DDDDDD);
         LayoutParams lineParams = new LayoutParams(LayoutParams.MATCH_PARENT, 1);
         lineParams.leftMargin = ConvertUtils.dp2px(15);
         lineParams.rightMargin = ConvertUtils.dp2px(15);

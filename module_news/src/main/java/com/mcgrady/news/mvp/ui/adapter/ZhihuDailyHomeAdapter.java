@@ -11,10 +11,7 @@ import com.mcgrady.common_res.interf.IViewHolderRelease;
 import com.mcgrady.news.R;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
-import com.mcgrady.xskeleton.di.component.AppComponent;
-import com.mcgrady.xskeleton.imageloader.ImageLoader;
-import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
-import com.mcgrady.xskeleton.utils.Utils;
+import com.youth.banner.loader.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +33,6 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
     public static final int TYPE_DATE = 2;
     public static final int TYPE_ITEM = 3;
 
-    private AppComponent appComponent;
     private ImageLoader imageLoader;
 
     public ZhihuDailyHomeAdapter(Context context) {
@@ -48,8 +44,7 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
         addItemType(TYPE_DATE, R.layout.news_item_zhihu_daily_date);
         addItemType(TYPE_ITEM, R.layout.news_item_zhihu_daily_home);
 
-        appComponent = Utils.obtainAppComponentFromContext(context);
-        imageLoader = appComponent.imageLoader();
+//        imageLoader = appComponent.imageLoader();
     }
 
     public void setData(ZhihuDailyStoriesBean data) {
@@ -90,10 +85,10 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
                 helper.setText(R.id.list_item_title, storiesBean.getTitle());
                 List<String> imageList = storiesBean.getImages();
-                imageLoader.loadImage(mContext, ImageConfigImpl.builder()
-                        .url(imageList == null || imageList.isEmpty() ? "" : imageList.get(0))
-                        .imageView(helper.getView(R.id.list_item_image))
-                        .build());
+//                imageLoader.loadImage(mContext, ImageConfigImpl.builder()
+//                        .url(imageList == null || imageList.isEmpty() ? "" : imageList.get(0))
+//                        .imageView(helper.getView(R.id.list_item_image))
+//                        .build());
                 helper.setGone(R.id.list_item_multipic, imageList != null && !imageList.isEmpty() && imageList.size() > 1);
                 break;
             default:
@@ -103,9 +98,9 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
     @Override
     public void onRelease(BaseViewHolder helper) {
-        imageLoader.clear(appComponent.application(), ImageConfigImpl.builder()
-                .imageView(helper.getView(R.id.list_item_image))
-                .build());
+//        imageLoader.clear(appComponent.application(), ImageConfigImpl.builder()
+//                .imageView(helper.getView(R.id.list_item_image))
+//                .build());
     }
 
     public String getDateTitle(String serviceTime) {

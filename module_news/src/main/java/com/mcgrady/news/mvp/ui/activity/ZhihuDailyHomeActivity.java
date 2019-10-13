@@ -2,14 +2,15 @@ package com.mcgrady.news.mvp.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -21,16 +22,13 @@ import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_res.utils.ViewUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
-import com.mcgrady.news.di.component.DaggerZhihuDailyHomeComponent;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
+import com.mcgrady.news.mvp.model.ZhihuModel;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
-import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
-import com.mcgrady.xskeleton.utils.Utils;
 import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -65,22 +63,18 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     private LinearLayoutManager linearManager;
     private int lastTitlePostion = -1;
 
-    private com.mcgrady.xskeleton.imageloader.ImageLoader mImageLoader;
+//    private com.mcgrady.xskeleton.imageloader.ImageLoader mImageLoader;
+
+    @Override
+    protected ZhihuDailyHomePresenter createPresenter() {
+        //todo
+        return new ZhihuDailyHomePresenter(new ZhihuModel(null), this);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerZhihuDailyHomeComponent
-                .builder()
-                .appComponent(appComponent)
-                .view(this)
-                .build()
-                .inject(this);
     }
 
     @Override
@@ -99,7 +93,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        mImageLoader = Utils.obtainAppComponentFromContext(this).imageLoader();
+//        mImageLoader = Utils.obtainAppComponentFromContext(this).imageLoader();
 
         adapter = new ZhihuDailyHomeAdapter(this);
         adapter.setOnItemClickListener((adapter, view, position) -> {
@@ -208,11 +202,11 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
             .setImageLoader(new ImageLoader() {
                 @Override
                 public void displayImage(Context context, Object bean, ImageView imageView) {
-                    mImageLoader.loadImage(ZhihuDailyHomeActivity.this,
-                            ImageConfigImpl.builder()
-                                    .url(((ZhihuDailyStoriesBean.TopStoriesBean) bean).getImage())
-                                    .imageView(imageView)
-                                    .build());
+//                    mImageLoader.loadImage(ZhihuDailyHomeActivity.this,
+//                            ImageConfigImpl.builder()
+//                                    .url(((ZhihuDailyStoriesBean.TopStoriesBean) bean).getImage())
+//                                    .imageView(imageView)
+//                                    .build());
                 }
             })
             .setOnBannerListener(ZhihuDailyHomeActivity.this)

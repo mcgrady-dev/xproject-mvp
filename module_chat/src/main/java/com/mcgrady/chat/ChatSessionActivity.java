@@ -1,18 +1,18 @@
 package com.mcgrady.chat;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.base.IPresenter;
 
 
 public class ChatSessionActivity extends BaseActivity {
 
     @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
+    protected IPresenter createPresenter() {
+        return null;
     }
 
     @Override

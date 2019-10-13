@@ -1,1 +1,13 @@
-include ':app', ':common_core', ':common_res', ':module_main', ':module_news', ':common_service', ':common_social', ':module_shop', ':module_chat', ':module_test', ':xskeleton', ':ximlib-netty', ':xupdatemanager'
+include ':app',
+        ':common_core',
+        ':common_res',
+        ':module_main',
+        ':module_news',
+        ':common_service',
+        ':common_social',
+        ':module_shop',
+        ':module_chat',
+        ':module_test',
+        ':ximlib-netty',
+        ':xupdatemanager',
+        ':xskeleton-lib'

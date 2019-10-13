@@ -72,6 +72,11 @@ dependencies {
         exclude module: 'rxandroid'
         exclude module: 'rxlifecycle'
     }
+    api (rootProject.ext.dependencies["rxlifecycle3-components"]) {
+        exclude module: 'rxjava'
+        exclude module: 'rxandroid'
+        exclude module: 'appcompat'
+    }
     api(rootProject.ext.dependencies["rxpermissions2"]) {
         exclude module: 'rxjava'
         exclude module: 'support-annotations'

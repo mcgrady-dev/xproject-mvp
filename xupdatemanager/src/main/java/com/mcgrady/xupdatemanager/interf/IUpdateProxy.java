@@ -1,7 +1,7 @@
 package com.mcgrady.xupdatemanager.interf;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * @author: mcgrady

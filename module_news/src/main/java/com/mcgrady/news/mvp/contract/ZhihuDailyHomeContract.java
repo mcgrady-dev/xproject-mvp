@@ -1,8 +1,8 @@
 package com.mcgrady.news.mvp.contract;
 
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
-import com.mcgrady.xskeleton.mvp.IModel;
-import com.mcgrady.xskeleton.mvp.IView;
+import com.mcgrady.xskeleton.base.IModel;
+import com.mcgrady.xskeleton.base.IView;
 
 import io.reactivex.Observable;
 

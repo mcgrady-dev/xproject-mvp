@@ -1,6 +1,6 @@
 package com.mcgrady.common_res.interf;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <p>提供外部释放ViewHolder资源接口</p>

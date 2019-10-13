@@ -3,10 +3,11 @@ package com.mcgrady.common_res.utils;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Build;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.View;
+
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mcgrady.common_res.interf.IViewHolderRelease;
@@ -36,7 +37,7 @@ public class ViewUtils {
     }
 
     /**
-     * 遍历所有{@link android.support.v7.widget.RecyclerView.ViewHolder},释放他们需要释放的资源
+     * 遍历所有{@link RecyclerView.ViewHolder},释放他们需要释放的资源
      *
      * @param recyclerView
      */

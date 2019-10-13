@@ -1,30 +1,12 @@
 package com.mcgrady.news.app;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.multidex.MultiDex;
-import android.support.v7.app.AppCompatDelegate;
-
-import com.mcgrady.common_res.widget.MaterialHeader;
-import com.mcgrady.news.BuildConfig;
-import com.mcgrady.news.mvp.model.api.Api;
-import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
-import com.mcgrady.xskeleton.cache.IntelligentCache;
-import com.mcgrady.xskeleton.http.RetrofitUrlManager;
-import com.mcgrady.xskeleton.utils.Utils;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
-
 /**
  * <p>类说明</p>
  *
  * @author mcgrady
  * @date 2019/1/15
  */
-public class AppLifecyclesImpl implements AppLifecycles {
+/*public class AppLifecyclesImpl implements AppLifecycles {
 
 
     @Override
@@ -43,9 +25,9 @@ public class AppLifecyclesImpl implements AppLifecycles {
         }
         //使用 RetrofitUrlManager 切换 BaseUrl
         RetrofitUrlManager.getInstance().putDomain(Api.ZHIHU_DOMAIN_NAME, Api.ZHIHU_DOMAIN);
-        /**
+        *//**
          * 当所有模块集成到宿主 App 时, 在 GlobalConfig 中已经执行了以下代码
-         */
+         *//*
         if (BuildConfig.IS_BUILD_MODULE) {
             //leakCanary内存泄露检查
             Utils.obtainAppComponentFromContext(application).extras()
@@ -77,4 +59,4 @@ public class AppLifecyclesImpl implements AppLifecycles {
     public void onTerminate(@NonNull Application application) {
 
     }
-}
+}*/

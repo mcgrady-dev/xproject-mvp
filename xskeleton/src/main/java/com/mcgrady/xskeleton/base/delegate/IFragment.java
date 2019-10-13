@@ -3,13 +3,11 @@ package com.mcgrady.xskeleton.base.delegate;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.LruCache;

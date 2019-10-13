@@ -1,13 +1,19 @@
 package com.mcgrady.xskeleton.utils;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.Resources;
-import android.view.View;
+import android.util.Base64;
+import android.util.Log;
 
 import com.mcgrady.xskeleton.base.IApp;
 import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xskeleton.http.exception.InvalidUrlException;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import okhttp3.HttpUrl;
 
@@ -46,31 +52,29 @@ public class Utils {
         return context.getResources();
     }
 
-    /**
-     * findview
-     *
-     * @param view
-     * @param viewName
-     * @param <T>
-     * @return
-     */
-    public static <T extends View> T findViewByName(Context context, View view, String viewName) {
-        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
-        T v = (T) view.findViewById(id);
-        return v;
-    }
+
 
     /**
-     * findview
-     *
-     * @param activity
-     * @param viewName
-     * @param <T>
-     * @return
+     * 获取KeyHash码
+     * @param context
      */
-    public static <T extends View> T findViewByName(Context context, Activity activity, String viewName) {
-        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
-        T v = (T) activity.findViewById(id);
-        return v;
+    public static void getKeyHash(Context context) {
+        try {
+            int i = 0;
+            PackageInfo info = context.getApplicationContext().getPackageManager().getPackageInfo(
+                    context.getApplicationContext().getPackageName(),  PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                i++;
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String KeyHash = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                //KeyHash 就是你要的，不用改任何代码  复制粘贴 ;
+                Log.e("KeyHash",KeyHash);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
     }
 }

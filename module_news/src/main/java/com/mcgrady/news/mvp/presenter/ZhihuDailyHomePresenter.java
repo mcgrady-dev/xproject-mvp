@@ -5,14 +5,11 @@ import android.text.TextUtils;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
-import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.base.BasePresenter;
 import com.mcgrady.xskeleton.http.handler.ErrorHandleSubscriber;
 import com.mcgrady.xskeleton.http.handler.RetryWithDelay;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
-import com.mcgrady.xskeleton.mvp.BasePresenter;
 import com.mcgrady.xskeleton.utils.RxLifecycleUtils;
-
-import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -30,14 +27,11 @@ import io.reactivex.schedulers.Schedulers;
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
-@ActivityScope
 public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContract.Model, ZhihuDailyHomeContract.View> {
-    @Inject
+
     RxErrorHandler mErrorHandler;
-    @Inject
     String mDate;
 
-    @Inject
     public ZhihuDailyHomePresenter(ZhihuDailyHomeContract.Model model, ZhihuDailyHomeContract.View rootView) {
         super(model, rootView);
     }

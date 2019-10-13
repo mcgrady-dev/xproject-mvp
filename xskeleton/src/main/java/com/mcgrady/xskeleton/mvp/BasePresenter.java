@@ -1,6 +1,6 @@
 package com.mcgrady.xskeleton.mvp;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

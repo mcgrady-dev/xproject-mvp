@@ -8,7 +8,6 @@ apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
-    useLibrary 'org.apache.http.legacy'
 
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
@@ -81,7 +80,6 @@ dependencies {
             exclude module: 'support-annotations'
         }
         //tools
-        annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
         annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
         //test
         debugImplementation rootProject.ext.dependencies["canary-debug"]
@@ -89,7 +87,6 @@ dependencies {
         testImplementation rootProject.ext.dependencies["canary-release"]
     } else {
         compileOnly rootProject.ext.dependencies["butterknife-compiler"]
-        compileOnly rootProject.ext.dependencies["dagger2-compiler"]
         compileOnly rootProject.ext.dependencies["arouter-compiler"]
         compileOnly rootProject.ext.dependencies["canary-debug"]
         compileOnly rootProject.ext.dependencies["canary-release"]

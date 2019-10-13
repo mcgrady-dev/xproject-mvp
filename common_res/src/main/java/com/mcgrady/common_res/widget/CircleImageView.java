@@ -9,8 +9,9 @@ import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
-import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * <p>Private class created to work around issues with AnimationListeners being called

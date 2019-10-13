@@ -1,6 +1,6 @@
 package com.mcgrady.xskeleton.base;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mcgrady.xskeleton.di.component.AppComponent;
 

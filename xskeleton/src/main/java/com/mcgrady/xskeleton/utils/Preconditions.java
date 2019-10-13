@@ -1,6 +1,6 @@
 package com.mcgrady.xskeleton.utils;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Created by mcgrady on 2019/4/26.

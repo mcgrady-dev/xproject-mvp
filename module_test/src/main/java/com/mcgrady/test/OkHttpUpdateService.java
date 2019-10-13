@@ -1,6 +1,6 @@
 package com.mcgrady.test;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mcgrady.xupdatemanager.interf.IUpdateDownloadCallback;
 import com.mcgrady.xupdatemanager.interf.IUpdateHttpService;

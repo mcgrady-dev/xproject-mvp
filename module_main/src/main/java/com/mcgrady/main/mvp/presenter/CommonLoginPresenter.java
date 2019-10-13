@@ -3,30 +3,21 @@ package com.mcgrady.main.mvp.presenter;
 import android.app.Application;
 import android.text.TextUtils;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
-import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.base.BasePresenter;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
-import com.mcgrady.xskeleton.imageloader.ImageLoader;
-import com.mcgrady.xskeleton.mvp.BasePresenter;
 
-import javax.inject.Inject;
 
 /**
  * 公共的登录逻辑
  */
-@ActivityScope
 public class CommonLoginPresenter extends BasePresenter<CommonLoginContract.Model, CommonLoginContract.View> {
-    @Inject
     RxErrorHandler mErrorHandler;
-    @Inject
     Application mApplication;
-    @Inject
-    ImageLoader mImageLoader;
+//    ImageLoader mImageLoader;
 
-    @Inject
     public CommonLoginPresenter(CommonLoginContract.Model model, CommonLoginContract.View rootView) {
         super(model, rootView);
     }
@@ -53,7 +44,7 @@ public class CommonLoginPresenter extends BasePresenter<CommonLoginContract.Mode
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
-        this.mImageLoader = null;
+//        this.mImageLoader = null;
         this.mApplication = null;
     }
 }

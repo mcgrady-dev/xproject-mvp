@@ -3,16 +3,17 @@ package com.mcgrady.common_social;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.mcgrady.xpay.PayAPI;
 import com.mcgrady.xpay.alipay.AliPayReq;
 import com.mcgrady.xpay.interf.PayResultCallBack;
 import com.mcgrady.xpay.wxpay.WechatPayReq;
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
+import com.mcgrady.xskeleton.base.IPresenter;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
@@ -26,11 +27,6 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 public class PayDemoActivity extends BaseActivity {
 
     private RxPermissions rxPermissions;
-
-    @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
-    }
 
     @Override
     public int getLayoutResId() {
@@ -133,6 +129,11 @@ public class PayDemoActivity extends BaseActivity {
                         Toast.makeText(PayDemoActivity.this, "无法获取支付宝 SDK 所需的权限, 请到系统设置开启", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    protected IPresenter createPresenter() {
+        return null;
     }
 
     private interface CallBack {

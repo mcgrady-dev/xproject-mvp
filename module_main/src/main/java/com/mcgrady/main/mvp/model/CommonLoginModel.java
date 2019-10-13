@@ -4,20 +4,14 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
-import com.mcgrady.xskeleton.di.scope.ActivityScope;
+import com.mcgrady.xskeleton.base.BaseModel;
 import com.mcgrady.xskeleton.integration.IRepositoryManager;
-import com.mcgrady.xskeleton.mvp.BaseModel;
 
-import javax.inject.Inject;
-
-@ActivityScope
 public class CommonLoginModel extends BaseModel implements CommonLoginContract.Model {
-    @Inject
+
     Gson mGson;
-    @Inject
     Application mApplication;
 
-    @Inject
     public CommonLoginModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }

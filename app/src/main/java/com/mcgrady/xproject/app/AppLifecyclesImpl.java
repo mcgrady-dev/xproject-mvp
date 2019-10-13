@@ -1,23 +1,5 @@
 package com.mcgrady.xproject.app;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.multidex.MultiDex;
-import android.support.v7.app.AppCompatDelegate;
-
-import com.mcgrady.common_res.widget.MaterialHeader;
-import com.mcgrady.xproject.BuildConfig;
-import com.mcgrady.xproject.R;
-import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
-import com.mcgrady.xskeleton.cache.IntelligentCache;
-import com.mcgrady.xskeleton.utils.Utils;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
-
-
 /**
  * <p>类说明</p>
  *
@@ -25,7 +7,7 @@ import com.squareup.leakcanary.RefWatcher;
  * @date: 2018/12/20
  */
 
-public class AppLifecyclesImpl implements AppLifecycles {
+/*public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void attachBaseContext(@NonNull Context base) {
@@ -71,4 +53,4 @@ public class AppLifecyclesImpl implements AppLifecycles {
     public void onTerminate(@NonNull Application application) {
 
     }
-}
+}*/

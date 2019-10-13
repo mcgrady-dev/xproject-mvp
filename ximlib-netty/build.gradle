@@ -28,7 +28,7 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'com.google.protobuf:protobuf-java:3.8.0-rc-1'
     compileOnly 'com.alibaba:fastjson:1.2.49'
 }

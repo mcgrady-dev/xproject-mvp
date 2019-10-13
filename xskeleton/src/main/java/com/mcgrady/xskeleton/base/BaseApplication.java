@@ -1,10 +1,9 @@
 package com.mcgrady.xskeleton.base;
 
-import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
+
+import androidx.annotation.NonNull;
+import androidx.multidex.MultiDexApplication;
 
 import com.mcgrady.xskeleton.base.delegate.AppDelegate;
 import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
@@ -12,7 +11,6 @@ import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xskeleton.utils.Preconditions;
 import com.mcgrady.xskeleton.utils.Utils;
 
-import okhttp3.internal.Util;
 
 /**
  * Created by mcgrady on 2019/4/25.

@@ -18,9 +18,10 @@ package com.mcgrady.xskeleton.lifecycle;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.mcgrady.xskeleton.base.BaseFragment;
 import com.mcgrady.xskeleton.base.delegate.ActivityDelegate;

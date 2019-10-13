@@ -1,10 +1,10 @@
 package com.mcgrady.shop.mvp.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.mcgrady.common_res.widget.NoScrollViewPager;
 import com.mcgrady.shop.R;
@@ -13,7 +13,6 @@ import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.shop.mvp.presenter.ProductDetailsPresenter;
 import com.mcgrady.shop.mvp.ui.weiget.ProductSkuPopup;
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
 import com.mcgrady.xtitlebar.TitleBar;
 
 import butterknife.BindView;
@@ -38,11 +37,6 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
     TextView tvPay;
 
     @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
-    }
-
-    @Override
     public int getLayoutResId() {
         return R.layout.shop_activity_product_detail;
     }
@@ -63,5 +57,10 @@ public class ProductDetailsActivity extends BaseActivity<ProductDetailsPresenter
         if (viewId == R.id.shop_tv_add_cart) {
             new ProductSkuPopup(ProductDetailsActivity.this).showPopupWindow();
         }
+    }
+
+    @Override
+    protected ProductDetailsPresenter createPresenter() {
+        return null;
     }
 }

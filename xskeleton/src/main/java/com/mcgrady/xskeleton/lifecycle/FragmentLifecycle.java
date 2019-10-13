@@ -17,10 +17,11 @@ package com.mcgrady.xskeleton.lifecycle;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.mcgrady.xskeleton.base.delegate.FragmentDelegate;
 import com.mcgrady.xskeleton.base.delegate.FragmentDelegateImpl;

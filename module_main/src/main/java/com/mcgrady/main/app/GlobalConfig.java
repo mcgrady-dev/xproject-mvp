@@ -1,15 +1,5 @@
 package com.mcgrady.main.app;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.v4.app.FragmentManager;
-
-import com.mcgrady.xskeleton.base.delegate.AppLifecycles;
-import com.mcgrady.xskeleton.di.module.GlobalConfigModule;
-import com.mcgrady.xskeleton.integration.ConfigModule;
-
-import java.util.List;
-
 /**
  * <p>类说明</p>
  *
@@ -17,6 +7,7 @@ import java.util.List;
  * @date: 2018/12/20
  */
 
+/*
 public class GlobalConfig implements ConfigModule {
 
     @Override
@@ -38,3 +29,4 @@ public class GlobalConfig implements ConfigModule {
 
     }
 }
+*/

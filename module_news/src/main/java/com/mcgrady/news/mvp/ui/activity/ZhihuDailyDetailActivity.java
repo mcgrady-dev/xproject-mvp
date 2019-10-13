@@ -2,30 +2,26 @@ package com.mcgrady.news.mvp.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.NestedScrollAgentWebView;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.utils.HtmlUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
-import com.mcgrady.news.di.component.DaggerZhihuDailyDetailComponent;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyDetailPresenter;
 import com.mcgrady.xskeleton.base.BaseActivity;
-import com.mcgrady.xskeleton.di.component.AppComponent;
-import com.mcgrady.xskeleton.imageloader.ImageLoader;
-import com.mcgrady.xskeleton.imageloader.glide.ImageConfigImpl;
-import com.mcgrady.xskeleton.utils.Utils;
+import com.youth.banner.loader.ImageLoader;
 
 import butterknife.BindView;
 
@@ -46,20 +42,8 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     @BindView(R2.id.news_ctoolbar_layout)
     CollapsingToolbarLayout ctbLayout;
 
-    private AppComponent appComponent;
     private ImageLoader imageLoader;
     private AgentWeb agentWeb;
-
-    @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerZhihuDailyDetailComponent
-            .builder()
-            .appComponent(appComponent)
-            .view(this)
-            .build()
-            .inject(this);
-
-    }
 
     @Override
     public int getLayoutResId() {
@@ -73,8 +57,7 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        appComponent = Utils.obtainAppComponentFromContext(this);
-        imageLoader = appComponent.imageLoader();
+//        imageLoader = appComponent.imageLoader();
 
         int dailyId = getIntent().getIntExtra("daily_id", -1);
         String dailyTitle = getIntent().getStringExtra("daily_title");
@@ -82,33 +65,33 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
         tvDailyTitle.setText(dailyTitle);
 
-        imageLoader.loadImage(this, ImageConfigImpl.builder()
-                .url(dailyImgUrl)
-                .isCropCenter(true)
-                .imageView(ivDailyHeader)
-//                .addListener(new ImageRequestListener() {
-//                    @Override
-//                    public void onLoadSuccess(Drawable resource) {
-//                        BitmapDrawable bmpDraw = (BitmapDrawable) resource;
-//                        Palette.from(bmpDraw.getBitmap()).generate(new Palette.PaletteAsyncListener() {
-//                            @Override
-//                            public void onGenerated(@Nullable Palette palette) {
-//                                Palette.Swatch vibrant = palette.getVibrantSwatch();
-//                                if (vibrant == null) {
-//                                    for (Palette.Swatch swatch : palette.getSwatches()) {
-//                                        vibrant = swatch;
-//                                        break;
-//                                    }
-//                                }
-//
-//                                int rbg = vibrant.getRgb();
-//                                ctbLayout.setContentScrimColor(rbg);
-//                                StatusBarUtil.setColor(ZhihuDailyDetailActivity.this, changeRGBColor(rbg));
-//                            }
-//                        });
-//                    }
-//                })
-                .build());
+//        imageLoader.loadImage(this, ImageConfigImpl.builder()
+//                .url(dailyImgUrl)
+//                .isCropCenter(true)
+//                .imageView(ivDailyHeader)
+////                .addListener(new ImageRequestListener() {
+////                    @Override
+////                    public void onLoadSuccess(Drawable resource) {
+////                        BitmapDrawable bmpDraw = (BitmapDrawable) resource;
+////                        Palette.from(bmpDraw.getBitmap()).generate(new Palette.PaletteAsyncListener() {
+////                            @Override
+////                            public void onGenerated(@Nullable Palette palette) {
+////                                Palette.Swatch vibrant = palette.getVibrantSwatch();
+////                                if (vibrant == null) {
+////                                    for (Palette.Swatch swatch : palette.getSwatches()) {
+////                                        vibrant = swatch;
+////                                        break;
+////                                    }
+////                                }
+////
+////                                int rbg = vibrant.getRgb();
+////                                ctbLayout.setContentScrimColor(rbg);
+////                                StatusBarUtil.setColor(ZhihuDailyDetailActivity.this, changeRGBColor(rbg));
+////                            }
+////                        });
+////                    }
+////                })
+//                .build());
 
         if (mPresenter != null) {
             mPresenter.requestDailyDetail(dailyId);
@@ -149,5 +132,10 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
         green = (int) Math.floor(green * (1 - 0.2));
         blue = (int) Math.floor(blue * (1 - 0.2));
         return Color.rgb(red, green, blue);
+    }
+
+    @Override
+    protected ZhihuDailyDetailPresenter createPresenter() {
+        return null;
     }
 }
