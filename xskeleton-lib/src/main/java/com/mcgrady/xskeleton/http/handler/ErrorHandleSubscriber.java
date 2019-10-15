@@ -1,6 +1,5 @@
 package com.mcgrady.xskeleton.http.handler;
 
-import com.mcgrady.xskeleton.http.interf.IBaseResponse;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;

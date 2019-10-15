@@ -33,8 +33,8 @@ public class CommonLoginPresenter extends BasePresenter<CommonLoginContract.Mode
     public void loginByMobile(String mobile_num, String ver_code) {
         if (!TextUtils.isEmpty(mobile_num) && !TextUtils.isEmpty(ver_code)) {
             ToastUtils.show("登录成功");
-            mView.navigation(RouterHub.ZHIHU_DAILY_HOME);
-            mView.finish();
+            mView.get().navigation(RouterHub.ZHIHU_DAILY_HOME);
+            mView.get().finish();
         } else {
             ToastUtils.show("登录失败");
         }

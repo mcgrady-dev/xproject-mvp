@@ -42,18 +42,13 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mView.finishRefresh())
-            .compose(RxLifecycleUtils.bindToLifecycle(mView))
+            .doFinally(() -> mView.get().finishRefresh())
+            .compose(RxLifecycleUtils.bindToLifecycle(mView.get()))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mView.notifyDataSetChanged(zhihuDailyStoriesBean);
-                }
-
-                @Override
-                public void onError(Throwable t) {
-                    super.onError(t);
+                    mView.get().notifyDataSetChanged(zhihuDailyStoriesBean);
                 }
             });
     }
@@ -68,19 +63,19 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mView.finishLoadMore(true))
-            .compose(RxLifecycleUtils.bindToLifecycle(mView))
+            .doFinally(() -> mView.get().finishLoadMore(true))
+            .compose(RxLifecycleUtils.bindToLifecycle(mView.get()))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mView.loadMoreData(zhihuDailyStoriesBean);
+                    mView.get().loadMoreData(zhihuDailyStoriesBean);
                 }
 
                 @Override
                 public void onError(Throwable t) {
                     super.onError(t);
-                    mView.finishLoadMore(true);
+                    mView.get().finishLoadMore(true);
                 }
             });
     }
