@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions' //扩展插件
+apply plugin: 'kotlin-kapt'  //kapt3插件
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -101,7 +105,7 @@ dependencies {
     compileOnly rootProject.ext.dependencies["javax.annotation"]
     api rootProject.ext.dependencies["gson"]
 
-    api rootProject.ext.dependencies["util-code"]
+    api rootProject.ext.dependencies["utilcodex"]
     api rootProject.ext.dependencies["toast"]
     api(rootProject.ext.dependencies["immersion-bar"]) {
         exclude module: 'appcompat-v7'
@@ -109,6 +113,9 @@ dependencies {
     api(rootProject.ext.dependencies["immersion-bar-components"]) {
         exclude module: 'appcompat-v7'
     }
+
+    //kotlin 支持库
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 apply from: '../bintray.gradle'
