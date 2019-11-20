@@ -17,6 +17,6 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         Utils.init(this);
-        ToastUtils.init(this, new ToastAliPayStyle());
+        ToastUtils.init(this, new ToastAliPayStyle(this));
     }
 }

@@ -46,7 +46,7 @@
             android:layout_above="@+id/shop_ll_shopping_cart"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/shop_recycler_left_menu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3">
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/shop_recycler_right_menu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
