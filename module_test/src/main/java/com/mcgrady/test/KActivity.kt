@@ -1,7 +1,8 @@
 package com.mcgrady.test
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  *
@@ -22,7 +23,7 @@ class KActivity : AppCompatActivity() {
     }
 
 
-    fun Activity.toast(message: String, duration: Int = Toast.LENGTH_SHORT): Unit {
+    fun Activity.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(this, message, duration).show()
     }
 }

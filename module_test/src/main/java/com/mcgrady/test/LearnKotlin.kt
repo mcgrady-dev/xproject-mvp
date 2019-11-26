@@ -97,10 +97,12 @@ fun main(args: Array<String>) {
 //        println(name)
 //    }
 
-    val firstName = "Mo"
-    val lastName : String? = null
+//    val firstName = "Mo"
+//    val lastName : String? = null
+//
+//    println("my name is ${getName(firstName, lastName)}")
 
-    println("my name is ${getName(firstName, lastName)}")
+    Person("mcgrady", 18)
 }
 
 /**
@@ -212,4 +214,11 @@ fun foo() {
 //    }
 
     print(" done with explicit label")
+}
+
+class Person(name: String, age: Int) {
+
+    init {
+        println("my name is $name and i'm $age years old.")
+    }
 }
