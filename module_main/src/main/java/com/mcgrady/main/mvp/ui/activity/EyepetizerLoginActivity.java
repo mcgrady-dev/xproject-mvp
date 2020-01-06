@@ -28,11 +28,6 @@ public class EyepetizerLoginActivity extends BaseActivity<CommonLoginPresenter> 
     }
 
     @Override
-    public void navigation(String url) {
-
-    }
-
-    @Override
     protected CommonLoginPresenter createPresenter() {
         return null;
     }

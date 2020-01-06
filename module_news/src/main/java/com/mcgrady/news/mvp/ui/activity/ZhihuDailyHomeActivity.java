@@ -68,7 +68,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     @Override
     protected ZhihuDailyHomePresenter createPresenter() {
         //todo
-        return new ZhihuDailyHomePresenter(new ZhihuModel(null), this);
+        return new ZhihuDailyHomePresenter(new ZhihuModel(), this);
     }
 
     @Override

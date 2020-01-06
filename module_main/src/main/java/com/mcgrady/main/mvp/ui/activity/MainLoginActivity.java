@@ -12,6 +12,7 @@ import com.mcgrady.common_res.widget.ClearEditText;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
+import com.mcgrady.main.mvp.model.CommonLoginModel;
 import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
 import com.mcgrady.xskeleton.base.BaseActivity;
 
@@ -29,6 +30,11 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
     @Override
     public int getLayoutResId() {
         return R.layout.main_activity_login;
+    }
+
+    @Override
+    protected CommonLoginPresenter createPresenter() {
+        return new CommonLoginPresenter(new CommonLoginModel(), this);
     }
 
     @Override
@@ -51,18 +57,8 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
         } else if (viewId == R.id.main_tv_login_register) {
             ARouter.getInstance()
                     .build(RouterHub.MAIN_COMMON_REGISTER)
-                    .navigation(MainLoginActivity.this);
+                    .navigation();
 
         }
-    }
-
-    @Override
-    public void navigation(String url) {
-        ARouter.getInstance().build(url).navigation(MainLoginActivity.this);
-    }
-
-    @Override
-    protected CommonLoginPresenter createPresenter() {
-        return null;
     }
 }

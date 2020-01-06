@@ -43,12 +43,12 @@ public class ZhihuDailyDetailPresenter extends BasePresenter<ZhihuDailyDetailCon
         mModel.getDailyDetail(dailyId)
                 .retryWhen(new RetryWithDelay(3, 2))
                 .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> mView.get().hideProgress())
-                .compose(RxLifecycleUtils.bindToLifecycle(mView.get()))
+                .doFinally(() -> mView.hideProgress())
+                .compose(RxLifecycleUtils.bindToLifecycle(mView))
                 .subscribe(new ErrorHandleSubscriber<ZhihuDailyDetailBean>(mErrorHandler) {
                     @Override
                     public void onNext(ZhihuDailyDetailBean bean) {
-                        mView.get().setDailyDetail(bean);
+                        mView.setDailyDetail(bean);
                     }
 
                     @Override

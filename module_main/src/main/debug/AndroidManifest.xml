@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="com.mcgrady.xskeleton.base.BaseApplication"
+        android:name="com.mcgrady.common_core.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_glod_logo"
         android:label="@string/zhihu_app_name"

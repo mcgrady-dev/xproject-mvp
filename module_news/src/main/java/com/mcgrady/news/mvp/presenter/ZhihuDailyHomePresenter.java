@@ -42,13 +42,13 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mView.get().finishRefresh())
-            .compose(RxLifecycleUtils.bindToLifecycle(mView.get()))
+            .doFinally(() -> mView.finishRefresh())
+            .compose(RxLifecycleUtils.bindToLifecycle(mView))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mView.get().notifyDataSetChanged(zhihuDailyStoriesBean);
+                    mView.notifyDataSetChanged(zhihuDailyStoriesBean);
                 }
             });
     }
@@ -63,19 +63,19 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mView.get().finishLoadMore(true))
-            .compose(RxLifecycleUtils.bindToLifecycle(mView.get()))
+            .doFinally(() -> mView.finishLoadMore(true))
+            .compose(RxLifecycleUtils.bindToLifecycle(mView))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mView.get().loadMoreData(zhihuDailyStoriesBean);
+                    mView.loadMoreData(zhihuDailyStoriesBean);
                 }
 
                 @Override
                 public void onError(Throwable t) {
                     super.onError(t);
-                    mView.get().finishLoadMore(true);
+                    mView.finishLoadMore(true);
                 }
             });
     }
