@@ -26,5 +26,4 @@ class RetryWithDelay(private val maxRetries: Int, private val retryDelaySecond: 
                     Observable.error<Any>(throwable)
                 })
     }
-
 }

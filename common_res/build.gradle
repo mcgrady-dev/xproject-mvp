@@ -30,9 +30,9 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation rootProject.ext.dependencies["support-v4"]
-    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["appcompat"]
     implementation rootProject.ext.dependencies["design"]
-    implementation rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["recyclerview"]
 
     api rootProject.ext.dependencies["basepopup"]
     api (rootProject.ext.dependencies["baseadapter"]) {

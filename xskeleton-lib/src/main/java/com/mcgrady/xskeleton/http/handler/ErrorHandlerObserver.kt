@@ -13,14 +13,14 @@ import io.reactivex.disposables.Disposable
  */
 class ErrorHandlerObserver<T> : Observer<T?> {
     private var errorHandlerFactory: ErrorHandlerFactory?
-    private var callback: ResponseCallback<*>?
+    private var callback: ResponseCallback<T>?
 
     constructor(rxErrorHandler: RxErrorHandler, callback: ResponseCallback<T>) {
         errorHandlerFactory = rxErrorHandler.handlerFactory
         this.callback = callback
     }
 
-    constructor(errorHandlerFactory: ErrorHandlerFactory?, compositeDisposable: CompositeDisposable?, callback: ResponseCallback<*>?) {
+    constructor(errorHandlerFactory: ErrorHandlerFactory?, compositeDisposable: CompositeDisposable?, callback: ResponseCallback<T>?) {
         this.errorHandlerFactory = errorHandlerFactory
         this.callback = callback
     }
@@ -31,7 +31,7 @@ class ErrorHandlerObserver<T> : Observer<T?> {
         }
     }
 
-    override fun onNext(data: T?) {
+    override fun onNext(data: T) {
         if (data is IBaseResponse) {
             val resultCode = (data as IBaseResponse).resultCode
             val errMsg = (data as IBaseResponse).errMsg

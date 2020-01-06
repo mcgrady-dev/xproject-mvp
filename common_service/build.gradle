@@ -24,6 +24,6 @@ android {
 
 dependencies {
     compileOnly rootProject.ext.dependencies["arouter"]
-    compileOnly rootProject.ext.dependencies["appcompat-v7"]
+    compileOnly rootProject.ext.dependencies["appcompat"]
 }
 

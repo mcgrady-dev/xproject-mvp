@@ -1,6 +1,7 @@
 package com.mcgrady.xskeleton.utils
 
 import java.io.*
+import java.nio.charset.Charset
 import java.util.*
 import java.util.zip.*
 
@@ -26,11 +27,11 @@ class ZipHelper private constructor() {
          * @return
          */
         @JvmOverloads
-        fun decompressToStringForZlib(bytesToDecompress: ByteArray, charsetName: String? = "UTF-8"): String? {
+        fun decompressToStringForZlib(bytesToDecompress: ByteArray, charsetName: Charset? = Charset.forName("UTF-8")): String? {
             val bytesDecompressed = decompressForZlib(bytesToDecompress)
             var returnValue: String? = null
             try {
-                returnValue = String(bytesDecompressed!!, 0, bytesDecompressed.size, charsetName)
+                returnValue = charsetName?.let { String(bytesDecompressed!!, 0, bytesDecompressed.size, it) }
             } catch (uee: UnsupportedEncodingException) {
                 uee.printStackTrace()
             }
@@ -141,7 +142,7 @@ class ZipHelper private constructor() {
          * @throws IOException
          */
         @JvmOverloads
-        fun decompressForGzip(compressed: ByteArray, charsetName: String? = "UTF-8"): String? {
+        fun decompressForGzip(compressed: ByteArray, charsetName: Charset? = Charset.forName("UTF-8")): String? {
             val BUFFER_SIZE = compressed.size
             var gis: GZIPInputStream? = null
             var `is`: ByteArrayInputStream? = null
@@ -152,7 +153,7 @@ class ZipHelper private constructor() {
                 val data = ByteArray(BUFFER_SIZE)
                 var bytesRead: Int
                 while (gis.read(data).also { bytesRead = it } != -1) {
-                    string.append(String(data, 0, bytesRead, charsetName))
+                    string.append(charsetName?.let { String(data, 0, bytesRead, it) })
                 }
                 return string.toString()
             } catch (e: IOException) {

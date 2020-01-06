@@ -116,7 +116,7 @@ object DrawableHelper {
             paint.isAntiAlias = true
             paint.style = Paint.Style.FILL
             paint.color = filledColor
-            canvas.drawRoundRect(RectF(0, 0, width.toFloat(), height.toFloat()), cornerRadius.toFloat(), cornerRadius.toFloat(), paint)
+            canvas.drawRoundRect(RectF(0f, 0f, width.toFloat(), height.toFloat()), cornerRadius.toFloat(), cornerRadius.toFloat(), paint)
         } else {
             canvas.drawColor(filledColor)
         }
@@ -168,8 +168,8 @@ object DrawableHelper {
     @TargetApi(16)
     fun createCircleGradientDrawable(@ColorInt startColor: Int,
                                      @ColorInt endColor: Int, radius: Int,
-                                     @FloatRange(from = 0f, to = 1f) centerX: Float,
-                                     @FloatRange(from = 0f, to = 1f) centerY: Float): GradientDrawable {
+                                     @FloatRange(from = 0.0, to = 1.0) centerX: Float,
+                                     @FloatRange(from = 0.0, to = 1.0) centerY: Float): GradientDrawable {
         val gradientDrawable = GradientDrawable()
         gradientDrawable.colors = intArrayOf(
                 startColor,
