@@ -1,4 +1,4 @@
-fpackage com.mcgrady.xskeleton.http.interceptor;
+package com.mcgrady.xskeleton.http.interceptor;
 
 import com.blankj.utilcode.util.NetworkUtils;
 
