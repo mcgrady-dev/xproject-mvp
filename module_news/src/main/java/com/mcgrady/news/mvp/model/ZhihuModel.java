@@ -1,5 +1,6 @@
 package com.mcgrady.news.mvp.model;
 
+import com.mcgrady.common_core.http.BaseResponse;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.api.ZhihuService;
@@ -27,13 +28,18 @@ public class ZhihuModel extends BaseModel implements ZhihuDailyHomeContract.Mode
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.mGson = null;
     }
 
     @Override
     public Observable<ZhihuDailyStoriesBean> getDailyList() {
         return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
                 .getDailyList();
+    }
+
+    @Override
+    public Observable<BaseResponse<ZhihuDailyStoriesBean>> getDailList2() {
+        return mRepositoryManager.obtainRetrofitService(ZhihuService.class)
+                .getDailyList2();
     }
 
     @Override

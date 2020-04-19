@@ -8,15 +8,20 @@ import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 /**
  * Created by mcgrady on 2019-10-15.
  */
-public class ErrorHandleSubscriberImpl<T> extends ErrorHandleSubscriber<T> {
-
+public class ErrorHandleSubscriberImpl<T extends BaseResponse> extends ErrorHandleSubscriber<T> {
 
     public ErrorHandleSubscriberImpl(@NonNull RxErrorHandler rxErrorHandler) {
         super(rxErrorHandler);
     }
 
     @Override
-    public void onNext(T t) {
-
+    public void onNext(T data) {
+        if (!data.isSuccess()) {
+            try {
+                throw new ResponseException(data.getCode(), data.getMsg());
+            } catch (ResponseException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

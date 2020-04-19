@@ -79,6 +79,7 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
         switch (itemType) {
             case TYPE_DATE:
                 helper.setText(R.id.news_tv_date, getDateTitle((String) ((ZhihuDailyMultipleItem) item).getData()));
+
                 break;
             case TYPE_ITEM:
                 ZhihuDailyStoriesBean.StoriesBean storiesBean = (ZhihuDailyStoriesBean.StoriesBean) ((ZhihuDailyMultipleItem) item).getData();

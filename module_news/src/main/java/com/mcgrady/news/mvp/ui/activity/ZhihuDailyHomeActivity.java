@@ -29,6 +29,7 @@ import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
 import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -67,8 +68,9 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     protected ZhihuDailyHomePresenter createPresenter() {
-        //todo
-        return new ZhihuDailyHomePresenter(new ZhihuModel(), this);
+
+        ZhihuModel model = new ZhihuModel();
+        return new ZhihuDailyHomePresenter(model, this, AppComponent.obtainClientModule(this).getRxErrorHandler());
     }
 
     @Override

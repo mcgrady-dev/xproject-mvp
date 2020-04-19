@@ -1,3 +1,18 @@
+package com.mcgrady.xskeleton.utils;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.LinearLayout;
+
+import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
  * 给 LinearLayoutManager 增加分割线，可设置去除首尾分割线个数
  *
@@ -45,7 +60,6 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
      * 如果是纵向 - 下边距
      */
     private int mRightBottomPadding;
-    private ByRecyclerView byRecyclerView;
 
     public SpacesItemDecoration(Context context) {
         this(context, VERTICAL, 0, 1);
@@ -227,12 +241,12 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
         int position = parent.getChildAdapterPosition(view);
 
         boolean mScrollTopFix = false;
-        if (byRecyclerView == null && parent instanceof ByRecyclerView) {
-            byRecyclerView = (ByRecyclerView) parent;
-        }
-        if (byRecyclerView != null && byRecyclerView.isRefreshEnabled()) {
-            mScrollTopFix = true;
-        }
+//        if (byRecyclerView == null && parent instanceof ByRecyclerView) {
+//            byRecyclerView = (ByRecyclerView) parent;
+//        }
+//        if (byRecyclerView != null && byRecyclerView.isRefreshEnabled()) {
+//            mScrollTopFix = true;
+//        }
 
         // 滚动条置顶
         boolean isFixScrollTop = mScrollTopFix && position == 0;

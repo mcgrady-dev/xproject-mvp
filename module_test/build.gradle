@@ -64,8 +64,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':common_core')
-    implementation project(':common_res')
+    implementation project(':common-core')
+    implementation project(':common-res')
     implementation project(':xupdatemanager')
 
     //test

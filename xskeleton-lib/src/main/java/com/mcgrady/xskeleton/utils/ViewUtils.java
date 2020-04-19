@@ -14,15 +14,45 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.StringUtils;
+import com.google.android.material.snackbar.Snackbar;
+import com.hjq.toast.ToastUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.reactivex.Completable;
+
+import static com.mcgrady.xskeleton.integration.Platform.DEPENDENCY_SUPPORT_DESIGN;
 
 /**
  * Created by mcgrady on 2019-08-19.
  */
 public class ViewUtils {
+
+    /**
+     * 使用 {@link Snackbar} 显示文本消息
+     * @param message
+     * @param isLong
+     */
+    public static void showSnackbar(String message, boolean isLong) {
+        if (ActivityUtils.getTopActivity() == null) {
+            LogUtils.w("top activity == null when showSnackbar");
+            return;
+        }
+
+        Completable.fromAction(() -> {
+            if (DEPENDENCY_SUPPORT_DESIGN) {
+                Activity activity = ActivityUtils.getTopActivity();
+                View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+                Snackbar.make(view, message, isLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
+            } else {
+                ToastUtils.show(message);
+            }
+        });
+    }
 
     public static void setTextColorPart(Context context, TextView textView, String flagStart, String part) {
         setTextColorPart(context, textView, flagStart, "", part);

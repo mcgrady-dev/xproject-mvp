@@ -12,7 +12,6 @@ import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.xskeleton.utils.ViewUtils;
 
 /**
- * <p>类说明</p>
  *
  * @author: mcgrady
  * @date: 2019/1/16

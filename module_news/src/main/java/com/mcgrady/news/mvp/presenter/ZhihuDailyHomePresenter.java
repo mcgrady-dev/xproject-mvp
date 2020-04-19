@@ -2,6 +2,8 @@ package com.mcgrady.news.mvp.presenter;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.news.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
@@ -29,11 +31,12 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContract.Model, ZhihuDailyHomeContract.View> {
 
-    RxErrorHandler mErrorHandler;
+    RxErrorHandler errorHandler;
     String mDate;
 
-    public ZhihuDailyHomePresenter(ZhihuDailyHomeContract.Model model, ZhihuDailyHomeContract.View rootView) {
-        super(model, rootView);
+    public ZhihuDailyHomePresenter(@NonNull ZhihuDailyHomeContract.Model mModel, @NonNull ZhihuDailyHomeContract.View mView, RxErrorHandler errorHandler) {
+        super(mModel, mView);
+        this.errorHandler = errorHandler;
     }
 
     public void requestDailyList() {
@@ -44,13 +47,33 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(() -> mView.finishRefresh())
             .compose(RxLifecycleUtils.bindToLifecycle(mView))
-            .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
+            .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(errorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
                     mView.notifyDataSetChanged(zhihuDailyStoriesBean);
                 }
             });
+
+        //基于{@link BaseResponse}壳的用法
+//        mModel.getDailList2()
+//                .subscribeOn(Schedulers.io())
+//                .doOnSubscribe(disposable -> {
+//                    mView.showProgress();
+//                })
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .doFinally(() -> mView.hideProgress())
+//                .compose(RxLifecycleUtils.bindToLifecycle(mView))
+//                .subscribe(new ErrorHandleSubscriberImpl<BaseResponse<ZhihuDailyStoriesBean>>(errorHandler) {
+//                    @Override
+//                    public void onNext(BaseResponse<ZhihuDailyStoriesBean> data) {
+//                        super.onNext(data);
+//
+//                        mDate = data.getData().getDate();
+//                        mView.notifyDataSetChanged(data.getData());
+//                    }
+//                });
     }
 
     public void requestBeforeDailyList() {
@@ -65,7 +88,7 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(() -> mView.finishLoadMore(true))
             .compose(RxLifecycleUtils.bindToLifecycle(mView))
-            .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(mErrorHandler) {
+            .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(errorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
@@ -83,6 +106,6 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.mErrorHandler = null;
+        this.errorHandler = null;
     }
 }

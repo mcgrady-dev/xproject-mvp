@@ -1,5 +1,6 @@
 package com.mcgrady.news.mvp.contract;
 
+import com.mcgrady.common_core.http.BaseResponse;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.xskeleton.base.IModel;
 import com.mcgrady.xskeleton.base.IView;
@@ -23,6 +24,9 @@ public interface ZhihuDailyHomeContract {
     interface Model extends IModel {
 
         Observable<ZhihuDailyStoriesBean> getDailyList();
+
+        //基于BaseResponse壳的用法
+        Observable<BaseResponse<ZhihuDailyStoriesBean>> getDailList2();
 
         Observable<ZhihuDailyStoriesBean> getBeforeDailyList(String date);
     }

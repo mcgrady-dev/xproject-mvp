@@ -1,3 +1,12 @@
+package com.mcgrady.xskeleton.utils;
+
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 /**
  * 给 GridLayoutManager or StaggeredGridLayoutManager 设置间距，可设置去除首尾间距个数
  *

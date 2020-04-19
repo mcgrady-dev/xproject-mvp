@@ -3,7 +3,6 @@ package com.mcgrady.xskeleton.http.handler;
 import android.content.Context;
 
 import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
-import com.mcgrady.xskeleton.http.interf.ResponseResultCodeListener;
 
 
 /**
@@ -43,7 +42,7 @@ public class RxErrorHandler {
             return this;
         }
 
-        public RxErrorHandler build() {
+        public RxErrorHandler create() {
             if (context == null)
                 throw new IllegalStateException("Context is required");
 

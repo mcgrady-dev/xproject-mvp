@@ -1,6 +1,6 @@
 include ':app',
-        ':common_core',
-        ':common_res',
+        ':common-core',
+        ':common-res',
         ':module_main',
         ':module_news',
         ':common_service',

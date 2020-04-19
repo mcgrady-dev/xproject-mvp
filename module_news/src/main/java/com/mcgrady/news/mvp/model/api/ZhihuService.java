@@ -1,5 +1,6 @@
 package com.mcgrady.news.mvp.model.api;
 
+import com.mcgrady.common_core.http.BaseResponse;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 
@@ -30,6 +31,10 @@ public interface ZhihuService {
     @Headers({"" + ZHIHU_DOMAIN_NAME})
     @GET("/api/4/news/latest")
     Observable<ZhihuDailyStoriesBean> getDailyList();
+
+    @Headers({"" + ZHIHU_DOMAIN_NAME})
+    @GET("/api/4/news/latest")
+    Observable<BaseResponse<ZhihuDailyStoriesBean>> getDailyList2();
 
     /**
      * 往期日报

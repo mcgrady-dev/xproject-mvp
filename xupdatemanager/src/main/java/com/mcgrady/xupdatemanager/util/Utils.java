@@ -19,7 +19,6 @@ import java.util.List;
  */
 public class Utils {
 
-
     public static PackageInfo getPackageInfo(Context context) {
         try {
             return context.getPackageManager().getPackageInfo(context.getPackageName(), 0);

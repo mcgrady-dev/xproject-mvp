@@ -76,8 +76,8 @@ dependencies {
         runtimeOnly project(":module_shop")
     }
 
-    implementation project(':common_core')
-    implementation project(':common_res')
+    implementation project(':common-core')
+    implementation project(':common-res')
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]
