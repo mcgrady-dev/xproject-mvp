@@ -24,6 +24,7 @@ public class AppModule {
     private Cache<String, Object> extras;
     private Cache.Factory cacheFactory;
 
+
     public Cache.Factory getCacheFactory() {
         return cacheFactory;
     }
@@ -76,6 +77,7 @@ public class AppModule {
             }
             appModule.gson = builder.create();
 
+            appModule.cacheFactory = cacheFactory;
             if (cacheFactory != null) {
                 appModule.extras = cacheFactory.build(CacheType.EXTRAS);
             }

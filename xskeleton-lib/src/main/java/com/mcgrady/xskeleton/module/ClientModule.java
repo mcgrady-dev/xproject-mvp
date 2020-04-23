@@ -121,15 +121,18 @@ public class ClientModule {
             OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
 
             clientBuilder.connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-                    .readTimeout(TIME_OUT, TimeUnit.SECONDS)
-                    .addNetworkInterceptor(intercept);
+                    .readTimeout(TIME_OUT, TimeUnit.SECONDS);
+
+            if (intercept != null) {
+                clientBuilder.addNetworkInterceptor(intercept);
+            }
 
             if (globalHttpHandler != null) {
                 clientBuilder.addInterceptor(chain -> chain.proceed(globalHttpHandler.onHttpRequestBefore(chain, chain.request())));
             }
 
             //如果外部提供了 Interceptor 的集合则遍历添加
-            if (interceptors != null) {
+            if (interceptors != null && !interceptors.isEmpty()) {
                 for (Interceptor interceptor : interceptors) {
                     clientBuilder.addInterceptor(interceptor);
                 }

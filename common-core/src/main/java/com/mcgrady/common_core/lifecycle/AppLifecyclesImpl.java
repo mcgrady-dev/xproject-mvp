@@ -1,26 +1,44 @@
 package com.mcgrady.common_core.lifecycle;
 
+import android.app.Application;
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.Utils;
+import com.hjq.toast.ToastUtils;
+import com.hjq.toast.style.ToastAliPayStyle;
+import com.mcgrady.common_core.BuildConfig;
+import com.mcgrady.xskeleton.base.AppLifecycles;
+import com.mcgrady.xskeleton.integration.RepositoryManager;
+
+import butterknife.ButterKnife;
+
 /**
  * Created by mcgrady on 2019/5/14.
  */
-/*public class AppLifecyclesImpl implements AppLifecycles {
+public class AppLifecyclesImpl implements AppLifecycles {
     @Override
     public void attachBaseContext(@NonNull Context base) {
     }
 
     @Override
     public void onCreate(@NonNull Application application) {
+
+        Utils.init(application);
+        ToastUtils.init(application, new ToastAliPayStyle(application));
+        ARouter.init(application); // 尽可能早,推荐在Application中初始化
+        RepositoryManager.init(application);
+
         if (BuildConfig.LOG_DEBUG) {
             ButterKnife.setDebug(true);
-            ARouter.openLog();     // 打印日志
-            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-            RetrofitUrlManager.getInstance().setDebug(true);
-        }
 
-        ARouter.init(application); // 尽可能早,推荐在Application中初始化
-        Utils.init(application);
-        ToastUtils.init(application);
-        ToastUtils.initStyle(new ToastAliPayStyle());
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
 
         AppUtils.registerAppStatusChangedListener(application, new Utils.OnAppStatusChangedListener() {
             @Override
@@ -39,4 +57,4 @@ package com.mcgrady.common_core.lifecycle;
     public void onTerminate(@NonNull Application application) {
         AppUtils.unregisterAppStatusChangedListener(application);
     }
-}*/
+}

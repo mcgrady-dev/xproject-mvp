@@ -1,5 +1,17 @@
 package com.mcgrady.xproject.app;
 
+import android.app.Application;
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+
+import com.mcgrady.xskeleton.base.AppLifecycles;
+import com.mcgrady.xskeleton.integration.ConfigModule;
+import com.mcgrady.xskeleton.module.GlobalConfigModule;
+
+import java.util.List;
+
 /**
  * <p>组件的全局配置信息在此配置, 需要将此实现类声明到 AndroidManifest 中
  *  common-core 中已有 {@link GlobalConfig} 配置有组件可公用的配置信息
@@ -9,29 +21,25 @@ package com.mcgrady.xproject.app;
  * @date: 2018/12/20
  */
 
-/*public final class GlobalConfig implements ConfigModule {
+public final class GlobalConfig implements ConfigModule {
 
     @Override
-    public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
+    public void applyOptions(@NonNull Context context, @NonNull GlobalConfigModule.Builder builder) {
 
     }
 
     @Override
-    public void injectAppLifecycle(Context context, List<AppLifecycles> lifecycles) {
-        *//**
-         * AppLifecycles 的所有方法都会在基类 Application 的对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
-         * 可以根据不同的逻辑添加多个实现类
-         *//*
-        lifecycles.add(new AppLifecyclesImpl());
-    }
-
-    @Override
-    public void injectActivityLifecycle(Context context, List<Application.ActivityLifecycleCallbacks> lifecycles) {
+    public void injectAppLifecycle(@NonNull Context context, @NonNull List<AppLifecycles> lifecycles) {
 
     }
 
     @Override
-    public void injectFragmentLifecycle(Context context, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
+    public void injectActivityLifecycle(@NonNull Context context, @NonNull List<Application.ActivityLifecycleCallbacks> lifecycles) {
 
     }
-}*/
+
+    @Override
+    public void injectFragmentLifecycle(@NonNull Context context, @NonNull List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
+
+    }
+}

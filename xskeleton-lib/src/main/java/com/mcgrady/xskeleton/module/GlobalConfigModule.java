@@ -113,7 +113,19 @@ public class GlobalConfigModule {
     private GlobalConfigModule(Builder builder) {
         this.apiUrl = builder.apiUrl;
         this.baseUrl = builder.baseUrl;
+        this.okhttpConfig = builder.okhttpConfig;
+        this.retrofitConfig = builder.retrofitConfig;
+        this.errorListener = builder.errorListener;
+        this.gsonConfig = builder.gsonConfig;
+        this.printHttpLogLevel = builder.printHttpLogLevel;
+        this.formatPrinter = builder.formatPrinter;
+        this.interceptors = builder.interceptors;
+        this.httpHandler = builder.httpHandler;
+        this.obtainServiceDelegate = builder.obtainServiceDelegate;
+
         this.cacheFile = builder.cacheFile;
+        this.cacheFactory = builder.cacheFactory;
+        this.executorService = builder.executorService;
     }
 
     public static Builder builder() {
@@ -124,15 +136,15 @@ public class GlobalConfigModule {
 
         private HttpUrl apiUrl;
         private BaseUrl baseUrl;
-        private ClientModule.RetrofitConfiguration retrofitConfig;
         private ClientModule.OkhttpConfiguration okhttpConfig;
+        private ClientModule.RetrofitConfiguration retrofitConfig;
+        private IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate;
         private AppModule.GsonConfiguration gsonConfig;
         private RequestInterceptor.Level printHttpLogLevel;
         private FormatPrinter formatPrinter;
         private List<Interceptor> interceptors;
         private ResponseErrorListener errorListener;
         private GlobalHttpHandler httpHandler;
-        private IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate;
 
         private File cacheFile;
         private Cache.Factory cacheFactory;
@@ -202,6 +214,11 @@ public class GlobalConfigModule {
 
         public Builder obtainServiceDelegate(IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate) {
             this.obtainServiceDelegate = obtainServiceDelegate;
+            return this;
+        }
+
+        public Builder cacheFactory(Cache.Factory cacheFactory) {
+            this.cacheFactory = cacheFactory;
             return this;
         }
 

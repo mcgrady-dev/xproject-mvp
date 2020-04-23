@@ -93,8 +93,8 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 ////                })
 //                .build());
 
-        if (mPresenter != null) {
-            mPresenter.requestDailyDetail(dailyId);
+        if (presenter != null) {
+            presenter.requestDailyDetail(dailyId);
         }
     }
 

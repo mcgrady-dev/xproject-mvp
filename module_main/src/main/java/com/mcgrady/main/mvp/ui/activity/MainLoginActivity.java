@@ -52,7 +52,7 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
     void onClick(View view) {
         int viewId = view.getId();
         if (viewId == R.id.main_btn_login_commit) {
-            mPresenter.loginByMobile(edtMobile.getText().toString(), edtPassword.getText().toString());
+            presenter.loginByMobile(edtMobile.getText().toString(), edtPassword.getText().toString());
 
         } else if (viewId == R.id.main_tv_login_register) {
             ARouter.getInstance()

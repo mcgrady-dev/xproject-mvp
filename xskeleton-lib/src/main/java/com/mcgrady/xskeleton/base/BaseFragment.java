@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.mcgrady.xskeleton.cache.Cache;
+import com.mcgrady.xskeleton.cache.CacheType;
 import com.mcgrady.xskeleton.lifecycle.FragmentLifecycleable;
 import com.mcgrady.xskeleton.widget.LoadingDialog;
 import com.trello.rxlifecycle3.android.FragmentEvent;
@@ -26,15 +28,15 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<FragmentEvent> mLifecycleSubject = BehaviorSubject.create();
     protected Context mContext;
-    private Unbinder mUnbinder;
     private View rootView;
-
     private LoadingDialog loadingDialog;
+    private Unbinder mUnbinder;
 
     @Nullable
     protected P mPresenter;//如果当前页面逻辑简单, Presenter 可以为 null
-
     protected abstract P createPresenter();
+
+    private Cache<String, Object> cache;
 
     @NonNull
     @Override
@@ -112,5 +114,21 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
                 loadingDialog.dismiss();
             }
         }
+    }
+
+    @Override
+    public boolean useEventBus() {
+        return false;
+    }
+
+    @NonNull
+    @Override
+    public synchronized Cache<String, Object> provideCache() {
+        if (cache == null) {
+            //noinspection unchecked
+            cache = AppComponent.obtainAppModule(getActivity()).getCacheFactory().build(CacheType.FRAGMENT_CACHE);
+        }
+
+        return cache;
     }
 }

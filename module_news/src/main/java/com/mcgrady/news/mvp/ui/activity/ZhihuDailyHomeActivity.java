@@ -28,8 +28,8 @@ import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
-import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xskeleton.base.AppComponent;
+import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -179,12 +179,12 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-        mPresenter.requestDailyList();
+        presenter.requestDailyList();
     }
 
     @Override
     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        mPresenter.requestBeforeDailyList();
+        presenter.requestBeforeDailyList();
     }
 
     @Override

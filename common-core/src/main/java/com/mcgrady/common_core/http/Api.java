@@ -30,6 +30,7 @@ public interface Api {
     String REQUEST_SUCCESS = "200";
 
     // 错误码
+    String ERROR_NO_DATA = "-1";
     String ERROR_USER_INCORRECT = "1001";
     String ERROR_PHONE_EXIST = "1019";
     String VALIDATION_OVERTIME = "1020";

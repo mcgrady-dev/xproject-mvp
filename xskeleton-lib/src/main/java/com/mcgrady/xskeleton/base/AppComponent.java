@@ -13,14 +13,22 @@ public class AppComponent {
 
     public static AppModule obtainAppModule(Context context) {
         Preconditions.checkNotNull(context, "%s cannot be null", Context.class.getName());
-        Preconditions.checkState(context.getApplicationContext() instanceof IApp,"%s must be implements %s", context.getApplicationContext().getClass().getName(), IApp.class.getName());
+        if (context instanceof IApp) {
+            return ((IApp) context).getAppModule();
+        } else {
+            Preconditions.checkState(context.getApplicationContext() instanceof IApp,"%s must be implements %s", context.getApplicationContext().getClass().getName(), IApp.class.getName());
+        }
 
         return ((IApp) context.getApplicationContext()).getAppModule();
     }
 
     public static ClientModule obtainClientModule(Context context) {
         Preconditions.checkNotNull(context, "%s cannot be null", Context.class.getName());
-        Preconditions.checkState(context.getApplicationContext() instanceof IApp,"%s must be implements %s", context.getApplicationContext().getClass().getName(), IApp.class.getName());
+        if (context instanceof IApp) {
+            return ((IApp) context).getClientModule();
+        } else {
+            Preconditions.checkState(context.getApplicationContext() instanceof IApp,"%s must be implements %s", context.getApplicationContext().getClass().getName(), IApp.class.getName());
+        }
 
         return ((IApp) context.getApplicationContext()).getClientModule();
     }

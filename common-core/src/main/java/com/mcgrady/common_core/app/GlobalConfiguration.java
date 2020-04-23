@@ -12,10 +12,14 @@ import com.mcgrady.common_core.http.Api;
 import com.mcgrady.common_core.http.GlobalHttHandlerImpl;
 import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
 import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
+import com.mcgrady.common_core.lifecycle.AppLifecyclesImpl;
 import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
 import com.mcgrady.xskeleton.base.AppLifecycles;
+import com.mcgrady.xskeleton.cache.CacheType;
+import com.mcgrady.xskeleton.cache.LruCache;
 import com.mcgrady.xskeleton.http.log.RequestInterceptor;
 import com.mcgrady.xskeleton.integration.ConfigModule;
+import com.mcgrady.xskeleton.integration.cache.IntelligentCache;
 import com.mcgrady.xskeleton.module.AppModule;
 import com.mcgrady.xskeleton.module.ClientModule;
 import com.mcgrady.xskeleton.module.GlobalConfigModule;
@@ -62,13 +66,27 @@ public final class GlobalConfiguration implements ConfigModule {
                     public void configOkhttp(@NonNull Context context, @NonNull OkHttpClient.Builder builder) {
                         builder.writeTimeout(10, TimeUnit.SECONDS);
                     }
+                })
+                .cacheFactory(type -> {
+                    //若想自定义 LruCache 的 size, 或者不想使用 LruCache, 想使用自己自定义的策略
+                    //使用 GlobalConfigModule.Builder#cacheFactory() 即可扩展
+                    switch (type.getCacheTypeId()) {
+                        //Activity、Fragment 以及 Extras 使用 IntelligentCache (具有 LruCache 和 可永久存储数据的 Map)
+                        case CacheType.EXTRAS_TYPE_ID:
+                        case CacheType.ACTIVITY_CACHE_TYPE_ID:
+                        case CacheType.FRAGMENT_CACHE_TYPE_ID:
+                            return new IntelligentCache(type.calculateCacheSize(context));
+                        //其余使用 LruCache (当达到最大容量时可根据 LRU 算法抛弃不合规数据)
+                        default:
+                            return new LruCache(type.calculateCacheSize(context));
+                    }
                 });
 
     }
 
     @Override
     public void injectAppLifecycle(@NonNull Context context, @NonNull List<AppLifecycles> lifecycles) {
-        lifecycles.add(new AppLifecycleImpl());
+        lifecycles.add(new AppLifecyclesImpl());
     }
 
     @Override

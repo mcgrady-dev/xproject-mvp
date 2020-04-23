@@ -7,11 +7,11 @@ import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
 
-import com.mcgrady.xskeleton.cache.CacheType;
-import com.mcgrady.xskeleton.cache.LruCache;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.integration.ManifestParser;
 import com.mcgrady.xskeleton.integration.cache.IntelligentCache;
+import com.mcgrady.xskeleton.lifecycle.ActivityLifecycle;
+import com.mcgrady.xskeleton.lifecycle.ActivityLifecycleForRxLifecycle;
 import com.mcgrady.xskeleton.module.AppModule;
 import com.mcgrady.xskeleton.module.ClientModule;
 import com.mcgrady.xskeleton.module.GlobalConfigModule;
@@ -37,7 +37,7 @@ public class AppDelegate implements AppLifecycles, IApp {
     private AppModule appModule;
     private ClientModule clientModule;
 
-    public AppDelegate(@NonNull Context context) {
+    public AppDelegate(@NonNull Application application, @NonNull Context context) {
         this.modules = new ManifestParser(context).parse();
 
         for (ConfigModule module : modules) {
@@ -62,20 +62,7 @@ public class AppDelegate implements AppLifecycles, IApp {
         appModule = AppModule.builder()
                 .with(application)
                 .gsonConfig(globalConfigModule.getGsonConfig())
-                .cacheFactory(type -> {
-                    //若想自定义 LruCache 的 size, 或者不想使用 LruCache, 想使用自己自定义的策略
-                    //使用 GlobalConfigModule.Builder#cacheFactory() 即可扩展
-                    switch (type.getCacheTypeId()) {
-                        //Activity、Fragment 以及 Extras 使用 IntelligentCache (具有 LruCache 和 可永久存储数据的 Map)
-                        case CacheType.EXTRAS_TYPE_ID:
-                        case CacheType.ACTIVITY_CACHE_TYPE_ID:
-                        case CacheType.FRAGMENT_CACHE_TYPE_ID:
-                            return new IntelligentCache(type.calculateCacheSize(application));
-                        //其余使用 LruCache (当达到最大容量时可根据 LRU 算法抛弃不合规数据)
-                        default:
-                            return new LruCache(type.calculateCacheSize(application));
-                    }
-                })
+                .cacheFactory(globalConfigModule.getCacheFactory())
                 .build();
 
         clientModule = ClientModule.builder()
@@ -87,9 +74,13 @@ public class AppDelegate implements AppLifecycles, IApp {
                 .interceptors(globalConfigModule.getInterceptors())
                 .globalHttpHandler(globalConfigModule.getHttpHandler())
                 .executorService(globalConfigModule.getExecutorService())
+                .responseErrorListener(globalConfigModule.getErrorListener())
                 .build();
 
         appModule.getExtras().put(IntelligentCache.getKeyOfKeep(ConfigModule.class.getName()), modules);
+
+        activityLifecycle = new ActivityLifecycle(application);
+        activityForRxLifecycle = new ActivityLifecycleForRxLifecycle();
 
         this.modules = null;
 

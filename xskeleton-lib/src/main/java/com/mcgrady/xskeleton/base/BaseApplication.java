@@ -5,13 +5,8 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.mcgrady.xskeleton.integration.ConfigModule;
-import com.mcgrady.xskeleton.integration.ManifestParser;
 import com.mcgrady.xskeleton.module.AppModule;
 import com.mcgrady.xskeleton.module.ClientModule;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by mcgrady on 2019-09-16.
@@ -23,16 +18,9 @@ public class BaseApplication extends Application implements IApp {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        List<AppLifecycles> appLifecycles = new ArrayList<>();
-        List<Application.ActivityLifecycleCallbacks> activityLifecycles = new ArrayList<>();
-        List<ConfigModule> modules = new ManifestParser(base).parse();
-        for (ConfigModule module : modules) {
-            module.injectAppLifecycle(base, appLifecycles);
-            module.injectActivityLifecycle(base, activityLifecycles);
-        }
 
         if (appDelegate == null) {
-            appDelegate = new AppDelegate(base);
+            appDelegate = new AppDelegate(this, base);
         }
         appDelegate.attachBaseContext(base);
     }

@@ -2,6 +2,8 @@ package com.mcgrady.xskeleton.cache;
 
 import androidx.annotation.Nullable;
 
+import com.mcgrady.xskeleton.module.GlobalConfigModule;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +11,9 @@ import java.util.Set;
 /**
  * LRU 即 Least Recently Used, 当缓存满了,会优先淘汰那些最近最不常访问的数据
  * 此种缓存策略为框架默认提供,可自行实现其他缓存策略,如磁盘缓存,为框架或开发者提供缓存的功能
+ * @see GlobalConfigModule#getCacheFactory()
+ * @see Cache
+ *
  * Created by mcgrady on 2020/4/7.
  */
 public class LruCache<K, V> implements Cache<K, V> {

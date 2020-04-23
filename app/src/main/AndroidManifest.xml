@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="com.mcgrady.common_core.app.App"
+        android:name="com.mcgrady.xskeleton.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -38,9 +38,9 @@
             android:name="design_height_in_dp"
             android:value="640"/>
 
-
+        <!--全局配置-->
         <meta-data
-            android:name="com.mcgrady.common_core.app.GlobalConfig"
+            android:name="com.mcgrady.common_core.app.GlobalConfiguration"
             android:value="ConfigModule"/>
 
     </application>
