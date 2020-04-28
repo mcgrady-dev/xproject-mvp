@@ -1,4 +1,4 @@
-package com.mcgrady.xskeleton.widget;
+package com.mcgrady.common_res.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 
-import com.mcgrady.xskeleton.R;
+import com.mcgrady.common_res.R;
 
 import java.util.Objects;
 

@@ -10,7 +10,7 @@ import com.mcgrady.shop.R;
 import com.mcgrady.shop.R2;
 import com.mcgrady.shop.mvp.contract.TakeoutOrderContract;
 import com.mcgrady.shop.mvp.presenter.TakeoutOrderPresenter;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 
 import butterknife.BindView;
 

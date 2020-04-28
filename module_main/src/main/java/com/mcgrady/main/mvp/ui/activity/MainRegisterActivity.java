@@ -9,7 +9,7 @@ import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.main.R;
 import com.mcgrady.main.mvp.contract.CommonRegisterContract;
 import com.mcgrady.main.mvp.presenter.CommonRegisterPresenter;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 
 @Route(path = RouterHub.MAIN_COMMON_REGISTER)
 public class MainRegisterActivity extends BaseActivity<CommonRegisterPresenter> implements CommonRegisterContract.View {

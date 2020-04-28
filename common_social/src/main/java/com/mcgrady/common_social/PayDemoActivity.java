@@ -8,11 +8,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.xpay.PayAPI;
 import com.mcgrady.xpay.alipay.AliPayReq;
 import com.mcgrady.xpay.interf.PayResultCallBack;
 import com.mcgrady.xpay.wxpay.WechatPayReq;
-import com.mcgrady.xskeleton.base.BaseActivity;
 import com.mcgrady.xskeleton.base.IPresenter;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;

@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
  * @author: mcgrady
  * @date: 2019-06-03
  */
+@Deprecated
 public class CustomPopupWindow extends PopupWindow {
 
     private View mContentView;

@@ -103,12 +103,6 @@ dependencies {
 
     api rootProject.ext.dependencies["utilcodex"]
     api rootProject.ext.dependencies["toast"]
-    api(rootProject.ext.dependencies["immersion-bar"]) {
-        exclude module: 'appcompat-v7'
-    }
-    api(rootProject.ext.dependencies["immersion-bar-components"]) {
-        exclude module: 'appcompat-v7'
-    }
 }
 
 apply from: '../bintray.gradle'

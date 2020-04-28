@@ -53,8 +53,4 @@ public interface IActivity {
      */
     @NonNull
     Cache<String, Object> provideCache();
-
-    void showProgress();
-
-    void hideProgress();
 }

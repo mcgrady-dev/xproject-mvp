@@ -12,7 +12,7 @@ import com.mcgrady.shop.R2;
 import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.shop.mvp.presenter.ProductDetailsPresenter;
 import com.mcgrady.shop.mvp.ui.weiget.ProductSkuPopup;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.xtitlebar.TitleBar;
 
 import butterknife.BindView;

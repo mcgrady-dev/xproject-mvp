@@ -13,7 +13,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 import butterknife.BindView;
@@ -48,8 +48,8 @@ public class ZhihuDailySplashActivity extends BaseActivity {
     }
 
     @Override
-    protected void initImmersionBar() {
-        //不执行状态栏适配
+    public boolean immersionBarEnabled() {
+        return false;
     }
 
     @Override

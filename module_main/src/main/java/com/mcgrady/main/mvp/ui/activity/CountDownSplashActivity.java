@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 import butterknife.BindView;
@@ -45,8 +45,8 @@ public class CountDownSplashActivity extends BaseActivity {
     }
 
     @Override
-    protected void initImmersionBar() {
-        //不执行状态栏适配
+    public boolean immersionBarEnabled() {
+        return false;
     }
 
     @Override

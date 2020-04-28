@@ -14,7 +14,7 @@ import com.mcgrady.main.R2;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
 import com.mcgrady.main.mvp.model.CommonLoginModel;
 import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

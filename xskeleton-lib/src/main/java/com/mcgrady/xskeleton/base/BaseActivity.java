@@ -7,11 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gyf.immersionbar.ImmersionBar;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
 import com.mcgrady.xskeleton.lifecycle.ActivityLifecycleable;
-import com.mcgrady.xskeleton.widget.LoadingDialog;
 import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import butterknife.ButterKnife;
@@ -30,7 +28,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Nullable
     protected P presenter;
     private Cache<String, Object> cache;
-    private LoadingDialog loadingDialog;
     private Unbinder unbinder;
 
     protected abstract P createPresenter();
@@ -45,7 +42,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             if (layoutResId != 0) {
                 setContentView(layoutResId);
                 unbinder = ButterKnife.bind(this);
-                initImmersionBar();
                 initView(savedInstanceState);
             }
         } catch (Exception e) {
@@ -59,15 +55,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     public Subject<ActivityEvent> provideLifecycleSubject() {
         return lifecycleSubject;
-    }
-
-    protected void initImmersionBar() {
-        ImmersionBar.with(this)
-                .keyboardEnable(true)
-                .transparentBar()
-                .statusBarDarkFont(true)
-                .fullScreen(false)
-                .init();
     }
 
     @Override
@@ -86,24 +73,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if (useEventBus()) {
             //解除注册 Eventbus
             //EventBus.getDefault().unregister(this);
-        }
-    }
-
-    @Override
-    public void showProgress() {
-        if (loadingDialog == null) {
-            loadingDialog = new LoadingDialog(this);
-        }
-
-        if (!loadingDialog.isShowing()) {
-            loadingDialog.show();
-        }
-    }
-
-    @Override
-    public void hideProgress() {
-        if (loadingDialog != null && loadingDialog.isShowing()) {
-            loadingDialog.dismiss();
         }
     }
 

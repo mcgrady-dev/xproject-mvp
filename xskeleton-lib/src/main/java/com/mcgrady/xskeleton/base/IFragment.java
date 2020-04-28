@@ -103,8 +103,4 @@ public interface IFragment {
      */
     @NonNull
     Cache<String, Object> provideCache();
-
-    void showProgress();
-
-    void hideProgress();
 }

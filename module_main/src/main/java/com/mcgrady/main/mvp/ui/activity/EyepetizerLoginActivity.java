@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import com.mcgrady.main.R;
 import com.mcgrady.main.mvp.contract.CommonLoginContract;
 import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 
 public class EyepetizerLoginActivity extends BaseActivity<CommonLoginPresenter> implements CommonLoginContract.View {
 

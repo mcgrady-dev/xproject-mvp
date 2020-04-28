@@ -20,7 +20,7 @@ import com.mcgrady.news.R2;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyDetailPresenter;
-import com.mcgrady.xskeleton.base.BaseActivity;
+import com.mcgrady.common_res.base.BaseActivity;
 import com.youth.banner.loader.ImageLoader;
 
 import butterknife.BindView;

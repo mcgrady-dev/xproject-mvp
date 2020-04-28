@@ -17,7 +17,6 @@ import androidx.core.view.ViewCompat;
 import com.mcgrady.common_res.R;
 
 /**
- * <p>类说明</p>
  *
  * @author: mcgrady
  * @date: 2018/12/20

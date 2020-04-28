@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
 import com.mcgrady.xskeleton.lifecycle.FragmentLifecycleable;
-import com.mcgrady.xskeleton.widget.LoadingDialog;
 import com.trello.rxlifecycle3.android.FragmentEvent;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
@@ -29,7 +28,7 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     private final BehaviorSubject<FragmentEvent> mLifecycleSubject = BehaviorSubject.create();
     protected Context mContext;
     private View rootView;
-    private LoadingDialog loadingDialog;
+
     private Unbinder mUnbinder;
 
     @Nullable
@@ -88,32 +87,6 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
         }
         this.mUnbinder = null;
         this.mContext = null;
-    }
-
-    @Override
-    public void showProgress() {
-        if (mContext instanceof IActivity) {
-            ((IActivity) mContext).showProgress();
-        } else {
-            if (loadingDialog == null) {
-                loadingDialog = new LoadingDialog(mContext);
-            }
-
-            if (!loadingDialog.isShowing()) {
-                loadingDialog.show();
-            }
-        }
-    }
-
-    @Override
-    public void hideProgress() {
-        if (mContext instanceof IActivity) {
-            ((IActivity) mContext).hideProgress();
-        } else {
-            if (loadingDialog != null && loadingDialog.isShowing()) {
-                loadingDialog.dismiss();
-            }
-        }
     }
 
     @Override

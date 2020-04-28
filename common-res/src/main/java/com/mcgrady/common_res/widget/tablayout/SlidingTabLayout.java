@@ -1,4 +1,4 @@
-package com.mcgrady.common_res.widget;
+package com.mcgrady.common_res.widget.tablayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,6 +30,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.mcgrady.common_res.R;
 import com.mcgrady.common_res.interf.OnTabSelectListener;
 import com.mcgrady.common_res.utils.UnreadMsgUtils;
+import com.mcgrady.common_res.widget.MsgView;
 
 import java.util.ArrayList;
 
