@@ -29,6 +29,13 @@
             android:name="design_height_in_dp"
             android:value="640"/>
 
+        <meta-data
+            android:name="com.mcgrady.common_core.app.GlobalConfiguration"
+            android:value="ConfigModule"/>
+        <meta-data
+            android:name="com.mcgrady.common_res.app.GlobalConfiguration"
+            android:value="ConfigModule"/>
+
     </application>
 
 </manifest>

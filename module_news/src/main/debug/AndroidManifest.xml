@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="com.mcgrady.common_core.app.App"
+        android:name="com.mcgrady.xskeleton.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/zhihu_ic_launcher"
         android:label="news"
@@ -20,10 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
             android:name=".mvp.ui.activity.ZhihuDailyHomeActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +42,13 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="640"/>
+
+        <meta-data
+            android:name="com.mcgrady.common_core.app.GlobalConfiguration"
+            android:value="ConfigModule"/>
+        <meta-data
+            android:name="com.mcgrady.common_res.app.GlobalConfiguration"
+            android:value="ConfigModule"/>
     </application>
 
 </manifest>
