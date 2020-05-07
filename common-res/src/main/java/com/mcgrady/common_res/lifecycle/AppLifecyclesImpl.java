@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.mcgrady.common_res.R;
 import com.mcgrady.common_res.widget.MaterialHeader;
@@ -23,6 +24,9 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void onCreate(@NonNull Application application) {
+        //启用矢量图兼容
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
         //设置全局默认配置（优先级最低，会被其他设置覆盖）
         SmartRefreshLayout.setDefaultRefreshInitializer((context, layout) -> {
             //全局设置（优先级最低）
@@ -38,7 +42,10 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
             return new MaterialHeader(context);
         });
-        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new ClassicsFooter(context));
+        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
+//            layout.setReboundDuration(0);
+            return new ClassicsFooter(context);
+        });
     }
 
     @Override

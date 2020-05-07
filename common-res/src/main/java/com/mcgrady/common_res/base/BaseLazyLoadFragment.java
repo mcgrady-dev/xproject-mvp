@@ -11,7 +11,7 @@ import com.mcgrady.xskeleton.base.IPresenter;
 import java.util.List;
 
 /**
- * 区别于{@link com.mcgrady.xskeleton.base.BaseFragment}的是在这里添加第三方库依赖
+ * 区别于{@link com.mcgrady.xskeleton.base.BaseFragment}的是这里添加了第三方库依赖
  *
  * Created by mcgrady on 2020/4/28.
  */

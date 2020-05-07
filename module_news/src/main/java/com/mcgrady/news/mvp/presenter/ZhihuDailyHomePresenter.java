@@ -42,7 +42,7 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
     public void requestDailyList() {
         mModel.getDailyList()
             .subscribeOn(Schedulers.io())
-            .retryWhen(new RetryWithDelay(3, 2))
+            .retryWhen(new RetryWithDelay(2, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(() -> mView.finishRefresh())

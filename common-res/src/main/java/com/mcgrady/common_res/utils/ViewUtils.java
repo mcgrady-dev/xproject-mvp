@@ -3,30 +3,36 @@ package com.mcgrady.common_res.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.Paint;
 import android.os.Build;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.StringUtils;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.google.android.material.snackbar.Snackbar;
+import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_res.interf.IViewHolderRelease;
 
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import io.reactivex.Completable;
+
+import static com.mcgrady.xskeleton.integration.Platform.DEPENDENCY_SUPPORT_DESIGN;
 
 /**
  * <p>类说明</p>
@@ -111,169 +117,138 @@ public class ViewUtils {
     }
 
 
-
-
-    //-------------------------------------- Drawable 相关 START ------------------------------------
-
     /**
-     * 默认的按下后的透明度变化值
+     * 使用 {@link Snackbar} 显示文本消息
+     * @param message
+     * @param isLong
      */
-    private static final float DEFAULT_ALPHA_VALUE = 0.7f;
+    public static void showSnackbar(String message, boolean isLong) {
+        if (ActivityUtils.getTopActivity() == null) {
+            LogUtils.w("top activity == null when showSnackbar");
+            return;
+        }
+
+        Completable.fromAction(() -> {
+            if (DEPENDENCY_SUPPORT_DESIGN) {
+                Activity activity = ActivityUtils.getTopActivity();
+                View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
+                Snackbar.make(view, message, isLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
+            } else {
+                ToastUtils.show(message);
+            }
+        });
+    }
+
+    public static void setTextColorPart(Context context, TextView textView, String flagStart, String part) {
+        setTextColorPart(context, textView, flagStart, "", part);
+    }
+
+    public static void setTextColorPart(Context context, TextView textView, String flagStart, String flagEnd, String part) {
+        setTextColorPart(context, textView, flagStart, flagEnd, part, context.getResources().getColor(android.R.color.black));
+    }
+
+    public static void setTextColorPart(Context context, TextView textView, String flagStart, String flagEnd, String part, int resId) {
+        if (StringUtils.isEmpty(flagStart)) {
+            flagStart = "";
+        }
+        if (StringUtils.isEmpty(flagEnd)) {
+            flagEnd = "";
+        }
+        if (StringUtils.isEmpty(part)) {
+            part = "";
+        }
+        String content = flagStart + part + flagEnd;
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(content);
+        ForegroundColorSpan redSpan = new ForegroundColorSpan(resId);
+        builder.setSpan(redSpan, flagStart.length(), (flagStart + part).length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+        textView.setText(builder);
+    }
+
+    public static void isShowBottomLine(TextView textView, boolean isShow) {
+        if (isShow) {
+            textView.setText(Html.fromHtml("<u>"+textView.getText()+"</u>"));
+        } else {
+            textView.setText(textView.getText());
+        }
+
+    }
+
     /**
-     * 默认按下使用 20% 透明度的黑色作为遮罩
+     * 给特定字加特定颜色
+     * @param color 关键字颜色
+     * @param text  整体文本
+     * @param keyword 关键字
+     * @return
      */
-    private static final float DEFAULT_DARK_ALPHA_VALUE = 0.2f;
-
-    public static Drawable createBgDrawable(@NonNull Context context, @DrawableRes int res) {
-        return createBgDrawableWithDarkMode(context, res);
+    public static SpannableString matcherSearchText(int color, String text, String keyword){
+        String string = text.toLowerCase();
+        String key = keyword.toLowerCase();
+        Pattern pattern = Pattern.compile(key);
+        Matcher matcher = pattern.matcher(string);
+        SpannableString ss = new SpannableString(text);
+        while (matcher.find()) {
+            int start = matcher.start();
+            int end = matcher.end();
+            ss.setSpan(new ForegroundColorSpan(color), start, end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return ss;
     }
-
-    public static Drawable createBgColor(Context context, @ColorInt int res) {
-        return createBgColorWithDarkMode(context, res);
-    }
-
-
-    public static Drawable createBgDrawableWithAlphaMode(@NonNull Context context, @DrawableRes int res) {
-        return createBgDrawableWithAlphaMode(context, res, DEFAULT_ALPHA_VALUE);
-    }
-
-    public static Drawable createBgDrawableWithAlphaMode(@NonNull Context context, @DrawableRes int res, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        return createBgDrawable(context, res, PressedMode.ALPHA, alpha);
-    }
-
-    public static Drawable createBgDrawableWithDarkMode(@NonNull Context context, @DrawableRes int res) {
-        return createBgDrawableWithDarkMode(context, res, DEFAULT_DARK_ALPHA_VALUE);
-    }
-
-    public static Drawable createBgDrawableWithDarkMode(@NonNull Context context, @DrawableRes int res, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        return createBgDrawable(context, res, PressedMode.DARK, alpha);
-    }
-
-    public static Drawable createBgColorWithAlphaMode(@NonNull Context context, @ColorInt int res) {
-        return createBgColorWithAlphaMode(context, res, DEFAULT_ALPHA_VALUE);
-    }
-
-    public static Drawable createBgColorWithAlphaMode(@NonNull Context context, @ColorInt int res, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        return createBgColor(context, res, PressedMode.ALPHA, alpha);
-    }
-
-    public static Drawable createBgColorWithDarkMode(@NonNull Context context, @ColorInt int res) {
-        return createBgColor(context, res, PressedMode.DARK, DEFAULT_DARK_ALPHA_VALUE);
-    }
-
-    public static Drawable createBgColorWithDarkMode(@NonNull Context context, @ColorInt int res, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        return createBgColor(context, res, PressedMode.DARK, alpha);
-    }
-
 
     /**
-     * 使用一个 Drawable 资源生成一个具有按下效果的 StateListDrawable
+     * 设置下划线
+     */
+
+    public static void setTvUnderLine(TextView textView) {
+        //下划线
+        textView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        //抗锯齿
+        textView.getPaint().setAntiAlias(true);
+    }
+
+    /**
+     * 取消下划线
+     */
+    public static void clearUnderLine(TextView textView){
+        textView.getPaint().setFlags(0);
+        //抗锯齿
+        textView.getPaint().setAntiAlias(true);
+    }
+
+    /**
+     * 获得资源
+     */
+    public static Resources getResources(Context context) {
+        return context.getResources();
+    }
+
+    /**
+     * findview
      *
-     * @param context context
-     * @param res     drawable  resource
-     * @param mode    mode for press
-     * @param alpha   value
-     * @return a stateListDrawable
+     * @param view
+     * @param viewName
+     * @param <T>
+     * @return
      */
-    private static Drawable createBgDrawable(@NonNull Context context, @DrawableRes int res, @PressedMode.Mode int mode, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        Drawable normal = context.getResources().getDrawable(res);
-        Drawable pressed = context.getResources().getDrawable(res);
-        Drawable unable = context.getResources().getDrawable(res);
-        pressed.mutate();
-        unable.mutate();
-        pressed = getPressedStateDrawable(context, mode, alpha, pressed);
-        unable = getUnableStateDrawable(context, unable);
-
-        return createStateListDrawable(normal, pressed, unable);
+    public static <T extends View> T findViewByName(Context context, View view, String viewName) {
+        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
+        T v = (T) view.findViewById(id);
+        return v;
     }
 
-    private static Drawable createBgColor(Context context, @ColorInt int resBackgroundColor, @PressedMode.Mode int mode, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        ColorDrawable colorDrawableNormal = new ColorDrawable();
-        ColorDrawable colorDrawablePressed = new ColorDrawable();
-        ColorDrawable colorDrawableUnable = new ColorDrawable();
-
-        colorDrawableNormal.setColor(resBackgroundColor);
-        colorDrawablePressed.setColor(resBackgroundColor);
-        colorDrawableUnable.setColor(resBackgroundColor);
-        Drawable pressed = getPressedStateDrawable(context, mode, alpha, colorDrawablePressed);
-        Drawable unable = getUnableStateDrawable(context, colorDrawableUnable);
-
-        return createStateListDrawable(colorDrawableNormal, pressed, unable);
+    /**
+     * findview
+     *
+     * @param activity
+     * @param viewName
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T findViewByName(Context context, Activity activity, String viewName) {
+        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
+        T v = (T) activity.findViewById(id);
+        return v;
     }
-
-    @NonNull
-    private static StateListDrawable createStateListDrawable(Drawable colorDrawableNormal, Drawable colorDrawablePressed, Drawable colorDrawableUnable) {
-        final StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, colorDrawablePressed);
-        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, colorDrawableUnable);
-        stateListDrawable.addState(new int[]{}, colorDrawableNormal);
-        return stateListDrawable;
-    }
-
-
-    private static Drawable getPressedStateDrawable(Context context, @PressedMode.Mode int mode, @FloatRange(from = 0.0f, to = 1.0f) float alpha, @NonNull Drawable pressed) {
-        //ColorDrawable is not supported on 4.4 because the size of the ColorDrawable can not be determined unless the View size is passed in
-        if (isKitkat() && !(pressed instanceof ColorDrawable)) {
-            return kitkatDrawable(context, pressed, mode, alpha);
-        }
-        switch (mode) {
-            case PressedMode.ALPHA:
-                pressed.setAlpha(convertAlphaToInt(alpha));
-                break;
-            case PressedMode.DARK:
-                pressed.setColorFilter(alphaColor(Color.BLACK, convertAlphaToInt(alpha)), PorterDuff.Mode.SRC_ATOP);
-                break;
-            default:
-                pressed.setAlpha(convertAlphaToInt(alpha));
-        }
-        return pressed;
-    }
-
-    private static Drawable kitkatDrawable(Context context, @NonNull Drawable pressed, @PressedMode.Mode int mode, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        Bitmap bitmap = Bitmap.createBitmap(pressed.getIntrinsicWidth(), pressed.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas myCanvas = new Canvas(bitmap);
-        switch (mode) {
-            case PressedMode.ALPHA:
-                pressed.setAlpha(convertAlphaToInt(alpha));
-                break;
-            case PressedMode.DARK:
-                pressed.setColorFilter(alphaColor(Color.BLACK, convertAlphaToInt(alpha)), PorterDuff.Mode.SRC_ATOP);
-                break;
-        }
-        pressed.setBounds(0, 0, pressed.getIntrinsicWidth(), pressed.getIntrinsicHeight());
-        pressed.draw(myCanvas);
-        return new BitmapDrawable(context.getResources(), bitmap);
-    }
-
-    private static Drawable kitkatUnableDrawable(Context context, @NonNull Drawable pressed) {
-        Bitmap bitmap = Bitmap.createBitmap(pressed.getIntrinsicWidth(), pressed.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas myCanvas = new Canvas(bitmap);
-        pressed.setAlpha(convertAlphaToInt(0.5f));
-        pressed.setBounds(0, 0, pressed.getIntrinsicWidth(), pressed.getIntrinsicHeight());
-        pressed.draw(myCanvas);
-        return new BitmapDrawable(context.getResources(), bitmap);
-    }
-
-    private static boolean isKitkat() {
-        return Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT;
-    }
-
-    private static Drawable getUnableStateDrawable(Context context, @NonNull Drawable unable) {
-        if (isKitkat() && !(unable instanceof ColorDrawable)) {
-            return kitkatUnableDrawable(context, unable);
-        }
-        unable.setAlpha(convertAlphaToInt(0.5f));
-        return unable;
-    }
-
-    private static int convertAlphaToInt(@FloatRange(from = 0.0f, to = 1.0f) float alpha) {
-        return (int) (255 * alpha);
-    }
-
-    private static int alphaColor(@ColorInt int color, @IntRange(from = 0, to = 255) int alpha) {
-        return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color));
-    }
-
-
-    //-------------------------------------- Drawable 相关 END --------------------------------------
 }

@@ -91,7 +91,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     public synchronized Cache<String, Object> provideCache() {
         if (cache == null) {
             //noinspection unchecked
-            cache = AppComponent.obtainAppModule(this).getCacheFactory().build(CacheType.ACTIVITY_CACHE);
+            cache = AppComponent.obtainAppModule(this).cacheFactory().build(CacheType.ACTIVITY_CACHE);
         }
         return cache;
     }

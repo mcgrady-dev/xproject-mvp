@@ -32,15 +32,15 @@ public class ClientModule {
     private OkHttpClient okHttpClient;
     private RxErrorHandler rxErrorHandler;
 
-    public Retrofit getRetrofit() {
+    public Retrofit retrofit() {
         return retrofit;
     }
 
-    public OkHttpClient getOkHttpClient() {
+    public OkHttpClient okHttpClient() {
         return okHttpClient;
     }
 
-    public RxErrorHandler getRxErrorHandler() {
+    public RxErrorHandler rxErrorHandler() {
         return rxErrorHandler;
     }
 

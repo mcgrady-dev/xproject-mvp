@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.http.BaseUrl;
 import com.mcgrady.xskeleton.http.GlobalHttpHandler;
+import com.mcgrady.xskeleton.http.imageloader.BaseImageLoaderStrategy;
 import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
 import com.mcgrady.xskeleton.http.log.FormatPrinter;
 import com.mcgrady.xskeleton.http.log.RequestInterceptor;
@@ -39,6 +40,7 @@ public class GlobalConfigModule {
     private ResponseErrorListener errorListener;
     private GlobalHttpHandler httpHandler;
     private IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate;
+    private BaseImageLoaderStrategy imageLoaderStrategy;
 
     //cache
     private File cacheFile;
@@ -110,6 +112,10 @@ public class GlobalConfigModule {
         return executorService;
     }
 
+    public BaseImageLoaderStrategy getImageLoaderStrategy() {
+        return imageLoaderStrategy;
+    }
+
     private GlobalConfigModule(Builder builder) {
         this.apiUrl = builder.apiUrl;
         this.baseUrl = builder.baseUrl;
@@ -122,6 +128,7 @@ public class GlobalConfigModule {
         this.interceptors = builder.interceptors;
         this.httpHandler = builder.httpHandler;
         this.obtainServiceDelegate = builder.obtainServiceDelegate;
+        this.imageLoaderStrategy = builder.imageLoaderStrategy;
 
         this.cacheFile = builder.cacheFile;
         this.cacheFactory = builder.cacheFactory;
@@ -145,6 +152,7 @@ public class GlobalConfigModule {
         private List<Interceptor> interceptors;
         private ResponseErrorListener errorListener;
         private GlobalHttpHandler httpHandler;
+        private BaseImageLoaderStrategy imageLoaderStrategy;
 
         private File cacheFile;
         private Cache.Factory cacheFactory;
@@ -219,6 +227,11 @@ public class GlobalConfigModule {
 
         public Builder cacheFactory(Cache.Factory cacheFactory) {
             this.cacheFactory = cacheFactory;
+            return this;
+        }
+
+        public Builder imageLoaderStrategy(BaseImageLoaderStrategy loaderStrategy) {
+            this.imageLoaderStrategy = loaderStrategy;
             return this;
         }
 

@@ -6,12 +6,11 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.AppUtils;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.ToastAliPayStyle;
 import com.mcgrady.common_core.BuildConfig;
+import com.mcgrady.common_core.http.manager.RetrofitUrlManager;
 import com.mcgrady.xskeleton.base.AppLifecycles;
 import com.mcgrady.xskeleton.integration.RepositoryManager;
 
@@ -35,26 +34,26 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
         if (BuildConfig.LOG_DEBUG) {
             ButterKnife.setDebug(true);
-
             ARouter.openDebug();
             ARouter.openLog();
+            RetrofitUrlManager.getInstance().setDebug(true);
         }
 
-        AppUtils.registerAppStatusChangedListener(application, new Utils.OnAppStatusChangedListener() {
-            @Override
-            public void onForeground() {
-                LogUtils.i("App: " + application.getPackageName() + " is foreground");
-            }
-
-            @Override
-            public void onBackground() {
-                LogUtils.i("App: " + application.getPackageName() + " is background");
-            }
-        });
+//        AppUtils.registerAppStatusChangedListener(application, new Utils.OnAppStatusChangedListener() {
+//            @Override
+//            public void onForeground() {
+//                LogUtils.i("App: " + application.getPackageName() + " is foreground");
+//            }
+//
+//            @Override
+//            public void onBackground() {
+//                LogUtils.i("App: " + application.getPackageName() + " is background");
+//            }
+//        });
     }
 
     @Override
     public void onTerminate(@NonNull Application application) {
-        AppUtils.unregisterAppStatusChangedListener(application);
+//        AppUtils.unregisterAppStatusChangedListener(application);
     }
 }

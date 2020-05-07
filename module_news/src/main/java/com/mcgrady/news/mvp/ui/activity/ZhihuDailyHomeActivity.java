@@ -19,6 +19,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.RouterHub;
+import com.mcgrady.common_core.imageEngine.config.CommonImageConfigImpl;
+import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.common_res.utils.ViewUtils;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
@@ -29,7 +31,7 @@ import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
 import com.mcgrady.xskeleton.base.AppComponent;
-import com.mcgrady.common_res.base.BaseActivity;
+import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
 import com.mcgrady.xtitlebar.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -37,7 +39,6 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,14 +64,13 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     private ZhihuDailyHomeAdapter adapter;
     private LinearLayoutManager linearManager;
     private int lastTitlePostion = -1;
-
-//    private com.mcgrady.xskeleton.imageloader.ImageLoader mImageLoader;
+    private ImageLoader imageLoader;
 
     @Override
     protected ZhihuDailyHomePresenter createPresenter() {
 
         ZhihuModel model = new ZhihuModel();
-        return new ZhihuDailyHomePresenter(model, this, AppComponent.obtainClientModule(this).getRxErrorHandler());
+        return new ZhihuDailyHomePresenter(model, this, AppComponent.obtainClientModule(this).rxErrorHandler());
     }
 
     @Override
@@ -95,7 +95,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-//        mImageLoader = Utils.obtainAppComponentFromContext(this).imageLoader();
+        imageLoader = AppComponent.obtainAppModule(this).imageLoader();
 
         adapter = new ZhihuDailyHomeAdapter(this);
         adapter.setOnItemClickListener((adapter, view, position) -> {
@@ -107,7 +107,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
                             .withInt("daily_id", storiesBean.getId())
                             .withString("daily_title", storiesBean.getTitle())
                             .withString("daily_img_url", storiesBean.getImages() == null ?
-                                    "" :storiesBean.getImages().get(0))
+                                    "" : storiesBean.getImages().get(0))
                             .navigation(ZhihuDailyHomeActivity.this);
                     break;
                 default:
@@ -164,7 +164,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     }
 
 
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -201,18 +200,18 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     @Override
     public void notifyDataSetChanged(ZhihuDailyStoriesBean data) {
         banner.setImages(data.getTop_stories())
-            .setImageLoader(new ImageLoader() {
-                @Override
-                public void displayImage(Context context, Object bean, ImageView imageView) {
-//                    mImageLoader.loadImage(ZhihuDailyHomeActivity.this,
-//                            ImageConfigImpl.builder()
-//                                    .url(((ZhihuDailyStoriesBean.TopStoriesBean) bean).getImage())
-//                                    .imageView(imageView)
-//                                    .build());
-                }
-            })
-            .setOnBannerListener(ZhihuDailyHomeActivity.this)
-            .start();
+                .setImageLoader(new com.youth.banner.loader.ImageLoader() {
+                    @Override
+                    public void displayImage(Context context, Object bean, ImageView imageView) {
+
+                        imageLoader.loadImage(context, CommonImageConfigImpl.builder()
+                            .url(((ZhihuDailyStoriesBean.TopStoriesBean) bean).getImage())
+                            .imageView(imageView)
+                            .build());
+                    }
+                })
+                .setOnBannerListener(ZhihuDailyHomeActivity.this)
+                .start();
         adapter.setData(data);
     }
 

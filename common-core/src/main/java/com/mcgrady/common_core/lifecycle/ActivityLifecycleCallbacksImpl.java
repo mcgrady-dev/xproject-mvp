@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.mcgrady.xskeleton.utils.ViewUtils;
+import com.mcgrady.common_core.utils.ViewUtils;
 
 /**
  *

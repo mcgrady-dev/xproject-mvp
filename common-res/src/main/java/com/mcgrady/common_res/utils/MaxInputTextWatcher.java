@@ -1,4 +1,4 @@
-package com.mcgrady.common_core.utils;
+package com.mcgrady.common_res.utils;
 
 import android.text.Editable;
 import android.text.Selection;

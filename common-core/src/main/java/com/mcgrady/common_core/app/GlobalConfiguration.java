@@ -6,11 +6,16 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
+import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.PathUtils;
 import com.google.gson.GsonBuilder;
 import com.mcgrady.common_core.BuildConfig;
 import com.mcgrady.common_core.http.Api;
 import com.mcgrady.common_core.http.GlobalHttHandlerImpl;
 import com.mcgrady.common_core.http.ResponseErrorListenerImpl;
+import com.mcgrady.common_core.http.SSLSocketClient;
+import com.mcgrady.common_core.http.manager.RetrofitUrlManager;
+import com.mcgrady.common_core.imageEngine.strategy.CommonGlideImageLoaderStrategy;
 import com.mcgrady.common_core.lifecycle.ActivityLifecycleCallbacksImpl;
 import com.mcgrady.common_core.lifecycle.AppLifecyclesImpl;
 import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
@@ -65,8 +70,14 @@ public final class GlobalConfiguration implements ConfigModule {
                     @Override
                     public void configOkhttp(@NonNull Context context, @NonNull OkHttpClient.Builder builder) {
                         builder.writeTimeout(10, TimeUnit.SECONDS);
+                        builder.sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.getTrustManager());
+                        builder.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
+
+                        //让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl. 详细使用请方法查看 https://github.com/JessYanCoding/RetrofitUrlManager
+                        RetrofitUrlManager.getInstance().with(builder);
                     }
                 })
+                .cacheFile(FileUtils.getFileByPath(PathUtils.getExternalAppCachePath()))
                 .cacheFactory(type -> {
                     //若想自定义 LruCache 的 size, 或者不想使用 LruCache, 想使用自己自定义的策略
                     //使用 GlobalConfigModule.Builder#cacheFactory() 即可扩展
@@ -80,7 +91,8 @@ public final class GlobalConfiguration implements ConfigModule {
                         default:
                             return new LruCache(type.calculateCacheSize(context));
                     }
-                });
+                })
+                .imageLoaderStrategy(new CommonGlideImageLoaderStrategy());
 
     }
 

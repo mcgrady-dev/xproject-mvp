@@ -12,12 +12,9 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * <p>类说明</p>
  *
- * @author: mcgrady
- * @date: 2019/1/16
+ * Creaetd by mcgrady on 2019/1/16
  */
-
 public class SSLSocketClient {
 
     /**

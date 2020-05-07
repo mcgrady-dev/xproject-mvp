@@ -9,7 +9,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
+import com.mcgrady.xskeleton.http.imageloader.BaseImageLoaderStrategy;
+import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
 import com.mcgrady.xskeleton.integration.IRepositoryManager;
+
+import java.io.File;
 
 /**
  * Created by mcgrady on 2020/4/3.
@@ -22,23 +26,32 @@ public class AppModule {
     private Gson gson;
     private IRepositoryManager repositoryManager;
     private Cache<String, Object> extras;
+    private File cacheFile;
     private Cache.Factory cacheFactory;
+    private ImageLoader imageLoader;
 
+    public ImageLoader imageLoader() {
+        return imageLoader;
+    }
 
-    public Cache.Factory getCacheFactory() {
+    public Cache.Factory cacheFactory() {
         return cacheFactory;
     }
 
-    public Gson getGson() {
+    public Gson gson() {
         return gson;
     }
 
-    public IRepositoryManager getRepositoryManager() {
+    public IRepositoryManager repositoryManager() {
         return repositoryManager;
     }
 
-    public Cache<String, Object> getExtras() {
+    public Cache<String, Object> extras() {
         return extras;
+    }
+
+    public File cacheFile() {
+        return cacheFile;
     }
 
     public static Builder builder() {
@@ -49,6 +62,8 @@ public class AppModule {
         private Application application;
         private GsonConfiguration gsonConfig;
         private Cache.Factory cacheFactory;
+        private File cacheFile;
+        private BaseImageLoaderStrategy imageLoaderStrategy;
 
         private Builder() {
         }
@@ -68,6 +83,16 @@ public class AppModule {
             return this;
         }
 
+        public Builder imageLoaderStrategy(BaseImageLoaderStrategy loaderStrategy) {
+            this.imageLoaderStrategy = loaderStrategy;
+            return this;
+        }
+
+        public Builder cacheFile(File cacheFile) {
+            this.cacheFile = cacheFile;
+            return this;
+        }
+
         public AppModule build() {
             AppModule appModule = new AppModule();
 
@@ -77,10 +102,13 @@ public class AppModule {
             }
             appModule.gson = builder.create();
 
+            appModule.cacheFile = cacheFile;
             appModule.cacheFactory = cacheFactory;
             if (cacheFactory != null) {
                 appModule.extras = cacheFactory.build(CacheType.EXTRAS);
             }
+
+            appModule.imageLoader = new ImageLoader(imageLoaderStrategy);
 
             return appModule;
         }

@@ -37,7 +37,7 @@ public class AppDelegate implements AppLifecycles, IApp {
     private AppModule appModule;
     private ClientModule clientModule;
 
-    public AppDelegate(@NonNull Application application, @NonNull Context context) {
+    public AppDelegate(@NonNull Context context) {
         this.modules = new ManifestParser(context).parse();
 
         for (ConfigModule module : modules) {
@@ -63,12 +63,14 @@ public class AppDelegate implements AppLifecycles, IApp {
                 .with(application)
                 .gsonConfig(globalConfigModule.getGsonConfig())
                 .cacheFactory(globalConfigModule.getCacheFactory())
+                .cacheFile(globalConfigModule.getCacheFile())
+                .imageLoaderStrategy(globalConfigModule.getImageLoaderStrategy())
                 .build();
 
         clientModule = ClientModule.builder()
                 .with(application)
                 .httpUrl(globalConfigModule.getApiUrl())
-                .gson(appModule.getGson())
+                .gson(appModule.gson())
                 .retrofitConfig(globalConfigModule.getRetrofitConfig())
                 .okhttpClientConfig(globalConfigModule.getOkhttpConfig())
                 .interceptors(globalConfigModule.getInterceptors())
@@ -77,7 +79,7 @@ public class AppDelegate implements AppLifecycles, IApp {
                 .responseErrorListener(globalConfigModule.getErrorListener())
                 .build();
 
-        appModule.getExtras().put(IntelligentCache.getKeyOfKeep(ConfigModule.class.getName()), modules);
+        appModule.extras().put(IntelligentCache.getKeyOfKeep(ConfigModule.class.getName()), modules);
 
         activityLifecycle = new ActivityLifecycle(application);
         activityForRxLifecycle = new ActivityLifecycleForRxLifecycle();

@@ -20,7 +20,7 @@ public class BaseApplication extends Application implements IApp {
         super.attachBaseContext(base);
 
         if (appDelegate == null) {
-            appDelegate = new AppDelegate(this, base);
+            appDelegate = new AppDelegate(base);
         }
         appDelegate.attachBaseContext(base);
     }

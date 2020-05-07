@@ -6,7 +6,7 @@ import com.mcgrady.common_res.widget.LoadingDialog;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 /**
- * 区别于{@link com.mcgrady.xskeleton.base.BaseActivity}的是在这里添加第三方库依赖
+ * 区别于{@link com.mcgrady.xskeleton.base.BaseActivity}的是这里添加了第三方库依赖
  *
  * Created by mcgrady on 2020/4/28.
  */

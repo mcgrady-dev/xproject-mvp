@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'android-aspectjx'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -53,6 +54,13 @@ dependencies {
     api(rootProject.ext.dependencies["rxpermissions2"]) {
         exclude module: 'rxjava'
         exclude module: 'support-annotations'
+    }
+
+    api 'org.aspectj:aspectjrt:1.8.14'
+
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor(rootProject.ext.dependencies["glide-compiler"]) {
+        exclude module: 'jsr305'
     }
 
     debugImplementation rootProject.ext.dependencies["dokit"]

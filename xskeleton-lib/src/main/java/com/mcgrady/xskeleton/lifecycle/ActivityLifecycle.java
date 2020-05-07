@@ -37,7 +37,7 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     public ActivityLifecycle(@NonNull Application application) {
         this.application = application;
-        this.extras = AppComponent.obtainAppModule(application).getExtras();
+        this.extras = AppComponent.obtainAppModule(application).extras();
         this.fragmentLifecycle = new FragmentLifecycle();
         this.fragmentLifecycles = new ArrayList<>();
     }

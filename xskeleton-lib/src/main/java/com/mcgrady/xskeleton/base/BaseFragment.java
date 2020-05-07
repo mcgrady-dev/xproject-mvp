@@ -99,7 +99,7 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     public synchronized Cache<String, Object> provideCache() {
         if (cache == null) {
             //noinspection unchecked
-            cache = AppComponent.obtainAppModule(getActivity()).getCacheFactory().build(CacheType.FRAGMENT_CACHE);
+            cache = AppComponent.obtainAppModule(getActivity()).cacheFactory().build(CacheType.FRAGMENT_CACHE);
         }
 
         return cache;

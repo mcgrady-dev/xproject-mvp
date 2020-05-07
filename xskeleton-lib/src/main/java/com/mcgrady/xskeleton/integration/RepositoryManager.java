@@ -57,8 +57,8 @@ public class RepositoryManager implements IRepositoryManager {
     }
 
     private RepositoryManager() {
-        retrofit = AppComponent.obtainClientModule(sApplication).getRetrofit();
-        cacheFactory = AppComponent.obtainAppModule(sApplication).getCacheFactory();
+        retrofit = AppComponent.obtainClientModule(sApplication).retrofit();
+        cacheFactory = AppComponent.obtainAppModule(sApplication).cacheFactory();
     }
 
     @NonNull

@@ -3,6 +3,10 @@ package com.mcgrady.xskeleton.utils;
 
 import androidx.annotation.Nullable;
 
+import com.mcgrady.xskeleton.exception.InvalidUrlException;
+
+import okhttp3.HttpUrl;
+
 /**
  * Created by mcgrady on 2019/4/26.
  */
@@ -157,5 +161,14 @@ public final class Preconditions {
         }
 
         return builder.toString();
+    }
+
+    public static HttpUrl checkUrl(String url) {
+        HttpUrl parseUrl = HttpUrl.parse(url);
+        if (null == parseUrl) {
+            throw new InvalidUrlException(url);
+        } else {
+            return parseUrl;
+        }
     }
 }
