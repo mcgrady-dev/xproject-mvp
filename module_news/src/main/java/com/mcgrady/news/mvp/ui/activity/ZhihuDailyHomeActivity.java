@@ -1,10 +1,8 @@
 package com.mcgrady.news.mvp.ui.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -15,11 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.SnackbarUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.RouterHub;
-import com.mcgrady.common_core.imageEngine.config.CommonImageConfigImpl;
 import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.common_res.utils.ViewUtils;
 import com.mcgrady.news.R;
@@ -30,6 +27,7 @@ import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyHomeAdapter;
+import com.mcgrady.news.mvp.ui.adapter.ZhihuDailyTopStoriesAdapter;
 import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
 import com.mcgrady.xtitlebar.TitleBar;
@@ -167,13 +165,13 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     @Override
     protected void onStart() {
         super.onStart();
-        banner.startAutoPlay();
+        banner.start();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        banner.stopAutoPlay();
+        banner.stop();
     }
 
     @Override
@@ -190,6 +188,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     protected void onDestroy() {
         ViewUtils.releaseAllHolder(recyclerView);
         super.onDestroy();
+        banner.destroy();
     }
 
 //    @Override
@@ -199,17 +198,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void notifyDataSetChanged(ZhihuDailyStoriesBean data) {
-        banner.setImages(data.getTop_stories())
-                .setImageLoader(new com.youth.banner.loader.ImageLoader() {
-                    @Override
-                    public void displayImage(Context context, Object bean, ImageView imageView) {
-
-                        imageLoader.loadImage(context, CommonImageConfigImpl.builder()
-                            .url(((ZhihuDailyStoriesBean.TopStoriesBean) bean).getImage())
-                            .imageView(imageView)
-                            .build());
-                    }
-                })
+        banner.setAdapter(new ZhihuDailyTopStoriesAdapter(imageLoader, data.getTop_stories()))
                 .setOnBannerListener(ZhihuDailyHomeActivity.this)
                 .start();
         adapter.setData(data);
@@ -231,7 +220,10 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     }
 
     @Override
-    public void OnBannerClick(int position) {
-        ToastUtils.show("你点击了: " + position);
+    public void OnBannerClick(Object data, int position) {
+//        ToastUtils.show("你点击了: " + position);
+        SnackbarUtils.with(((ViewGroup)findViewById(android.R.id.content)).getChildAt(0))
+                .setMessage("你点击了: " + position)
+                .show();
     }
 }

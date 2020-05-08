@@ -15,13 +15,13 @@ import com.just.agentweb.AgentWeb;
 import com.just.agentweb.NestedScrollAgentWebView;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.utils.HtmlUtils;
+import com.mcgrady.common_res.base.BaseActivity;
 import com.mcgrady.news.R;
 import com.mcgrady.news.R2;
 import com.mcgrady.news.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.news.mvp.presenter.ZhihuDailyDetailPresenter;
-import com.mcgrady.common_res.base.BaseActivity;
-import com.youth.banner.loader.ImageLoader;
+import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
 
 import butterknife.BindView;
 

@@ -7,11 +7,13 @@ import com.blankj.utilcode.util.TimeUtils;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.mcgrady.common_core.imageEngine.config.CommonImageConfigImpl;
 import com.mcgrady.common_res.interf.IViewHolderRelease;
 import com.mcgrady.news.R;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.news.mvp.model.entity.ZhihuDailyStoriesBean;
-import com.youth.banner.loader.ImageLoader;
+import com.mcgrady.xskeleton.base.AppComponent;
+import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
         addItemType(TYPE_DATE, R.layout.news_item_zhihu_daily_date);
         addItemType(TYPE_ITEM, R.layout.news_item_zhihu_daily_home);
 
-//        imageLoader = appComponent.imageLoader();
+        imageLoader = AppComponent.obtainAppModule(context).imageLoader();
     }
 
     public void setData(ZhihuDailyStoriesBean data) {
@@ -86,10 +88,10 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
                 helper.setText(R.id.list_item_title, storiesBean.getTitle());
                 List<String> imageList = storiesBean.getImages();
-//                imageLoader.loadImage(mContext, ImageConfigImpl.builder()
-//                        .url(imageList == null || imageList.isEmpty() ? "" : imageList.get(0))
-//                        .imageView(helper.getView(R.id.list_item_image))
-//                        .build());
+                imageLoader.loadImage(mContext, CommonImageConfigImpl.builder()
+                        .url(imageList == null || imageList.isEmpty() ? "" : imageList.get(0))
+                        .imageView(helper.getView(R.id.list_item_image))
+                        .build());
                 helper.setGone(R.id.list_item_multipic, imageList != null && !imageList.isEmpty() && imageList.size() > 1);
                 break;
             default:

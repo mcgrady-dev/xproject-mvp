@@ -24,13 +24,14 @@
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/news_refresh_zhihu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/news_recycler_zhihu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/news_item_zhihu_daily_home"/>
+            tools:listitem="@layout/news_item_zhihu_daily_home"
+            android:overScrollMode="never"/>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

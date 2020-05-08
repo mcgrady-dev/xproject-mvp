@@ -48,7 +48,6 @@ ext {
 
             //rx2
             "rxandroid2"               : "io.reactivex.rxjava2:rxandroid:2.1.1",
-            "rxandroid2"               : "io.reactivex.rxjava2:rxandroid:2.1.1",
             "rxjava2"                  : "io.reactivex.rxjava2:rxjava:2.2.7",
             "rxlifecycle2"             : "com.trello.rxlifecycle2:rxlifecycle:${version["rxlifecycle2SdkVersion"]}",
             "rxlifecycle2-android"     : "com.trello.rxlifecycle2:rxlifecycle-android:${version["rxlifecycle2SdkVersion"]}",
@@ -79,8 +78,7 @@ ext {
             "immersion-bar"            : "com.gyf.immersionbar:immersionbar:3.0.0",
             "immersion-bar-components" : "com.gyf.immersionbar:immersionbar-components:3.0.0",
             "immersion-bar-ktx"        : "com.gyf.immersionbar:immersionbar-ktx:3.0.0",
-            "banner"                   : "com.youth.banner:banner:1.4.10",
-            "banner-viewpager"         : "com.github.zhpanvip:BannerViewPager:latestVersion",
+            "banner"                   : "com.youth.banner:banner:2.0.8",
             "xtitlebar"                : "com.mcgrady:xtitlebar:1.0.2",
             "sticky-headers-recyclerview" : "com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar",
             "agentweb"                 : "com.just.agentweb:agentweb:4.0.2",
