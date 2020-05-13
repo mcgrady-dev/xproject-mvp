@@ -1,0 +1,15 @@
+apply from: "../component_build.gradle"
+
+android {
+    resourcePrefix "zhihu_" //给 Module 内的资源名增加前缀, 避免资源名冲突
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':common-core')
+    implementation rootProject.ext.dependencies["constraint-layout"]
+    implementation rootProject.ext.dependencies["palette"]
+    api rootProject.ext.dependencies["banner"]
+    api rootProject.ext.dependencies["sticky-headers-recyclerview"]
+    api rootProject.ext.dependencies["agentweb"]
+}

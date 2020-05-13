@@ -36,7 +36,6 @@ android {
 dependencies {
     api fileTree(include: ['*.jar','*.aar'], dir: 'libs')
     api project(':common-core')
-    api project(':common-res')
     api(rootProject.ext.dependencies["xpay"]) {
         exclude module: 'support-annotations'
         exclude module: 'rxjava'

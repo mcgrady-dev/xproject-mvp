@@ -14,7 +14,7 @@ import com.blankj.utilcode.util.SpanUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.mcgrady.common_res.widget.recyclerpage.PagingSlideHelper;
+import com.mcgrady.common_core.widget.recyclerpage.PagingSlideHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

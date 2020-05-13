@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.mcgrady.common_res.R;
-import com.mcgrady.common_res.widget.MaterialHeader;
+import com.mcgrady.common_core.widget.MaterialHeader;
 import com.mcgrady.xskeleton.base.AppLifecycles;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;

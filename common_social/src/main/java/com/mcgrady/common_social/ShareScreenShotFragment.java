@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.mcgrady.common_res.base.BaseFragment;
+import com.mcgrady.common_core.base.BaseFragment;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 

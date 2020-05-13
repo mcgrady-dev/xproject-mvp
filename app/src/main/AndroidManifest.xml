@@ -42,9 +42,6 @@
         <meta-data
             android:name="com.mcgrady.common_core.app.GlobalConfiguration"
             android:value="ConfigModule"/>
-        <meta-data
-            android:name="com.mcgrady.common_res.app.GlobalConfiguration"
-            android:value="ConfigModule"/>
 
     </application>
 

@@ -15,7 +15,7 @@
         android:name="com.mcgrady.xskeleton.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_glod_logo"
-        android:label="@string/zhihu_app_name"
+        android:label="@string/app_name"
         android:networkSecurityConfig="@xml/public_network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -49,9 +49,6 @@
 
         <meta-data
             android:name="com.mcgrady.common_core.app.GlobalConfiguration"
-            android:value="ConfigModule"/>
-        <meta-data
-            android:name="com.mcgrady.common_res.app.GlobalConfiguration"
             android:value="ConfigModule"/>
         <meta-data
             android:name="com.mcgrady.main.app.GlobalConfig"

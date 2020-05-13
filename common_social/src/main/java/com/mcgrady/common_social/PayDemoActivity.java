@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.mcgrady.common_res.base.BaseActivity;
+import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.xpay.PayAPI;
 import com.mcgrady.xpay.alipay.AliPayReq;
 import com.mcgrady.xpay.interf.PayResultCallBack;

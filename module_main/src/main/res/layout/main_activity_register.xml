@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.mcgrady.common_res.widget.ClearEditText
+    <com.mcgrady.common_core.widget.ClearEditText
         android:id="@+id/main_edt_reg_phone"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
-    <com.mcgrady.common_res.widget.ClearEditText
+    <com.mcgrady.common_core.widget.ClearEditText
         android:id="@+id/main_edt_reg_username"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
-    <com.mcgrady.common_res.widget.ClearEditText
+    <com.mcgrady.common_core.widget.ClearEditText
         android:id="@+id/main_edt_reg_password"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
-    <com.mcgrady.common_res.widget.ClearEditText
+    <com.mcgrady.common_core.widget.ClearEditText
         android:id="@+id/main_edt_reg_vercode"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"

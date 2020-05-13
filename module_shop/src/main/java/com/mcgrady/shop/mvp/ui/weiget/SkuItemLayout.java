@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.google.android.material.internal.FlowLayout;
-import com.mcgrady.common_res.utils.ViewUtils;
+import com.mcgrady.common_core.utils.ViewUtils;
 import com.mcgrady.shop.R;
 import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
 

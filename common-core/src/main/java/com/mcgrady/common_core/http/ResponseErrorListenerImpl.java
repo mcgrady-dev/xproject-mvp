@@ -6,8 +6,8 @@ import android.net.ParseException;
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
-import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
 import com.mcgrady.common_core.utils.ViewUtils;
+import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
 
 import org.json.JSONException;
 

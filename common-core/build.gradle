@@ -63,6 +63,28 @@ dependencies {
         exclude module: 'jsr305'
     }
 
+    api(rootProject.ext.dependencies["immersion-bar"]) {
+        exclude module: 'appcompat-v7'
+    }
+    api(rootProject.ext.dependencies["immersion-bar-components"]) {
+        exclude module: 'appcompat-v7'
+    }
+
+    api rootProject.ext.dependencies["basepopup"]
+    api (rootProject.ext.dependencies["baseadapter"]) {
+        exclude module: 'recyclerview-v7'
+    }
+    api (rootProject.ext.dependencies["smart-refreshlayout"]) {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'design'
+    }
+
+    api rootProject.ext.dependencies["xtitlebar"]
+
+    api rootProject.ext.dependencies["autosize"]
+
     debugImplementation rootProject.ext.dependencies["dokit"]
     releaseImplementation rootProject.ext.dependencies["dokit-no-op"]
 }

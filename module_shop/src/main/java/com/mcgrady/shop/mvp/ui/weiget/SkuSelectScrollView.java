@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.mcgrady.common_res.utils.ViewUtils;
+import com.mcgrady.common_core.utils.ViewUtils;
 import com.mcgrady.shop.interf.OnSkuSelectListener;
 import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
 import com.mcgrady.shop.mvp.model.bean.SkuBean;

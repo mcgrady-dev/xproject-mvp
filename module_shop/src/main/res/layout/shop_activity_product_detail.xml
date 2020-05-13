@@ -15,7 +15,7 @@
         app:titleSize="18sp"
         app:leftDrawableRes="@mipmap/public_ic_back_black"/>
 
-    <com.mcgrady.common_res.widget.NoScrollViewPager
+    <com.mcgrady.common_core.widget.NoScrollViewPager
         android:id="@+id/shop_nsvp_product_detail"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -8,5 +8,4 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     api project(':common-core')
-    api project(':common-res')
 }

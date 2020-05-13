@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.mcgrady.main.R;
 import com.mcgrady.main.R2;
-import com.mcgrady.common_res.base.BaseActivity;
+import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 import butterknife.BindView;

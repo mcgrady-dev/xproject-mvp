@@ -4,15 +4,20 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.ToastAliPayStyle;
 import com.mcgrady.common_core.BuildConfig;
+import com.mcgrady.common_core.R;
 import com.mcgrady.common_core.http.manager.RetrofitUrlManager;
+import com.mcgrady.common_core.widget.MaterialHeader;
 import com.mcgrady.xskeleton.base.AppLifecycles;
 import com.mcgrady.xskeleton.integration.RepositoryManager;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 
 import butterknife.ButterKnife;
 
@@ -38,6 +43,29 @@ public class AppLifecyclesImpl implements AppLifecycles {
             ARouter.openLog();
             RetrofitUrlManager.getInstance().setDebug(true);
         }
+
+        //启用矢量图兼容
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
+        //设置全局默认配置（优先级最低，会被其他设置覆盖）
+        SmartRefreshLayout.setDefaultRefreshInitializer((context, layout) -> {
+            //全局设置（优先级最低）
+            layout.setEnableAutoLoadMore(true);
+            layout.setEnableOverScrollDrag(false);
+            layout.setEnableOverScrollBounce(true);
+            layout.setEnableLoadMoreWhenContentNotFull(true);
+            layout.setEnableScrollContentWhenRefreshed(true);
+        });
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
+            //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
+            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
+
+            return new MaterialHeader(context);
+        });
+        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
+//            layout.setReboundDuration(0);
+            return new ClassicsFooter(context);
+        });
 
 //        AppUtils.registerAppStatusChangedListener(application, new Utils.OnAppStatusChangedListener() {
 //            @Override

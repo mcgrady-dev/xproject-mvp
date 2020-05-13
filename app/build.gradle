@@ -77,7 +77,6 @@ dependencies {
     }
 
     implementation project(':common-core')
-    implementation project(':common-res')
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]
