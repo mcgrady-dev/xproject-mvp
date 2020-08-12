@@ -22,6 +22,7 @@ import com.mcgrady.common_core.lifecycle.FragmentLifecycleCallbacksImpl;
 import com.mcgrady.xskeleton.base.AppLifecycles;
 import com.mcgrady.xskeleton.cache.CacheType;
 import com.mcgrady.xskeleton.cache.LruCache;
+import com.mcgrady.xskeleton.http.log.DefaultFormatPrinter;
 import com.mcgrady.xskeleton.http.log.RequestInterceptor;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.integration.cache.IntelligentCache;
@@ -30,9 +31,12 @@ import com.mcgrady.xskeleton.module.ClientModule;
 import com.mcgrady.xskeleton.module.GlobalConfigModule;
 
 import java.util.List;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.internal.Util;
 import retrofit2.Retrofit;
 
 /**
@@ -45,11 +49,9 @@ public final class GlobalConfiguration implements ConfigModule {
 
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlobalConfigModule.Builder builder) {
-        if (!BuildConfig.LOG_DEBUG) {
-            builder.printHttpLogLevel(RequestInterceptor.Level.NONE);
-        }
 
         builder.baseUrl(Api.APP_DOMAIN)
+                .printHttpLogLevel(BuildConfig.LOG_DEBUG ? RequestInterceptor.Level.ALL : RequestInterceptor.Level.NONE)
                 .globalHttpHandler(new GlobalHttHandlerImpl(context))
                 .responseErrorListener(new ResponseErrorListenerImpl())
                 .gsonConfiguration(new AppModule.GsonConfiguration() {
@@ -92,6 +94,9 @@ public final class GlobalConfiguration implements ConfigModule {
                             return new LruCache(type.calculateCacheSize(context));
                     }
                 })
+                .executorService(new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,
+                        new SynchronousQueue<>(), Util.threadFactory("XProject Executor", false)))
+                .formatPrinter(new DefaultFormatPrinter())
                 .imageLoaderStrategy(new CommonGlideImageLoaderStrategy());
 
     }

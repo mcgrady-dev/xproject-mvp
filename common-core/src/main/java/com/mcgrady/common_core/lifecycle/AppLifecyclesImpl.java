@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.hjq.toast.ToastUtils;
-import com.hjq.toast.style.ToastAliPayStyle;
+import com.hjq.toast.style.ToastQQStyle;
 import com.mcgrady.common_core.BuildConfig;
 import com.mcgrady.common_core.R;
 import com.mcgrady.common_core.http.manager.RetrofitUrlManager;
@@ -33,7 +33,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
     public void onCreate(@NonNull Application application) {
 
         Utils.init(application);
-        ToastUtils.init(application, new ToastAliPayStyle(application));
+        ToastUtils.init(application, new ToastQQStyle(application));
         ARouter.init(application); // 尽可能早,推荐在Application中初始化
         RepositoryManager.init(application);
 

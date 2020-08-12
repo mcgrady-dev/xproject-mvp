@@ -3,7 +3,7 @@ ext {
     android = [
             compileSdkVersion: 29,
             buildToolsVersion: "29.0.3",
-            minSdkVersion    : 16,
+            minSdkVersion    : 19,
             targetSdkVersion : 29,
             versionCode      : 1,
             versionName      : "1.0.1",
@@ -69,7 +69,7 @@ ext {
             "numberprogressbar"        : "com.daimajia.numberprogressbar:library:1.4@aar",
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "lottie"                   : "com.airbnb.android:lottie:2.7.0",
-            "toast"                    : "com.hjq:toast:8.0",
+            "toast"                    : "com.hjq:toast:8.6",
             "basepopup"                : "com.github.razerdp:BasePopup:2.2.1",
             "baseadapter"              : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49-androidx",
             "ucrop"                    : "com.github.yalantis:ucrop:2.2.2",
@@ -121,8 +121,7 @@ ext {
             "mockito-core"             : "org.mockito:mockito-core:1.+",
             "timber"                   : "com.jakewharton.timber:timber:4.7.1",
             "logger"                   : "com.orhanobut:logger:2.2.0",
-            "canary-debug"             : "com.squareup.leakcanary:leakcanary-android:${version["canarySdkVersion"]}",
-            "canary-release"           : "com.squareup.leakcanary:leakcanary-android-no-op:${version["canarySdkVersion"]}",
+            "leakcanary"               : "com.squareup.leakcanary:leakcanary-android:2.3",
             "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1",
 
             //socialize

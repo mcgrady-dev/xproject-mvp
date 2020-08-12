@@ -20,16 +20,17 @@ package com.mcgrady.common_core;
  */
 public interface RouterHub {
 
-
-    String NEWS = "/news";
+    String SERVICE = "/service";
+    String ZHIHU = "/zhihu";
     String MAIN = "/main";
 
     /**
      * 知乎日报
      */
-    String ZHIHU_DAILY_SPLASH = MAIN + "/ZhihuDailySplashActivity";
-    String ZHIHU_DAILY_HOME = NEWS + "/ZhihuDailyHomeActivity";
-    String ZHIHU_DAILY_DETAIL = NEWS + "/ZhihuDailyDetailActivity";
+    String ZHIHU_ACTIVITY_SPLASH = ZHIHU + "/ZhihuDailySplashActivity";
+    String ZHIHU_ACTIVITY_HOME = ZHIHU + "/ZhihuDailyHomeActivity";
+    String ZHIHU_ACTIVITY_DAILY_DETAIL = ZHIHU + "/ZhihuDailyDetailActivity";
+    String ZHIHU_SERVICE_ZHIHUINFO = SERVICE + ZHIHU + "/ZhihuInfoService";
 
     /**
      * 主页

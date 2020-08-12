@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+//apply plugin: 'com.novoda.bintray-release'
+
+Properties properties = new Properties()
+final def bintrayPropertiesFile = project.rootProject.file('bintray.properties')
+if (bintrayPropertiesFile.exists()) properties.load(bintrayPropertiesFile.newDataInputStream())
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -7,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
+        versionCode 2
+        versionName "1.0.2"
     }
 
     buildTypes {
@@ -21,6 +26,10 @@ android {
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -106,4 +115,40 @@ dependencies {
     api rootProject.ext.dependencies["toast"]
 }
 
-apply from: '../bintray.gradle'
+//publish {
+//    repoName = project.POM_REPO_NAME
+//    userOrg = project.POM_DEVELOPER_ID
+//    groupId = project.GROUP
+//    artifactId = project.POM_NAME
+//    publishVersion = project.PUBLISH_VERSION
+//    desc = project.POM_DESCRIPTION
+//    website = project.POM_URL
+//    bintrayUser = properties.getProperty("bintray.user")
+//    bintrayKey = properties.getProperty("bintray.apikey")
+//}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier.set('javadoc')
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}

@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.mcgrady.xskeleton.http.GlobalHttpHandler;
+import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;

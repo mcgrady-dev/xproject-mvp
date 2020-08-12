@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+    <string name="zhihu_app_name">知乎日报</string>
+</resources>

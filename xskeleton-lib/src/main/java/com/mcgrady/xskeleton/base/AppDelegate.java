@@ -73,8 +73,9 @@ public class AppDelegate implements AppLifecycles, IApp {
                 .gson(appModule.gson())
                 .retrofitConfig(globalConfigModule.getRetrofitConfig())
                 .okhttpClientConfig(globalConfigModule.getOkhttpConfig())
+                .intercept(globalConfigModule.getIntercept())
                 .interceptors(globalConfigModule.getInterceptors())
-                .globalHttpHandler(globalConfigModule.getHttpHandler())
+                .httpHandler(globalConfigModule.getHttpHandler())
                 .executorService(globalConfigModule.getExecutorService())
                 .responseErrorListener(globalConfigModule.getErrorListener())
                 .build();

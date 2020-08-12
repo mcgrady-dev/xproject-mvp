@@ -2,6 +2,7 @@ package com.mcgrady.common_core.http;
 
 import android.content.Context;
 import android.net.ParseException;
+import android.text.TextUtils;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.JsonIOException;
@@ -29,7 +30,7 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
         LogUtils.wTag("Catch-Error", t);
         //这里不光只能打印错误, 还可以根据不同的错误做出不同的逻辑处理
         //这里只是对几个常用错误进行简单的处理, 展示这个类的用法, 在实际开发中请您自行对更多错误进行更严谨的处理
-        String msg = "未知错误";
+        String msg = null;
         if (t instanceof UnknownHostException) {
             msg = "网络不可用";
         } else if (t instanceof SocketTimeoutException) {
@@ -44,7 +45,12 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
             msg = "数据解析错误";
         }
 
-        ViewUtils.showSnackbar(msg, false);
+        if (!TextUtils.isEmpty(msg)) {
+            ViewUtils.showSnackbar(msg, false);
+        } else {
+            LogUtils.d("未知错误");
+        }
+
     }
 
     private String convertStatusCode(HttpException httpException) {

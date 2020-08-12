@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.http.BaseUrl;
-import com.mcgrady.xskeleton.http.GlobalHttpHandler;
+import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
 import com.mcgrady.xskeleton.http.imageloader.BaseImageLoaderStrategy;
 import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
 import com.mcgrady.xskeleton.http.log.FormatPrinter;
@@ -15,6 +15,7 @@ import com.mcgrady.xskeleton.integration.IRepositoryManager;
 import com.mcgrady.xskeleton.utils.Preconditions;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -36,6 +37,7 @@ public class GlobalConfigModule {
     private AppModule.GsonConfiguration gsonConfig;
     private RequestInterceptor.Level printHttpLogLevel;
     private FormatPrinter formatPrinter;
+    private Interceptor intercept;
     private List<Interceptor> interceptors;
     private ResponseErrorListener errorListener;
     private GlobalHttpHandler httpHandler;
@@ -88,6 +90,10 @@ public class GlobalConfigModule {
         return interceptors;
     }
 
+    public Interceptor getIntercept() {
+        return intercept;
+    }
+
     public ResponseErrorListener getErrorListener() {
         return errorListener;
     }
@@ -133,6 +139,8 @@ public class GlobalConfigModule {
         this.cacheFile = builder.cacheFile;
         this.cacheFactory = builder.cacheFactory;
         this.executorService = builder.executorService;
+
+        this.intercept = new RequestInterceptor(builder.printHttpLogLevel, builder.formatPrinter, builder.httpHandler);
     }
 
     public static Builder builder() {
@@ -212,6 +220,14 @@ public class GlobalConfigModule {
 
         public Builder formatPrinter(FormatPrinter formatPrinter) {
             this.formatPrinter = formatPrinter;
+            return this;
+        }
+
+        public Builder addInterceptors(Interceptor intercept) {
+            if (this.interceptors == null) {
+                this.interceptors = new ArrayList<>();
+            }
+            this.interceptors.add(intercept);
             return this;
         }
 

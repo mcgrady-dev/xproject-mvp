@@ -6,7 +6,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
-import com.mcgrady.xskeleton.http.GlobalHttpHandler;
+import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
 
@@ -99,7 +99,7 @@ public class ClientModule {
             return this;
         }
 
-        public Builder globalHttpHandler(@NonNull GlobalHttpHandler globalHttpHandler) {
+        public Builder httpHandler(@NonNull GlobalHttpHandler globalHttpHandler) {
             this.globalHttpHandler = globalHttpHandler;
             return this;
         }

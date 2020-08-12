@@ -72,7 +72,7 @@ dependencies {
         implementation project(":module_main")
         //在宿主 App 中使用 implementation 依赖业务组件, 业务组件的代码就会完全暴露给宿主 App, 不利于代码的隔离
         //使用 runtimeOnly 依赖业务组件, 可实现业务组件的代码在编译时对宿主 App 不可见, 仅在运行时对宿主 App 可见
-        runtimeOnly project(":module_news")
+        runtimeOnly project(":module_zhihu")
         runtimeOnly project(":module_shop")
     }
 
@@ -80,9 +80,7 @@ dependencies {
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]
-    debugImplementation rootProject.ext.dependencies["canary-debug"]
-    releaseImplementation rootProject.ext.dependencies["canary-release"]
-    testImplementation rootProject.ext.dependencies["canary-release"]
+    debugImplementation rootProject.ext.dependencies["leakcanary"]
 }
 
 static def buildTime() {

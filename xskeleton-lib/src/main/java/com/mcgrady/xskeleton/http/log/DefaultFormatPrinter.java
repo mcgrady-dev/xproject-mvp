@@ -149,7 +149,7 @@ public class DefaultFormatPrinter implements FormatPrinter {
                 int start = i * MAX_LONG_SIZE;
                 int end = (i + 1) * MAX_LONG_SIZE;
                 end = end > line.length() ? line.length() : end;
-                HttpLogUtils.debugInfo(resolveTag(tag), DEFAULT_LINE + line.substring(start, end));
+                HttpLogUtils.debugInfo(tag, DEFAULT_LINE + line.substring(start, end));
             }
         }
     }
@@ -161,10 +161,10 @@ public class DefaultFormatPrinter implements FormatPrinter {
         }
     };
 
-    private static final String[] ARMS = new String[]{"-A-", "-R-", "-M-", "-S-"};
+    private static final String[] ARMS = new String[]{"-X-", "-P-", "-R-", "-O-", "-J-", "-E-", "-C-", "-T-"};
 
     private static String computeKey() {
-        if (last.get() >= 4) {
+        if (last.get() >= 8) {
             last.set(0);
         }
         String s = ARMS[last.get()];
@@ -245,6 +245,6 @@ public class DefaultFormatPrinter implements FormatPrinter {
     }
 
     private static String getTag(boolean isRequest) {
-        return TAG + (isRequest ? "-Request" : "-Response");
+        return TAG + (isRequest ? "-Request " : "-Response");
     }
 }

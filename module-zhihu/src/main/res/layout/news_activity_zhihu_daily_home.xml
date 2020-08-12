@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource,PrivateResource,ResourceName,RtlCompat"
+    android:background="#fff3f3f3"
+    tools:context="com.mcgrady.zhihu.mvp.ui.activity.ZhihuDailyHomeActivity">
+
+<!--    <com.mcgrady.xtitlebar.TitleBar-->
+<!--        android:id="@+id/news_titlebar_zhihu_home"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:title="首页"-->
+<!--        app:titleColor="@color/white"-->
+<!--        app:titleSize="18sp"-->
+<!--        app:titleGravity="left"-->
+<!--        app:leftDrawableRes="@drawable/public_ic_menu"-->
+<!--        app:rightDrawableRes="@mipmap/public_ic_menu_moreoverflow_mtrl_alpha"-->
+<!--        app:titleBarColor="#3983F4"/>-->
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/zhihu_title_gl_center_hor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/zhihu_tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/zhihu_tv_month"
+                app:layout_constraintEnd_toEndOf="@id/zhihu_tv_month"
+                app:layout_constraintBottom_toTopOf="@id/zhihu_title_gl_center_hor"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textStyle="bold"
+                tools:text="13"/>
+
+            <TextView
+                android:id="@+id/zhihu_tv_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/zhihu_title_gl_center_hor"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textStyle="bold"
+                tools:text="五月"/>
+
+            <View
+                android:id="@+id/zhihu_divider_line"
+                android:layout_width="@dimen/divider_height"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/zhihu_tv_month"
+                android:background="@color/navigation_divider_dark" />
+
+            <TextView
+                android:id="@+id/zhihu_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/zhihu_divider_line"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="16dp"
+                android:textSize="@dimen/text_size_22"
+                android:textColor="@color/primary_text_default_material_light"
+                android:textStyle="bold"
+                android:text="@string/zhihu_app_name" />
+
+            <ImageView
+                android:id="@+id/zhihu_iv_user_avatar"
+                android:layout_width="@dimen/avatar_width_35"
+                android:layout_height="@dimen/avatar_width_35"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/news_refresh_zhihu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/news_recycler_zhihu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/news_item_zhihu_daily_home"
+            android:overScrollMode="never"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+</LinearLayout>

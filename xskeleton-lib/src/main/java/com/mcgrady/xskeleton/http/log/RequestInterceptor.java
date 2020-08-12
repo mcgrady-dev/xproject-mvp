@@ -4,7 +4,7 @@ package com.mcgrady.xskeleton.http.log;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.mcgrady.xskeleton.http.handler.HttpHandler;
+import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
 import com.mcgrady.xskeleton.utils.CharacterHandler;
 import com.mcgrady.xskeleton.utils.UrlEncoderUtils;
 import com.mcgrady.xskeleton.utils.ZipHelper;
@@ -32,7 +32,7 @@ public class RequestInterceptor implements Interceptor {
 
     private Level printLevel;
     private FormatPrinter formatPrinter;
-    private HttpHandler httpHandler;
+    private GlobalHttpHandler httpHandler;
 
     public enum Level {
         /**
@@ -53,7 +53,7 @@ public class RequestInterceptor implements Interceptor {
         ALL
     }
 
-    public RequestInterceptor(Level printLevel, FormatPrinter formatPrinter,@Nullable HttpHandler httpHandler) {
+    public RequestInterceptor(Level printLevel, FormatPrinter formatPrinter, @Nullable GlobalHttpHandler httpHandler) {
         this.printLevel = printLevel;
         this.formatPrinter = formatPrinter;
         this.httpHandler = httpHandler;

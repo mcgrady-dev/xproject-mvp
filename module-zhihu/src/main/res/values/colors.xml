@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName,PrivateResource">
+
+    <color name="colorAccent">#ff00a2ed</color>
+    <color name="colorPrimary">#ff00a2ed</color>
+    <color name="colorPrimaryDark">#ff0282ca</color>
+    <color name="comment_compose_text">#ffcecece</color>
+    <color name="primary_text_default_material_dark" >#ffffffff</color>
+    <color name="primary_text_default_material_light">#de000000</color>
+    <color name="primary_text_disabled_material_dark">#4dffffff</color>
+    <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="text_color_black_dark">#ff888888</color>
+    <color name="text_color_black_light">#ff333333</color>
+    <color name="text_color_gray_dark">#ff646464</color>
+    <color name="text_color_gray_light">#ff999999</color>
+    <color name="text_dark">#ff85888c</color>
+    <color name="text_light">#ffced2d9</color>
+    <color name="divider">#ffe7e7e7</color>
+    <color name="divider1_dark">#ff2e2e2e</color>
+    <color name="divider1_light">#fff2f2f2</color>
+    <color name="divider_dark">#ff1e1e1e</color>
+    <color name="divider_light">#ffcccccc</color>
+    <color name="drawer_divider_dark">#ff1e1e1e</color>
+    <color name="drawer_divider_light">#ffcccccc</color>
+    <color name="list_item_extra_divider_dark">#ff393939</color>
+    <color name="list_item_extra_divider_light">#ffeaeaea</color>
+    <color name="navigation_divider_dark">#ff2a2a2a</color>
+    <color name="navigation_divider_light">#ffcccccc</color>
+    <color name="subscribe_theme_title_divider">#4dffffff</color>
+    <color name="list_view_divider">#ffe7e7e7</color>
+
+</resources>
