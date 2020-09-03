@@ -7,9 +7,6 @@
 
     <application android:theme="@style/AppTheme">
         <activity android:name=".activity.TagViewActivity"></activity>
-        <activity
-            android:name=".activity.ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
         <activity android:name=".activity.EditTextActivity" />
         <activity
             android:name=".hencoder.PracticeDrawActivity"
