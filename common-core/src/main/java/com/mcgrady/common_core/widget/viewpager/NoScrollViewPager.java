@@ -1,4 +1,4 @@
-package com.mcgrady.common_core.widget;
+package com.mcgrady.common_core.widget.viewpager;
 
 import android.content.Context;
 import android.util.AttributeSet;

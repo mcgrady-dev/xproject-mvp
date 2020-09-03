@@ -1,2 +1,3 @@
+include ':common-widget'
 include ':app', ':common-core', ':module-main', ':module-zhihu', ':common-service', ':common-social', ':module-shop', ':module-chat', ':ximlib-netty', ':xupdatemanager', ':xskeleton-lib'
 include ':module-test'

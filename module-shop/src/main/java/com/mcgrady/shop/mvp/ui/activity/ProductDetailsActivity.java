@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.mcgrady.common_core.widget.NoScrollViewPager;
+import com.mcgrady.common_core.widget.viewpager.NoScrollViewPager;
 import com.mcgrady.shop.R;
 import com.mcgrady.shop.R2;
 import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
