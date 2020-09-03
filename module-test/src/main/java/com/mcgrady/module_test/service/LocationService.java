@@ -1,4 +1,4 @@
-package com.mcgrady.module_test;
+package com.mcgrady.module_test.service;
 
 import android.app.Service;
 import android.content.Intent;

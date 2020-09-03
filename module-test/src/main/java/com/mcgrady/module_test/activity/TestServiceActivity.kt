@@ -1,17 +1,14 @@
-package com.mcgrady.module_test
+package com.mcgrady.module_test.activity
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.graphics.BitmapFactory
-import android.media.AudioManager
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.mcgrady.module_test.R
+import com.mcgrady.module_test.service.LocationService
 
 class TestServiceActivity : AppCompatActivity() {
+
+    private val locationService: LocationService? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,5 +64,27 @@ class TestServiceActivity : AppCompatActivity() {
 //
 //            startForegroundService(1, notification)
         }
+
+
+//        ServiceConnection conn = new ServiceConnection() {
+//            @Override
+//            public void onServiceConnected(ComponentName name, IBinder service) {
+//                LocationService.LocalBinder binder = (LocationService.LocalBinder) service;
+//                locationService = binder.getService();
+//            }
+//
+//            @Override
+//            public void onServiceDisconnected(ComponentName name) {
+//                locationService = null;
+//            }
+//        };
+//
+//
+//        Handler handler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(@NonNull Message msg) {
+//                return false;
+//            }
+//        });
     }
 }

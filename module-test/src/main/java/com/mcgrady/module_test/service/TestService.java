@@ -1,4 +1,4 @@
-package com.mcgrady.module_test;
+package com.mcgrady.module_test.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 
 import androidx.annotation.Nullable;
+
+import com.mcgrady.module_test.IMyAidlInterface;
 
 /**
  * Created by mcgrady on 2020/7/11.

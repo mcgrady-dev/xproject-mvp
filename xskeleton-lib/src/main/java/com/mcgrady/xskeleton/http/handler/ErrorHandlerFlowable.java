@@ -9,6 +9,8 @@ import org.reactivestreams.Subscription;
 public abstract class ErrorHandlerFlowable<T> implements Subscriber<T> {
     private ErrorHandlerFactory mHandlerFactory;
 
+    private ErrorHandlerFlowable() {}
+
     public ErrorHandlerFlowable(RxErrorHandler rxErrorHandler) {
         this.mHandlerFactory = rxErrorHandler.getHandlerFactory();
     }

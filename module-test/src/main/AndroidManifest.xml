@@ -2,20 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mcgrady.module_test">
 
-    <application android:theme="@style/AppTheme">
-        <activity android:name=".activity.NestedScrollerActivity"></activity>
-        <activity android:name=".activity.ScrollerActivity">
-        </activity>
-        <activity android:name=".activity.CustomViewActivity">
-        </activity>
-        <activity android:name=".TestServiceActivity" />
-        <activity
-            android:name=".AnimatorActivity">
-        </activity>
-        <activity
-            android:name=".DemoActivity">
-        </activity>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
+    <application android:theme="@style/AppTheme">
+        <activity android:name=".activity.TagViewActivity"></activity>
+        <activity
+            android:name=".activity.ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".activity.EditTextActivity" />
+        <activity
+            android:name=".hencoder.PracticeDrawActivity"
+            android:label="@string/title_activity_practice_draw"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.HttpActivity" />
+        <activity android:name=".activity.NestedScrollerActivity" />
+        <activity android:name=".activity.ScrollerActivity" />
+        <activity android:name=".activity.CustomViewActivity" />
+        <activity android:name=".activity.TestServiceActivity" />
+        <activity android:name=".activity.AnimatorActivity" />
+        <activity android:name=".activity.DemoActivity" />
         <activity android:name=".activity.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +31,19 @@
         </activity>
 
         <service
-            android:name=".TestService"
+            android:name=".service.TestService"
             android:exported="true"
             android:process=":remote">
             <intent-filter>
                 <action android:name="${applicationId}.CalService" />
             </intent-filter>
-        </service>
+        </service> <!-- 设计图尺寸 -->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640" />
     </application>
 
 </manifest>

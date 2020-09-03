@@ -1,4 +1,4 @@
-package com.mcgrady.module_test;
+package com.mcgrady.module_test.activity;
 
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mcgrady.module_test.R;
 
 public class DemoActivity extends AppCompatActivity {
 

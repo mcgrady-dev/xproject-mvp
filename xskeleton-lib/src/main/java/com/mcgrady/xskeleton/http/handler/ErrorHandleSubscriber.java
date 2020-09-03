@@ -11,6 +11,8 @@ import io.reactivex.disposables.Disposable;
 public abstract class ErrorHandleSubscriber<T> implements Observer<T> {
     protected ErrorHandlerFactory handlerFactory;
 
+    private ErrorHandleSubscriber() {}
+
     public ErrorHandleSubscriber(RxErrorHandler rxErrorHandler){
         this.handlerFactory = rxErrorHandler.getHandlerFactory();
     }

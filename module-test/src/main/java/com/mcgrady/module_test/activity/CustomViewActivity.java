@@ -45,8 +45,6 @@ public class CustomViewActivity extends AppCompatActivity {
 //                Log.d("CustomView", "onClick");
 //            }
 //        });
-
-
     }
 
     @Override
