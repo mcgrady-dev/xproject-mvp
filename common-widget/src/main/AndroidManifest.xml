@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mcgrady.xpay.common_widget">
+    package="com.mcgrady.common_widget">
 
     /
 </manifest>

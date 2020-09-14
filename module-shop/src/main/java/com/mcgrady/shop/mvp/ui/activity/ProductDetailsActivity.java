@@ -6,20 +6,20 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.mcgrady.common_core.widget.viewpager.NoScrollViewPager;
+import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.common_widget.viewpager.NoScrollViewPager;
 import com.mcgrady.shop.R;
 import com.mcgrady.shop.R2;
 import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.shop.mvp.presenter.ProductDetailsPresenter;
 import com.mcgrady.shop.mvp.ui.weiget.ProductSkuPopup;
-import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.xtitlebar.TitleBar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * <p>类说明</p>
+ * <p>产品详情</p>
  *
  * @author: mcgrady
  * @date: 2019/2/20

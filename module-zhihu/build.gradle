@@ -7,6 +7,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':common-core')
+    api project(':common-widget')
     api project(':common-service')
     implementation rootProject.ext.dependencies["constraint-layout"]
     implementation rootProject.ext.dependencies["palette"]

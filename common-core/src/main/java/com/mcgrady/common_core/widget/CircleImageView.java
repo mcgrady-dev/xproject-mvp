@@ -33,7 +33,6 @@ public class CircleImageView extends AppCompatImageView {
 
     int mShadowRadius;
 
-    @SuppressWarnings("deprecation")
     public CircleImageView(Context context, int color) {
         super(context);
         final View thisView = this;
@@ -58,11 +57,7 @@ public class CircleImageView extends AppCompatImageView {
             thisView.setPadding(padding, padding, padding, padding);
         }
         circle.getPaint().setColor(color);
-        if (Build.VERSION.SDK_INT >= 16) {
-            thisView.setBackground(circle);
-        } else {
-            thisView.setBackgroundDrawable(circle);
-        }
+        thisView.setBackground(circle);
     }
 
     @Override

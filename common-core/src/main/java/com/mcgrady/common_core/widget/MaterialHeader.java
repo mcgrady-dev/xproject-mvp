@@ -115,8 +115,8 @@ public class MaterialHeader extends InternalAbstract implements RefreshHeader {
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.setMeasuredDimension(getSize(widthMeasureSpec), getSize(heightMeasureSpec));
         final View circleView = mCircleView;
-        circleView.measure(MeasureSpec.makeMeasureSpec(mCircleDiameter, MeasureSpec.EXACTLY),
-                MeasureSpec.makeMeasureSpec(mCircleDiameter, MeasureSpec.EXACTLY));
+        circleView.measure(View.MeasureSpec.makeMeasureSpec(mCircleDiameter, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(mCircleDiameter, View.MeasureSpec.EXACTLY));
 //        setMeasuredDimension(resolveSize(getSuggestedMinimumWidth(), widthMeasureSpec),
 //                resolveSize(getSuggestedMinimumHeight(), heightMeasureSpec));
     }
