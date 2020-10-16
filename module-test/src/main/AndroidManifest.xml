@@ -6,7 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application android:theme="@style/AppTheme">
-        <activity android:name=".activity.TagViewActivity"></activity>
+        <activity android:name=".activity.TabActivity"></activity>
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.TagViewActivity" />
         <activity android:name=".activity.EditTextActivity" />
         <activity
             android:name=".hencoder.PracticeDrawActivity"

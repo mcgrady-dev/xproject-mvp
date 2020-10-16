@@ -11,7 +11,7 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(this, CustomViewActivity::class.java))
+        startActivity(Intent(this,TabActivity::class.java))
         finish()
     }
 }
