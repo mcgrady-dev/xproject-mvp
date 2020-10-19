@@ -85,6 +85,6 @@ dependencies {
 
     api rootProject.ext.dependencies["autosize"]
 
-    debugImplementation rootProject.ext.dependencies["dokit"]
-    releaseImplementation rootProject.ext.dependencies["dokit-no-op"]
+//    debugImplementation rootProject.ext.dependencies["dokit"]
+//    releaseImplementation rootProject.ext.dependencies["dokit-no-op"]
 }

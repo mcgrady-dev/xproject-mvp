@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
@@ -21,9 +22,7 @@ import androidx.core.view.ViewCompat;
  * @date: 2018/12/20
  */
 
-@SuppressLint("AppCompatCustomView")
-public class ClearEditText extends EditText
-        implements View.OnTouchListener, View.OnFocusChangeListener, TextWatcher {
+public class ClearEditText extends AppCompatEditText implements View.OnTouchListener, View.OnFocusChangeListener, TextWatcher {
 
     private Drawable mClearIcon;
 
