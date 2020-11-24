@@ -27,7 +27,7 @@
 
     </LinearLayout>
 
-    <com.flyco.tablayout.widget.MsgView
+    <com.mcgrady.common_widget.tablayout.MsgView
         android:id="@+id/public_rtv_msg_tip"
         xmlns:mv="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"

@@ -14,13 +14,13 @@
         android:gravity="center"
         android:singleLine="true"/>
 
-    <com.flyco.tablayout.widget.MsgView
+    <com.mcgrady.common_widget.tablayout.MsgView
         android:id="@+id/public_rtv_msg_tip"
         xmlns:mv="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="11.5sp"
         android:visibility="gone"
         mv:mv_backgroundColor="#FD481F"
