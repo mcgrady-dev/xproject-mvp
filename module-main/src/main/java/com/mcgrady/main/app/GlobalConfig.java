@@ -1,4 +1,4 @@
-package com.mcgrady.main.mvp.app;
+package com.mcgrady.main.app;
 
 import android.app.Application;
 import android.content.Context;
