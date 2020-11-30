@@ -22,7 +22,7 @@
             android:layout_marginTop="@dimen/dp_40"
             android:src="@mipmap/login_logo" />
 
-        <com.mcgrady.xpay.common_widget.ClearEditText
+        <com.mcgrady.common_widget.ClearEditText
             android:id="@+id/main_edt_login_phone"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp" />
 
-        <com.mcgrady.xpay.common_widget.ClearEditText
+        <com.mcgrady.common_widget.ClearEditText
             android:id="@+id/main_edt_login_password"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"

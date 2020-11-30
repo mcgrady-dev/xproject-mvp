@@ -2,6 +2,7 @@ package com.mcgrady.main.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
@@ -17,15 +18,16 @@ import com.mcgrady.main.mvp.model.CommonLoginModel;
 import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 @Route(path = RouterHub.MAIN_COMMON_LOGIN)
-public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implements CommonLoginContract.View {
+public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implements CommonLoginContract.View, View.OnClickListener {
 
     @BindView(R2.id.main_edt_login_phone)
     ClearEditText edtMobile;
     @BindView(R2.id.main_edt_login_password)
     ClearEditText edtPassword;
+
+    private Button btnLoginCommit;
 
     @Override
     public int getLayoutResId() {
@@ -39,7 +41,10 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
-
+        edtMobile = findViewById(R.id.main_edt_login_phone);
+        edtPassword = findViewById(R.id.main_edt_login_password);
+        btnLoginCommit = findViewById(R.id.main_btn_login_commit);
+        btnLoginCommit.setOnClickListener(this);
     }
 
 
@@ -48,8 +53,9 @@ public class MainLoginActivity extends BaseActivity<CommonLoginPresenter> implem
         ARouter.getInstance().inject(this);
     }
 
-    @OnClick({R2.id.main_tv_login_register, R2.id.main_btn_login_commit})
-    void onClick(View view) {
+    //@OnClick({R2.id.main_tv_login_register, R2.id.main_btn_login_commit})
+    @Override
+    public void onClick(View view) {
         int viewId = view.getId();
         if (viewId == R.id.main_btn_login_commit) {
             presenter.loginByMobile(edtMobile.getText().toString(), edtPassword.getText().toString());

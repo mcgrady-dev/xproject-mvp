@@ -1,4 +1,4 @@
-package com.mcgrady.main.mvp.ui.activity;
+package com.mcgrady.xproject.main.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -7,14 +7,14 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.ActivityUtils;
-import com.mcgrady.main.R;
-import com.mcgrady.main.R2;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.xproject.main.R;
+import com.mcgrady.xproject.main.R2;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 倒计时欢迎页
@@ -22,9 +22,9 @@ import butterknife.OnClick;
  * @author: mcgrady
  * @date: 2019-06-10
  */
-public class CountDownSplashActivity extends BaseActivity {
+public class CountDownSplashActivity extends BaseActivity implements View.OnClickListener {
 
-    @BindView(R2.id.btn_skip_splash)
+    @BindView(R2.id.main_btn_skip_splash)
     Button btnSkip;
 
     private CountDownTimer countDownTimer;
@@ -51,7 +51,8 @@ public class CountDownSplashActivity extends BaseActivity {
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
-
+        btnSkip = findViewById(R.id.main_btn_skip_splash);
+        btnSkip.setOnClickListener(this);
     }
 
     @Override
@@ -71,10 +72,11 @@ public class CountDownSplashActivity extends BaseActivity {
         startClock();
     }
 
-    @OnClick({R2.id.btn_skip_splash})
+    //@OnClick({R2.id.main_btn_skip_splash})
+    @Override
     public void onClick(View view) {
         int viewId = view.getId();
-        if (viewId == R.id.btn_skip_splash) {
+        if (viewId == R.id.main_btn_skip_splash) {
             toActivity();
         }
     }
@@ -88,7 +90,8 @@ public class CountDownSplashActivity extends BaseActivity {
         btnSkip.setText("跳过(" + 0 + "s)");
         countDownTimer.cancel();
         //todo local token is null go to LoginActivity , else go to MainActivity
-        ActivityUtils.startActivity(MainLoginActivity.class);
+        //ActivityUtils.startActivity(MainLoginActivity.class);
+        ARouter.getInstance().build(RouterHub.MAIN_COMMON_LOGIN).navigation();
         finish();
     }
 

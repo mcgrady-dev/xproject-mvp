@@ -52,7 +52,11 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
-
+        ivDailyHeader = findViewById(R.id.news_iv_daily_header);
+        tvDailyTitle = findViewById(R.id.news_tv_daily_title);
+        tvImgSource = findViewById(R.id.news_tv_img_source);
+        coordinatorLayout = findViewById(R.id.news_cl_container);
+        ctbLayout = findViewById(R.id.news_ctoolbar_layout);
     }
 
     @Override
