@@ -1,4 +1,4 @@
-package com.mcgrady.zhihu.app;
+package com.mcgrady.xproject.zhihu.app;
 
 import android.app.Application;
 import android.content.Context;
@@ -7,10 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.mcgrady.xproject.zhihu.BuildConfig;
 import com.mcgrady.xskeleton.base.AppLifecycles;
 import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.module.GlobalConfigModule;
-import com.mcgrady.zhihu.BuildConfig;
 
 import java.util.List;
 

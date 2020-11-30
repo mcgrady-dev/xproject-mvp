@@ -1,4 +1,4 @@
-package com.mcgrady.zhihu.mvp.presenter;
+package com.mcgrady.xproject.zhihu.mvp.presenter;
 
 import android.app.Activity;
 
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.mcgrady.zhihu.mvp.contract.ZhihuDailyDetailContract;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyDetailContract;
 import com.mcgrady.xskeleton.base.BasePresenter;
 import com.mcgrady.xskeleton.http.handler.ErrorHandleSubscriber;
 import com.mcgrady.xskeleton.http.handler.RetryWithDelay;

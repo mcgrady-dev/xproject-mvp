@@ -1,4 +1,4 @@
-package com.mcgrady.zhihu.app;
+package com.mcgrady.xproject.zhihu.app;
 
 import android.app.Application;
 import android.content.Context;
@@ -7,9 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
 import com.mcgrady.common_core.http.manager.RetrofitUrlManager;
+import com.mcgrady.xproject.zhihu.BuildConfig;
+import com.mcgrady.xproject.zhihu.mvp.model.api.Api;
 import com.mcgrady.xskeleton.base.AppLifecycles;
-import com.mcgrady.zhihu.BuildConfig;
-import com.mcgrady.zhihu.mvp.model.api.Api;
 
 /**
  * <p>类说明</p>

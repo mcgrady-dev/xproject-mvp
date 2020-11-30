@@ -1,6 +1,6 @@
-package com.mcgrady.shop.interf;
+package com.mcgrady.xproject.shop.interf;
 
-import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
+import com.mcgrady.xproject.shop.mvp.model.bean.SkuAttribute;
 
 /**
  * <p>类说明</p>

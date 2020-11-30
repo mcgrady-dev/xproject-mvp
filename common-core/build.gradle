@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'android-aspectjx'
+//apply plugin: 'android-aspectjx'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -17,12 +17,6 @@ android {
         versionName rootProject.ext.android["versionName"]
 
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
     }
 
     buildTypes {
@@ -56,7 +50,7 @@ dependencies {
         exclude module: 'support-annotations'
     }
 
-    api 'org.aspectj:aspectjrt:1.8.14'
+    //api 'org.aspectj:aspectjrt:1.8.14'
 
     api rootProject.ext.dependencies["glide"]
     annotationProcessor(rootProject.ext.dependencies["glide-compiler"]) {

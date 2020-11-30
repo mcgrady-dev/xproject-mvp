@@ -77,7 +77,7 @@ dependencies {
     if (isBuildModule.toBoolean()) {
         //view
         annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
-            exclude module: 'support-annotations'
+            exclude module: 'annotation'
         }
         //tools
         annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
@@ -85,6 +85,10 @@ dependencies {
         debugImplementation rootProject.ext.dependencies["leakcanary"]
     } else {
         compileOnly rootProject.ext.dependencies["butterknife-compiler"]
+        compileOnly(rootProject.ext.dependencies["arouter"]) {
+            exclude module: 'support-v4'
+            exclude module: 'support-annotations'
+        }
         compileOnly rootProject.ext.dependencies["arouter-compiler"]
         compileOnly rootProject.ext.dependencies["leakcanary"]
     }

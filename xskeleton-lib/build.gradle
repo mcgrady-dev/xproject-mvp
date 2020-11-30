@@ -56,8 +56,12 @@ dependencies {
 
     //view
     api(rootProject.ext.dependencies["butterknife"]) {
-        exclude module: 'support-annotations'
-        exclude module: 'support-compat'
+        exclude module: 'annotation'
+        exclude module: 'core'
+    }
+
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'annotation'
     }
 
     //rx

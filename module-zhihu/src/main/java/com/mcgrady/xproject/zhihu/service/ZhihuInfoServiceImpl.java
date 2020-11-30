@@ -1,11 +1,11 @@
-package com.mcgrady.zhihu.service;
+package com.mcgrady.xproject.zhihu.service;
 
 import android.content.Context;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.mcgrady.common_service.zhihu.bean.ZhihuInfo;
 import com.mcgrady.common_service.zhihu.service.ZhihuInfoService;
-import com.mcgrady.zhihu.R;
+import com.mcgrady.xproject.zhihu.R;
 
 /**
  * Created by mcgrady on 2020/8/12.

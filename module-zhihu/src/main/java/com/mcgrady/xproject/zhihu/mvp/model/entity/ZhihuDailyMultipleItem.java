@@ -1,4 +1,4 @@
-package com.mcgrady.zhihu.mvp.model.entity;
+package com.mcgrady.xproject.zhihu.mvp.model.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 

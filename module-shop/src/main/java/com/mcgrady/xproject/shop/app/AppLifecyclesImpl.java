@@ -1,4 +1,4 @@
-package com.mcgrady.shop.app;
+package com.mcgrady.xproject.shop.app;
 
 /**
  * <p>类说明</p>

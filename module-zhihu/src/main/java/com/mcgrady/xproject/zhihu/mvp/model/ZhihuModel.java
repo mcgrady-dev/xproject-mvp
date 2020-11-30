@@ -1,11 +1,11 @@
-package com.mcgrady.zhihu.mvp.model;
+package com.mcgrady.xproject.zhihu.mvp.model;
 
 import com.mcgrady.common_core.http.BaseResponse;
-import com.mcgrady.zhihu.mvp.contract.ZhihuDailyDetailContract;
-import com.mcgrady.zhihu.mvp.contract.ZhihuDailyHomeContract;
-import com.mcgrady.zhihu.mvp.model.api.ZhihuService;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xproject.zhihu.mvp.model.api.ZhihuService;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyDetailContract;
+import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.xskeleton.base.BaseModel;
 
 import io.reactivex.Observable;

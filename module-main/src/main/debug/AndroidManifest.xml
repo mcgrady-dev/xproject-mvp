@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mcgrady.main">
+    package="com.mcgrady.xproject.main">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -21,16 +21,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".mvp.ui.activity.ZhihuDailySplashActivity"
+            android:name="com.mcgrady.xproject.main.mvp.ui.activity.ZhihuDailySplashActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor">
 
         </activity>
 
-        <activity android:name=".mvp.ui.activity.MainRegisterActivity" />
-        <activity android:name=".mvp.ui.activity.EyepetizerLoginActivity">
+        <activity android:name="com.mcgrady.xproject.main.mvp.ui.activity.MainRegisterActivity" />
+        <activity android:name="com.mcgrady.xproject.main.mvp.ui.activity.EyepetizerLoginActivity">
         </activity>
-        <activity android:name=".mvp.ui.activity.MainLoginActivity"
+        <activity android:name="com.mcgrady.xproject.main.mvp.ui.activity.MainLoginActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +51,7 @@
             android:name="com.mcgrady.common_core.app.GlobalConfiguration"
             android:value="ConfigModule"/>
         <meta-data
-            android:name="com.mcgrady.main.app.GlobalConfig"
+            android:name="com.mcgrady.xproject.main.app.GlobalConfig"
             android:value="ConfigModule" />
     </application>
 

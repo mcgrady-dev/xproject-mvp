@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource,PrivateResource,ResourceName,RtlCompat"
     android:background="#fff3f3f3"
-    tools:context="com.mcgrady.zhihu.mvp.ui.activity.ZhihuDailyHomeActivity">
+    tools:context=".mvp.ui.activity.ZhihuDailyHomeActivity">
 
 <!--    <com.mcgrady.xtitlebar.TitleBar-->
 <!--        android:id="@+id/news_titlebar_zhihu_home"-->

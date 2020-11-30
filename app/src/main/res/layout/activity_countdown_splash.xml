@@ -6,7 +6,7 @@
     android:background="@android:color/white">
 
     <Button
-        android:id="@+id/main_btn_skip_splash"
+        android:id="@+id/btn_skip_splash"
         android:visibility="invisible"
         android:gravity="center"
         android:textSize="10sp"

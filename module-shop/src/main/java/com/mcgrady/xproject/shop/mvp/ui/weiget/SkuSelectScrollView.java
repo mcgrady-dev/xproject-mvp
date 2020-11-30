@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.ui.weiget;
+package com.mcgrady.xproject.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.mcgrady.common_core.utils.ViewUtils;
-import com.mcgrady.shop.interf.OnSkuSelectListener;
-import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
-import com.mcgrady.shop.mvp.model.bean.SkuBean;
+import com.mcgrady.xproject.shop.interf.OnSkuSelectListener;
+import com.mcgrady.xproject.shop.mvp.model.bean.SkuAttribute;
+import com.mcgrady.xproject.shop.mvp.model.bean.SkuBean;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;

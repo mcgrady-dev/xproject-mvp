@@ -1,13 +1,13 @@
-package com.mcgrady.main.mvp.ui.activity;
+package com.mcgrady.xproject.main.mvp.ui.activity;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.mcgrady.main.R;
-import com.mcgrady.main.mvp.contract.CommonLoginContract;
-import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
 import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.xproject.main.R;
+import com.mcgrady.xproject.main.mvp.contract.CommonLoginContract;
+import com.mcgrady.xproject.main.mvp.presenter.CommonLoginPresenter;
 
 public class EyepetizerLoginActivity extends BaseActivity<CommonLoginPresenter> implements CommonLoginContract.View {
 

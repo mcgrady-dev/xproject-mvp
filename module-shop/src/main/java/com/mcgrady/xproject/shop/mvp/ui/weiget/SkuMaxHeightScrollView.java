@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.ui.weiget;
+package com.mcgrady.xproject.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.util.AttributeSet;

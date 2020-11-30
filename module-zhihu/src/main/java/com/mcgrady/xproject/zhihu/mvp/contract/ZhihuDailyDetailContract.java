@@ -1,6 +1,6 @@
-package com.mcgrady.zhihu.mvp.contract;
+package com.mcgrady.xproject.zhihu.mvp.contract;
 
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.xskeleton.base.IModel;
 import com.mcgrady.xskeleton.base.IView;
 

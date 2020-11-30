@@ -34,15 +34,19 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
         Utils.init(application);
         ToastUtils.init(application, new ToastQQStyle(application));
-        ARouter.init(application); // 尽可能早,推荐在Application中初始化
         RepositoryManager.init(application);
 
         if (BuildConfig.LOG_DEBUG) {
             ButterKnife.setDebug(true);
             ARouter.openDebug();
             ARouter.openLog();
+            ARouter.printStackTrace();
             RetrofitUrlManager.getInstance().setDebug(true);
         }
+
+        ARouter.init(application); // 尽可能早,推荐在Application中初始化
+
+
 
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

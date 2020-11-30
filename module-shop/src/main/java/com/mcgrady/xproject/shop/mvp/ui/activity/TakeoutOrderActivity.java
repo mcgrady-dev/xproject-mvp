@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.ui.activity;
+package com.mcgrady.xproject.shop.mvp.ui.activity;
 
 import android.os.Bundle;
 
@@ -6,11 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mcgrady.shop.R;
-import com.mcgrady.shop.R2;
-import com.mcgrady.shop.mvp.contract.TakeoutOrderContract;
-import com.mcgrady.shop.mvp.presenter.TakeoutOrderPresenter;
 import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.shop.R2;
+import com.mcgrady.xproject.shop.R;
+import com.mcgrady.xproject.shop.mvp.contract.TakeoutOrderContract;
+import com.mcgrady.xproject.shop.mvp.presenter.TakeoutOrderPresenter;
 
 import butterknife.BindView;
 

@@ -1,4 +1,4 @@
-package com.mcgrady.zhihu.mvp.ui.activity;
+package com.mcgrady.xproject.zhihu.mvp.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,12 +16,12 @@ import com.just.agentweb.NestedScrollAgentWebView;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.utils.HtmlUtils;
+import com.mcgrady.xproject.zhihu.R;
+import com.mcgrady.xproject.zhihu.R2;
+import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyDetailContract;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
+import com.mcgrady.xproject.zhihu.mvp.presenter.ZhihuDailyDetailPresenter;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
-import com.mcgrady.zhihu.R;
-import com.mcgrady.zhihu.R2;
-import com.mcgrady.zhihu.mvp.contract.ZhihuDailyDetailContract;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
-import com.mcgrady.zhihu.mvp.presenter.ZhihuDailyDetailPresenter;
 
 import butterknife.BindView;
 

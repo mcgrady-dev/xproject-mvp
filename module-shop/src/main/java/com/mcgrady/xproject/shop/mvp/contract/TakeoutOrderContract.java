@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.contract;
+package com.mcgrady.xproject.shop.mvp.contract;
 
 
 import com.mcgrady.xskeleton.base.IModel;

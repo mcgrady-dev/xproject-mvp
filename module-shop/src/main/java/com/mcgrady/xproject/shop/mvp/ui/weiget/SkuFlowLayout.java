@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.ui.weiget;
+package com.mcgrady.xproject.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.mcgrady.shop.R;
+import com.mcgrady.xproject.shop.R;
 
 import java.util.ArrayList;
 import java.util.List;

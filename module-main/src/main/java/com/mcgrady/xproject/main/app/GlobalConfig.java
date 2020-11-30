@@ -1,4 +1,4 @@
-package com.mcgrady.main.app;
+package com.mcgrady.xproject.main.app;
 
 import android.app.Application;
 import android.content.Context;

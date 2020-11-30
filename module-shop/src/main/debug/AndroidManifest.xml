@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".mvp.ui.activity.ProductDetailsActivity"
+            android:name="com.mcgrady.xproject.shop.mvp.ui.activity.ProductDetailsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
@@ -44,7 +44,7 @@
             android:name="com.mcgrady.common_core.app.GlobalConfiguration"
             android:value="ConfigModule"/>
         <meta-data
-            android:name="com.mcgrady.shop.app.GlobalConfig"
+            android:name="com.mcgrady.xproject.shop.app.GlobalConfig"
             android:value="ConfigModule"/>
 
     </application>

@@ -1,4 +1,4 @@
-package com.mcgrady.xproject.main.mvp.ui.activity;
+package com.mcgrady.xproject.app.ui.activity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,8 +10,7 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.xproject.main.R;
-import com.mcgrady.xproject.main.R2;
+import com.mcgrady.xproject.app.R;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 import butterknife.BindView;
@@ -24,13 +23,13 @@ import butterknife.BindView;
  */
 public class CountDownSplashActivity extends BaseActivity implements View.OnClickListener {
 
-    @BindView(R2.id.main_btn_skip_splash)
+    @BindView(R.id.btn_skip_splash)
     Button btnSkip;
 
     private CountDownTimer countDownTimer;
     @Override
     public int getLayoutResId() {
-        return R.layout.main_activity_countdown_splash;
+        return R.layout.activity_countdown_splash;
     }
 
     @Override
@@ -51,7 +50,7 @@ public class CountDownSplashActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
-        btnSkip = findViewById(R.id.main_btn_skip_splash);
+        btnSkip = findViewById(R.id.btn_skip_splash);
         btnSkip.setOnClickListener(this);
     }
 
@@ -72,11 +71,11 @@ public class CountDownSplashActivity extends BaseActivity implements View.OnClic
         startClock();
     }
 
-    //@OnClick({R2.id.main_btn_skip_splash})
+    //@OnClick({R2.id.btn_skip_splash})
     @Override
     public void onClick(View view) {
         int viewId = view.getId();
-        if (viewId == R.id.main_btn_skip_splash) {
+        if (viewId == R.id.btn_skip_splash) {
             toActivity();
         }
     }

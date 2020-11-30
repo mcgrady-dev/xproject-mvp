@@ -1,8 +1,8 @@
-package com.mcgrady.shop.mvp.presenter;
+package com.mcgrady.xproject.shop.mvp.presenter;
 
 import androidx.annotation.NonNull;
 
-import com.mcgrady.shop.mvp.contract.ProductDetailsContract;
+import com.mcgrady.xproject.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.xskeleton.base.BasePresenter;
 
 /**

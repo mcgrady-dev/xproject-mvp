@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.ui.weiget;
+package com.mcgrady.xproject.shop.mvp.ui.weiget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.mcgrady.shop.R;
+import com.mcgrady.xproject.shop.R;
 
 /**
  * <p>类说明</p>

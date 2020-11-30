@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.model.bean;
+package com.mcgrady.xproject.shop.mvp.model.bean;
 
 /**
  * <p>类说明</p>

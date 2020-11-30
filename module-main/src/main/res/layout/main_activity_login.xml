@@ -7,7 +7,7 @@
     android:background="@android:color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".mvp.ui.activity.MainLoginActivity">
+    tools:context="com.mcgrady.xproject.main.mvp.ui.activity.MainLoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

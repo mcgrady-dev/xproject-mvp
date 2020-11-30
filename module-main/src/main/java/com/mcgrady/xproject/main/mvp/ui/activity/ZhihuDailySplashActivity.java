@@ -1,4 +1,4 @@
-package com.mcgrady.main.mvp.ui.activity;
+package com.mcgrady.xproject.main.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcgrady.common_core.RouterHub;
-import com.mcgrady.main.R;
-import com.mcgrady.main.R2;
 import com.mcgrady.common_core.base.BaseActivity;
+import com.mcgrady.xproject.main.R;
+import com.mcgrady.xproject.main.R2;
 import com.mcgrady.xskeleton.base.IPresenter;
 
 import butterknife.BindView;

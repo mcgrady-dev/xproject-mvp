@@ -1,17 +1,17 @@
-package com.mcgrady.zhihu.mvp.presenter;
+package com.mcgrady.xproject.zhihu.mvp.presenter;
 
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
 import com.hjq.toast.ToastUtils;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.xskeleton.base.BasePresenter;
 import com.mcgrady.xskeleton.http.handler.ErrorHandleSubscriber;
 import com.mcgrady.xskeleton.http.handler.RetryWithDelay;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 import com.mcgrady.xskeleton.utils.RxLifecycleUtils;
-import com.mcgrady.zhihu.mvp.contract.ZhihuDailyHomeContract;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyHomeContract;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

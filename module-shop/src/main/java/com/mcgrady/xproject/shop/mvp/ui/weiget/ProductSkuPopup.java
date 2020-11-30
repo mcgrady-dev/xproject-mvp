@@ -1,10 +1,10 @@
-package com.mcgrady.shop.mvp.ui.weiget;
+package com.mcgrady.xproject.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.mcgrady.shop.R;
+import com.mcgrady.xproject.shop.R;
 
 import razerdp.basepopup.BasePopupWindow;
 

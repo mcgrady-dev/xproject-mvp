@@ -1,4 +1,4 @@
-package com.mcgrady.shop.mvp.ui.weiget;
+package com.mcgrady.xproject.shop.mvp.ui.weiget;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,8 +13,8 @@ import androidx.annotation.Nullable;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.google.android.material.internal.FlowLayout;
 import com.mcgrady.common_core.utils.ViewUtils;
-import com.mcgrady.shop.R;
-import com.mcgrady.shop.mvp.model.bean.SkuAttribute;
+import com.mcgrady.xproject.shop.R;
+import com.mcgrady.xproject.shop.mvp.model.bean.SkuAttribute;
 
 import java.util.List;
 

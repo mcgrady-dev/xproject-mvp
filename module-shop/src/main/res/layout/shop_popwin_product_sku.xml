@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context="com.mcgrady.shop.mvp.ui.activity.ProductDetailsActivity">
+    tools:context=".mvp.ui.activity.ProductDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                     android:layout_marginTop="10dp"
                     android:background="#dddddd" />
 
-                <com.mcgrady.shop.mvp.ui.weiget.SkuSelectScrollView
+                <com.mcgrady.xproject.shop.mvp.ui.weiget.SkuSelectScrollView
                     android:id="@+id/scroll_sku_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

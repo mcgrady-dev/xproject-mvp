@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.mcgrady.zhihu">
+          package="com.mcgrady.xproject.zhihu">
 
     <application>
         <activity
@@ -11,7 +11,7 @@
         <activity android:name=".mvp.ui.activity.ZhihuDailyDetailActivity"/>
 
         <meta-data
-            android:name="com.mcgrady.zhihu.app.GlobalConfig"
+            android:name="com.mcgrady.xproject.zhihu.app.GlobalConfig"
             android:value="ConfigModule"/>
 
     </application>

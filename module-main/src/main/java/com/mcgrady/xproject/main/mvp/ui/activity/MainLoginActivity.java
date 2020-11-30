@@ -1,4 +1,4 @@
-package com.mcgrady.main.mvp.ui.activity;
+package com.mcgrady.xproject.main.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +11,11 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_widget.ClearEditText;
-import com.mcgrady.main.R;
-import com.mcgrady.main.R2;
-import com.mcgrady.main.mvp.contract.CommonLoginContract;
-import com.mcgrady.main.mvp.model.CommonLoginModel;
-import com.mcgrady.main.mvp.presenter.CommonLoginPresenter;
+import com.mcgrady.xproject.main.R;
+import com.mcgrady.xproject.main.R2;
+import com.mcgrady.xproject.main.mvp.contract.CommonLoginContract;
+import com.mcgrady.xproject.main.mvp.model.CommonLoginModel;
+import com.mcgrady.xproject.main.mvp.presenter.CommonLoginPresenter;
 
 import butterknife.BindView;
 

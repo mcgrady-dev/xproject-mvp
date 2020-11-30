@@ -1,11 +1,11 @@
-package com.mcgrady.zhihu.mvp.ui.adapter;
+package com.mcgrady.xproject.zhihu.mvp.ui.adapter;
 
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mcgrady.common_core.imageEngine.config.CommonImageConfigImpl;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
 import com.youth.banner.adapter.BannerAdapter;
 

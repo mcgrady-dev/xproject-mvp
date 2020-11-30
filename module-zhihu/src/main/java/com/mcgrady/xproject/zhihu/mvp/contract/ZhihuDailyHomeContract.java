@@ -1,7 +1,7 @@
-package com.mcgrady.zhihu.mvp.contract;
+package com.mcgrady.xproject.zhihu.mvp.contract;
 
 import com.mcgrady.common_core.http.BaseResponse;
-import com.mcgrady.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
+import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.xskeleton.base.IModel;
 import com.mcgrady.xskeleton.base.IView;
 

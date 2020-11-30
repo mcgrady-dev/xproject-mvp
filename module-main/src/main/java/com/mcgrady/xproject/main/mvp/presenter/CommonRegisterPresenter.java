@@ -1,8 +1,8 @@
-package com.mcgrady.main.mvp.presenter;
+package com.mcgrady.xproject.main.mvp.presenter;
 
 import android.app.Application;
 
-import com.mcgrady.main.mvp.contract.CommonRegisterContract;
+import com.mcgrady.xproject.main.mvp.contract.CommonRegisterContract;
 import com.mcgrady.xskeleton.base.BasePresenter;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 

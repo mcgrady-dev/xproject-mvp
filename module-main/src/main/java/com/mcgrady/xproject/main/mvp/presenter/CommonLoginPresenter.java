@@ -1,4 +1,4 @@
-package com.mcgrady.main.mvp.presenter;
+package com.mcgrady.xproject.main.mvp.presenter;
 
 import android.app.Application;
 import android.text.TextUtils;
@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hjq.toast.ToastUtils;
 import com.mcgrady.common_core.RouterHub;
-import com.mcgrady.main.mvp.contract.CommonLoginContract;
+import com.mcgrady.xproject.main.mvp.contract.CommonLoginContract;
 import com.mcgrady.xskeleton.base.BasePresenter;
 import com.mcgrady.xskeleton.http.handler.RxErrorHandler;
 

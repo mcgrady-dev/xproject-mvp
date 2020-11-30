@@ -27,7 +27,6 @@ public interface RouterHub {
     /**
      * 知乎日报
      */
-    String ZHIHU_ACTIVITY_SPLASH = ZHIHU + "/ZhihuDailySplashActivity";
     String ZHIHU_ACTIVITY_HOME = ZHIHU + "/ZhihuDailyHomeActivity";
     String ZHIHU_ACTIVITY_DAILY_DETAIL = ZHIHU + "/ZhihuDailyDetailActivity";
     String ZHIHU_SERVICE_ZHIHUINFO = SERVICE + ZHIHU + "/ZhihuInfoService";
@@ -35,6 +34,7 @@ public interface RouterHub {
     /**
      * 主页
      */
+    String ZHIHU_ACTIVITY_SPLASH = MAIN + "/ZhihuDailySplashActivity";
     String MAIN_COMMON_LOGIN = MAIN + "/MainLoginActivity";
     String MAIN_COMMON_REGISTER = MAIN + "/MainRegisterActivity";
     String MAIN_XHS_WELCOME = MAIN + "/XhsWelcomeActivity";
