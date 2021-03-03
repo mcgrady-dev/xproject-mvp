@@ -1,10 +1,10 @@
 ext {
 
     android = [
-            compileSdkVersion: 29,
-            buildToolsVersion: "29.0.3",
+            compileSdkVersion: 20,
+            buildToolsVersion: "30.0.2",
             minSdkVersion    : 19,
-            targetSdkVersion : 29,
+            targetSdkVersion : 30,
             versionCode      : 1,
             versionName      : "1.0.1",
             jpushAppKey      : "6068fe4734868ceffe21f746",

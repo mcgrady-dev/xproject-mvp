@@ -10,7 +10,6 @@ import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.blankj.utilcode.util.ProcessUtils;
 import com.mcgrady.module_test.R;
 
 public class WebViewActivity extends AppCompatActivity {
@@ -92,7 +91,9 @@ public class WebViewActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // 安卓9.0后不允许多进程使用同一个数据目录，需设置前缀来区分
             // 参阅 https://blog.csdn.net/lvshuchangyin/article/details/89446629
-            String processName = ProcessUtils.getCurrentProcessName();
+            //String processName = ProcessUtils.getCurrentProcessName();
+            //FIXME
+            String processName = "";
             if (!getApplicationContext().getPackageName().equals(processName)) {
                 WebView.setDataDirectorySuffix(processName);
             }
