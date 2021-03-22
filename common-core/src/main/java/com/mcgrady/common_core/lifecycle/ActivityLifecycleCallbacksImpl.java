@@ -2,7 +2,6 @@ package com.mcgrady.common_core.lifecycle;
 
 import android.app.Activity;
 import android.app.Application;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -37,10 +36,11 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
                     ((AppCompatActivity) activity).setSupportActionBar(ViewUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar"));
                     ((AppCompatActivity) activity).getSupportActionBar().setDisplayShowTitleEnabled(false);
                 } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        activity.setActionBar(ViewUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar"));
-                        activity.getActionBar().setDisplayShowTitleEnabled(false);
-                    }
+                    //FIXME
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        activity.setActionBar(ViewUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar"));
+//                        activity.getActionBar().setDisplayShowTitleEnabled(false);
+//                    }
                 }
             }
             if (ViewUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title") != null) {

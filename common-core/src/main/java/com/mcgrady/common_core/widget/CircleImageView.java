@@ -45,7 +45,9 @@ public class CircleImageView extends AppCompatImageView {
         ShapeDrawable circle;
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             circle = new ShapeDrawable(new OvalShape());
-            thisView.setElevation(SHADOW_ELEVATION * density);
+
+            //FIXME
+//            thisView.setElevation(SHADOW_ELEVATION * density);
         } else {
             OvalShape oval = new OvalShadow(mShadowRadius);
             circle = new ShapeDrawable(oval);

@@ -1,7 +1,6 @@
 package com.mcgrady.xupdatemanager;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
@@ -79,25 +78,25 @@ public class ApkDownloadService extends Service {
     }
 
     private void initNotification() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
-            //设置绕过免打扰模式
-//            channel.setBypassDnd(false);
-//            //检测是否绕过免打扰模式
-//            channel.canBypassDnd();
-//            //设置在锁屏界面上显示这条通知
-//            channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
-//            channel.setLightColor(Color.GREEN);
-//            channel.setShowBadge(true);
-//            channel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
-            channel.enableVibration(false);
-            channel.enableLights(false);
-
-            notificationManager.createNotificationChannel(channel);
-        }
-
-        builder = getNotificationBuilder();
-        notificationManager.notify(DOWNLOAD_NOTIFY_ID, builder.build());
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
+//            //设置绕过免打扰模式
+////            channel.setBypassDnd(false);
+////            //检测是否绕过免打扰模式
+////            channel.canBypassDnd();
+////            //设置在锁屏界面上显示这条通知
+////            channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
+////            channel.setLightColor(Color.GREEN);
+////            channel.setShowBadge(true);
+////            channel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+//            channel.enableVibration(false);
+//            channel.enableLights(false);
+//
+//            notificationManager.createNotificationChannel(channel);
+//        }
+//
+//        builder = getNotificationBuilder();
+//        notificationManager.notify(DOWNLOAD_NOTIFY_ID, builder.build());
     }
 
     private NotificationCompat.Builder getNotificationBuilder() {
