@@ -1,21 +1,30 @@
 package com.mcgrady.module_test.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.mcgrady.module_test.R;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -30,17 +39,25 @@ public class HttpActivity extends AppCompatActivity {
 
         gson = new Gson();
 
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("https://api.github.com/")
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .build();
-//
-//        GithubService service = retrofit.create(GithubService.class);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.github.com/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .build();
+
+        GithubService service = retrofit.create(GithubService.class);
 //        service.getRepos("mcgrady911").enqueue(new Callback<List<GithubRepo>>() {
 //            @Override
 //            public void onResponse(Call<List<GithubRepo>> call, Response<List<GithubRepo>> response) {
-//                System.out.println("success! " + gson.toJson(response.body()));
+//                Log.d("Retrofit", "success! " + gson.toJson(response.body()));
 //
 //            }
 //
@@ -50,49 +67,53 @@ public class HttpActivity extends AppCompatActivity {
 //            }
 //        });
 
-
-
-//        service.getReposObservable("mcgrady911")
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//                .subscribe(new Observer<List<GithubRepo>>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(List<GithubRepo> githubRepos) {
-//                        System.out.println("success! " + gson.toJson(githubRepos, new TypeToken<List<GithubRepo>>() {}.getType()));
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-
-        //https://gank.io/api/v2/categories/<category_type>
-        OkHttpClient client = new OkHttpClient();
-        client.newCall(new Request.Builder()
-                .url("https://gank.io/api/v2/categories/Girl")
-                .build())
-                .enqueue(new okhttp3.Callback() {
+        service.getReposObservable("mcgrady911")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<GithubRepo>>() {
                     @Override
-                    public void onFailure(@NotNull okhttp3.Call call, @NotNull IOException e) {
+                    public void onSubscribe(@NonNull Disposable d) {
+                        Log.d("Retrofit", "onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(@NonNull List<GithubRepo> githubRepos) {
+                        String repos = "";
+                        try {
+                            repos = gson.toJson(githubRepos, new TypeToken<List<GithubRepo>>() {}.getType());
+                        } catch (JsonIOException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("Retrofit", "onNext " + repos);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("Retrofit", "onError");
                         e.printStackTrace();
                     }
 
                     @Override
-                    public void onResponse(@NotNull okhttp3.Call call, @NotNull okhttp3.Response response) throws IOException {
-                        System.out.println("success! " + gson.toJson(response.body().string()));
+                    public void onComplete() {
+                        Log.d("Retrofit", "onComplete");
                     }
                 });
+
+        //https://gank.io/api/v2/categories/<category_type>
+//        OkHttpClient client = new OkHttpClient();
+//        client.newCall(new Request.Builder()
+//                .url("https://gank.io/api/v2/categories/Girl")
+//                .build())
+//                .enqueue(new okhttp3.Callback() {
+//                    @Override
+//                    public void onFailure(@NotNull okhttp3.Call call, @NotNull IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    @Override
+//                    public void onResponse(@NotNull okhttp3.Call call, @NotNull okhttp3.Response response) throws IOException {
+//                        System.out.println("success! " + gson.toJson(response.body().string()));
+//                    }
+//                });
     }
 
 
@@ -100,11 +121,11 @@ public class HttpActivity extends AppCompatActivity {
         @GET("users/{id}/repos")
         Call<List<GithubRepo>> getRepos(@Path("id") String userId);
 
-//        @GET("users/{id}/repos")
-//        Observable<List<GithubRepo>> getReposObservable(@Path("id") String userId);
-//
-//        @GET("users/{id}/repos")
-//        Single<List<GithubRepo>> getReposSingle(@Path("id") String userId);
+        @GET("users/{id}/repos")
+        Observable<List<GithubRepo>> getReposObservable(@Path("id") String userId);
+
+        @GET("users/{id}/repos")
+        Single<List<GithubRepo>> getReposSingle(@Path("id") String userId);
     }
 
     static class GithubRepo {

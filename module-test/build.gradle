@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 19
@@ -55,11 +55,39 @@ dependencies {
 //    implementation 'com.jakewharton.rxbinding4:rxbinding-drawerlayout:4.0.0'
 //    implementation 'com.jakewharton.rxbinding4:rxbinding-leanback:4.0.0'
 //    implementation 'com.jakewharton.rxbinding4:rxbinding-recyclerview:4.0.0'
-}
 
-configurations.all {
-    resolutionStrategy {
-        force 'com.squareup.okhttp3:okhttp:3.14.9'
+    //rx
+//    api rootProject.ext.dependencies["rxjava2"]
+//    api(rootProject.ext.dependencies["rxandroid2"]) {
+//        exclude module: 'rxjava'
+//    }
+
+
+    implementation rootProject.ext.dependencies["okhttp3"]
+    implementation rootProject.ext.dependencies["gson"]
+
+    //network
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") {
+        exclude module: 'gson'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+        exclude module: 'retrofit'
+    }
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0") {
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+    implementation ("com.squareup.retrofit2:adapter-rxjava3:2.9.0") {
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+        exclude module: 'okio'
     }
 }
+
+//configurations.all {
+//    resolutionStrategy {
+//        force 'com.squareup.okhttp3:okhttp:3.14.9'
+//    }
+//}
 
