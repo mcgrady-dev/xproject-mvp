@@ -22,7 +22,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name="com.mcgrady.zhihu.com.mcgrady.xproject.zhihu.mvp.ui.activity.ZhihuDailyHomeActivity"
+            android:name="com.mcgrady.xproject.zhihu.mvp.ui.activity.ZhihuDailyHomeActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor"
             android:theme="@style/SplashTheme">
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.mcgrady.zhihu.com.mcgrady.xproject.zhihu.mvp.ui.activity.ZhihuDailyDetailActivity"/>
+        <activity android:name="com.mcgrady.xproject.zhihu.mvp.ui.activity.ZhihuDailyDetailActivity"/>
 
         <!--设计图尺寸-->
         <meta-data
