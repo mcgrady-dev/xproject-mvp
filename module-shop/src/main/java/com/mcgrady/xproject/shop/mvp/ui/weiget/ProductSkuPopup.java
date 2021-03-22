@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.mcgrady.xproject.shop.R;
+import com.mcgrady.shop.R;
 
 import razerdp.basepopup.BasePopupWindow;
 

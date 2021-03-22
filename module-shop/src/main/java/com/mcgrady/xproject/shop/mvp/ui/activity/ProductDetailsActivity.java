@@ -8,8 +8,8 @@ import androidx.annotation.Nullable;
 
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_widget.viewpager.NoScrollViewPager;
+import com.mcgrady.shop.R;
 import com.mcgrady.shop.R2;
-import com.mcgrady.xproject.shop.R;
 import com.mcgrady.xproject.shop.mvp.contract.ProductDetailsContract;
 import com.mcgrady.xproject.shop.mvp.presenter.ProductDetailsPresenter;
 import com.mcgrady.xproject.shop.mvp.ui.weiget.ProductSkuPopup;

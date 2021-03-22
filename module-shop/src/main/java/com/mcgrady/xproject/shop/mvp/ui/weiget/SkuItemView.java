@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.mcgrady.xproject.shop.R;
+import com.mcgrady.shop.R;
 
 /**
  * <p>类说明</p>
