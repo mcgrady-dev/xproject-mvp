@@ -1,4 +1,4 @@
-package com.mcgrady.xproject.main.mvp.ui.activity;
+package com.mcgrady.xproject.app.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

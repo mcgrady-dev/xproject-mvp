@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application android:theme="@style/AppTheme">
-        <activity android:name=".activity.ViewMeasureActivity"></activity>
+        <activity android:name=".activity.ServiceActivity"></activity>
+        <activity android:name=".activity.ViewMeasureActivity" />
         <activity android:name=".activity.HandlerActivity" />
         <activity android:name=".activity.TabActivity" />
         <activity android:name=".activity.WebViewActivity" />

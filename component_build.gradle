@@ -1,9 +1,10 @@
 if (isBuildModule.toBoolean()) {
     apply plugin: 'com.android.application'
-    apply plugin: 'com.jakewharton.butterknife'
 } else {
     apply plugin: 'com.android.library'
 }
+
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -22,7 +23,7 @@ android {
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName(),  AROUTER_GENERATE_DOC: "enable"]
                 includeCompileClasspath true
             }
         }
@@ -75,21 +76,19 @@ android {
 
 dependencies {
     if (isBuildModule.toBoolean()) {
-        //view
-        annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
-            exclude module: 'annotation'
-        }
-        //tools
-        annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
         //test
         debugImplementation rootProject.ext.dependencies["leakcanary"]
     } else {
-        compileOnly rootProject.ext.dependencies["butterknife-compiler"]
-        compileOnly(rootProject.ext.dependencies["arouter"]) {
-            exclude module: 'support-v4'
-            exclude module: 'support-annotations'
-        }
-        compileOnly rootProject.ext.dependencies["arouter-compiler"]
+//        compileOnly rootProject.ext.dependencies["butterknife-compiler"]
+//        compileOnly rootProject.ext.dependencies["arouter-compiler"]
         compileOnly rootProject.ext.dependencies["leakcanary"]
     }
+
+    //view
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'annotation'
+    }
+
+    //tools
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

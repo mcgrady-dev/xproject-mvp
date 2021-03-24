@@ -22,6 +22,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".ui.activity.CountDownSplashActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
