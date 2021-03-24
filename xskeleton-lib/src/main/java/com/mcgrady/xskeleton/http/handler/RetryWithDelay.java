@@ -1,9 +1,9 @@
 package com.mcgrady.xskeleton.http.handler;
 
 
-import androidx.annotation.NonNull;
+import android.util.Log;
 
-import com.blankj.utilcode.util.LogUtils;
+import androidx.annotation.NonNull;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,7 +33,7 @@ public class RetryWithDelay implements Function<Observable<Throwable>, Observabl
                     public ObservableSource<?> apply(@NonNull Throwable throwable) throws Exception {
                         if (++retryCount <= maxRetries) {
                             // When this Observable calls onNext, the original Observable will be retried (i.e. re-subscribed).
-                            LogUtils.d(TAG, "Observable get error, it will try after " + retryDelaySecond
+                            Log.d(TAG, "Observable get error, it will try after " + retryDelaySecond
                                     + " second, retry count " + retryCount);
                             return Observable.timer(retryDelaySecond,
                                     TimeUnit.SECONDS);

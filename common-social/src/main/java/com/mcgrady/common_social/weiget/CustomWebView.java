@@ -15,12 +15,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.mcgrady.common_social.interf.OnWebViewImageListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import timber.log.Timber;
 
 /**
  * <p>类说明</p>
@@ -120,7 +121,7 @@ public class CustomWebView extends WebView {
 //                }
 //            });
         } else {
-            LogUtils.e(TAG, "loadDetailDataAsync error, the Context isn't ok");
+            Timber.e(TAG, "loadDetailDataAsync error, the Context isn't ok");
         }
     }
 
@@ -162,7 +163,7 @@ public class CustomWebView extends WebView {
 //                }
 //            });
         } else {
-            LogUtils.e(CustomWebView.class.getName(), "loadDetailDataAsync error, the Context isn't ok");
+            Timber.e(CustomWebView.class.getName(), "loadDetailDataAsync error, the Context isn't ok");
         }
     }
 
@@ -200,7 +201,7 @@ public class CustomWebView extends WebView {
 //                }
 //            });
         } else {
-            LogUtils.e(CustomWebView.class.getName(), "loadDetailDataAsync error, the Context isn't ok");
+            Timber.e(CustomWebView.class.getName(), "loadDetailDataAsync error, the Context isn't ok");
         }
     }
 

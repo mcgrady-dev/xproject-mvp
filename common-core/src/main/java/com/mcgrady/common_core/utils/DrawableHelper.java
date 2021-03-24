@@ -33,7 +33,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.blankj.utilcode.util.LogUtils;
+import timber.log.Timber;
 
 /**
  * Created by mcgrady on 2019-08-26.
@@ -442,7 +442,7 @@ public class DrawableHelper {
         try {
             return AppCompatResources.getDrawable(context, resVector);
         } catch (Exception e) {
-            LogUtils.d(TAG, "Error in getVectorDrawable. resVector=" + resVector + ", resName=" +
+            Timber.d(TAG, "Error in getVectorDrawable. resVector=" + resVector + ", resName=" +
                     context.getResources().getResourceName(resVector) + e.getMessage());
             return null;
         }

@@ -9,11 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.xskeleton.base.IFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import timber.log.Timber;
 
 /**
  * Created by mcgrady on 2020/4/23.
@@ -86,7 +86,7 @@ public class FragmentDelegateImpl implements FragmentDelegate {
             } catch (IllegalStateException e) {
                 e.printStackTrace();
                 //fix Bindings already cleared
-                LogUtils.w("onDestroyView: %s", e.getMessage());
+                Timber.w("onDestroyView: %s", e.getMessage());
             }
         }
     }

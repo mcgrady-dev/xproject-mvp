@@ -1,9 +1,10 @@
 package com.mcgrady.xskeleton.http.log;
 
 
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
 import com.mcgrady.xskeleton.utils.CharacterHandler;
 import com.mcgrady.xskeleton.utils.UrlEncoderUtils;
@@ -87,7 +88,7 @@ public class RequestInterceptor implements Interceptor {
         try {
             originalResponse = chain.proceed(request);
         } catch (Exception e) {
-            LogUtils.w("Http Error: " + e);
+            Log.w("Http Error: ", e);
             throw e;
         }
         long t2 = logResponse ? System.nanoTime() : 0;

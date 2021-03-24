@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.google.android.material.snackbar.Snackbar;
@@ -31,6 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.reactivex.Completable;
+import timber.log.Timber;
 
 import static com.mcgrady.xskeleton.integration.Platform.DEPENDENCY_SUPPORT_DESIGN;
 
@@ -50,7 +50,7 @@ public class ViewUtils {
      */
     public static void showSnackbar(String message, boolean isLong) {
         if (ActivityUtils.getTopActivity() == null) {
-            LogUtils.w("top activity == null when showSnackbar");
+            Timber.w("top activity == null when showSnackbar");
             return;
         }
 

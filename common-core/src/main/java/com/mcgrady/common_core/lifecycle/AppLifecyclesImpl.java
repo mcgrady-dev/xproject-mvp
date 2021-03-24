@@ -72,12 +72,12 @@ public class AppLifecyclesImpl implements AppLifecycles {
 //        AppUtils.registerAppStatusChangedListener(application, new Utils.OnAppStatusChangedListener() {
 //            @Override
 //            public void onForeground() {
-//                LogUtils.i("App: " + application.getPackageName() + " is foreground");
+//                Timber.i("App: " + application.getPackageName() + " is foreground");
 //            }
 //
 //            @Override
 //            public void onBackground() {
-//                LogUtils.i("App: " + application.getPackageName() + " is background");
+//                Timber.i("App: " + application.getPackageName() + " is background");
 //            }
 //        });
     }

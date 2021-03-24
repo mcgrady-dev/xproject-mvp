@@ -27,9 +27,9 @@ public class DefaultFormatPrinter implements FormatPrinter {
 
     private static final String N = "\n";
     private static final String T = "\t";
-    private static final String REQUEST_UP_LINE = "   ┌────── Request ────────────────────────────────────────────────────────────────────────";
-    private static final String END_LINE = "   └───────────────────────────────────────────────────────────────────────────────────────";
-    private static final String RESPONSE_UP_LINE = "   ┌────── Response ───────────────────────────────────────────────────────────────────────";
+    private static final String REQUEST_UP_LINE = "┌────── Request ────────────────────────────────────────────────────────────────────────";
+    private static final String END_LINE = "└───────────────────────────────────────────────────────────────────────────────────────";
+    private static final String RESPONSE_UP_LINE = "┌────── Response ───────────────────────────────────────────────────────────────────────";
     private static final String BODY_TAG = "Body:";
     private static final String URL_TAG = "URL: ";
     private static final String METHOD_TAG = "Method: @";
@@ -245,6 +245,6 @@ public class DefaultFormatPrinter implements FormatPrinter {
     }
 
     private static String getTag(boolean isRequest) {
-        return TAG + (isRequest ? "-Request " : "-Response");
+        return (isRequest ? (" " + TAG) : TAG) + (isRequest ? "-Request" : "-Response");
     }
 }

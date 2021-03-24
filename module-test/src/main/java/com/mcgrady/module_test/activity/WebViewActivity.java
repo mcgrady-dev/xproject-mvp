@@ -75,7 +75,7 @@ public class WebViewActivity extends AppCompatActivity {
         mWebSettings.setMinimumFontSize(12);//设置 WebView 支持的最小字体大小，默认为 8
         mWebSettings.setGeolocationEnabled(true);
 //        String dir = AgentWebConfig.getCachePath(webView.getContext());
-//        LogUtils.i(TAG, "dir:" + dir + "   appcache:" + AgentWebConfig.getCachePath(webView.getContext()));
+//        Timber.i(TAG, "dir:" + dir + "   appcache:" + AgentWebConfig.getCachePath(webView.getContext()));
 //        //设置数据库路径  api19 已经废弃,这里只针对 webkit 起作用
 //        mWebSettings.setGeolocationDatabasePath(dir);
 //        mWebSettings.setDatabasePath(dir);
@@ -87,7 +87,7 @@ public class WebViewActivity extends AppCompatActivity {
 //                .concat(USERAGENT_AGENTWEB)
 //                .concat(USERAGENT_UC)
 //        );
-//        LogUtils.i(TAG, "UserAgentString : " + mWebSettings.getUserAgentString());
+//        Timber.i(TAG, "UserAgentString : " + mWebSettings.getUserAgentString());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // 安卓9.0后不允许多进程使用同一个数据目录，需设置前缀来区分
             // 参阅 https://blog.csdn.net/lvshuchangyin/article/details/89446629

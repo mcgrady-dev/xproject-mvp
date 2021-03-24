@@ -1,8 +1,8 @@
 package com.mcgrady.xskeleton.http.handler;
 
-import androidx.annotation.NonNull;
+import android.util.Log;
 
-import com.blankj.utilcode.util.LogUtils;
+import androidx.annotation.NonNull;
 
 import org.reactivestreams.Publisher;
 
@@ -33,7 +33,7 @@ public class RetryWithDelayOfFlowable implements Function<Flowable<Throwable>, P
                     public Publisher<?> apply(@NonNull Throwable throwable) throws Exception {
                         if (++retryCount <= maxRetries) {
                             // When this Observable calls onNext, the original Observable will be retried (i.e. re-subscribed).
-                            LogUtils.d(TAG, "Flowable get error, it will try after " + retryDelaySecond
+                            Log.d(TAG, "Flowable get error, it will try after " + retryDelaySecond
                                     + " second, retry count " + retryCount);
                             return Flowable.timer(retryDelaySecond,
                                     TimeUnit.SECONDS);
