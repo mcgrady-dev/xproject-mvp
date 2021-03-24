@@ -1,11 +1,6 @@
 package com.mcgrady.xproject.zhihu.mvp.ui.activity;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -18,17 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.SnackbarUtils;
-import com.blankj.utilcode.util.ToastUtils;
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.common_core.utils.ViewUtils;
-import com.mcgrady.module_test.IMyAidlInterface;
+import com.mcgrady.xproject.zhihu.R;
+import com.mcgrady.xproject.zhihu.R2;
 import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyHomeContract;
 import com.mcgrady.xproject.zhihu.mvp.model.ZhihuModel;
 import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyMultipleItem;
@@ -38,8 +31,6 @@ import com.mcgrady.xproject.zhihu.mvp.ui.adapter.ZhihuDailyHomeAdapter;
 import com.mcgrady.xproject.zhihu.mvp.ui.adapter.ZhihuDailyTopStoriesAdapter;
 import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
-import com.mcgrady.zhihu.R;
-import com.mcgrady.zhihu.R2;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -76,8 +67,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     private LinearLayoutManager linearManager;
     private int lastTitlePostion = -1;
     private ImageLoader imageLoader;
-
-    private IMyAidlInterface binder;
 
     @Override
     protected ZhihuDailyHomePresenter createPresenter() {
@@ -146,47 +135,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setOnLoadMoreListener(this);
         refreshLayout.autoRefresh();
-
-        ServiceConnection conn = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                binder = IMyAidlInterface.Stub.asInterface(service);
-                try {
-                    int c = binder.call(1, 2);
-                    LogUtils.d("remote service: call result=" + c);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-                binder = null;
-            }
-        };
-
-        Intent intent = new Intent("com.mcgrady.module_test.CalService");
-        intent.setPackage("com.mcgrady.module_test");
-        bindService(intent, conn, Context.BIND_AUTO_CREATE);
-
-        ToastUtils.showShort("xxxxxxxx");
-        tvDate.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ToastUtils.showShort("xxxxxxxx");
-                tvDate.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        ToastUtils.showShort("xxxxxxxx");
-                    }
-                }, 400);
-            }
-        }, 400);
-//        ToastUtils.showShort("rrrrrrrr");
-//        ToastUtils.showShort("wwwwwwww");
-//        ToastUtils.showShort("hhhhhhhh");
-//        ToastUtils.showShort("bbbbbbbb");
-
     }
 
     private void changeToolbarTitle(int dy) {

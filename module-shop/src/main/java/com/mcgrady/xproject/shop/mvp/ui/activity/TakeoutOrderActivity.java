@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mcgrady.common_core.base.BaseActivity;
-import com.mcgrady.shop.R;
-import com.mcgrady.shop.R2;
+import com.mcgrady.xproject.shop.R;
+import com.mcgrady.xproject.shop.R2;
 import com.mcgrady.xproject.shop.mvp.contract.TakeoutOrderContract;
 import com.mcgrady.xproject.shop.mvp.presenter.TakeoutOrderPresenter;
 

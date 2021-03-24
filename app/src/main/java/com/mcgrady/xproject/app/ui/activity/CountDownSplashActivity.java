@@ -1,5 +1,6 @@
-package com.mcgrady.xproject.app.ui.activity;
+package com.mcgrady.xproject.main.mvp.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -56,7 +57,8 @@ public class CountDownSplashActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        countDownTimer = new CountDownTimer(3200, 1000) {
+        countDownTimer = new CountDownTimer(3000, 1000) {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
                 btnSkip.setText("跳过(" + millisUntilFinished / 1000 + "s)");
@@ -64,7 +66,12 @@ public class CountDownSplashActivity extends BaseActivity implements View.OnClic
 
             @Override
             public void onFinish() {
-                toActivity();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        toActivity();
+                    }
+                });
             }
         };
 
@@ -85,11 +92,13 @@ public class CountDownSplashActivity extends BaseActivity implements View.OnClic
         countDownTimer.start();
     }
 
+    @SuppressLint("SetTextI18n")
     private void toActivity() {
         btnSkip.setText("跳过(" + 0 + "s)");
         countDownTimer.cancel();
         //todo local token is null go to LoginActivity , else go to MainActivity
-        //ActivityUtils.startActivity(MainLoginActivity.class);
+//        ActivityUtils.startActivity("com.mcgrady.xproject.main", "MainLoginActivity");
+
         ARouter.getInstance().build(RouterHub.MAIN_COMMON_LOGIN).navigation();
         finish();
     }

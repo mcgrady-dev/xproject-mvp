@@ -9,11 +9,11 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.mcgrady.common_core.imageEngine.config.CommonImageConfigImpl;
 import com.mcgrady.common_core.interf.IViewHolderRelease;
+import com.mcgrady.xproject.zhihu.R;
 import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
-import com.mcgrady.zhihu.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
