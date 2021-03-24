@@ -15,10 +15,18 @@ import com.mcgrady.xskeleton.delegate.FragmentDelegateImpl;
 import com.mcgrady.xskeleton.integration.cache.IntelligentCache;
 import com.mcgrady.xskeleton.utils.Preconditions;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by mcgrady on 2020/4/23.
  */
+@Singleton
 public class FragmentLifecycle extends FragmentManager.FragmentLifecycleCallbacks {
+
+    @Inject
+    public FragmentLifecycle() {
+    }
 
     @Override
     public void onFragmentAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {

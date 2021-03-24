@@ -117,6 +117,10 @@ dependencies {
 
     api rootProject.ext.dependencies["utilcodex"]
     api rootProject.ext.dependencies["toast"]
+    api rootProject.ext.dependencies["timber"]
+
+    api rootProject.ext.dependencies["dagger2"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
 }
 
 //publish {

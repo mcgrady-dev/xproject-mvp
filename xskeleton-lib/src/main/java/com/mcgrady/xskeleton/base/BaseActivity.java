@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
 import com.mcgrady.xskeleton.lifecycle.ActivityLifecycleable;
+import com.mcgrady.xskeleton.utils.XUtils;
 import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import butterknife.ButterKnife;
@@ -68,17 +69,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             presenter.onDestroy();//释放资源
         }
         this.presenter = null;
-
-        //如果要使用 Eventbus 请将此方法返回 true
-        if (useEventBus()) {
-            //解除注册 Eventbus
-            //EventBus.getDefault().unregister(this);
-        }
-    }
-
-    @Override
-    public boolean useEventBus() {
-        return false;
     }
 
     @Override
@@ -91,7 +81,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     public synchronized Cache<String, Object> provideCache() {
         if (cache == null) {
             //noinspection unchecked
-            cache = AppComponent.obtainAppModule(this).cacheFactory().build(CacheType.ACTIVITY_CACHE);
+            cache = XUtils.obtainAppComponentFromContext().cacheFactory().build(CacheType.ACTIVITY_CACHE);
         }
         return cache;
     }

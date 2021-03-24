@@ -17,17 +17,13 @@ public class ActivityDelegateImpl implements ActivityDelegate {
     private IActivity iActivity;
 
     public ActivityDelegateImpl(@NonNull Activity activity) {
+
         this.activity = activity;
         this.iActivity = (IActivity) activity;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        //如果要使用 EventBus 请将此方法返回 true
-        if (iActivity.useEventBus()) {
-            //注册到事件主线
-//            EventBusManager.getInstance().register(activity);
-        }
     }
 
     @Override
@@ -57,10 +53,7 @@ public class ActivityDelegateImpl implements ActivityDelegate {
 
     @Override
     public void onDestroy() {
-        //如果要使用 EventBus 请将此方法返回 true
-        if (iActivity != null && iActivity.useEventBus()) {
-//            EventBusManager.getInstance().unregister(mActivity);
-        }
+
         this.iActivity = null;
         this.activity = null;
     }

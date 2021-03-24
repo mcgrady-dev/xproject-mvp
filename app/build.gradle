@@ -96,6 +96,8 @@ dependencies {
         exclude module: 'annotation'
     }
 
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+
     //test
     testImplementation rootProject.ext.dependencies["junit"]
     debugImplementation rootProject.ext.dependencies["leakcanary"]

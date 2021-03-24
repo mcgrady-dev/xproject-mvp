@@ -6,18 +6,21 @@ import androidx.annotation.Nullable;
 
 import com.mcgrady.xskeleton.utils.Preconditions;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by mcgrady on 2020/4/5.
  */
+@Singleton
 public final class ImageLoader {
 
+    @Inject
+    @Nullable
     BaseImageLoaderStrategy strategy;
 
-    private ImageLoader() {
-    }
-
-    public ImageLoader(BaseImageLoaderStrategy strategy) {
-        this.strategy = strategy;
+    @Inject
+    public ImageLoader() {
     }
 
     /**

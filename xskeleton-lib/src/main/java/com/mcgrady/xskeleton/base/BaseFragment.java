@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.mcgrady.xskeleton.cache.Cache;
 import com.mcgrady.xskeleton.cache.CacheType;
 import com.mcgrady.xskeleton.lifecycle.FragmentLifecycleable;
+import com.mcgrady.xskeleton.utils.XUtils;
 import com.trello.rxlifecycle3.android.FragmentEvent;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
@@ -95,17 +96,12 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
         this.mContext = null;
     }
 
-    @Override
-    public boolean useEventBus() {
-        return false;
-    }
-
     @NonNull
     @Override
     public synchronized Cache<String, Object> provideCache() {
         if (cache == null) {
             //noinspection unchecked
-            cache = AppComponent.obtainAppModule(getActivity()).cacheFactory().build(CacheType.FRAGMENT_CACHE);
+            cache = XUtils.obtainAppComponentFromContext().cacheFactory().build(CacheType.FRAGMENT_CACHE);
         }
 
         return cache;

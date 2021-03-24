@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.base.BaseFragment;
 import com.mcgrady.xskeleton.base.IActivity;
 import com.mcgrady.xskeleton.cache.Cache;
@@ -19,27 +18,30 @@ import com.mcgrady.xskeleton.integration.ConfigModule;
 import com.mcgrady.xskeleton.integration.cache.IntelligentCache;
 import com.mcgrady.xskeleton.utils.Preconditions;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger.Lazy;
 
 /**
  * Created by mcgrady on 2020/4/23.
  */
+@Singleton
 public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks {
 
+    @Inject
     Application application;
+    @Inject
     Cache<String, Object> extras;
-    FragmentManager.FragmentLifecycleCallbacks fragmentLifecycle;
-    List<FragmentManager.FragmentLifecycleCallbacks> fragmentLifecycles;
+    @Inject
+    Lazy<FragmentManager.FragmentLifecycleCallbacks> fragmentLifecycle;
+    @Inject
+    Lazy<List<FragmentManager.FragmentLifecycleCallbacks>> fragmentLifecycles;
 
-    private ActivityLifecycle() {
-    }
-
-    public ActivityLifecycle(@NonNull Application application) {
-        this.application = application;
-        this.extras = AppComponent.obtainAppModule(application).extras();
-        this.fragmentLifecycle = new FragmentLifecycle();
-        this.fragmentLifecycles = new ArrayList<>();
+    @Inject
+    public ActivityLifecycle() {
     }
 
     @Override
@@ -141,21 +143,21 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
             //mFragmentLifecycle 为 Fragment 生命周期实现类, 用于框架内部对每个 Fragment 的必要操作, 如给每个 Fragment 配置 FragmentDelegate
             //注册框架内部已实现的 Fragment 生命周期逻辑
-            ((FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycle, true);
+            ((FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycle.get(), true);
 
             if (extras.containsKey(IntelligentCache.getKeyOfKeep(ConfigModule.class.getName()))) {
                 @SuppressWarnings("unchecked")
                 List<ConfigModule> modules = (List<ConfigModule>) extras.get(IntelligentCache.getKeyOfKeep(ConfigModule.class.getName()));
                 if (modules != null) {
                     for (ConfigModule module : modules) {
-                        module.injectFragmentLifecycle(application, fragmentLifecycles);
+                        module.injectFragmentLifecycle(application, fragmentLifecycles.get());
                     }
                 }
                 extras.remove(IntelligentCache.getKeyOfKeep(ConfigModule.class.getName()));
             }
 
             //注册框架外部, 开发者扩展的 Fragment 生命周期逻辑
-            for (FragmentManager.FragmentLifecycleCallbacks fragmentLifecycle : fragmentLifecycles) {
+            for (FragmentManager.FragmentLifecycleCallbacks fragmentLifecycle : fragmentLifecycles.get()) {
                 ((FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycle, true);
             }
         }

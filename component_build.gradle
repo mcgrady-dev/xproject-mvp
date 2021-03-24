@@ -76,11 +76,13 @@ android {
 
 dependencies {
     if (isBuildModule.toBoolean()) {
+
         //test
         debugImplementation rootProject.ext.dependencies["leakcanary"]
     } else {
 //        compileOnly rootProject.ext.dependencies["butterknife-compiler"]
 //        compileOnly rootProject.ext.dependencies["arouter-compiler"]
+//        compileOnly rootProject.ext.dependencies["dagger2-compiler"]
         compileOnly rootProject.ext.dependencies["leakcanary"]
     }
 
@@ -91,4 +93,5 @@ dependencies {
 
     //tools
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
 }

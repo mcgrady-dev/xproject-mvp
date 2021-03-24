@@ -3,174 +3,249 @@ package com.mcgrady.xskeleton.module;
 import android.app.Application;
 import android.text.TextUtils;
 
-import com.google.gson.Gson;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.blankj.utilcode.util.Utils;
 import com.mcgrady.xskeleton.cache.Cache;
+import com.mcgrady.xskeleton.cache.CacheType;
+import com.mcgrady.xskeleton.cache.LruCache;
 import com.mcgrady.xskeleton.http.BaseUrl;
 import com.mcgrady.xskeleton.http.handler.GlobalHttpHandler;
 import com.mcgrady.xskeleton.http.imageloader.BaseImageLoaderStrategy;
 import com.mcgrady.xskeleton.http.interf.ResponseErrorListener;
+import com.mcgrady.xskeleton.http.log.DefaultFormatPrinter;
 import com.mcgrady.xskeleton.http.log.FormatPrinter;
 import com.mcgrady.xskeleton.http.log.RequestInterceptor;
-import com.mcgrady.xskeleton.integration.IRepositoryManager;
+import com.mcgrady.xskeleton.integration.cache.IntelligentCache;
 import com.mcgrady.xskeleton.utils.Preconditions;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
+import okhttp3.internal.Util;
 
 /**
  * Created by mcgrady on 2020/4/3.
  */
+@Module
 public class GlobalConfigModule {
 
-    private Application application;
-    //network
-    private HttpUrl apiUrl;
-    private BaseUrl baseUrl;
-    private Gson gson;
-    private ClientModule.RetrofitConfiguration retrofitConfig;
-    private ClientModule.OkhttpConfiguration okhttpConfig;
-    private AppModule.GsonConfiguration gsonConfig;
-    private RequestInterceptor.Level printHttpLogLevel;
-    private FormatPrinter formatPrinter;
-    private Interceptor intercept;
-    private List<Interceptor> interceptors;
-    private ResponseErrorListener errorListener;
-    private GlobalHttpHandler httpHandler;
-    private IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate;
-    private BaseImageLoaderStrategy imageLoaderStrategy;
-
-    //cache
-    private File cacheFile;
-    private Cache.Factory cacheFactory;
-
-    private ExecutorService executorService;
-
-    public Application getApplication() {
-        return application;
-    }
-
-    public HttpUrl getApiUrl() {
-        return apiUrl;
-    }
-
-    public BaseUrl getBaseUrl() {
-        return baseUrl;
-    }
-
-    public Gson getGson() {
-        return gson;
-    }
-
-    public ClientModule.RetrofitConfiguration getRetrofitConfig() {
-        return retrofitConfig;
-    }
-
-    public ClientModule.OkhttpConfiguration getOkhttpConfig() {
-        return okhttpConfig;
-    }
-
-    public AppModule.GsonConfiguration getGsonConfig() {
-        return gsonConfig;
-    }
-
-    public RequestInterceptor.Level getPrintHttpLogLevel() {
-        return printHttpLogLevel;
-    }
-
-    public FormatPrinter getFormatPrinter() {
-        return formatPrinter;
-    }
-
-    public List<Interceptor> getInterceptors() {
-        return interceptors;
-    }
-
-    public Interceptor getIntercept() {
-        return intercept;
-    }
-
-    public ResponseErrorListener getErrorListener() {
-        return errorListener;
-    }
-
-    public GlobalHttpHandler getHttpHandler() {
-        return httpHandler;
-    }
-
-    public IRepositoryManager.ObtainServiceDelegate getObtainServiceDelegate() {
-        return obtainServiceDelegate;
-    }
-
-    public File getCacheFile() {
-        return cacheFile;
-    }
-
-    public Cache.Factory getCacheFactory() {
-        return cacheFactory;
-    }
-
-    public ExecutorService getExecutorService() {
-        return executorService;
-    }
-
-    public BaseImageLoaderStrategy getImageLoaderStrategy() {
-        return imageLoaderStrategy;
-    }
+    private HttpUrl mApiUrl;
+    private BaseUrl mBaseUrl;
+    private BaseImageLoaderStrategy mLoaderStrategy;
+    private GlobalHttpHandler mHandler;
+    private List<Interceptor> mInterceptors;
+    private ResponseErrorListener mErrorListener;
+    private File mCacheFile;
+    private ClientModule.RetrofitConfiguration mRetrofitConfiguration;
+    private ClientModule.OkhttpConfiguration mOkhttpConfiguration;
+//    private ClientModule.RxCacheConfiguration mRxCacheConfiguration;
+    private AppModule.GsonConfiguration mGsonConfiguration;
+    private RequestInterceptor.Level mPrintHttpLogLevel;
+    private FormatPrinter mFormatPrinter;
+    private Cache.Factory mCacheFactory;
+    private ExecutorService mExecutorService;
 
     private GlobalConfigModule(Builder builder) {
-        this.apiUrl = builder.apiUrl;
-        this.baseUrl = builder.baseUrl;
-        this.okhttpConfig = builder.okhttpConfig;
-        this.retrofitConfig = builder.retrofitConfig;
-        this.errorListener = builder.errorListener;
-        this.gsonConfig = builder.gsonConfig;
-        this.printHttpLogLevel = builder.printHttpLogLevel;
-        this.formatPrinter = builder.formatPrinter;
-        this.interceptors = builder.interceptors;
-        this.httpHandler = builder.httpHandler;
-        this.obtainServiceDelegate = builder.obtainServiceDelegate;
-        this.imageLoaderStrategy = builder.imageLoaderStrategy;
-
-        this.cacheFile = builder.cacheFile;
-        this.cacheFactory = builder.cacheFactory;
-        this.executorService = builder.executorService;
-
-        this.intercept = new RequestInterceptor(builder.printHttpLogLevel, builder.formatPrinter, builder.httpHandler);
+        this.mApiUrl = builder.apiUrl;
+        this.mBaseUrl = builder.baseUrl;
+        this.mLoaderStrategy = builder.loaderStrategy;
+        this.mHandler = builder.handler;
+        this.mInterceptors = builder.interceptors;
+        this.mErrorListener = builder.responseErrorListener;
+        this.mCacheFile = builder.cacheFile;
+        this.mRetrofitConfiguration = builder.retrofitConfiguration;
+        this.mOkhttpConfiguration = builder.okhttpConfiguration;
+//        this.mRxCacheConfiguration = builder.rxCacheConfiguration;
+        this.mGsonConfiguration = builder.gsonConfiguration;
+        this.mPrintHttpLogLevel = builder.printHttpLogLevel;
+        this.mFormatPrinter = builder.formatPrinter;
+        this.mCacheFactory = builder.cacheFactory;
+        this.mExecutorService = builder.executorService;
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static final class Builder {
+    @Singleton
+    @Provides
+    @Nullable
+    List<Interceptor> provideInterceptors() {
+        return mInterceptors;
+    }
 
+    /**
+     * 提供 BaseUrl,默认使用 <"https://api.github.com/">
+     *
+     * @return
+     */
+    @Singleton
+    @Provides
+    HttpUrl provideBaseUrl() {
+        if (mBaseUrl != null) {
+            HttpUrl httpUrl = mBaseUrl.url();
+            if (httpUrl != null) {
+                return httpUrl;
+            }
+        }
+        return mApiUrl == null ? HttpUrl.parse("https://api.github.com/") : mApiUrl;
+    }
+
+    /**
+     * 提供图片加载框架,默认使用 {@link com.bumptech.glide.Glide}
+     *
+     * @return
+     */
+    @Singleton
+    @Provides
+    @Nullable
+    BaseImageLoaderStrategy provideImageLoaderStrategy() {
+        return mLoaderStrategy;
+    }
+
+    /**
+     * 提供处理 Http 请求和响应结果的处理类
+     *
+     * @return
+     */
+    @Singleton
+    @Provides
+    @Nullable
+    GlobalHttpHandler provideGlobalHttpHandler() {
+        return mHandler;
+    }
+
+    /**
+     * 提供缓存文件
+     */
+    @Singleton
+    @Provides
+    File provideCacheFile(Application application) {
+        return mCacheFile == null ? Utils.getApp().getCacheDir() : mCacheFile;
+    }
+
+    /**
+     * 提供处理 RxJava 错误的管理器的回调
+     *
+     * @return
+     */
+    @Singleton
+    @Provides
+    ResponseErrorListener provideResponseErrorListener() {
+        return mErrorListener == null ? ResponseErrorListener.EMPTY : mErrorListener;
+    }
+
+    @Singleton
+    @Provides
+    @Nullable
+    ClientModule.RetrofitConfiguration provideRetrofitConfiguration() {
+        return mRetrofitConfiguration;
+    }
+
+    @Singleton
+    @Provides
+    @Nullable
+    ClientModule.OkhttpConfiguration provideOkhttpConfiguration() {
+        return mOkhttpConfiguration;
+    }
+
+//    @Singleton
+//    @Provides
+//    @Nullable
+//    ClientModule.RxCacheConfiguration provideRxCacheConfiguration() {
+//        return mRxCacheConfiguration;
+//    }
+
+    @Singleton
+    @Provides
+    @Nullable
+    AppModule.GsonConfiguration provideGsonConfiguration() {
+        return mGsonConfiguration;
+    }
+
+    @Singleton
+    @Provides
+    RequestInterceptor.Level providePrintHttpLogLevel() {
+        return mPrintHttpLogLevel == null ? RequestInterceptor.Level.ALL : mPrintHttpLogLevel;
+    }
+
+    @Singleton
+    @Provides
+    FormatPrinter provideFormatPrinter() {
+        return mFormatPrinter == null ? new DefaultFormatPrinter() : mFormatPrinter;
+    }
+
+    @Singleton
+    @Provides
+    Cache.Factory provideCacheFactory(Application application) {
+        return mCacheFactory == null ? new Cache.Factory() {
+            @NonNull
+            @Override
+            public Cache build(CacheType type) {
+                //若想自定义 LruCache 的 size, 或者不想使用 LruCache, 想使用自己自定义的策略
+                //使用 GlobalConfigModule.Builder#cacheFactory() 即可扩展
+                switch (type.getCacheTypeId()) {
+                    //Activity、Fragment 以及 Extras 使用 IntelligentCache (具有 LruCache 和 可永久存储数据的 Map)
+                    case CacheType.EXTRAS_TYPE_ID:
+                    case CacheType.ACTIVITY_CACHE_TYPE_ID:
+                    case CacheType.FRAGMENT_CACHE_TYPE_ID:
+                        return new IntelligentCache(type.calculateCacheSize(application));
+                    //其余使用 LruCache (当达到最大容量时可根据 LRU 算法抛弃不合规数据)
+                    default:
+                        return new LruCache(type.calculateCacheSize(application));
+                }
+            }
+        } : mCacheFactory;
+    }
+
+    /**
+     * 返回一个全局公用的线程池,适用于大多数异步需求。
+     * 避免多个线程池创建带来的资源消耗。
+     *
+     * @return {@link Executor}
+     */
+    @Singleton
+    @Provides
+    ExecutorService provideExecutorService() {
+        return mExecutorService == null ? new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,
+                new SynchronousQueue<Runnable>(), Util.threadFactory("Arms Executor", false)) : mExecutorService;
+    }
+
+    public static final class Builder {
         private HttpUrl apiUrl;
         private BaseUrl baseUrl;
-        private ClientModule.OkhttpConfiguration okhttpConfig;
-        private ClientModule.RetrofitConfiguration retrofitConfig;
-        private IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate;
-        private AppModule.GsonConfiguration gsonConfig;
+        private BaseImageLoaderStrategy loaderStrategy;
+        private GlobalHttpHandler handler;
+        private List<Interceptor> interceptors;
+        private ResponseErrorListener responseErrorListener;
+        private File cacheFile;
+        private ClientModule.RetrofitConfiguration retrofitConfiguration;
+        private ClientModule.OkhttpConfiguration okhttpConfiguration;
+//        private ClientModule.RxCacheConfiguration rxCacheConfiguration;
+        private AppModule.GsonConfiguration gsonConfiguration;
         private RequestInterceptor.Level printHttpLogLevel;
         private FormatPrinter formatPrinter;
-        private List<Interceptor> interceptors;
-        private ResponseErrorListener errorListener;
-        private GlobalHttpHandler httpHandler;
-        private BaseImageLoaderStrategy imageLoaderStrategy;
-
-        private File cacheFile;
         private Cache.Factory cacheFactory;
-
         private ExecutorService executorService;
 
         private Builder() {
         }
 
-        public Builder baseUrl(String baseUrl) {
+        public Builder baseUrl(String baseUrl) {//基础url
             if (TextUtils.isEmpty(baseUrl)) {
                 throw new NullPointerException("BaseUrl can not be empty");
             }
@@ -179,7 +254,29 @@ public class GlobalConfigModule {
         }
 
         public Builder baseUrl(BaseUrl baseUrl) {
-            this.baseUrl = Preconditions.checkNotNull(baseUrl, BaseUrl.class.getCanonicalName() + "can not be null");
+            this.baseUrl = Preconditions.checkNotNull(baseUrl, BaseUrl.class.getCanonicalName() + "can not be null.");
+            return this;
+        }
+
+        public Builder imageLoaderStrategy(BaseImageLoaderStrategy loaderStrategy) {//用来请求网络图片
+            this.loaderStrategy = loaderStrategy;
+            return this;
+        }
+
+        public Builder globalHttpHandler(GlobalHttpHandler handler) {//用来处理http响应结果
+            this.handler = handler;
+            return this;
+        }
+
+        public Builder addInterceptor(Interceptor interceptor) {//动态添加任意个interceptor
+            if (interceptors == null)
+                interceptors = new ArrayList<>();
+            this.interceptors.add(interceptor);
+            return this;
+        }
+
+        public Builder responseErrorListener(ResponseErrorListener listener) {//处理所有RxJava的onError逻辑
+            this.responseErrorListener = listener;
             return this;
         }
 
@@ -188,56 +285,33 @@ public class GlobalConfigModule {
             return this;
         }
 
-        public Builder globalHttpHandler(GlobalHttpHandler handler) {
-            this.httpHandler = handler;
+        public Builder retrofitConfiguration(ClientModule.RetrofitConfiguration retrofitConfiguration) {
+            this.retrofitConfiguration = retrofitConfiguration;
             return this;
         }
 
-        public Builder responseErrorListener(ResponseErrorListener listener) {
-            this.errorListener = listener;
+        public Builder okhttpConfiguration(ClientModule.OkhttpConfiguration okhttpConfiguration) {
+            this.okhttpConfiguration = okhttpConfiguration;
             return this;
         }
 
-        public Builder retrofitConfiguration(ClientModule.RetrofitConfiguration retrofitConfig) {
-            this.retrofitConfig = retrofitConfig;
+//        public Builder rxCacheConfiguration(ClientModule.RxCacheConfiguration rxCacheConfiguration) {
+//            this.rxCacheConfiguration = rxCacheConfiguration;
+//            return this;
+//        }
+
+        public Builder gsonConfiguration(AppModule.GsonConfiguration gsonConfiguration) {
+            this.gsonConfiguration = gsonConfiguration;
             return this;
         }
 
-        public Builder okhttpConfiguration(ClientModule.OkhttpConfiguration okhttpConfig) {
-            this.okhttpConfig = okhttpConfig;
-            return this;
-        }
-
-        public Builder gsonConfiguration(AppModule.GsonConfiguration gsonConfig) {
-            this.gsonConfig = gsonConfig;
-            return this;
-        }
-
-        public Builder printHttpLogLevel(RequestInterceptor.Level printHttpLogLevel) {
-            this.printHttpLogLevel = printHttpLogLevel;
+        public Builder printHttpLogLevel(RequestInterceptor.Level printHttpLogLevel) {//是否让框架打印 Http 的请求和响应信息
+            this.printHttpLogLevel = Preconditions.checkNotNull(printHttpLogLevel, "The printHttpLogLevel can not be null, use RequestInterceptor.Level.NONE instead.");
             return this;
         }
 
         public Builder formatPrinter(FormatPrinter formatPrinter) {
-            this.formatPrinter = formatPrinter;
-            return this;
-        }
-
-        public Builder addInterceptors(Interceptor intercept) {
-            if (this.interceptors == null) {
-                this.interceptors = new ArrayList<>();
-            }
-            this.interceptors.add(intercept);
-            return this;
-        }
-
-        public Builder executorService(ExecutorService executorService) {
-            this.executorService = executorService;
-            return this;
-        }
-
-        public Builder obtainServiceDelegate(IRepositoryManager.ObtainServiceDelegate obtainServiceDelegate) {
-            this.obtainServiceDelegate = obtainServiceDelegate;
+            this.formatPrinter = Preconditions.checkNotNull(formatPrinter, FormatPrinter.class.getCanonicalName() + "can not be null.");
             return this;
         }
 
@@ -246,8 +320,8 @@ public class GlobalConfigModule {
             return this;
         }
 
-        public Builder imageLoaderStrategy(BaseImageLoaderStrategy loaderStrategy) {
-            this.imageLoaderStrategy = loaderStrategy;
+        public Builder executorService(ExecutorService executorService) {
+            this.executorService = executorService;
             return this;
         }
 

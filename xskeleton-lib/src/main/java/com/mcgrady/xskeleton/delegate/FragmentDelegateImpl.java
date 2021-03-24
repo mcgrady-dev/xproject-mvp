@@ -38,9 +38,6 @@ public class FragmentDelegateImpl implements FragmentDelegate {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        if (iFragment.useEventBus()) {  //如果要使用eventbus请将此方法返回true
-//            EventBusManager.getInstance().register(fragmentManager);//注册到事件主线
-        }
     }
 
     @Override
@@ -96,10 +93,6 @@ public class FragmentDelegateImpl implements FragmentDelegate {
 
     @Override
     public void onDestroy() {
-
-        if (iFragment != null && iFragment.useEventBus()) { //如果要使用eventbus请将此方法返回true
-//            EventBusManager.getInstance().unregister(fragment);//注册到事件主线
-        }
 
         this.unbinder = null;
         this.fragmentManager = null;
