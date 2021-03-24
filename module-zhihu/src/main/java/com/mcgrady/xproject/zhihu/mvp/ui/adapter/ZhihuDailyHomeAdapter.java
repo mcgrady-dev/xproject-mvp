@@ -12,8 +12,8 @@ import com.mcgrady.common_core.interf.IViewHolderRelease;
 import com.mcgrady.xproject.zhihu.R;
 import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyMultipleItem;
 import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
-import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
+import com.mcgrady.xskeleton.utils.XUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
         addItemType(TYPE_DATE, R.layout.news_item_zhihu_daily_date);
         addItemType(TYPE_ITEM, R.layout.news_item_zhihu_daily_home);
 
-        imageLoader = AppComponent.obtainAppModule(context).imageLoader();
+        imageLoader = XUtils.obtainAppComponentFromContext().imageLoader();
     }
 
     public void setData(ZhihuDailyStoriesBean data) {

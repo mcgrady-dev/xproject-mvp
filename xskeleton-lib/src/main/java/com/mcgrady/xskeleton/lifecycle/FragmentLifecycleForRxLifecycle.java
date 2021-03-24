@@ -10,12 +10,21 @@ import androidx.fragment.app.FragmentManager;
 
 import com.trello.rxlifecycle3.android.FragmentEvent;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.subjects.Subject;
 
 /**
  * Created by mcgrady on 2020/4/23.
  */
+@Singleton
 public class FragmentLifecycleForRxLifecycle extends FragmentManager.FragmentLifecycleCallbacks {
+
+    @Inject
+    public FragmentLifecycleForRxLifecycle() {
+
+    }
 
     @Override
     public void onFragmentAttached(@NonNull FragmentManager fm, @NonNull Fragment f, @NonNull Context context) {

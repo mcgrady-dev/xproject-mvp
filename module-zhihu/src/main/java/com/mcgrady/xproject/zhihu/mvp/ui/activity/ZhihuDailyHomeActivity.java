@@ -29,8 +29,8 @@ import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyStoriesBean;
 import com.mcgrady.xproject.zhihu.mvp.presenter.ZhihuDailyHomePresenter;
 import com.mcgrady.xproject.zhihu.mvp.ui.adapter.ZhihuDailyHomeAdapter;
 import com.mcgrady.xproject.zhihu.mvp.ui.adapter.ZhihuDailyTopStoriesAdapter;
-import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
+import com.mcgrady.xskeleton.utils.XUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -71,7 +71,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     @Override
     protected ZhihuDailyHomePresenter createPresenter() {
         ZhihuModel model = new ZhihuModel();
-        return new ZhihuDailyHomePresenter(model, this, AppComponent.obtainClientModule(this).rxErrorHandler());
+        return new ZhihuDailyHomePresenter(model, this, XUtils.obtainAppComponentFromContext().rxErrorHandler());
     }
 
     @Override
@@ -96,7 +96,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        imageLoader = AppComponent.obtainAppModule(this).imageLoader();
+        imageLoader = XUtils.obtainAppComponentFromContext().imageLoader();
 
         adapter = new ZhihuDailyHomeAdapter(this);
         adapter.setOnItemClickListener((adapter, view, position) -> {

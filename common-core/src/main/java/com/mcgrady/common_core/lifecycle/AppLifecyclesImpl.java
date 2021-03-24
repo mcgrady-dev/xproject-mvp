@@ -15,7 +15,6 @@ import com.mcgrady.common_core.R;
 import com.mcgrady.common_core.http.manager.RetrofitUrlManager;
 import com.mcgrady.common_core.widget.MaterialHeader;
 import com.mcgrady.xskeleton.base.AppLifecycles;
-import com.mcgrady.xskeleton.integration.RepositoryManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 
@@ -34,7 +33,6 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
         Utils.init(application);
         ToastUtils.init(application, new ToastQQStyle(application));
-        RepositoryManager.init(application);
 
         if (BuildConfig.LOG_DEBUG) {
             ButterKnife.setDebug(true);

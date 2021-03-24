@@ -18,6 +18,7 @@ import com.bumptech.glide.module.AppGlideModule;
 import com.mcgrady.xskeleton.base.AppComponent;
 import com.mcgrady.xskeleton.http.OkHttpUrlLoader;
 import com.mcgrady.xskeleton.http.imageloader.BaseImageLoaderStrategy;
+import com.mcgrady.xskeleton.utils.XUtils;
 
 import java.io.File;
 import java.io.InputStream;
@@ -33,8 +34,9 @@ public class GlideConfiguration extends AppGlideModule {
 
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
+        AppComponent appComponent = XUtils.obtainAppComponentFromContext();
         builder.setDiskCache(() -> {
-            File cacheFile = AppComponent.obtainAppModule(context).cacheFile();
+            File cacheFile = appComponent.cacheFile();
             File glideFile = new File(cacheFile, "Glide");
             if (FileUtils.createOrExistsDir(glideFile)) {
                 // Careful: the external cache directory doesn't enforce permissions
@@ -57,7 +59,7 @@ public class GlideConfiguration extends AppGlideModule {
         //将配置 Glide 的机会转交给 GlideImageLoaderStrategy,如你觉得框架提供的 GlideImageLoaderStrategy
         //并不能满足自己的需求,想自定义 BaseImageLoaderStrategy,那请你最好实现 GlideAppliesOptions
         //因为只有成为 GlideAppliesOptions 的实现类,这里才能调用 applyGlideOptions(),让你具有配置 Glide 的权利
-        BaseImageLoaderStrategy loadImgStrategy = AppComponent.obtainAppModule(context).imageLoader().getLoadImgStrategy();
+        BaseImageLoaderStrategy loadImgStrategy = appComponent.imageLoader().getLoadImgStrategy();
         if (loadImgStrategy instanceof GlideAppliesOptions) {
             ((GlideAppliesOptions) loadImgStrategy).applyGlideOptions(context, builder);
         }
@@ -65,11 +67,12 @@ public class GlideConfiguration extends AppGlideModule {
 
     @Override
     public void registerComponents(@NonNull Context context, @NonNull Glide glide, @NonNull Registry registry) {
+        AppComponent appComponent = XUtils.obtainAppComponentFromContext();
         //Glide 默认使用 HttpURLConnection 做网络请求,在这切换成 Okhttp 请求
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(
-                AppComponent.obtainClientModule(context).okHttpClient()));
+                appComponent.okHttpClient()));
 
-        BaseImageLoaderStrategy loaderStrategy = AppComponent.obtainAppModule(context).imageLoader().getLoadImgStrategy();
+        BaseImageLoaderStrategy loaderStrategy = appComponent.imageLoader().getLoadImgStrategy();
         if (loaderStrategy instanceof GlideAppliesOptions) {
             ((GlideAppliesOptions) loaderStrategy).registerComponents(context, glide, registry);
         }

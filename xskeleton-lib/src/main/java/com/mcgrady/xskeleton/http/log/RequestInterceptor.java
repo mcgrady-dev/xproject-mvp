@@ -16,6 +16,9 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -28,11 +31,16 @@ import okio.BufferedSource;
 /**
  * Created by mcgrady on 2019-08-12.
  */
+@Singleton
 public class RequestInterceptor implements Interceptor {
 
-    private Level printLevel;
-    private FormatPrinter formatPrinter;
-    private GlobalHttpHandler httpHandler;
+    @Inject
+    @Nullable
+    GlobalHttpHandler httpHandler;
+    @Inject
+    FormatPrinter formatPrinter;
+    @Inject
+    Level printLevel;
 
     public enum Level {
         /**
@@ -53,14 +61,8 @@ public class RequestInterceptor implements Interceptor {
         ALL
     }
 
-    public RequestInterceptor(Level printLevel, FormatPrinter formatPrinter, @Nullable GlobalHttpHandler httpHandler) {
-        this.printLevel = printLevel;
-        this.formatPrinter = formatPrinter;
-        this.httpHandler = httpHandler;
-    }
-
-    public RequestInterceptor(Level printLevel, FormatPrinter formatPrinter) {
-        this(printLevel, formatPrinter, null);
+    @Inject
+    public RequestInterceptor() {
     }
 
     @Override

@@ -9,17 +9,23 @@ import androidx.fragment.app.FragmentActivity;
 import com.mcgrady.xskeleton.base.BaseActivity;
 import com.trello.rxlifecycle3.android.ActivityEvent;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger.Lazy;
 import io.reactivex.subjects.Subject;
 
 /**
  * Created by mcgrady on 2020/4/23.
  */
+@Singleton
 public class ActivityLifecycleForRxLifecycle implements Application.ActivityLifecycleCallbacks {
 
-    FragmentLifecycleForRxLifecycle fragmentLifecycle;
+    @Inject
+    Lazy<FragmentLifecycleForRxLifecycle> fragmentLifecycle;
 
+    @Inject
     public ActivityLifecycleForRxLifecycle() {
-        fragmentLifecycle = new FragmentLifecycleForRxLifecycle();
     }
 
     /**
@@ -31,7 +37,7 @@ public class ActivityLifecycleForRxLifecycle implements Application.ActivityLife
         if (activity instanceof ActivityLifecycleable) {
             obtainSubject(activity).onNext(ActivityEvent.CREATE);
             if (activity instanceof FragmentActivity) {
-                ((FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycle, true);
+                ((FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(fragmentLifecycle.get(), true);
             }
         }
     }

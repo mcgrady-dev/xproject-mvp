@@ -5,8 +5,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.mcgrady.xskeleton.module.AppModule;
-import com.mcgrady.xskeleton.module.ClientModule;
+import com.mcgrady.xskeleton.utils.Preconditions;
 
 /**
  * Created by mcgrady on 2019-09-16.
@@ -43,13 +42,9 @@ public class BaseApplication extends Application implements IApp {
 
     @NonNull
     @Override
-    public ClientModule getClientModule() {
-        return appDelegate != null ? appDelegate.getClientModule() : null;
-    }
-
-    @NonNull
-    @Override
-    public AppModule getAppModule() {
-        return appDelegate != null ? appDelegate.getAppModule() : null;
+    public AppComponent getAppComponent() {
+        Preconditions.checkNotNull(appDelegate, "%s cannot be null", AppDelegate.class.getName());
+        Preconditions.checkState(appDelegate instanceof IApp, "%s must be implements %s", appDelegate.getClass().getName(), IApp.class.getName());
+        return ((IApp) appDelegate).getAppComponent();
     }
 }
