@@ -27,8 +27,9 @@ public class ZhihuDailyDetailPresenter extends BasePresenter<ZhihuDailyDetailCon
 
     RxErrorHandler mErrorHandler;
 
-    public ZhihuDailyDetailPresenter(ZhihuDailyDetailContract.Model model, ZhihuDailyDetailContract.View rootView) {
+    public ZhihuDailyDetailPresenter(ZhihuDailyDetailContract.Model model, ZhihuDailyDetailContract.View rootView, RxErrorHandler rxErrorHandler) {
         super(model, rootView);
+        this.mErrorHandler = rxErrorHandler;
     }
 
     /**

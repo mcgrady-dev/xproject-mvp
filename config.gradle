@@ -80,7 +80,7 @@ ext {
             "immersion-bar"            : "com.gyf.immersionbar:immersionbar:3.0.0",
             "immersion-bar-components" : "com.gyf.immersionbar:immersionbar-components:3.0.0",
             "immersion-bar-ktx"        : "com.gyf.immersionbar:immersionbar-ktx:3.0.0",
-            "banner"                   : "com.youth.banner:banner:2.0.8",
+            "banner"                   : "com.youth.banner:banner:2.1.0",
             "xtitlebar"                : "com.mcgrady:xtitlebar:1.0.2",
             "sticky-headers-recyclerview" : "com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar",
             "agentweb"                 : "com.just.agentweb:agentweb:4.1.3",

@@ -42,9 +42,9 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
     }
     public ZhihuDailyHomeAdapter(Context context, List data) {
         super(data);
-        addItemType(TYPE_HEADER, R.layout.news_header_banner);
-        addItemType(TYPE_DATE, R.layout.news_item_zhihu_daily_date);
-        addItemType(TYPE_ITEM, R.layout.news_item_zhihu_daily_home);
+        addItemType(TYPE_HEADER, R.layout.zhihu_news_header_banner);
+        addItemType(TYPE_DATE, R.layout.zhihu_item_daily_news_date);
+        addItemType(TYPE_ITEM, R.layout.zhihu_item_daily_news_home);
 
         imageLoader = XUtils.obtainAppComponentFromContext().imageLoader();
     }
@@ -65,14 +65,18 @@ public class ZhihuDailyHomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
     public void addData(ZhihuDailyStoriesBean data) {
         List<MultiItemEntity> entities = new ArrayList<>();
 
-        entities.add(new ZhihuDailyMultipleItem(TYPE_DATE, data.getDate()));
-
         List<ZhihuDailyStoriesBean.StoriesBean> stories = data.getStories();
-        for (ZhihuDailyStoriesBean.StoriesBean storiesBean : stories) {
-            entities.add(new ZhihuDailyMultipleItem(TYPE_ITEM, storiesBean));
+        if (stories != null) {
+            entities.add(new ZhihuDailyMultipleItem(TYPE_DATE, data.getDate()));
+            for (ZhihuDailyStoriesBean.StoriesBean storiesBean : stories) {
+                entities.add(new ZhihuDailyMultipleItem(TYPE_ITEM, storiesBean));
+            }
         }
 
-        addData(entities);
+        if (!entities.isEmpty()) {
+            addData(entities);
+        }
+
     }
 
     @Override

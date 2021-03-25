@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.just.agentweb.AgentWeb;
@@ -19,9 +21,11 @@ import com.mcgrady.common_core.utils.HtmlUtils;
 import com.mcgrady.xproject.zhihu.R;
 import com.mcgrady.xproject.zhihu.R2;
 import com.mcgrady.xproject.zhihu.mvp.contract.ZhihuDailyDetailContract;
+import com.mcgrady.xproject.zhihu.mvp.model.ZhihuModel;
 import com.mcgrady.xproject.zhihu.mvp.model.entity.ZhihuDailyDetailBean;
 import com.mcgrady.xproject.zhihu.mvp.presenter.ZhihuDailyDetailPresenter;
 import com.mcgrady.xskeleton.http.imageloader.ImageLoader;
+import com.mcgrady.xskeleton.utils.XUtils;
 
 import butterknife.BindView;
 
@@ -45,27 +49,26 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
     private ImageLoader imageLoader;
     private AgentWeb agentWeb;
 
+    @Autowired(name = "daily_img_url")
+    String dailyUrl;
+    @Autowired(name = "daily_id")
+    int dailyId;
+    @Autowired(name = "daily_title")
+    String dailyTitle;
+
     @Override
     public int getLayoutResId() {
-        return R.layout.news_activity_zhihu_daily_detail;
+        return R.layout.zhihu_activity_daily_news_detail;
     }
 
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
-        ivDailyHeader = findViewById(R.id.news_iv_daily_header);
-        tvDailyTitle = findViewById(R.id.news_tv_daily_title);
-        tvImgSource = findViewById(R.id.news_tv_img_source);
-        coordinatorLayout = findViewById(R.id.news_cl_container);
-        ctbLayout = findViewById(R.id.news_ctoolbar_layout);
+
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-//        imageLoader = appComponent.imageLoader();
-
-        int dailyId = getIntent().getIntExtra("daily_id", -1);
-        String dailyTitle = getIntent().getStringExtra("daily_title");
-        String dailyImgUrl = getIntent().getStringExtra("daily_img_url");
+        ARouter.getInstance().inject(this);
 
         tvDailyTitle.setText(dailyTitle);
 
@@ -140,6 +143,6 @@ public class ZhihuDailyDetailActivity extends BaseActivity<ZhihuDailyDetailPrese
 
     @Override
     protected ZhihuDailyDetailPresenter createPresenter() {
-        return null;
+        return new ZhihuDailyDetailPresenter(new ZhihuModel(), this, XUtils.obtainAppComponentFromContext().rxErrorHandler());
     }
 }

@@ -36,6 +36,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
+import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public int getLayoutResId() {
-        return R.layout.news_activity_zhihu_daily_home;
+        return R.layout.zhihu_activity_daily_news_home;
     }
 
     @Override
@@ -90,7 +91,7 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         linearManager = new LinearLayoutManager(this);
         ViewUtils.configRecyclerView(recyclerView, linearManager);
 
-        banner = (Banner) LayoutInflater.from(this).inflate(R.layout.news_header_banner, null);
+        banner = (Banner) LayoutInflater.from(this).inflate(R.layout.zhihu_news_header_banner, null);
         banner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.getScreenHeight() / 3));
     }
 
@@ -164,19 +165,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         lastTitlePostion = position;
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        banner.start();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        banner.stop();
-    }
-
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         presenter.requestDailyList();
@@ -191,7 +179,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
     protected void onDestroy() {
         ViewUtils.releaseAllHolder(recyclerView);
         super.onDestroy();
-        banner.destroy();
     }
 
 //    @Override
@@ -201,9 +188,12 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
 
     @Override
     public void notifyDataSetChanged(ZhihuDailyStoriesBean data) {
-        banner.setAdapter(new ZhihuDailyTopStoriesAdapter(imageLoader, data.getTop_stories()))
+        banner.addBannerLifecycleObserver(this)
+                .setAdapter(new ZhihuDailyTopStoriesAdapter(imageLoader, data.getTop_stories()))
                 .setOnBannerListener(ZhihuDailyHomeActivity.this)
+                .setIndicator(new CircleIndicator(this))
                 .start();
+
         adapter.setData(data);
     }
 
