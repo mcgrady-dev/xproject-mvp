@@ -32,13 +32,13 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(2, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .doFinally(() -> mView.finishRefresh())
-            .compose(RxLifecycleUtils.bindToLifecycle(mView))
+            .doFinally(() -> mViewRef.get().finishRefresh())
+            .compose(RxLifecycleUtils.bindToLifecycle(mViewRef.get()))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(errorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mView.notifyDataSetChanged(zhihuDailyStoriesBean);
+                    mViewRef.get().notifyDataSetChanged(zhihuDailyStoriesBean);
                 }
             });
 
@@ -65,7 +65,7 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
 
     public void requestBeforeDailyList() {
         if (TextUtils.isEmpty(mDate)) {
-            mView.finishLoadMore(false);
+            mViewRef.get().finishLoadMore(false);
             return;
         }
 
@@ -74,19 +74,19 @@ public class ZhihuDailyHomePresenter extends BasePresenter<ZhihuDailyHomeContrac
             .retryWhen(new RetryWithDelay(3, 2))
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
-            .compose(RxLifecycleUtils.bindToLifecycle(mView))
+            .compose(RxLifecycleUtils.bindToLifecycle(mViewRef.get()))
             .subscribe(new ErrorHandleSubscriber<ZhihuDailyStoriesBean>(errorHandler) {
                 @Override
                 public void onNext(ZhihuDailyStoriesBean zhihuDailyStoriesBean) {
-                    mView.finishLoadMore(true);
+                    mViewRef.get().finishLoadMore(true);
                     mDate = zhihuDailyStoriesBean.getDate();
-                    mView.loadMoreData(zhihuDailyStoriesBean);
+                    mViewRef.get().loadMoreData(zhihuDailyStoriesBean);
                 }
 
                 @Override
                 public void onError(Throwable t) {
                     super.onError(t);
-                    mView.finishLoadMore(false);
+                    mViewRef.get().finishLoadMore(false);
                 }
             });
     }

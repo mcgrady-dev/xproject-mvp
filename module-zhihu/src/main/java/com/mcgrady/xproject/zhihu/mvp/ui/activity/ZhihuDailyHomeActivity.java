@@ -181,11 +181,6 @@ public class ZhihuDailyHomeActivity extends BaseActivity<ZhihuDailyHomePresenter
         super.onDestroy();
     }
 
-//    @Override
-//    public void finishLoadMore(boolean success) {
-//        refreshLayout.finishLoadMore(success);
-//    }
-
     @Override
     public void notifyDataSetChanged(ZhihuDailyStoriesBean data) {
         banner.addBannerLifecycleObserver(this)

@@ -3,6 +3,8 @@ package com.mcgrady.xskeleton.base;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -13,20 +15,15 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
     protected final String TAG = this.getClass().getSimpleName();
     protected CompositeDisposable mCompositeDisposable;
     protected M mModel;
-    protected V mView;
+    protected WeakReference<V> mViewRef;
 
-    public BasePresenter(@Nullable V view) {
+    public BasePresenter(@NonNull V view) {
         this(null, view);
     }
 
-    public BasePresenter(@NonNull M mModel, @NonNull V mView) {
-        this.mModel = mModel;
-        this.mView = mView;
-    }
-
-    @Override
-    public void onStart() {
-
+    public BasePresenter(@Nullable M model, @NonNull V view) {
+        this.mModel = model;
+        this.mViewRef = new WeakReference<V>(view);
     }
 
     /**
@@ -49,6 +46,11 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         if (mCompositeDisposable != null) {
             mCompositeDisposable.clear();
         }
+    }
+
+    @Override
+    public void onStart() {
+
     }
 
     @Override

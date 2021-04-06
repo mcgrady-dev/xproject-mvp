@@ -35,7 +35,10 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        presenter = createPresenter();
+        if (presenter == null) {
+            presenter = createPresenter();
+        }
+
         super.onCreate(savedInstanceState);
         try {
             int layoutResId = getLayoutResId();
@@ -60,15 +63,19 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        if (unbinder != null && unbinder != Unbinder.EMPTY) {
-            unbinder.unbind();
+        if (unbinder != null) {
+            if (unbinder != Unbinder.EMPTY) {
+                unbinder.unbind();
+            }
+            unbinder = null;
         }
-        unbinder = null;
+
         if (presenter != null) {
-            presenter.onDestroy();//释放资源
+            presenter.onDestroy();
+            this.presenter = null;
         }
-        this.presenter = null;
+
+        super.onDestroy();
     }
 
     @Override

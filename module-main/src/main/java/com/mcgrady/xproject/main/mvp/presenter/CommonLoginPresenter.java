@@ -35,7 +35,7 @@ public class CommonLoginPresenter extends BasePresenter<CommonLoginContract.Mode
         if (!TextUtils.isEmpty(mobile_num) && !TextUtils.isEmpty(ver_code)) {
             ToastUtils.show("登录成功");
             ARouter.getInstance().build(RouterHub.ZHIHU_ACTIVITY_HOME).navigation();
-            mView.finish();
+            mViewRef.get().finish();
         } else {
             ToastUtils.show("登录失败");
         }

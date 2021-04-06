@@ -7,9 +7,11 @@ package com.mcgrady.xskeleton.base;
 public interface IView {
 
     default void showProgress() {
+
     }
 
     default void hideProgress() {
+
     }
 
     default void finish() {
