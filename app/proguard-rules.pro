@@ -64,22 +64,18 @@
 }
 
 #保持使用了Keep注解的方法以及类不被混淆
--keep @android.support.annotation.Keep class * {*;}
--keepclasseswithmembers class * {
-    @android.support.annotation.Keep <methods>;
-}
+#-keep @android.support.annotation.Keep class * {*;}
+#-keepclasseswithmembers class * {
+#    @android.support.annotation.Keep <methods>;
+#}
 
 #保持使用了Keep注解的成员域以及类不被混淆
--keepclasseswithmembers class * {
-    @android.support.annotation.Keep <fields>;
-}
--keepclasseswithmembers class * {
-    @android.support.annotation.Keep <init>(...);
-}
-
-
-################ common ###############
--keep public class * implements com.yongyou.xskeleton.integration.ConfigModule
+#-keepclasseswithmembers class * {
+#    @android.support.annotation.Keep <fields>;
+#}
+#-keepclasseswithmembers class * {
+#    @android.support.annotation.Keep <init>(...);
+#}
 
  #实体类不参与混淆
 -keep class com.yongoyu.common_core.widget.** { *; } #自定义控件不参与混淆
@@ -108,12 +104,12 @@
 
 
 ################ alipay ###############
--keep class com.alipay.android.app.IAlixPay{*;}
--keep class com.alipay.android.app.IAlixPay$Stub{*;}
--keep class com.alipay.android.app.IRemoteServiceCallback{*;}
--keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
--keep class com.alipay.sdk.app.PayTask{ public *;}
--keep class com.alipay.sdk.app.AuthTask{ public *;}
+#-keep class com.alipay.android.app.IAlixPay{*;}
+#-keep class com.alipay.android.app.IAlixPay$Stub{*;}
+#-keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+#-keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
+#-keep class com.alipay.sdk.app.PayTask{ public *;}
+#-keep class com.alipay.sdk.app.AuthTask{ public *;}
 
 
 ################ retrofit ###############
@@ -122,19 +118,19 @@
 
 
 ################ butterknife ###############
--keep class butterknife.** { *; }
--dontwarn butterknife.internal.**
--keep class **$$ViewBinder { *; }
--keepclasseswithmembernames class * {
-   @butterknife.* <fields>;
-}
--keepclasseswithmembernames class * {
- @butterknife.* <methods>;
-}
+#-keep class butterknife.** { *; }
+#-dontwarn butterknife.internal.**
+#-keep class **$$ViewBinder { *; }
+#-keepclasseswithmembernames class * {
+#   @butterknife.* <fields>;
+#}
+#-keepclasseswithmembernames class * {
+# @butterknife.* <methods>;
+#}
 
 
 ################ gson ###############
--keep class sun.misc.Unsafe { *; }
+#-keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
 # Application classes that will be serialized/deserialized over Gson
 -keep class com.sunloto.shandong.bean.** { *; }
@@ -158,15 +154,15 @@
 
 
 ################ EventBus ###############
--keepclassmembers class * {
-    @org.greenrobot.eventbus.Subscribe <methods>;
-}
--keep class org.greenrobot.eventbus.EventBus { *; }
--keep enum org.greenrobot.eventbus.ThreadMode { *; }
-
--keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
-    <init>(java.lang.Throwable);
-}
+#-keepclassmembers class * {
+#    @org.greenrobot.eventbus.Subscribe <methods>;
+#}
+#-keep class org.greenrobot.eventbus.EventBus { *; }
+#-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+#
+#-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+#    <init>(java.lang.Throwable);
+#}
 
 ################ autolayout ###############
 -keep class com.zhy.autolayout.** { *; }
@@ -193,37 +189,37 @@
     @retrofit.http.* <methods>;
 }
 
--keep class sun.misc.Unsafe { *; }
+#-keep class sun.misc.Unsafe { *; }
 
 -dontwarn java.lang.invoke.*
 
 -keep class io.reactivex.schedulers.Schedulers {
     public static <methods>;
 }
--keep class io.reactivex.schedulers.ImmediateScheduler {
-    public <methods>;
-}
+#-keep class io.reactivex.schedulers.ImmediateScheduler {
+#    public <methods>;
+#}
 -keep class io.reactivex.schedulers.TestScheduler {
     public <methods>;
 }
--keep class io.reactivex.schedulers.Schedulers {
-    public static ** test();
-}
+#-keep class io.reactivex.schedulers.Schedulers {
+#    public static ** test();
+#}
 -keepclassmembers class io.reactivex.internal.util.unsafe.*ArrayQueue*Field* {
     long producerIndex;
     long consumerIndex;
 }
--keepclassmembers class io.reactivex.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
-    long producerNode;
-    long consumerNode;
-}
+#-keepclassmembers class io.reactivex.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+#    long producerNode;
+#    long consumerNode;
+#}
 
--keepclassmembers class io.reactivex.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
-    io.reactivex.internal.util.atomic.LinkedQueueNode producerNode;
-}
--keepclassmembers class io.reactivex.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
-    io.reactivex.internal.util.atomic.LinkedQueueNode consumerNode;
-}
+#-keepclassmembers class io.reactivex.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+#    io.reactivex.internal.util.atomic.LinkedQueueNode producerNode;
+#}
+#-keepclassmembers class io.reactivex.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+#    io.reactivex.internal.util.atomic.LinkedQueueNode consumerNode;
+#}
 
 -dontwarn io.reactivex.internal.util.unsafe.**
 
@@ -238,16 +234,16 @@
 -keep interface com.tbruyelle.rxpermissions2.** { *; }
 
 ################ RxCache #################
--dontwarn io.rx_cache2.internal.**
--keep class io.rx_cache2.internal.Record { *; }
--keep class io.rx_cache2.Source { *; }
+#-dontwarn io.rx_cache2.internal.**
+#-keep class io.rx_cache2.internal.Record { *; }
+#-keep class io.rx_cache2.Source { *; }
 
 -keep class io.victoralbertos.jolyglot.** { *; }
 -keep interface io.victoralbertos.jolyglot.** { *; }
 
 ################ RxErrorHandler #################
  -keep class com.yongyou.xskeleton.http.handler.rxerrorhandler.** { *; }
- -keep interface com.yongyou.xskeleton.http.handler..rxerrorhandler.** { *; }
+# -keep interface com.yongyou.xskeleton.http.handler..rxerrorhandler.** { *; }
 
 
 ################ Canary #################
@@ -301,7 +297,7 @@
 ################ JPush ###############
 -dontwarn cn.jpush.**
 -keep class cn.jpush.** { *; }
--keep class * extends cn.jpush.android.helpers.JPushMessageReceiver { *; }
+#-keep class * extends cn.jpush.android.helpers.JPushMessageReceiver { *; }
 
 -dontwarn cn.jiguang.**
 -keep class cn.jiguang.** { *; }
