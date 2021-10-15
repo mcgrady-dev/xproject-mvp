@@ -32,7 +32,6 @@
                 android:layout_gravity="center_vertical"
                 android:text="120"
                 android:layout_marginLeft="90dp"
-                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"

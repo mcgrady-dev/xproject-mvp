@@ -57,7 +57,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="25dp">
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/color_f6f4f4"
@@ -75,7 +75,7 @@
                     android:textColor="@android:color/white"
                     android:textCursorDrawable="@drawable/main_ic_cursor"
                     android:textSize="15sp" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <ImageView
                 android:id="@+id/mIvClearAccount"
                 android:layout_centerVertical="true"
@@ -95,7 +95,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginTop="25dp">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/color_f6f4f4"
@@ -113,7 +113,7 @@
                     android:textColor="@android:color/white"
                     android:textCursorDrawable="@drawable/main_ic_cursor"
                     android:textSize="15sp" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
             <ImageView
                 android:id="@+id/mIvClearPwd"
                 android:layout_centerVertical="true"
@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/mFabToLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

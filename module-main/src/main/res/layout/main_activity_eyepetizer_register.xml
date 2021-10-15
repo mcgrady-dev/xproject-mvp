@@ -50,7 +50,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginLeft="25dp"
@@ -71,9 +71,9 @@
                 android:drawableBottom="@drawable/main_select_edit_text"
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginLeft="25dp"
@@ -94,8 +94,9 @@
                 android:textCursorDrawable="@drawable/main_ic_cursor"
                 android:drawableBottom="@drawable/main_select_edit_text"
                 android:textSize="15sp" />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginLeft="25dp"
@@ -116,12 +117,12 @@
                 android:textCursorDrawable="@drawable/main_ic_cursor"
                 android:drawableBottom="@drawable/main_select_edit_text"
                 android:textSize="15sp" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/mFabToSignUp"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"

@@ -7,7 +7,7 @@
     tools:context=".activity.EditTextActivity"
     android:background="@android:color/white">
 
-    <com.mcgrady.xpay.common_widget.ClearEditText
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
