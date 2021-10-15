@@ -13,10 +13,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcgrady.common_core.RouterHub;
 import com.mcgrady.common_core.base.BaseActivity;
 import com.mcgrady.xproject.main.R;
-import com.mcgrady.xproject.main.R2;
 import com.mcgrady.xskeleton.base.IPresenter;
 
-import butterknife.BindView;
 
 /**
  * <p>类说明</p>

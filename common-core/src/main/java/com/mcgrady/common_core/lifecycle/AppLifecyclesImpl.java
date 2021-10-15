@@ -35,7 +35,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
         ToastUtils.init(application, new ToastQQStyle(application));
 
         if (BuildConfig.LOG_DEBUG) {
-            ButterKnife.setDebug(true);
+//            ButterKnife.setDebug(true);
             ARouter.openDebug();
             ARouter.openLog();
             ARouter.printStackTrace();

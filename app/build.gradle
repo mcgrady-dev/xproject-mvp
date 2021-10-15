@@ -91,11 +91,6 @@ dependencies {
     //tools
 //    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
-    //view
-    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
-        exclude module: 'annotation'
-    }
-
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
 
     //test
